@@ -440,7 +440,7 @@ export const translations: Record<Language, TranslationStructure> = {
   },
   ja: {
     appTitle: "QK Tool Hub",
-    appSubtitle: "便利で高速なオンラインWebツール集",
+    appSubtitle: "文字数カウント・単語数計算 (Word & Character Counter)",
     hubTitle: "QK Tool Hub - Webツール コレクション",
     hubSubtitle: "会員登録不要で使える無料Webツールキット",
     backToHub: "← QK Tool Hub メインへ戻る",
@@ -557,7 +557,7 @@ export const translations: Record<Language, TranslationStructure> = {
   },
   zh: {
     appTitle: "QK Tool Hub",
-    appSubtitle: "快捷实用的在线工具集合",
+    appSubtitle: "在线字数与单词计数器 (Word & Character Counter)",
     hubTitle: "QK Tool Hub - 智能Web工具箱",
     hubSubtitle: "无需注册，即开即用的免费在线工具",
     backToHub: "← 返回 QK Tool Hub 主页",
@@ -674,7 +674,7 @@ export const translations: Record<Language, TranslationStructure> = {
   },
   es: {
     appTitle: "QK Tool Hub",
-    appSubtitle: "Herramientas de utilidad en línea rápidas y gratuitas",
+    appSubtitle: "Contador de Palabras y Caracteres (Word & Character Counter)",
     hubTitle: "QK Tool Hub - Kit de herramientas Web",
     hubSubtitle: "Utilidades web gratuitas al instante y sin registro",
     backToHub: "← Volver a QK Tool Hub",
