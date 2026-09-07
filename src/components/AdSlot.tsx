@@ -7,7 +7,7 @@ interface AdSlotProps {
   format?: 'auto' | 'fluid' | 'rectangle';
 }
 
-export const AdSlot: React.FC<AdSlotProps> = ({ slotId, provider = 'auto', format = 'auto' }) => {
+export const AdSlot: React.FC<AdSlotProps> = ({ slotId, format = 'auto' }) => {
   const { t } = useLanguage();
   const publisherId = 'ca-pub-8866331689980638';
 
