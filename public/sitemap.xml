@@ -12,4 +12,16 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/?lang=es"/>
   </url>
+  <url>
+    <loc>https://qktoolhub.com/currency-converter</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/word-counter</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
