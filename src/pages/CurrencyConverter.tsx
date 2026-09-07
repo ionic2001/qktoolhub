@@ -4,7 +4,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
 import { AdSlot } from '../components/AdSlot';
 import { CurrencyGrid } from '../components/CurrencyGrid';
-import { fetchExchangeRates, RatesData } from '../utils/currencyRates';
+import { fetchExchangeRates, getInitialRatesData, RatesData } from '../utils/currencyRates';
 import { ArrowLeft, RefreshCw, Sparkles, Info, HelpCircle } from 'lucide-react';
 
 export const CurrencyConverterPage: React.FC = () => {
@@ -23,8 +23,8 @@ export const CurrencyConverterPage: React.FC = () => {
   const [baseCurrency, setBaseCurrency] = useState<string>(initialBaseMap[language] || 'KRW');
   const [targetCurrency, setTargetCurrency] = useState<string>('USD');
   const [amount, setAmount] = useState<number>(1000);
-  const [ratesData, setRatesData] = useState<RatesData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [ratesData, setRatesData] = useState<RatesData>(() => getInitialRatesData(initialBaseMap[language] || 'KRW'));
+  const [loading, setLoading] = useState<boolean>(false);
 
   // Dynamic SEO Head Updates for Google & Naver Search Engines
   useEffect(() => {

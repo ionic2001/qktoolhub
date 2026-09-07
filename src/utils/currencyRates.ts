@@ -103,13 +103,40 @@ const FALLBACK_USD_PREV_RATES: Record<string, number> = {
 };
 
 /**
- * Fetch real-time exchange rates with USD benchmark
+ * Synchronous initial rates provider to guarantee immediate instant UI rendering (0ms delay)
+ */
+export function getInitialRatesData(baseCurrency: string = 'KRW'): RatesData {
+  const baseUsd = FALLBACK_USD_RATES[baseCurrency] || 1;
+  const rates: Record<string, number> = {};
+  const prevRates: Record<string, number> = {};
+
+  ALL_CURRENCIES.forEach(c => {
+    rates[c.code] = (FALLBACK_USD_RATES[c.code] || 1) / baseUsd;
+    prevRates[c.code] = (FALLBACK_USD_PREV_RATES[c.code] || 1) / baseUsd;
+  });
+
+  return {
+    base: baseCurrency,
+    rates,
+    prevRates,
+    usdRates: FALLBACK_USD_RATES,
+    usdPrevRates: FALLBACK_USD_PREV_RATES,
+    lastUpdated: new Date().toLocaleDateString(),
+  };
+}
+
+/**
+ * Fetch real-time exchange rates with USD benchmark (with 3-second fast timeout)
  */
 export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<RatesData> {
   try {
-    const res = await fetch(`https://open.er-api.com/v6/latest/${baseCurrency}`);
-    const usdRes = await fetch(`https://open.er-api.com/v6/latest/USD`);
-    
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
+
+    const res = await fetch(`https://open.er-api.com/v6/latest/${baseCurrency}`, { signal: controller.signal });
+    const usdRes = await fetch(`https://open.er-api.com/v6/latest/USD`, { signal: controller.signal });
+    clearTimeout(timeoutId);
+
     if (!res.ok || !usdRes.ok) throw new Error('API fetch failed');
     
     const data = await res.json();
@@ -127,7 +154,11 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
       yesterday.setDate(yesterday.getDate() - 1);
       const dateStr = yesterday.toISOString().split('T')[0];
       
-      const frankRes = await fetch(`https://api.frankfurter.app/${dateStr}?from=USD`);
+      const frankController = new AbortController();
+      const frankTimeout = setTimeout(() => frankController.abort(), 2000);
+      const frankRes = await fetch(`https://api.frankfurter.app/${dateStr}?from=USD`, { signal: frankController.signal });
+      clearTimeout(frankTimeout);
+
       if (frankRes.ok) {
         const frankData = await frankRes.json();
         usdPrevRates = frankData.rates || {};
@@ -163,25 +194,8 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
       usdPrevRates,
       lastUpdated,
     };
-  } catch (error) {
-    // Fallback mode if network error occurs
-    const baseUsd = FALLBACK_USD_RATES[baseCurrency] || 1;
-    const rates: Record<string, number> = {};
-    const prevRates: Record<string, number> = {};
-
-    ALL_CURRENCIES.forEach(c => {
-      rates[c.code] = (FALLBACK_USD_RATES[c.code] || 1) / baseUsd;
-      prevRates[c.code] = (FALLBACK_USD_PREV_RATES[c.code] || 1) / baseUsd;
-    });
-
-    return {
-      base: baseCurrency,
-      rates,
-      prevRates,
-      usdRates: FALLBACK_USD_RATES,
-      usdPrevRates: FALLBACK_USD_PREV_RATES,
-      lastUpdated: new Date().toLocaleDateString(),
-    };
+  } catch {
+    return getInitialRatesData(baseCurrency);
   }
 }
 
