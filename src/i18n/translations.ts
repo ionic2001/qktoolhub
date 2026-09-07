@@ -115,7 +115,7 @@ export interface TranslationStructure {
 export const translations: Record<Language, TranslationStructure> = {
   ko: {
     appTitle: "QK Tool Hub",
-    appSubtitle: "실시간 글자수/단어수 세기",
+    appSubtitle: "실시간 글자수 세기 - Word Counter",
     hubTitle: "QK Tool Hub - 스마트 웹 툴 모음",
     hubSubtitle: "회원가입 없이 즉시 사용하는 무료 유틸리티 웹 서비스 툴킷",
     backToHub: "← 메인 툴 허브로 돌아가기",
@@ -299,7 +299,7 @@ export const translations: Record<Language, TranslationStructure> = {
   },
   en: {
     appTitle: "QK Tool Hub",
-    appSubtitle: "Fast, Free All-in-One Online Utility Tools",
+    appSubtitle: "Real-time Word & Character Counter",
     hubTitle: "QK Tool Hub - Smart Web Tools Collection",
     hubSubtitle: "Instant free web utilities without sign-up",
     backToHub: "← Back to QK Tool Hub",
