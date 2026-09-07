@@ -28,13 +28,32 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     document.documentElement.lang = lang;
     const currentT = translations[lang] || translations.ko;
     
-    // Dynamic Page Title & Meta Description update for Google SEO
-    document.title = `${currentT.appTitle} | ${currentT.appSubtitle}`;
+    const dynamicTitle = `${currentT.appTitle} | ${currentT.appSubtitle}`;
+    const dynamicDesc = `${currentT.appTitle} - ${currentT.appSubtitle}. ${currentT.hubSubtitle || ''}`;
+
+    // Dynamic Page Title
+    document.title = dynamicTitle;
     
+    // Meta Description & Meta Title
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', `${currentT.appTitle} - ${currentT.appSubtitle}`);
-    }
+    if (metaDesc) metaDesc.setAttribute('content', dynamicDesc);
+
+    const metaTitle = document.querySelector('meta[name="title"]');
+    if (metaTitle) metaTitle.setAttribute('content', dynamicTitle);
+
+    // Open Graph
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', dynamicTitle);
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', dynamicDesc);
+
+    // Twitter
+    const twTitle = document.querySelector('meta[property="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', dynamicTitle);
+
+    const twDesc = document.querySelector('meta[property="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', dynamicDesc);
   };
 
   useEffect(() => {
