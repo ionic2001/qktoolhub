@@ -70,6 +70,11 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
 
   const areaPath = svgPath ? `${svgPath} L ${getX(points.length - 1)} ${chartHeight - padding} L ${getX(0)} ${chartHeight - padding} Z` : '';
 
+  const baseInfo = SUPPORTED_CURRENCIES.find(c => c.code === baseCurrency) || { flag: '', symbol: '', code: baseCurrency };
+  const targetInfo = SUPPORTED_CURRENCIES.find(c => c.code === targetCurrency) || { flag: '', symbol: '', code: targetCurrency };
+  const baseName = currencyT?.currencyNames?.[baseCurrency] || baseCurrency;
+  const targetName = currencyT?.currencyNames?.[targetCurrency] || targetCurrency;
+
   return (
     <div className="glass-card" style={{ padding: '1.5rem', marginBottom: '2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem' }}>
@@ -77,11 +82,11 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <TrendingUp size={20} color="var(--accent-color)" />
             <h2 className="section-title" style={{ marginBottom: 0 }}>
-              {targetInfo.flag} {targetName} ({targetCurrency}) {currencyT?.trendChartTitle || '환율 변동 추이 차트'}
+              {baseInfo.flag} {baseCurrency} ↔ {targetInfo.flag} {targetName} ({targetCurrency}) {currencyT?.trendChartTitle || '환율 변동 추이 차트'}
             </h2>
           </div>
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            1 {baseCurrency} ↔ {targetCurrency} 환율 히스토리
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.25rem', fontWeight: 600 }}>
+            선택된 기준 통화 (1 {baseCurrency} - {baseName}) 대비 {targetName} 과거 환율 히스토리
           </p>
         </div>
 
