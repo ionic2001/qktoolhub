@@ -76,7 +76,7 @@ export const CurrencyConverterPage: React.FC = () => {
           style={{ background: 'var(--card-bg)', color: 'var(--text-secondary)', border: '1px solid var(--border-color)', fontSize: '0.8rem' }}
         >
           <RefreshCw size={14} style={{ animation: loading ? 'spin 1s linear infinite' : 'none' }} />
-          새로고침
+          {language === 'ko' ? '새로고침' : language === 'ja' ? '更新' : language === 'zh' ? '刷新' : language === 'es' ? 'Actualizar' : 'Refresh'}
         </button>
       </div>
 
@@ -99,7 +99,7 @@ export const CurrencyConverterPage: React.FC = () => {
           {currencyT?.title || '실시간 다국어 환율 변환기'}
         </h1>
         <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '650px', margin: '0 auto' }}>
-          {currencyT?.subtitle || '전 세계 주요 국가 실시간 환율 수치 동시 변환'}
+          {currencyT?.subtitle || '전 세계 주요 국가 실시간 환율 계산 및 수치 동시 변환'}
         </p>
       </section>
 
@@ -133,7 +133,8 @@ export const CurrencyConverterPage: React.FC = () => {
       >
         <Info size={18} color="var(--warning-color)" style={{ flexShrink: 0 }} />
         <div>
-          <strong>💡 환율 차이 관련 안내:</strong> 본 서비스의 환율 정보는 국제 외환시장 실시간 고시 기준이며, 실제 시중은행 및 환전소 거래 시 거래 시점, 수수료, 우대율 등에 따라 <strong>약간의 차이가 발생할 수 있습니다.</strong>
+          <strong>💡 {language === 'ko' ? '환율 차이 안내' : language === 'ja' ? '為替レートのご案内' : language === 'zh' ? '汇率提示' : language === 'es' ? 'Aviso' : 'Notice'}:</strong>{' '}
+          {currencyT?.disclaimerNotice}
         </div>
       </div>
 

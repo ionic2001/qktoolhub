@@ -113,23 +113,14 @@ export interface TranslationStructure {
   currency: {
     title: string;
     subtitle: string;
-    baseCurrencyLabel: string;
-    amountLabel: string;
     allCurrenciesTitle: string;
     selectChartNotice: string;
-    trendChartTitle: string;
-    dayChange: string;
-    bankDiscountTitle: string;
-    bankDiscountSubtitle: string;
-    preferentialRate: string;
-    estimatedSavings: string;
-    totalPayable: string;
-    timeframes: {
-      d7: string;
-      m1: string;
-      m3: string;
-      y1: string;
-    };
+    quickPresetLabel: string;
+    pinNotice: string;
+    searchPlaceholder: string;
+    disclaimerNotice: string;
+    addCurrencyTitle: string;
+    addCurrencyBtn: string;
     currencyNames: Record<string, string>;
   };
 }
@@ -257,48 +248,6 @@ export const translations: Record<Language, TranslationStructure> = {
             "공백 제외(No Spaces): 순수 텍스트(한글, 영문, 숫자, 문장부호)만을 카운트하며 공백 문자는 제거됩니다.",
             "활용 팁: 대학 입시 및 주요 대기업(삼성, 현대, LG 등) 자기소개서는 '공백 포함'을 기준으로 글자수를 제한하는 경우가 많으므로 제출 양식을 반드시 확인하세요."
           ]
-        },
-        {
-          title: "2. EUC-KR vs UTF-8 바이트 (Byte) 계산 차이",
-          badge: "자소서/웹 필수",
-          description: "컴퓨터가 한글과 기호를 메모리에 저장할 때 사용하는 인코딩 방식에 따라 바이트 수가 달라집니다.",
-          details: [
-            "EUC-KR (2 Byte/한글): 과거 한국 완성형 표준입니다. 한글 1글자=2Byte, 영문/숫자/공백=1Byte로 계산됩니다. 삼성, 현대, 공기업 등 국내 주요 채용 시스템에서 주로 사용합니다.",
-            "UTF-8 (3 Byte/한글): 현대 글로벌 웹 표준 인코딩입니다. 한글 1글자=3Byte, 영문/숫자/공백=1Byte로 계산됩니다. 네이버 블로그, 깃허브, 해외 사이트에서 주로 사용합니다.",
-            "계산 예시: '안녕하세요' 5글자의 경우 EUC-KR에서는 10 Byte, UTF-8에서는 15 Byte로 계산됩니다."
-          ]
-        },
-        {
-          title: "3. 단어 수, 문장 수, 단락 수, 줄 수",
-          badge: "문단 지표",
-          description: "원고의 구조와 텍스트 호흡을 파악하기 위한 구조 분석 수치입니다.",
-          details: [
-            "단어 수 (Words): 공백(띄어쓰기)으로 구분된 독립된 어절의 총개수입니다.",
-            "문장 수 (Sentences): 마침표(.), 물음표(?), 느낌표(!) 문자를 기준으로 구분된 문장의 개수입니다.",
-            "단락 수 (Paragraphs): 엔터(Enter) 키를 2번 연속 눌러 생성된 빈 줄 단위의 글 덩어리 개수입니다.",
-            "줄 수 (Lines): 줄바꿈 문자의 개수로 측정되는 텍스트 라인 수입니다."
-          ]
-        },
-        {
-          title: "4. 예상 읽기 시간 & 발표 소요 시간",
-          badge: "스피치/대본",
-          description: "작성한 원고를 읽거나 발표할 때 걸리는 예상 시간을 추정합니다.",
-          details: [
-            "예상 읽기 시간 (Reading Time): 성인의 평균 묵독(눈으로 읽기) 속도인 분당 약 400자(약 250~300단어) 기준으로 계산됩니다.",
-            "예상 발표 시간 (Speaking Time): 소리 내어 전달하는 스피치/발표 평균 속도인 분당 약 200자(약 130단어) 기준으로 계산됩니다.",
-            "활용 팁: 3분 자기소개나 5분 발표 대본 작성 시 발표 시간을 미리 체크하면 대본 분량 조절에 매우 유용합니다."
-          ]
-        },
-        {
-          title: "5. 소셜 & SEO 플랫폼 길이 제한 가이드",
-          badge: "소셜/마케팅",
-          description: "검색엔진 노출 및 SNS 작성 시 잘림 현상을 방지하기 위한 가이드입니다.",
-          details: [
-            "X (구 트위터): 기본 280자 제한 (한글/일어/중문은 1글자당 2자 분량으로 계산되어 약 140자 작성 가능)",
-            "SEO Title (검색 제목): 구글 검색 결과 잘림 방지를 위해 한글 30자 / 영문 50~60자 이내 권장",
-            "SEO Meta Description (검색 요약): 구글 PC/모바일 검색 결과 기준 한글 75~150자 이내 권장",
-            "SMS / LMS 문자: 80 Byte 이하 단문(SMS), 80 Byte 초과 시 장문(LMS) 전환"
-          ]
         }
       ]
     },
@@ -320,19 +269,15 @@ export const translations: Record<Language, TranslationStructure> = {
     autoSavedNotice: "임시 저장됨",
     currency: {
       title: "실시간 다국어 환율 변환기",
-      subtitle: "전 세계 주요 국가 당일 고시 매매기준율 실시간 변환 및 전일 대비 변동폭 (+/-) 분석",
-      baseCurrencyLabel: "기준 통화 선택",
-      amountLabel: "변환 금액 입력",
-      allCurrenciesTitle: "📊 주요 국가 당일 매매기준율 한눈에 보기",
-      selectChartNotice: "💡 수치를 직접 수정하면 실시간 매매기준율로 모든 환율이 실시간 계산됩니다.",
-      trendChartTitle: "📈 환율 변동 추이 차트",
-      dayChange: "전일 대비",
-      bankDiscountTitle: "🏦 은행별 환율 우대율 (수수료 할인) 계산기",
-      bankDiscountSubtitle: "당일 매매기준율에 시중은행 환전 우대율(50% ~ 100%) 적용 시 실제 절약 및 지불 금액",
-      preferentialRate: "우대율",
-      estimatedSavings: "절약 예상 금액",
-      totalPayable: "실제 예상 지불액",
-      timeframes: { d7: "7일", m1: "1개월", m3: "3개월", y1: "1년" },
+      subtitle: "전 세계 주요 국가 실시간 환율 계산 및 수치 동시 변환",
+      allCurrenciesTitle: "📊 주요 국가 환율 한눈에 보기",
+      selectChartNotice: "💡 수치를 직접 수정하면 실시간 환율로 모든 통화가 즉시 연산됩니다.",
+      quickPresetLabel: "자주 쓰는 금액 퀵 입력:",
+      pinNotice: "💡 📌 버튼으로 자주 쓰는 통화를 상단에 고정하거나 ▲▼ 버튼으로 순서를 변경하세요.",
+      searchPlaceholder: "국가명 또는 통화 코드 검색 (예: THB, 대만, 바트, JPY)...",
+      disclaimerNotice: "본 서비스의 환율 정보는 국제 외환시장 실시간 고시 기준이며, 실제 시중은행 및 환전소 거래 시 거래 시점, 수수료, 우대율 등에 따라 약간의 차이가 발생할 수 있습니다.",
+      addCurrencyTitle: "추가할 국가 통화 선택",
+      addCurrencyBtn: "+ 국가 통화 추가하기",
       currencyNames: {
         KRW: "대한민국 원", USD: "미국 달러", JPY: "일본 엔화", EUR: "유로", CNY: "중국 위안화", GBP: "영국 파운드",
         CAD: "캐나다 달러", AUD: "호주 달러", CHF: "스위스 프랑", HKD: "홍콩 달러", SGD: "싱가포르 달러", VND: "베트남 동",
@@ -482,20 +427,16 @@ export const translations: Record<Language, TranslationStructure> = {
     adNotice: "Sponsored Advertisement",
     autoSavedNotice: "Auto-saved",
     currency: {
-      title: "Real-time Currency Converter",
-      subtitle: "Convert 12 major world currencies with day-over-day +/- rate change and interactive historical trend chart",
-      baseCurrencyLabel: "Select Base Currency",
-      amountLabel: "Enter Amount",
+      title: "Real-time Multi-Language Currency Converter",
+      subtitle: "Convert real-time exchange rates for major currencies worldwide instantly",
       allCurrenciesTitle: "📊 Major Exchange Rates Overview",
-      selectChartNotice: "💡 Click any currency card to view its interactive historical rate trend chart below.",
-      trendChartTitle: "📈 Exchange Rate Trend Chart",
-      dayChange: "Day Change",
-      bankDiscountTitle: "🏦 Bank Exchange Fee Discount Calculator",
-      bankDiscountSubtitle: "Calculate total savings and final payable amount based on bank preferential rate discounts (50% ~ 100%)",
-      preferentialRate: "Discount Rate",
-      estimatedSavings: "Estimated Savings",
-      totalPayable: "Total Payable",
-      timeframes: { d7: "7 Days", m1: "1 Month", m3: "3 Months", y1: "1 Year" },
+      selectChartNotice: "💡 Edit numbers directly to convert all currencies in real time.",
+      quickPresetLabel: "Quick Amount Presets:",
+      pinNotice: "💡 Use 📌 to pin favorite currencies or ▲▼ to reorder cards.",
+      searchPlaceholder: "Search country or currency code (e.g. THB, TWD, JPY)...",
+      disclaimerNotice: "Exchange rates are based on real-time international market quotes. Slight differences may occur in actual bank or exchange office transactions.",
+      addCurrencyTitle: "Select Currency to Add",
+      addCurrencyBtn: "+ Add Country Currency",
       currencyNames: {
         KRW: "South Korean Won", USD: "US Dollar", JPY: "Japanese Yen", EUR: "Euro", CNY: "Chinese Yuan", GBP: "British Pound",
         CAD: "Canadian Dollar", AUD: "Australian Dollar", CHF: "Swiss Franc", HKD: "Hong Kong Dollar", SGD: "Singapore Dollar", VND: "Vietnamese Dong",
@@ -523,7 +464,7 @@ export const translations: Record<Language, TranslationStructure> = {
       paragraphCount: "段落数",
       lineCount: "行数",
       eucKrBytes: "EUC-KR バイト",
-      utf8Bytes: "UTF-8 バ이트 (Web標準)",
+      utf8Bytes: "UTF-8 バイト (Web標準)",
       readingTime: "読了予想時間",
       speakingTime: "スピーチ予想時間",
       minutes: "分",
@@ -614,7 +555,7 @@ export const translations: Record<Language, TranslationStructure> = {
       title: "よくある質問 (FAQ)",
       subtitle: "文字数カウント基準とSEO推奨ガイド",
       faq1Q: "スペース込みとスペースなしの違いは何ですか？",
-      faq1A: "スペース込みは改行や空白文字も1文字として数えます。スペースなしは純粋な文字や記호のみをカウントします。",
+      faq1A: "スペース込みは改行や空白文字も1文字として数えます。スペースなしは純粋な文字や記号のみをカウントします。",
       faq2Q: "サーバーにテキストが送信・保存されますか？",
       faq2A: "いいえ。すべての処理はお使いのブラウザ内部でのみ完了し、外部サーバーへ送信されることはありません。"
     },
@@ -622,19 +563,15 @@ export const translations: Record<Language, TranslationStructure> = {
     autoSavedNotice: "自動保存済み",
     currency: {
       title: "リアルタイム多言語 為替レート計算機",
-      subtitle: "世界12主要通貨のリアルタイム換算、前日比 (+/-) 及び期間別チャート推移分析",
-      baseCurrencyLabel: "基準通貨を選択",
-      amountLabel: "換算金額を入力",
+      subtitle: "世界主要国のリアルタイム為替レートを一括計算・変換",
       allCurrenciesTitle: "📊 主要国為替レート一覧",
-      selectChartNotice: "💡 通貨カードをクリックすると、下部に該当通貨の為替推移グラフが表示されます。",
-      trendChartTitle: "📈 為替レート推移グラフ",
-      dayChange: "前日比",
-      bankDiscountTitle: "🏦 銀行両替手数料優遇計算機",
-      bankDiscountSubtitle: "両替優遇率(50%〜100%)に応じた実際の支払い額と節約額の計算",
-      preferentialRate: "優遇率",
-      estimatedSavings: "予想節約額",
-      totalPayable: "実際の予想支払額",
-      timeframes: { d7: "7日間", m1: "1ヶ月", m3: "3ヶ月", y1: "1年" },
+      selectChartNotice: "💡 数値を直接入力すると、全ての通貨がリアルタイムで換算されます。",
+      quickPresetLabel: "よく使う金額のクイック入力:",
+      pinNotice: "💡 📌ボタンでお気に入り通貨を固定、▲▼ボタンで表示順を変更できます。",
+      searchPlaceholder: "国名または通貨コードを検索 (例: THB, 台湾, JPY)...",
+      disclaimerNotice: "為替レート情報は国際市場のリアルタイム基準であり、実際の銀行や両替所での取引時に若干の差が生じる場合があります。",
+      addCurrencyTitle: "追加する通貨を選択",
+      addCurrencyBtn: "+ 国・通貨を追加",
       currencyNames: {
         KRW: "韓国ウォン", USD: "米ドル", JPY: "日本円", EUR: "ユーロ", CNY: "中国人民元", GBP: "英ポンド",
         CAD: "カナダドル", AUD: "豪ドル", CHF: "スイスフラン", HKD: "香港ドル", SGD: "シンガポールドル", VND: "ベトナムドン",
@@ -761,19 +698,15 @@ export const translations: Record<Language, TranslationStructure> = {
     autoSavedNotice: "已自动保存",
     currency: {
       title: "实时多语言汇率换算器",
-      subtitle: "支持全球12种主要货币转换，提供较前一日(+/-)涨跌幅及历史走势图表",
-      baseCurrencyLabel: "选择基准货币",
-      amountLabel: "输入转换金额",
+      subtitle: "实时换算全球主要国家与地区汇率",
       allCurrenciesTitle: "📊 主要国家与地区汇率一览",
-      selectChartNotice: "💡 点击任意货币卡片，即可在下方查看该货币的历史汇率走势图表。",
-      trendChartTitle: "📈 汇率走势图表",
-      dayChange: "较前一日",
-      bankDiscountTitle: "🏦 银行换汇手续费优惠计算器",
-      bankDiscountSubtitle: "根据换汇优惠率(50% ~ 100%)计算实际支付金额与预计节省金额",
-      preferentialRate: "优惠率",
-      estimatedSavings: "预计节省金额",
-      totalPayable: "实际预计支付",
-      timeframes: { d7: "7天", m1: "1个月", m3: "3个月", y1: "1年" },
+      selectChartNotice: "💡 直接修改数值，所有货币将实时换算。",
+      quickPresetLabel: "常用金额快捷输入：",
+      pinNotice: "💡 使用 📌 置顶常用货币，或使用 ▲▼ 调整顺序。",
+      searchPlaceholder: "搜索国家名或货币代码 (例如: THB, 台湾, JPY)...",
+      disclaimerNotice: "本服务汇率信息基于国际外汇市场实时行情，实际银行或换汇所交易时可能存在微小差异。",
+      addCurrencyTitle: "选择要添加的货币",
+      addCurrencyBtn: "+ 添加国家/货币",
       currencyNames: {
         KRW: "韩元", USD: "美元", JPY: "日元", EUR: "欧元", CNY: "人民币", GBP: "英镑",
         CAD: "加元", AUD: "澳元", CHF: "瑞士法郎", HKD: "港币", SGD: "新加坡元", VND: "越南盾",
@@ -900,19 +833,15 @@ export const translations: Record<Language, TranslationStructure> = {
     autoSavedNotice: "Guardado automático",
     currency: {
       title: "Conversor de Divisas en Tiempo Real",
-      subtitle: "Convierte 12 monedas principales con variación diaria (+/-) y gráfico de tendencias",
-      baseCurrencyLabel: "Seleccionar Moneda Base",
-      amountLabel: "Ingresar Monto",
+      subtitle: "Convierte tipos de cambio en tiempo real para las principales monedas del mundo",
       allCurrenciesTitle: "📊 Resumen de Tipos de Cambio Principales",
-      selectChartNotice: "💡 Haz clic en cualquier moneda para ver su gráfico de tendencias históricas a continuación.",
-      trendChartTitle: "📈 Gráfico de Tendencias del Tipo de Cambio",
-      dayChange: "Var. Diaria",
-      bankDiscountTitle: "🏦 Calculadora de Descuento de Tarifas Bancarias",
-      bankDiscountSubtitle: "Calcula el ahorro estimado y el pago final con descuentos preferenciales (50% ~ 100%)",
-      preferentialRate: "Tasa de Descuento",
-      estimatedSavings: "Ahorro Estimado",
-      totalPayable: "Total a Pagar",
-      timeframes: { d7: "7 Días", m1: "1 Mes", m3: "3 Meses", y1: "1 Año" },
+      selectChartNotice: "💡 Edita las cifras directamente para convertir todas las monedas en tiempo real.",
+      quickPresetLabel: "Acceso rápido a montos:",
+      pinNotice: "💡 Usa 📌 para fijar monedas favoritas o ▲▼ para reordenar.",
+      searchPlaceholder: "Buscar país o código (ej. THB, TWD, JPY)...",
+      disclaimerNotice: "Las tasas se basan en cotizaciones de mercado en tiempo real. Pueden existir ligeras diferencias en transacciones bancarias reales.",
+      addCurrencyTitle: "Seleccionar moneda para añadir",
+      addCurrencyBtn: "+ Añadir moneda de país",
       currencyNames: {
         KRW: "Won Surcoreano", USD: "Dólar Estadounidense", JPY: "Yen Japonés", EUR: "Euro", CNY: "Yuan Chino", GBP: "Libra Esterlina",
         CAD: "Dólar Canadiense", AUD: "Dólar Australiano", CHF: "Franco Suizo", HKD: "Dólar de Hong Kong", SGD: "Dólar de Singapur", VND: "Dong Vietnamita",

@@ -198,7 +198,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: 700, fontSize: '0.85rem', color: 'var(--accent-color)', flexShrink: 0 }}>
           <Zap size={16} />
-          자주 쓰는 금액 퀵 입력:
+          {currencyT?.quickPresetLabel || '자주 쓰는 금액 퀵 입력:'}
         </div>
         <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
           {presetAmounts.map((p) => (
@@ -238,7 +238,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
         </h2>
 
         <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-          💡 📌 버튼으로 자주 쓰는 통화를 상단에 고정하거나 ▲▼ 버튼으로 순서를 변경하세요.
+          {currencyT?.pinNotice || '💡 📌 버튼으로 자주 쓰는 통화를 상단에 고정하거나 ▲▼ 버튼으로 순서를 변경하세요.'}
         </span>
       </div>
 
@@ -462,7 +462,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           }}
         >
           <PlusCircle size={28} style={{ marginBottom: '0.4rem' }} />
-          <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>+ 국가 통화 추가하기</span>
+          <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>{currencyT?.addCurrencyBtn || '+ 국가 통화 추가하기'}</span>
         </div>
       </div>
 
@@ -501,7 +501,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.1rem', color: 'var(--text-primary)' }}>
                 <Globe size={20} color="var(--accent-color)" />
-                추가할 국가 통화 선택
+                {currencyT?.addCurrencyTitle || '추가할 국가 통화 선택'}
               </div>
               <button
                 onClick={() => setShowAddModal(false)}
@@ -531,7 +531,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
               />
               <input
                 type="text"
-                placeholder="국가명 또는 통화 코드 검색 (예: THB, 대만, 바트, JPY)..."
+                placeholder={currencyT?.searchPlaceholder || '국가명 또는 통화 코드 검색...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus
