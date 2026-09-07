@@ -115,7 +115,7 @@ export interface TranslationStructure {
 export const translations: Record<Language, TranslationStructure> = {
   ko: {
     appTitle: "QK Tool Hub",
-    appSubtitle: "빠르고 유용한 온라인 유틸리티 도구 모음집",
+    appSubtitle: "실시간 글자수/단어수 세기",
     hubTitle: "QK Tool Hub - 스마트 웹 툴 모음",
     hubSubtitle: "회원가입 없이 즉시 사용하는 무료 유틸리티 웹 서비스 툴킷",
     backToHub: "← 메인 툴 허브로 돌아가기",
