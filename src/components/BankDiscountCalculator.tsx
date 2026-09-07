@@ -87,7 +87,7 @@ export const BankDiscountCalculator: React.FC<BankDiscountCalculatorProps> = ({
             <span style={{ fontSize: '0.9rem' }}>{baseCurrency}</span>
           </div>
           <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            적용 환율: 1 {targetCurrency} = {finalRate.toFixed(2)} {baseCurrency}
+            우대 적용 환율: 1 {targetCurrency} = {finalRate.toFixed(2)} {baseCurrency} (매매기준율 + 우대 수수료)
           </div>
         </div>
 

@@ -121,7 +121,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
         >
           <Info size={16} color="var(--accent-color)" style={{ flexShrink: 0 }} />
           <div>
-            <strong>💡 변동폭 설명:</strong> 전일 대비 변동폭 수치와 비율(%)은 국제 금융 표준인 <strong>1 달러 ($1.00 USD) 환율 기준</strong> 전날 대비 상승(<span style={{ color: '#ef4444', fontWeight: 700 }}>🔴 +</span>)/하락(<span style={{ color: '#3b82f6', fontWeight: 700 }}>🔵 -</span>) 변동량을 나타냅니다.
+            <strong>💡 매매기준율 변동폭 설명:</strong> 전일 대비 변동폭 수치와 비율(%)은 국제 금융 표준인 <strong>1 달러 ($1.00 USD) 당일 고시 매매기준율</strong>을 기준으로 전날 대비 상승(<span style={{ color: '#ef4444', fontWeight: 700 }}>🔴 +</span>)/하락(<span style={{ color: '#3b82f6', fontWeight: 700 }}>🔵 -</span>) 변동량을 나타냅니다.
           </div>
         </div>
       )}
@@ -253,8 +253,9 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
               {/* Rate & Day-over-Day Change (+/- against 1 USD Benchmark) */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.75rem' }}>
-                <span style={{ color: 'var(--text-muted)' }}>
+                <span style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
                   1 USD = {usdRate.toLocaleString(undefined, { minimumFractionDigits: isZeroDecimal ? 2 : 4, maximumFractionDigits: isZeroDecimal ? 2 : 4 })} {c.symbol}
+                  <span style={{ fontSize: '0.65rem', color: 'var(--accent-color)', background: 'rgba(99, 102, 241, 0.12)', padding: '0.05rem 0.35rem', borderRadius: '4px', fontWeight: 600 }}>매매기준율</span>
                 </span>
 
                 {isUsd ? (

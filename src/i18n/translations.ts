@@ -320,22 +320,24 @@ export const translations: Record<Language, TranslationStructure> = {
     autoSavedNotice: "임시 저장됨",
     currency: {
       title: "실시간 다국어 환율 변환기",
-      subtitle: "전 세계 12개 주요 통화 변환, 전일 대비 변동폭 (+/-) 및 기간별 그래프 추이 분석",
+      subtitle: "전 세계 주요 국가 당일 고시 매매기준율 실시간 변환 및 전일 대비 변동폭 (+/-) 분석",
       baseCurrencyLabel: "기준 통화 선택",
       amountLabel: "변환 금액 입력",
-      allCurrenciesTitle: "📊 주요 국가 환율 한눈에 보기",
-      selectChartNotice: "💡 원하시는 통화 카드를 클릭하시면 하단에서 해당 통화의 환율 변동 추이 그래프를 확인할 수 있습니다.",
+      allCurrenciesTitle: "📊 주요 국가 당일 매매기준율 한눈에 보기",
+      selectChartNotice: "💡 수치를 직접 수정하면 실시간 매매기준율로 모든 환율이 실시간 계산됩니다.",
       trendChartTitle: "📈 환율 변동 추이 차트",
       dayChange: "전일 대비",
       bankDiscountTitle: "🏦 은행별 환율 우대율 (수수료 할인) 계산기",
-      bankDiscountSubtitle: "환전 우대율(50% ~ 100%)에 따른 실제 지불 금액과 절약 금액 계산",
+      bankDiscountSubtitle: "당일 매매기준율에 시중은행 환전 우대율(50% ~ 100%) 적용 시 실제 절약 및 지불 금액",
       preferentialRate: "우대율",
       estimatedSavings: "절약 예상 금액",
       totalPayable: "실제 예상 지불액",
       timeframes: { d7: "7일", m1: "1개월", m3: "3개월", y1: "1년" },
       currencyNames: {
         KRW: "대한민국 원", USD: "미국 달러", JPY: "일본 엔화", EUR: "유로", CNY: "중국 위안화", GBP: "영국 파운드",
-        CAD: "캐나다 달러", AUD: "호주 달러", CHF: "스위스 프랑", HKD: "홍콩 달러", SGD: "싱가포르 달러", VND: "베트남 동"
+        CAD: "캐나다 달러", AUD: "호주 달러", CHF: "스위스 프랑", HKD: "홍콩 달러", SGD: "싱가포르 달러", VND: "베트남 동",
+        THB: "태국 바트", TWD: "대만 달러", PHP: "필리핀 페소", IDR: "인도네시아 루피아", MYR: "말레이시아 링깃",
+        INR: "인도 루피", NZD: "뉴질랜드 달러", BRL: "브라질 헤알", MXN: "멕시코 페소", TRY: "튀르키예 리라"
       }
     }
   },
@@ -496,7 +498,9 @@ export const translations: Record<Language, TranslationStructure> = {
       timeframes: { d7: "7 Days", m1: "1 Month", m3: "3 Months", y1: "1 Year" },
       currencyNames: {
         KRW: "South Korean Won", USD: "US Dollar", JPY: "Japanese Yen", EUR: "Euro", CNY: "Chinese Yuan", GBP: "British Pound",
-        CAD: "Canadian Dollar", AUD: "Australian Dollar", CHF: "Swiss Franc", HKD: "Hong Kong Dollar", SGD: "Singapore Dollar", VND: "Vietnamese Dong"
+        CAD: "Canadian Dollar", AUD: "Australian Dollar", CHF: "Swiss Franc", HKD: "Hong Kong Dollar", SGD: "Singapore Dollar", VND: "Vietnamese Dong",
+        THB: "Thai Baht", TWD: "New Taiwan Dollar", PHP: "Philippine Peso", IDR: "Indonesian Rupiah", MYR: "Malaysian Ringgit",
+        INR: "Indian Rupee", NZD: "New Zealand Dollar", BRL: "Brazilian Real", MXN: "Mexican Peso", TRY: "Turkish Lira"
       }
     }
   },
@@ -633,7 +637,9 @@ export const translations: Record<Language, TranslationStructure> = {
       timeframes: { d7: "7日間", m1: "1ヶ月", m3: "3ヶ月", y1: "1年" },
       currencyNames: {
         KRW: "韓国ウォン", USD: "米ドル", JPY: "日本円", EUR: "ユーロ", CNY: "中国人民元", GBP: "英ポンド",
-        CAD: "カナダドル", AUD: "豪ドル", CHF: "スイスフラン", HKD: "香港ドル", SGD: "シンガポールドル", VND: "ベトナムドン"
+        CAD: "カナダドル", AUD: "豪ドル", CHF: "スイスフラン", HKD: "香港ドル", SGD: "シンガポールドル", VND: "ベトナムドン",
+        THB: "タイバーツ", TWD: "台湾ドル", PHP: "フィリピンペソ", IDR: "インドネシアルピア", MYR: "マレーシアリンギット",
+        INR: "インドルピー", NZD: "ニュージーランドドル", BRL: "ブラジルレアル", MXN: "メキシコペソ", TRY: "トルコリラ"
       }
     }
   },
@@ -770,7 +776,9 @@ export const translations: Record<Language, TranslationStructure> = {
       timeframes: { d7: "7天", m1: "1个月", m3: "3个月", y1: "1年" },
       currencyNames: {
         KRW: "韩元", USD: "美元", JPY: "日元", EUR: "欧元", CNY: "人民币", GBP: "英镑",
-        CAD: "加元", AUD: "澳元", CHF: "瑞士法郎", HKD: "港币", SGD: "新加坡元", VND: "越南盾"
+        CAD: "加元", AUD: "澳元", CHF: "瑞士法郎", HKD: "港币", SGD: "新加坡元", VND: "越南盾",
+        THB: "泰铢", TWD: "新台币", PHP: "菲律宾比索", IDR: "印尼盾", MYR: "马来西亚林吉特",
+        INR: "印度卢比", NZD: "新西兰元", BRL: "巴西雷亚尔", MXN: "墨西哥比索", TRY: "土耳其里拉"
       }
     }
   },
@@ -907,7 +915,9 @@ export const translations: Record<Language, TranslationStructure> = {
       timeframes: { d7: "7 Días", m1: "1 Mes", m3: "3 Meses", y1: "1 Año" },
       currencyNames: {
         KRW: "Won Surcoreano", USD: "Dólar Estadounidense", JPY: "Yen Japonés", EUR: "Euro", CNY: "Yuan Chino", GBP: "Libra Esterlina",
-        CAD: "Dólar Canadiense", AUD: "Dólar Australiano", CHF: "Franco Suizo", HKD: "Dólar de Hong Kong", SGD: "Dólar de Singapur", VND: "Dong Vietnamita"
+        CAD: "Dólar Canadiense", AUD: "Dólar Australiano", CHF: "Franco Suizo", HKD: "Dólar de Hong Kong", SGD: "Dólar de Singapur", VND: "Dong Vietnamita",
+        THB: "Baht Tailandés", TWD: "Nuevo Dólar Taiwanés", PHP: "Peso Filipino", IDR: "Rupia Indonesia", MYR: "Ringgit Malayo",
+        INR: "Rupia India", NZD: "Dólar Neozelandés", BRL: "Real Brasileño", MXN: "Peso Mexicano", TRY: "Lira Turca"
       }
     }
   }
