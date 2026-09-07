@@ -84,7 +84,7 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
             </h2>
           </div>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.25rem', fontWeight: 600 }}>
-            1 {baseCurrency} 대비 {targetName} ({targetCurrency}) 오늘까지의 일자별 환율 변동 추이
+            오늘 기준 {timeframe === '7D' ? '7일 전' : timeframe === '1M' ? '1개월 전' : timeframe === '3M' ? '3개월 전' : '1년 전'}부터 1 달러($1.00 USD) 대비 {targetName} ({targetCurrency}) 일자별 환율 변화
           </p>
         </div>
 
@@ -210,18 +210,18 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
                 border: '1px solid rgba(255,255,255,0.1)'
               }}
             >
-              <div><strong>날짜:</strong> {hoveredPoint.date}</div>
-              <div><strong>환율:</strong> 1 {baseCurrency} = {hoveredPoint.rate.toLocaleString()} {targetInfo.symbol} ({targetCurrency})</div>
+              <div><strong>일자:</strong> {hoveredPoint.date}</div>
+              <div><strong>환율:</strong> 1 USD = {hoveredPoint.rate.toLocaleString()} {targetInfo.symbol} ({targetCurrency})</div>
             </div>
           )}
 
           {/* Min & Max Range & X-Axis Date Labels */}
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem', padding: '0 0.5rem' }}>
-            <span>{points[0]?.date} (최저: {minRate.toLocaleString()} {targetInfo.symbol})</span>
+            <span>시작일({points[0]?.date}): {points[0]?.rate.toLocaleString()} {targetInfo.symbol}</span>
             {points.length > 2 && (
-              <span>{points[Math.floor(points.length / 2)]?.date}</span>
+              <span>중간({points[Math.floor(points.length / 2)]?.date})</span>
             )}
-            <span>{points[points.length - 1]?.date} (최고: {maxRate.toLocaleString()} {targetInfo.symbol})</span>
+            <span>오늘({points[points.length - 1]?.date}): {points[points.length - 1]?.rate.toLocaleString()} {targetInfo.symbol}</span>
           </div>
         </div>
       )}
