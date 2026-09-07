@@ -34,6 +34,7 @@ export const ADDITIONAL_CURRENCIES: CurrencyInfo[] = [
 ];
 
 export const ALL_CURRENCIES: CurrencyInfo[] = [...DEFAULT_CURRENCIES, ...ADDITIONAL_CURRENCIES];
+export const SUPPORTED_CURRENCIES: CurrencyInfo[] = ALL_CURRENCIES;
 
 export interface RatesData {
   base: string;

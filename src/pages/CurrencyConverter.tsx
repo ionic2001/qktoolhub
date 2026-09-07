@@ -5,7 +5,7 @@ import { Header } from '../components/Header';
 import { AdSlot } from '../components/AdSlot';
 import { CurrencyGrid } from '../components/CurrencyGrid';
 import { BankDiscountCalculator } from '../components/BankDiscountCalculator';
-import { fetchExchangeRates, RatesData, SUPPORTED_CURRENCIES } from '../utils/currencyRates';
+import { fetchExchangeRates, RatesData } from '../utils/currencyRates';
 import { ArrowLeft, ArrowRightLeft, RefreshCw, Sparkles } from 'lucide-react';
 
 export const CurrencyConverterPage: React.FC = () => {
