@@ -317,7 +317,27 @@ export const translations: Record<Language, TranslationStructure> = {
       faq5A: "아닙니다. 본 사이트의 모든 글자수 연산 및 처리 작업은 100% 브라우저 내부에서만 실행되며 서버로 절대 전송되지 않아 보안상 매우 안전합니다."
     },
     adNotice: "스폰서 광고",
-    autoSavedNotice: "임시 저장됨"
+    autoSavedNotice: "임시 저장됨",
+    currency: {
+      title: "실시간 다국어 환율 변환기",
+      subtitle: "전 세계 12개 주요 통화 변환, 전일 대비 변동폭 (+/-) 및 기간별 그래프 추이 분석",
+      baseCurrencyLabel: "기준 통화 선택",
+      amountLabel: "변환 금액 입력",
+      allCurrenciesTitle: "📊 주요 국가 환율 한눈에 보기",
+      selectChartNotice: "💡 원하시는 통화 카드를 클릭하시면 하단에서 해당 통화의 환율 변동 추이 그래프를 확인할 수 있습니다.",
+      trendChartTitle: "📈 환율 변동 추이 차트",
+      dayChange: "전일 대비",
+      bankDiscountTitle: "🏦 은행별 환율 우대율 (수수료 할인) 계산기",
+      bankDiscountSubtitle: "환전 우대율(50% ~ 100%)에 따른 실제 지불 금액과 절약 금액 계산",
+      preferentialRate: "우대율",
+      estimatedSavings: "절약 예상 금액",
+      totalPayable: "실제 예상 지불액",
+      timeframes: { d7: "7일", m1: "1개월", m3: "3개월", y1: "1년" },
+      currencyNames: {
+        KRW: "대한민국 원", USD: "미국 달러", JPY: "일본 엔화", EUR: "유로", CNY: "중국 위안화", GBP: "영국 파운드",
+        CAD: "캐나다 달러", AUD: "호주 달러", CHF: "스위스 프랑", HKD: "홍콩 달러", SGD: "싱가포르 달러", VND: "베트남 동"
+      }
+    }
   },
   en: {
     appTitle: "QK Tool Hub",
@@ -458,7 +478,27 @@ export const translations: Record<Language, TranslationStructure> = {
       faq5A: "No. All text processing and counting happens entirely in your local browser for maximum privacy and security."
     },
     adNotice: "Sponsored Advertisement",
-    autoSavedNotice: "Auto-saved"
+    autoSavedNotice: "Auto-saved",
+    currency: {
+      title: "Real-time Currency Converter",
+      subtitle: "Convert 12 major world currencies with day-over-day +/- rate change and interactive historical trend chart",
+      baseCurrencyLabel: "Select Base Currency",
+      amountLabel: "Enter Amount",
+      allCurrenciesTitle: "📊 Major Exchange Rates Overview",
+      selectChartNotice: "💡 Click any currency card to view its interactive historical rate trend chart below.",
+      trendChartTitle: "📈 Exchange Rate Trend Chart",
+      dayChange: "Day Change",
+      bankDiscountTitle: "🏦 Bank Exchange Fee Discount Calculator",
+      bankDiscountSubtitle: "Calculate total savings and final payable amount based on bank preferential rate discounts (50% ~ 100%)",
+      preferentialRate: "Discount Rate",
+      estimatedSavings: "Estimated Savings",
+      totalPayable: "Total Payable",
+      timeframes: { d7: "7 Days", m1: "1 Month", m3: "3 Months", y1: "1 Year" },
+      currencyNames: {
+        KRW: "South Korean Won", USD: "US Dollar", JPY: "Japanese Yen", EUR: "Euro", CNY: "Chinese Yuan", GBP: "British Pound",
+        CAD: "Canadian Dollar", AUD: "Australian Dollar", CHF: "Swiss Franc", HKD: "Hong Kong Dollar", SGD: "Singapore Dollar", VND: "Vietnamese Dong"
+      }
+    }
   },
   ja: {
     appTitle: "QK Tool Hub",
@@ -575,7 +615,27 @@ export const translations: Record<Language, TranslationStructure> = {
       faq2A: "いいえ。すべての処理はお使いのブラウザ内部でのみ完了し、外部サーバーへ送信されることはありません。"
     },
     adNotice: "スポンサー広告",
-    autoSavedNotice: "自動保存済み"
+    autoSavedNotice: "自動保存済み",
+    currency: {
+      title: "リアルタイム多言語 為替レート計算機",
+      subtitle: "世界12主要通貨のリアルタイム換算、前日比 (+/-) 及び期間別チャート推移分析",
+      baseCurrencyLabel: "基準通貨を選択",
+      amountLabel: "換算金額を入力",
+      allCurrenciesTitle: "📊 主要国為替レート一覧",
+      selectChartNotice: "💡 通貨カードをクリックすると、下部に該当通貨の為替推移グラフが表示されます。",
+      trendChartTitle: "📈 為替レート推移グラフ",
+      dayChange: "前日比",
+      bankDiscountTitle: "🏦 銀行両替手数料優遇計算機",
+      bankDiscountSubtitle: "両替優遇率(50%〜100%)に応じた実際の支払い額と節約額の計算",
+      preferentialRate: "優遇率",
+      estimatedSavings: "予想節約額",
+      totalPayable: "実際の予想支払額",
+      timeframes: { d7: "7日間", m1: "1ヶ月", m3: "3ヶ月", y1: "1年" },
+      currencyNames: {
+        KRW: "韓国ウォン", USD: "米ドル", JPY: "日本円", EUR: "ユーロ", CNY: "中国人民元", GBP: "英ポンド",
+        CAD: "カナダドル", AUD: "豪ドル", CHF: "スイスフラン", HKD: "香港ドル", SGD: "シンガポールドル", VND: "ベトナムドン"
+      }
+    }
   },
   zh: {
     appTitle: "QK Tool Hub",
@@ -692,7 +752,27 @@ export const translations: Record<Language, TranslationStructure> = {
       faq2A: "不会。所有处理均在您的浏览器本地进行，绝对保证数据安全与隐私。"
     },
     adNotice: "赞助商广告",
-    autoSavedNotice: "已自动保存"
+    autoSavedNotice: "已自动保存",
+    currency: {
+      title: "实时多语言汇率换算器",
+      subtitle: "支持全球12种主要货币转换，提供较前一日(+/-)涨跌幅及历史走势图表",
+      baseCurrencyLabel: "选择基准货币",
+      amountLabel: "输入转换金额",
+      allCurrenciesTitle: "📊 主要国家与地区汇率一览",
+      selectChartNotice: "💡 点击任意货币卡片，即可在下方查看该货币的历史汇率走势图表。",
+      trendChartTitle: "📈 汇率走势图表",
+      dayChange: "较前一日",
+      bankDiscountTitle: "🏦 银行换汇手续费优惠计算器",
+      bankDiscountSubtitle: "根据换汇优惠率(50% ~ 100%)计算实际支付金额与预计节省金额",
+      preferentialRate: "优惠率",
+      estimatedSavings: "预计节省金额",
+      totalPayable: "实际预计支付",
+      timeframes: { d7: "7天", m1: "1个月", m3: "3个月", y1: "1年" },
+      currencyNames: {
+        KRW: "韩元", USD: "美元", JPY: "日元", EUR: "欧元", CNY: "人民币", GBP: "英镑",
+        CAD: "加元", AUD: "澳元", CHF: "瑞士法郎", HKD: "港币", SGD: "新加坡元", VND: "越南盾"
+      }
+    }
   },
   es: {
     appTitle: "QK Tool Hub",
@@ -809,6 +889,26 @@ export const translations: Record<Language, TranslationStructure> = {
       faq2A: "No. Todo el procesamiento ocurre 100% en tu navegador para garantizar tu privacidad."
     },
     adNotice: "Sponsored Advertisement",
-    autoSavedNotice: "Guardado automático"
+    autoSavedNotice: "Guardado automático",
+    currency: {
+      title: "Conversor de Divisas en Tiempo Real",
+      subtitle: "Convierte 12 monedas principales con variación diaria (+/-) y gráfico de tendencias",
+      baseCurrencyLabel: "Seleccionar Moneda Base",
+      amountLabel: "Ingresar Monto",
+      allCurrenciesTitle: "📊 Resumen de Tipos de Cambio Principales",
+      selectChartNotice: "💡 Haz clic en cualquier moneda para ver su gráfico de tendencias históricas a continuación.",
+      trendChartTitle: "📈 Gráfico de Tendencias del Tipo de Cambio",
+      dayChange: "Var. Diaria",
+      bankDiscountTitle: "🏦 Calculadora de Descuento de Tarifas Bancarias",
+      bankDiscountSubtitle: "Calcula el ahorro estimado y el pago final con descuentos preferenciales (50% ~ 100%)",
+      preferentialRate: "Tasa de Descuento",
+      estimatedSavings: "Ahorro Estimado",
+      totalPayable: "Total a Pagar",
+      timeframes: { d7: "7 Días", m1: "1 Mes", m3: "3 Meses", y1: "1 Año" },
+      currencyNames: {
+        KRW: "Won Surcoreano", USD: "Dólar Estadounidense", JPY: "Yen Japonés", EUR: "Euro", CNY: "Yuan Chino", GBP: "Libra Esterlina",
+        CAD: "Dólar Canadiense", AUD: "Dólar Australiano", CHF: "Franco Suizo", HKD: "Dólar de Hong Kong", SGD: "Dólar de Singapur", VND: "Dong Vietnamita"
+      }
+    }
   }
 };
