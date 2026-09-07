@@ -36,9 +36,6 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
     };
   }, [baseCurrency, targetCurrency, timeframe]);
 
-  const targetInfo = SUPPORTED_CURRENCIES.find(c => c.code === targetCurrency) || { flag: '', symbol: '', code: targetCurrency };
-  const targetName = currencyT?.currencyNames?.[targetCurrency] || targetCurrency;
-
   // Chart Min/Max math
   const rates = points.map(p => p.rate);
   const minRate = rates.length ? Math.min(...rates) : 0;
