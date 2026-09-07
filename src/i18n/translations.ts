@@ -110,6 +110,28 @@ export interface TranslationStructure {
   };
   adNotice: string;
   autoSavedNotice: string;
+  currency: {
+    title: string;
+    subtitle: string;
+    baseCurrencyLabel: string;
+    amountLabel: string;
+    allCurrenciesTitle: string;
+    selectChartNotice: string;
+    trendChartTitle: string;
+    dayChange: string;
+    bankDiscountTitle: string;
+    bankDiscountSubtitle: string;
+    preferentialRate: string;
+    estimatedSavings: string;
+    totalPayable: string;
+    timeframes: {
+      d7: string;
+      m1: string;
+      m3: string;
+      y1: string;
+    };
+    currencyNames: Record<string, string>;
+  };
 }
 
 export const translations: Record<Language, TranslationStructure> = {
