@@ -3,3 +3,9 @@ dist
 dist-ssr
 *.local
 .DS_Store
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key
