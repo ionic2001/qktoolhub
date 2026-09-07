@@ -212,10 +212,13 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
             </div>
           )}
 
-          {/* Min & Max Range Indicators */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-            <span>최저: {minRate} {targetCurrency}</span>
-            <span>최고: {maxRate} {targetCurrency}</span>
+          {/* Min & Max Range & X-Axis Date Labels */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem', padding: '0 0.5rem' }}>
+            <span>{points[0]?.date} (최저: {minRate} {targetCurrency})</span>
+            {points.length > 2 && (
+              <span>{points[Math.floor(points.length / 2)]?.date}</span>
+            )}
+            <span>{points[points.length - 1]?.date} (최고: {maxRate} {targetCurrency})</span>
           </div>
         </div>
       )}

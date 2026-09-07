@@ -49,15 +49,17 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           const isBase = c.code === baseCurrency;
           const isSelected = c.code === selectedTarget;
 
-          // Convert current rate & prev rate
+          // Convert current rate & prev rate for base currency
           const rate = rates[c.code] || 1;
-          const prevRate = prevRates[c.code] || rate;
           const convertedVal = amount * rate;
 
-          // Day-over-day change rate math
-          const changeVal = rate - prevRate;
-          const changePct = prevRate > 0 ? (changeVal / prevRate) * 100 : 0;
+          // Day-over-Day Change Math based on 1 USD ($) Benchmark
+          const usdRate = ratesData.usdRates?.[c.code] || 1;
+          const usdPrevRate = ratesData.usdPrevRates?.[c.code] || usdRate;
+          const changeVal = usdRate - usdPrevRate;
+          const changePct = usdPrevRate > 0 ? (changeVal / usdPrevRate) * 100 : 0;
           const isUp = changeVal >= 0;
+          const isUsd = c.code === 'USD';
 
           const localizedName = currencyT?.currencyNames?.[c.code] || c.code;
 
@@ -138,14 +140,19 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 </span>
               </div>
 
-              {/* Rate & Day-over-Day Change (+/-) */}
+              {/* Rate & Day-over-Day Change (+/- against 1 USD Benchmark) */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.75rem' }}>
                 <span style={{ color: 'var(--text-muted)' }}>
                   1 {baseCurrency} = {rate.toFixed(c.code === 'KRW' || c.code === 'VND' ? 2 : 4)}
                 </span>
 
-                {!isBase && (
+                {isUsd ? (
+                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 600, background: 'rgba(148, 163, 184, 0.15)', padding: '0.15rem 0.45rem', borderRadius: '6px' }}>
+                    1 USD 기준
+                  </span>
+                ) : (
                   <div
+                    title="전일 대비 변동폭 (1 USD 기준)"
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
