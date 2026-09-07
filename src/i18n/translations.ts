@@ -187,9 +187,9 @@ export const translations: Record<Language, TranslationStructure> = {
         title: "실시간 환율 / 환전 계산기 (Currency Converter)",
         desc: "실시간 글로벌 환율 계산 및 주요 통화(USD, JPY, EUR, KRW) 변환",
         category: "금융 / 계산",
-        badge: "출시 예정",
+        badge: "신규 LIVE",
         path: "/currency-converter",
-        isLive: false
+        isLive: true
       },
       {
         id: "unit-converter",
@@ -391,9 +391,9 @@ export const translations: Record<Language, TranslationStructure> = {
         title: "Currency Converter",
         desc: "Real-time global exchange rate calculator for USD, JPY, EUR, KRW",
         category: "Finance / Calc",
-        badge: "Coming Soon",
+        badge: "NEW LIVE",
         path: "/currency-converter",
-        isLive: false
+        isLive: true
       },
       {
         id: "unit-converter",
@@ -552,9 +552,9 @@ export const translations: Record<Language, TranslationStructure> = {
         title: "為替レート計算機",
         desc: "世界の主要通貨リアルタイム換算",
         category: "金融",
-        badge: "公開予定",
+        badge: "NEW LIVE",
         path: "/currency-converter",
-        isLive: false
+        isLive: true
       }
     ],
     tools: {
@@ -689,9 +689,9 @@ export const translations: Record<Language, TranslationStructure> = {
         title: "实时汇率换算器",
         desc: "全球主要货币实时汇率计算",
         category: "金融计算",
-        badge: "即将推出",
+        badge: "NEW LIVE",
         path: "/currency-converter",
-        isLive: false
+        isLive: true
       }
     ],
     tools: {
@@ -826,9 +826,9 @@ export const translations: Record<Language, TranslationStructure> = {
         title: "Conversor de Divisas",
         desc: "Calculadora de tipos de cambio en tiempo real",
         category: "Finanzas",
-        badge: "Próximamente",
+        badge: "NUEVO LIVE",
         path: "/currency-converter",
-        isLive: false
+        isLive: true
       }
     ],
     tools: {
