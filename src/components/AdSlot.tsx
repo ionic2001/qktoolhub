@@ -16,13 +16,16 @@ export const AdSlot: React.FC<AdSlotProps> = ({ slotId, format = 'auto' }) => {
   const activeSlotId = (slotId && /^\d+$/.test(slotId)) ? slotId : defaultSlotId;
 
   useEffect(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    const timer = setTimeout(() => {
+      try {
+        if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
+          ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+        }
+      } catch {
+        // Ignore adsbygoogle load errors in dev or adblock environments
       }
-    } catch (e) {
-      // Ignore adsbygoogle load errors in dev or adblock environments
-    }
+    }, 150);
+    return () => clearTimeout(timer);
   }, [activeSlotId]);
 
   return (
