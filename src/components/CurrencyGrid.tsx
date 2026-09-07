@@ -63,10 +63,13 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
           const localizedName = currencyT?.currencyNames?.[c.code] || c.code;
 
+          const isZeroDecimal = ['KRW', 'JPY', 'VND'].includes(c.code);
+          const decimals = isZeroDecimal ? 0 : 2;
+
           // Formatted input value for smooth display
           const displayVal = Number.isInteger(convertedVal)
             ? String(convertedVal)
-            : convertedVal.toFixed(c.code === 'KRW' || c.code === 'VND' || c.code === 'JPY' ? 0 : 2);
+            : convertedVal.toFixed(decimals);
 
           return (
             <div
@@ -105,6 +108,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
               <div style={{ position: 'relative', margin: '0.5rem 0' }}>
                 <input
                   type="number"
+                  step={isZeroDecimal ? '1' : '0.01'}
                   value={displayVal}
                   onClick={(e) => e.stopPropagation()} // don't toggle card selection when clicking input
                   onChange={(e) => {
@@ -143,7 +147,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
               {/* Rate & Day-over-Day Change (+/- against 1 USD Benchmark) */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.75rem' }}>
                 <span style={{ color: 'var(--text-muted)' }}>
-                  1 {baseCurrency} = {rate.toFixed(c.code === 'KRW' || c.code === 'VND' ? 2 : 4)}
+                  1 {baseCurrency} = {rate.toLocaleString(undefined, { minimumFractionDigits: isZeroDecimal ? 2 : 4, maximumFractionDigits: isZeroDecimal ? 2 : 4 })}
                 </span>
 
                 {isUsd ? (

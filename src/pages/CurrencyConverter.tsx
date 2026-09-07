@@ -115,60 +115,6 @@ export const CurrencyConverterPage: React.FC = () => {
       {/* Top Banner Ad */}
       <AdSlot slotId="currency-top-banner" />
 
-      {/* Converter Input Section */}
-      <div className="glass-card" style={{ padding: '1.75rem', marginBottom: '2rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem', alignItems: 'center' }}>
-          {/* Base Currency Select & Input */}
-          <div>
-            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '0.4rem' }}>
-              {currencyT?.baseCurrencyLabel || '기준 통화 선택'}
-            </label>
-            <select
-              value={baseCurrency}
-              onChange={(e) => setBaseCurrency(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.75rem 1rem',
-                borderRadius: '8px',
-                border: '1px solid var(--border-color)',
-                background: 'var(--card-bg)',
-                color: 'var(--text-primary)',
-                fontSize: '1rem',
-                fontWeight: 700
-              }}
-            >
-              {SUPPORTED_CURRENCIES.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.flag} {c.code} ({currencyT?.currencyNames?.[c.code] || c.code})
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Amount Input */}
-          <div>
-            <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: '0.4rem' }}>
-              {currencyT?.amountLabel || '변환 금액 입력'}
-            </label>
-            <input
-              type="number"
-              value={Number.isInteger(amount) ? amount : Number(amount.toFixed(baseCurrency === 'KRW' || baseCurrency === 'VND' || baseCurrency === 'JPY' ? 0 : 2))}
-              onChange={(e) => setAmount(Math.max(0, Number(e.target.value)))}
-              style={{
-                width: '100%',
-                padding: '0.75rem 1rem',
-                borderRadius: '8px',
-                border: '1px solid var(--border-color)',
-                background: 'var(--card-bg)',
-                color: 'var(--text-primary)',
-                fontSize: '1.1rem',
-                fontWeight: 800
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
       {/* Multi-Currency Overview Grid (12 Currencies with +/- Day Change & Two-Way Interactive Input) */}
       <CurrencyGrid
         amount={amount}
