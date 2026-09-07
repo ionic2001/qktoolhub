@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DEFAULT_CURRENCIES, ADDITIONAL_CURRENCIES, CurrencyInfo, RatesData } from '../utils/currencyRates';
 import { useLanguage } from '../i18n/LanguageContext';
-import { TrendingUp, TrendingDown, CheckCircle, PlusCircle, HelpCircle, Info, X, Globe, Search } from 'lucide-react';
+import { CheckCircle, PlusCircle, X, Globe, Search } from 'lucide-react';
 
 interface CurrencyGridProps {
   amount: number;
@@ -25,7 +25,6 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
   const [activeCurrencies, setActiveCurrencies] = useState<CurrencyInfo[]>(DEFAULT_CURRENCIES);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
-  const [showExplanation, setShowExplanation] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   if (!ratesData) {
@@ -36,7 +35,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
     );
   }
 
-  const { rates, usdRates, usdPrevRates } = ratesData;
+  const { rates } = ratesData;
 
   // Currencies remaining to add from ADDITIONAL_CURRENCIES
   const availableToAdd = ADDITIONAL_CURRENCIES.filter(
@@ -78,53 +77,14 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
     <div style={{ marginBottom: '2rem' }}>
       {/* Header & Controls */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <h2 className="section-title" style={{ marginBottom: 0 }}>
-            {currencyT?.allCurrenciesTitle || '📊 주요 국가 환율 한눈에 보기'}
-          </h2>
-          <button
-            onClick={() => setShowExplanation(!showExplanation)}
-            title="변동폭 설명 보기"
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--accent-color)',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center'
-            }}
-          >
-            <HelpCircle size={18} />
-          </button>
-        </div>
+        <h2 className="section-title" style={{ marginBottom: 0 }}>
+          {currencyT?.allCurrenciesTitle || '📊 주요 국가 환율 한눈에 보기'}
+        </h2>
 
         <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
           {currencyT?.selectChartNotice || '💡 수치를 직접 수정하면 모든 환율이 실시간 계산됩니다.'}
         </span>
       </div>
-
-      {/* Day-over-Day Change Explanation Banner */}
-      {showExplanation && (
-        <div
-          className="glass-card"
-          style={{
-            padding: '0.75rem 1rem',
-            marginBottom: '1rem',
-            background: 'rgba(99, 102, 241, 0.08)',
-            border: '1px solid rgba(99, 102, 241, 0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.6rem',
-            fontSize: '0.8rem',
-            color: 'var(--text-secondary)'
-          }}
-        >
-          <Info size={16} color="var(--accent-color)" style={{ flexShrink: 0 }} />
-          <div>
-            <strong>💡 매매기준율 변동폭 설명:</strong> 전일 대비 변동폭 수치와 비율(%)은 국제 금융 표준인 <strong>1 달러 ($1.00 USD) 당일 고시 매매기준율</strong>을 기준으로 전날 대비 상승(<span style={{ color: '#ef4444', fontWeight: 700 }}>🔴 +</span>)/하락(<span style={{ color: '#3b82f6', fontWeight: 700 }}>🔵 -</span>) 변동량을 나타냅니다.
-          </div>
-        </div>
-      )}
 
       {/* Currency Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem' }}>
@@ -133,20 +93,11 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           const isSelected = c.code === selectedTarget;
           const isCustomAdded = ADDITIONAL_CURRENCIES.some((ac) => ac.code === c.code);
 
-          // Convert current rate & prev rate for base currency
+          // Convert current rate for base currency
           const rate = rates[c.code] || 1;
           const convertedVal = amount * rate;
 
-          // Day-over-Day Change Math based strictly on 1 USD ($1.00) Benchmark
-          const usdRate = usdRates[c.code] || ratesData.rates[c.code] || 1;
-          const usdPrevRate = usdPrevRates[c.code] || usdRate;
-          const changeVal = usdRate - usdPrevRate;
-          const changePct = usdPrevRate > 0 ? (changeVal / usdPrevRate) * 100 : 0;
-          const isUp = changeVal >= 0;
-          const isUsd = c.code === 'USD';
-
           const localizedName = currencyT?.currencyNames?.[c.code] || c.code;
-
           const isZeroDecimal = ['KRW', 'JPY', 'VND', 'IDR'].includes(c.code);
           const decimals = isZeroDecimal ? 0 : 2;
 
@@ -212,7 +163,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
               </div>
 
               {/* Two-Way Interactive Amount Input inside Card */}
-              <div style={{ position: 'relative', margin: '0.5rem 0' }}>
+              <div style={{ position: 'relative', marginTop: '0.5rem' }}>
                 <input
                   type="number"
                   step={isZeroDecimal ? '1' : '0.01'}
@@ -250,37 +201,6 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                   {c.symbol}
                 </span>
               </div>
-
-              {/* Rate & Day-over-Day Change (+/- against 1 USD Benchmark) */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '0.75rem' }}>
-                <span style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                  1 USD = {usdRate.toLocaleString(undefined, { minimumFractionDigits: isZeroDecimal ? 2 : 4, maximumFractionDigits: isZeroDecimal ? 2 : 4 })} {c.symbol}
-                  <span style={{ fontSize: '0.65rem', color: 'var(--accent-color)', background: 'rgba(99, 102, 241, 0.12)', padding: '0.05rem 0.35rem', borderRadius: '4px', fontWeight: 600 }}>매매기준율</span>
-                </span>
-
-                {isUsd ? (
-                  <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 600, background: 'rgba(148, 163, 184, 0.15)', padding: '0.15rem 0.45rem', borderRadius: '6px' }}>
-                    1 USD 기준
-                  </span>
-                ) : (
-                  <div
-                    title="전일 대비 변동폭 (1 USD 기준)"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.2rem',
-                      padding: '0.15rem 0.45rem',
-                      borderRadius: '6px',
-                      fontWeight: 700,
-                      background: isUp ? 'rgba(239, 68, 68, 0.12)' : 'rgba(59, 130, 246, 0.12)',
-                      color: isUp ? '#ef4444' : '#3b82f6'
-                    }}
-                  >
-                    {isUp ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
-                    {isUp ? '+' : ''}{changeVal.toFixed(c.code === 'KRW' || c.code === 'VND' || c.code === 'IDR' ? 1 : 3)} ({isUp ? '+' : ''}{changePct.toFixed(2)}%)
-                  </div>
-                )}
-              </div>
             </div>
           );
         })}
@@ -293,7 +213,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
             setSearchQuery('');
           }}
           style={{
-            minHeight: '140px',
+            minHeight: '120px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
