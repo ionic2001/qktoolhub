@@ -178,8 +178,6 @@ export const CurrencyConverterPage: React.FC = () => {
         onSelectTarget={(code) => setTargetCurrency(code)}
         onCurrencyInputChange={handleCurrencyInputChange}
       />
-        onSelectTarget={(code) => setTargetCurrency(code)}
-      />
 
       {/* Interactive Trend Chart for Selected Target Currency */}
       <CurrencyTrendChart
