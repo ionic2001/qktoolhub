@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { fetchHistoricalTrend, ChartPoint, SUPPORTED_CURRENCIES } from '../utils/currencyRates';
+import { fetchHistoricalTrend, ChartPoint, ALL_CURRENCIES } from '../utils/currencyRates';
 import { useLanguage } from '../i18n/LanguageContext';
 import { TrendingUp, Clock } from 'lucide-react';
 
 interface CurrencyTrendChartProps {
-  baseCurrency: string;
+  baseCurrency?: string;
   targetCurrency: string;
 }
 
 export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
-  baseCurrency,
   targetCurrency
 }) => {
   const { t } = useLanguage();
@@ -19,6 +18,9 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
   const [points, setPoints] = useState<ChartPoint[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [hoveredPoint, setHoveredPoint] = useState<ChartPoint | null>(null);
+
+  // Benchmarking against USD for standard daily trend
+  const baseCurrency = targetCurrency === 'USD' ? 'EUR' : 'USD';
 
   useEffect(() => {
     let isMounted = true;
@@ -35,6 +37,9 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
       isMounted = false;
     };
   }, [baseCurrency, targetCurrency, timeframe]);
+
+  const targetInfo = ALL_CURRENCIES.find(c => c.code === targetCurrency) || { flag: '', symbol: '', code: targetCurrency };
+  const targetName = currencyT?.currencyNames?.[targetCurrency] || targetCurrency;
 
   // Chart Min/Max math
   const rates = points.map(p => p.rate);
@@ -67,23 +72,19 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
 
   const areaPath = svgPath ? `${svgPath} L ${getX(points.length - 1)} ${chartHeight - padding} L ${getX(0)} ${chartHeight - padding} Z` : '';
 
-  const baseInfo = SUPPORTED_CURRENCIES.find(c => c.code === baseCurrency) || { flag: '', symbol: '', code: baseCurrency };
-  const targetInfo = SUPPORTED_CURRENCIES.find(c => c.code === targetCurrency) || { flag: '', symbol: '', code: targetCurrency };
-  const baseName = currencyT?.currencyNames?.[baseCurrency] || baseCurrency;
-  const targetName = currencyT?.currencyNames?.[targetCurrency] || targetCurrency;
-
   return (
     <div className="glass-card" style={{ padding: '1.5rem', marginBottom: '2rem' }}>
+      {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <TrendingUp size={20} color="var(--accent-color)" />
+            <TrendingUp size={22} color="var(--accent-color)" />
             <h2 className="section-title" style={{ marginBottom: 0 }}>
-              {baseInfo.flag} {baseCurrency} ↔ {targetInfo.flag} {targetName} ({targetCurrency}) {currencyT?.trendChartTitle || '환율 변동 추이 차트'}
+              {targetInfo.flag} {targetName} ({targetCurrency}) 일별 환율 추세 차트
             </h2>
           </div>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.25rem', fontWeight: 600 }}>
-            선택된 기준 통화 (1 {baseCurrency} - {baseName}) 대비 {targetName} 과거 환율 히스토리
+            1 {baseCurrency} 대비 {targetName} ({targetCurrency}) 오늘까지의 일자별 환율 변동 추이
           </p>
         </div>
 
@@ -210,17 +211,17 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
               }}
             >
               <div><strong>날짜:</strong> {hoveredPoint.date}</div>
-              <div><strong>환율:</strong> 1 {baseCurrency} = {hoveredPoint.rate} {targetCurrency}</div>
+              <div><strong>환율:</strong> 1 {baseCurrency} = {hoveredPoint.rate.toLocaleString()} {targetInfo.symbol} ({targetCurrency})</div>
             </div>
           )}
 
           {/* Min & Max Range & X-Axis Date Labels */}
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem', padding: '0 0.5rem' }}>
-            <span>{points[0]?.date} (최저: {minRate} {targetCurrency})</span>
+            <span>{points[0]?.date} (최저: {minRate.toLocaleString()} {targetInfo.symbol})</span>
             {points.length > 2 && (
               <span>{points[Math.floor(points.length / 2)]?.date}</span>
             )}
-            <span>{points[points.length - 1]?.date} (최고: {maxRate} {targetCurrency})</span>
+            <span>{points[points.length - 1]?.date} (최고: {maxRate.toLocaleString()} {targetInfo.symbol})</span>
           </div>
         </div>
       )}
