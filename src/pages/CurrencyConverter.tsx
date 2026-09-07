@@ -4,7 +4,6 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
 import { AdSlot } from '../components/AdSlot';
 import { CurrencyGrid } from '../components/CurrencyGrid';
-import { CurrencyTrendChart } from '../components/CurrencyTrendChart';
 import { BankDiscountCalculator } from '../components/BankDiscountCalculator';
 import { fetchExchangeRates, RatesData, SUPPORTED_CURRENCIES } from '../utils/currencyRates';
 import { ArrowLeft, ArrowRightLeft, RefreshCw, Sparkles } from 'lucide-react';
@@ -118,12 +117,6 @@ export const CurrencyConverterPage: React.FC = () => {
         selectedTarget={targetCurrency}
         onSelectTarget={(code) => setTargetCurrency(code)}
         onCurrencyInputChange={handleCurrencyInputChange}
-      />
-
-      {/* Interactive Trend Chart for Selected Target Currency */}
-      <CurrencyTrendChart
-        baseCurrency={baseCurrency}
-        targetCurrency={targetCurrency}
       />
 
       {/* Bank Fee Discount Calculator */}
