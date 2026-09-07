@@ -122,7 +122,7 @@ export const Home: React.FC = () => {
                 <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', color: footerColor, fontWeight: 600, fontSize: '0.875rem' }}>
                   {isLive ? (
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                      바로 이용하기 <ArrowRight size={16} />
+                      {t.useNow || '바로 이용하기'} <ArrowRight size={16} />
                     </span>
                   ) : (
                     <span>{t.comingSoonStatus}</span>

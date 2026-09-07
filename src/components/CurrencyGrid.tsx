@@ -309,7 +309,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 {/* Order Up */}
                 <button
                   onClick={(e) => moveCurrency(c.code, 'up', e)}
-                  title="위로 이동"
+                  title={currencyT?.moveUp || '위로 이동'}
                   style={{
                     background: 'transparent',
                     border: 'none',
@@ -324,7 +324,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 {/* Order Down */}
                 <button
                   onClick={(e) => moveCurrency(c.code, 'down', e)}
-                  title="아래로 이동"
+                  title={currencyT?.moveDown || '아래로 이동'}
                   style={{
                     background: 'transparent',
                     border: 'none',
@@ -339,7 +339,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 {/* Pin Toggle Button */}
                 <button
                   onClick={(e) => togglePin(c.code, e)}
-                  title={isPinned ? '상단 고정 해제' : '상단 고정 (핀)'}
+                  title={isPinned ? (currencyT?.unpin || '상단 고정 해제') : (currencyT?.pin || '상단 고정 (핀)')}
                   style={{
                     background: isPinned ? 'rgba(168, 85, 247, 0.2)' : 'transparent',
                     border: 'none',
@@ -363,7 +363,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 {isCustomAdded && (
                   <button
                     onClick={(e) => handleRemoveCurrency(c.code, e)}
-                    title="이 통화 삭제"
+                    title={currencyT?.deleteCurrency || '이 통화 삭제'}
                     style={{
                       background: 'rgba(239, 68, 68, 0.1)',
                       border: 'none',
@@ -391,7 +391,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                     {c.code} <span style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--text-muted)' }}>({c.symbol})</span>
                     {isPinned && (
                       <span style={{ fontSize: '0.65rem', color: '#a855f7', background: 'rgba(168, 85, 247, 0.15)', padding: '0.05rem 0.35rem', borderRadius: '4px', fontWeight: 700 }}>
-                        고정
+                        {currencyT?.pinnedBadge || '고정'}
                       </span>
                     )}
                   </div>
@@ -581,12 +581,12 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
               {availableToAdd.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '2rem 1rem', color: 'var(--text-muted)' }}>
                   <CheckCircle size={32} color="var(--accent-color)" style={{ marginBottom: '0.5rem' }} />
-                  <p style={{ fontWeight: 600 }}>모든 주요 국가 통화가 추가되었습니다.</p>
+                  <p style={{ fontWeight: 600 }}>{currencyT?.allAddedNotice || '모든 주요 국가 통화가 추가되었습니다.'}</p>
                 </div>
               ) : filteredAvailable.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '2rem 1rem', color: 'var(--text-muted)' }}>
-                  <p style={{ fontWeight: 600 }}>"{searchQuery}" 검색 결과가 없습니다.</p>
-                  <p style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>통화 코드(THB, TWD 등) 또는 한국어 국가명으로 검색해 보세요.</p>
+                  <p style={{ fontWeight: 600 }}>"{searchQuery}" {currencyT?.noSearchResultNotice || '검색 결과가 없습니다.'}</p>
+                  <p style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>{currencyT?.searchTipNotice || '통화 코드(THB, TWD 등) 또는 국가명으로 검색해 보세요.'}</p>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -638,7 +638,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                           borderRadius: '6px'
                         }}
                       >
-                        + 추가
+                        {currencyT?.addBtn || '+ 추가'}
                       </span>
                     </button>
                   ))}

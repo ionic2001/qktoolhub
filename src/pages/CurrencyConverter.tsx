@@ -230,26 +230,26 @@ export const CurrencyConverterPage: React.FC = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
           <HelpCircle size={20} color="var(--accent-color)" />
           <h2 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0 }}>
-            {language === 'ko' ? '💡 환율 변환기 이용 안내 및 FAQ' : '💡 Currency Exchange Guide & FAQ'}
+            {currencyT?.faqTitle || '💡 환율 변환기 이용 안내 및 FAQ'}
           </h2>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
           <div>
             <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
-              Q. 매매기준율이란 무엇인가요?
+              {currencyT?.faq1Q || 'Q. 매매기준율이란 무엇인가요?'}
             </h3>
             <p>
-              매매기준율(Mid-Market Rate)은 국제 외환시장에서 금융기관 간 거래 시 적용되는 수수료가 포함되지 않은 순수한 시장 기준 환율입니다. 본 서비스는 유럽중앙은행(ECB) 및 국제 공식 데이터를 바탕으로 당일 매매기준율을 제공합니다.
+              {currencyT?.faq1A || '매매기준율(Mid-Market Rate)은 국제 외환시장에서 금융기관 간 거래 시 적용되는 수수료가 포함되지 않은 순수한 시장 기준 환율입니다. 본 서비스는 유럽중앙은행(ECB) 및 국제 공식 데이터를 바탕으로 당일 매매기준율을 제공합니다.'}
             </p>
           </div>
 
           <div>
             <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
-              Q. 1만엔(JPY 10,000) 등 주요 퀵 입력은 어떻게 이용하나요?
+              {currencyT?.faq2Q || 'Q. 1만엔(JPY 10,000) 등 주요 퀵 입력은 어떻게 이용하나요?'}
             </h3>
             <p>
-              상단의 퀵 입력 버튼(예: $100, 10만원, 1만엔 등)을 클릭하시면 원클릭으로 해당 금액과 통화가 즉시 적용되어 전 세계 모든 주요 통화의 최신 수치가 동시 계산됩니다.
+              {currencyT?.faq2A || '상단의 퀵 입력 버튼(예: $100, 10만원, 1만엔 등)을 클릭하시면 원클릭으로 해당 금액과 통화가 즉시 적용되어 전 세계 모든 주요 통화의 최신 수치가 동시 계산됩니다.'}
             </p>
           </div>
         </div>

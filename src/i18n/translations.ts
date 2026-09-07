@@ -23,6 +23,7 @@ export interface TranslationStructure {
   hubTitle: string;
   hubSubtitle: string;
   backToHub: string;
+  useNow: string;
   placeholderText: string;
   searchToolsPlaceholder: string;
   allToolsCategory: string;
@@ -121,6 +122,21 @@ export interface TranslationStructure {
     disclaimerNotice: string;
     addCurrencyTitle: string;
     addCurrencyBtn: string;
+    moveUp: string;
+    moveDown: string;
+    pin: string;
+    unpin: string;
+    pinnedBadge: string;
+    deleteCurrency: string;
+    addBtn: string;
+    allAddedNotice: string;
+    noSearchResultNotice: string;
+    searchTipNotice: string;
+    faqTitle: string;
+    faq1Q: string;
+    faq1A: string;
+    faq2Q: string;
+    faq2A: string;
     currencyNames: Record<string, string>;
   };
 }
@@ -132,6 +148,7 @@ export const translations: Record<Language, TranslationStructure> = {
     hubTitle: "QK Tool Hub - 스마트 웹 툴 모음",
     hubSubtitle: "회원가입 없이 즉시 사용하는 무료 유틸리티 웹 서비스 툴킷",
     backToHub: "← 메인 툴 허브로 돌아가기",
+    useNow: "바로 이용하기",
     placeholderText: "여기에 텍스트를 입력하거나 붙여넣으세요... (실시간 분석 및 자동 저장이 지원됩니다)",
     searchToolsPlaceholder: "원하는 유틸리티 도구를 검색하세요...",
     allToolsCategory: "전체 도구",
@@ -278,6 +295,21 @@ export const translations: Record<Language, TranslationStructure> = {
       disclaimerNotice: "본 서비스의 환율 정보는 국제 외환시장 실시간 고시 기준이며, 실제 시중은행 및 환전소 거래 시 거래 시점, 수수료, 우대율 등에 따라 약간의 차이가 발생할 수 있습니다.",
       addCurrencyTitle: "추가할 국가 통화 선택",
       addCurrencyBtn: "+ 국가 통화 추가하기",
+      moveUp: "위로 이동",
+      moveDown: "아래로 이동",
+      pin: "상단 고정",
+      unpin: "상단 고정 해제",
+      pinnedBadge: "고정",
+      deleteCurrency: "이 통화 삭제",
+      addBtn: "+ 추가",
+      allAddedNotice: "모든 주요 국가 통화가 추가되었습니다.",
+      noSearchResultNotice: "검색 결과가 없습니다.",
+      searchTipNotice: "통화 코드(THB, TWD 등) 또는 국가명으로 검색해 보세요.",
+      faqTitle: "💡 환율 변환기 이용 안내 및 FAQ",
+      faq1Q: "Q. 매매기준율이란 무엇인가요?",
+      faq1A: "매매기준율(Mid-Market Rate)은 국제 외환시장에서 금융기관 간 거래 시 적용되는 수수료가 포함되지 않은 순수한 시장 기준 환율입니다. 본 서비스는 유럽중앙은행(ECB) 및 국제 공식 데이터를 바탕으로 당일 매매기준율을 제공합니다.",
+      faq2Q: "Q. 1만엔(JPY 10,000) 등 주요 퀵 입력은 어떻게 이용하나요?",
+      faq2A: "상단의 퀵 입력 버튼(예: $100, 10만원, 1만엔 등)을 클릭하시면 원클릭으로 해당 금액과 통화가 즉시 적용되어 전 세계 모든 주요 통화의 최신 수치가 동시 계산됩니다.",
       currencyNames: {
         KRW: "대한민국 원", USD: "미국 달러", JPY: "일본 엔화", EUR: "유로", CNY: "중국 위안화", GBP: "영국 파운드",
         CAD: "캐나다 달러", AUD: "호주 달러", CHF: "스위스 프랑", HKD: "홍콩 달러", SGD: "싱가포르 달러", VND: "베트남 동",
@@ -292,6 +324,7 @@ export const translations: Record<Language, TranslationStructure> = {
     hubTitle: "QK Tool Hub - Smart Web Tools Collection",
     hubSubtitle: "Instant free web utilities without sign-up",
     backToHub: "← Back to QK Tool Hub",
+    useNow: "Use Now",
     placeholderText: "Type or paste your text here...",
     searchToolsPlaceholder: "Search utility tools...",
     allToolsCategory: "All Tools",
@@ -437,6 +470,21 @@ export const translations: Record<Language, TranslationStructure> = {
       disclaimerNotice: "Exchange rates are based on real-time international market quotes. Slight differences may occur in actual bank or exchange office transactions.",
       addCurrencyTitle: "Select Currency to Add",
       addCurrencyBtn: "+ Add Country Currency",
+      moveUp: "Move Up",
+      moveDown: "Move Down",
+      pin: "Pin to Top",
+      unpin: "Unpin",
+      pinnedBadge: "PIN",
+      deleteCurrency: "Remove Currency",
+      addBtn: "+ Add",
+      allAddedNotice: "All supported currencies have been added.",
+      noSearchResultNotice: "No currencies found.",
+      searchTipNotice: "Try searching by currency code (e.g. THB, TWD) or country name.",
+      faqTitle: "💡 Currency Converter Guide & FAQ",
+      faq1Q: "Q. What is the mid-market rate?",
+      faq1A: "The mid-market rate is the real-time midpoint between buy and sell prices in global currency markets without bank markups. We provide live mid-market rates powered by ECB and official global data.",
+      faq2Q: "Q. How do quick presets like ¥10,000 (10k JPY) work?",
+      faq2A: "Click any quick preset button ($10, $100, 10k JPY) at the top to instantly apply that value and calculate exchange rates across all major world currencies in real time.",
       currencyNames: {
         KRW: "South Korean Won", USD: "US Dollar", JPY: "Japanese Yen", EUR: "Euro", CNY: "Chinese Yuan", GBP: "British Pound",
         CAD: "Canadian Dollar", AUD: "Australian Dollar", CHF: "Swiss Franc", HKD: "Hong Kong Dollar", SGD: "Singapore Dollar", VND: "Vietnamese Dong",
@@ -451,6 +499,7 @@ export const translations: Record<Language, TranslationStructure> = {
     hubTitle: "QK Tool Hub - Webツール コレクション",
     hubSubtitle: "会員登録不要で使える無料Webツールキット",
     backToHub: "← QK Tool Hub メインへ戻る",
+    useNow: "今すぐ使う",
     placeholderText: "ここにテキストを入力または貼り付けてください...",
     searchToolsPlaceholder: "ツールを検索...",
     allToolsCategory: "全ツール",
@@ -572,6 +621,21 @@ export const translations: Record<Language, TranslationStructure> = {
       disclaimerNotice: "為替レート情報は国際市場のリアルタイム基準であり、実際の銀行や両替所での取引時に若干の差が生じる場合があります。",
       addCurrencyTitle: "追加する通貨を選択",
       addCurrencyBtn: "+ 国・通貨を追加",
+      moveUp: "上に移動",
+      moveDown: "下に移動",
+      pin: "上にピン留め",
+      unpin: "ピン留め解除",
+      pinnedBadge: "固定",
+      deleteCurrency: "この通貨を削除",
+      addBtn: "+ 追加",
+      allAddedNotice: "すべての主要通貨が追加されています。",
+      noSearchResultNotice: "検索結果が見つかりません。",
+      searchTipNotice: "通貨コード（THB、TWDなど）または国名で検索してください。",
+      faqTitle: "💡 為替レート計算機のご案内 & FAQ",
+      faq1Q: "Q. 仲値（TTS・TTB基準）とは何ですか？",
+      faq1A: "仲値（ミッドマーケットレート）は、国際外国為替市場で金融機関間で取引される手数料を含まない基準レートです。本サービスは欧州中央銀行（ECB）等の公式データを基に最新レートを提供します。",
+      faq2Q: "Q. 1万円などのクイック入力機能の使い方を教えてください。",
+      faq2A: "上部のクイック入力ボタン（$100、1万円など）をクリックすると、ワンクリックで該当金額と通貨が即時適用され、世界中の主要通貨の換算値が一括計算されます。",
       currencyNames: {
         KRW: "韓国ウォン", USD: "米ドル", JPY: "日本円", EUR: "ユーロ", CNY: "中国人民元", GBP: "英ポンド",
         CAD: "カナダドル", AUD: "豪ドル", CHF: "スイスフラン", HKD: "香港ドル", SGD: "シンガポールドル", VND: "ベトナムドン",
@@ -586,6 +650,7 @@ export const translations: Record<Language, TranslationStructure> = {
     hubTitle: "QK Tool Hub - 智能Web工具箱",
     hubSubtitle: "无需注册，即开即用的免费在线工具",
     backToHub: "← 返回 QK Tool Hub 主页",
+    useNow: "立即使用",
     placeholderText: "在此输入或粘贴文本...",
     searchToolsPlaceholder: "搜索工具...",
     allToolsCategory: "全部工具",
@@ -707,6 +772,21 @@ export const translations: Record<Language, TranslationStructure> = {
       disclaimerNotice: "本服务汇率信息基于国际外汇市场实时行情，实际银行或换汇所交易时可能存在微小差异。",
       addCurrencyTitle: "选择要添加的货币",
       addCurrencyBtn: "+ 添加国家/货币",
+      moveUp: "向上移动",
+      moveDown: "向下移动",
+      pin: "置顶固定",
+      unpin: "取消置顶",
+      pinnedBadge: "已固定",
+      deleteCurrency: "删除此货币",
+      addBtn: "+ 添加",
+      allAddedNotice: "已添加所有主要国家货币。",
+      noSearchResultNotice: "未找到匹配的货币。",
+      searchTipNotice: "请尝试搜索货币代码（如 THB、TWD）或国家名称。",
+      faqTitle: "💡 汇率换算器使用指南与常见问题 FAQ",
+      faq1Q: "Q. 什么是中间价汇率（Mid-Market Rate）？",
+      faq1A: "中间价汇率是国际外汇市场上金融机构间交易的不含银行手续费的纯净市场基准汇率。本服务基于欧洲中央银行 (ECB) 及国际官方数据提供实时中间价。",
+      faq2Q: "Q. 如何使用 1万日元 等快捷输入功能？",
+      faq2A: "点击顶部快捷按钮（如 $100、1万日元等），即可一键应用对应金额与货币，并实时同步计算全球所有主要货币的换算数值。",
       currencyNames: {
         KRW: "韩元", USD: "美元", JPY: "日元", EUR: "欧元", CNY: "人民币", GBP: "英镑",
         CAD: "加元", AUD: "澳元", CHF: "瑞士法郎", HKD: "港币", SGD: "新加坡元", VND: "越南盾",
@@ -721,6 +801,7 @@ export const translations: Record<Language, TranslationStructure> = {
     hubTitle: "QK Tool Hub - Kit de herramientas Web",
     hubSubtitle: "Utilidades web gratuitas al instante y sin registro",
     backToHub: "← Volver a QK Tool Hub",
+    useNow: "Usar ahora",
     placeholderText: "Escribe o pega tu texto aquí...",
     searchToolsPlaceholder: "Buscar herramientas...",
     allToolsCategory: "Todas las herramientas",
@@ -842,6 +923,21 @@ export const translations: Record<Language, TranslationStructure> = {
       disclaimerNotice: "Las tasas se basan en cotizaciones de mercado en tiempo real. Pueden existir ligeras diferencias en transacciones bancarias reales.",
       addCurrencyTitle: "Seleccionar moneda para añadir",
       addCurrencyBtn: "+ Añadir moneda de país",
+      moveUp: "Mover arriba",
+      moveDown: "Mover abajo",
+      pin: "Fijar arriba",
+      unpin: "Desfijar",
+      pinnedBadge: "FIJADO",
+      deleteCurrency: "Eliminar moneda",
+      addBtn: "+ Añadir",
+      allAddedNotice: "Se han añadido todas las monedas disponibles.",
+      noSearchResultNotice: "No se encontraron resultados de búsqueda.",
+      searchTipNotice: "Intenta buscar por código de moneda (ej. THB, TWD) o nombre de país.",
+      faqTitle: "💡 Guía del Conversor de Divisas y Preguntas Frecuentes FAQ",
+      faq1Q: "Q. ¿Qué es el tipo de cambio medio del mercado?",
+      faq1A: "El tipo de cambio medio del mercado es el punto medio en tiempo real entre los precios de compra y venta en los mercados globales sin comisiones bancarias. Proporcionamos tasas basadas en el BCE y datos oficiales.",
+      faq2Q: "Q. ¿Cómo funcionan los accesos rápidos como ¥10.000?",
+      faq2A: "Haz clic en cualquier botón de acceso rápido ($10, $100, ¥10.000) en la parte superior para aplicar instantáneamente ese monto y calcular el cambio en todas las monedas principales.",
       currencyNames: {
         KRW: "Won Surcoreano", USD: "Dólar Estadounidense", JPY: "Yen Japonés", EUR: "Euro", CNY: "Yuan Chino", GBP: "Libra Esterlina",
         CAD: "Dólar Canadiense", AUD: "Dólar Australiano", CHF: "Franco Suizo", HKD: "Dólar de Hong Kong", SGD: "Dólar de Singapur", VND: "Dong Vietnamita",
