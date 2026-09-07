@@ -9,6 +9,7 @@ interface CurrencyGridProps {
   ratesData: RatesData | null;
   selectedTarget: string;
   onSelectTarget: (code: string) => void;
+  onCurrencyInputChange: (code: string, newAmount: number) => void;
 }
 
 export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
@@ -16,7 +17,8 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
   baseCurrency,
   ratesData,
   selectedTarget,
-  onSelectTarget
+  onSelectTarget,
+  onCurrencyInputChange
 }) => {
   const { t } = useLanguage();
   const currencyT = t.currency;
@@ -38,11 +40,11 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           {currencyT?.allCurrenciesTitle || '📊 주요 국가 환율 한눈에 보기'}
         </h2>
         <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-          {currencyT?.selectChartNotice}
+          {currencyT?.selectChartNotice || '💡 수치를 직접 수정하면 모든 환율이 실시간 계산됩니다.'}
         </span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem' }}>
         {SUPPORTED_CURRENCIES.map((c) => {
           const isBase = c.code === baseCurrency;
           const isSelected = c.code === selectedTarget;
@@ -58,6 +60,11 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           const isUp = changeVal >= 0;
 
           const localizedName = currencyT?.currencyNames?.[c.code] || c.code;
+
+          // Formatted input value for smooth display
+          const displayVal = Number.isInteger(convertedVal)
+            ? String(convertedVal)
+            : convertedVal.toFixed(c.code === 'KRW' || c.code === 'VND' || c.code === 'JPY' ? 0 : 2);
 
           return (
             <div
@@ -92,13 +99,43 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 </div>
               </div>
 
-              {/* Converted Amount */}
-              <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0.4rem 0' }}>
-                {convertedVal.toLocaleString(undefined, {
-                  minimumFractionDigits: c.code === 'KRW' || c.code === 'VND' || c.code === 'JPY' ? 0 : 2,
-                  maximumFractionDigits: c.code === 'KRW' || c.code === 'VND' || c.code === 'JPY' ? 0 : 2
-                })}{' '}
-                <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}>{c.symbol}</span>
+              {/* Two-Way Interactive Amount Input inside Card */}
+              <div style={{ position: 'relative', margin: '0.5rem 0' }}>
+                <input
+                  type="number"
+                  value={displayVal}
+                  onClick={(e) => e.stopPropagation()} // don't toggle card selection when clicking input
+                  onChange={(e) => {
+                    e.stopPropagation();
+                    const newAmount = Math.max(0, Number(e.target.value));
+                    onCurrencyInputChange(c.code, newAmount);
+                  }}
+                  style={{
+                    width: '100%',
+                    padding: '0.5rem 2.2rem 0.5rem 0.65rem',
+                    fontSize: '1.2rem',
+                    fontWeight: 800,
+                    borderRadius: '8px',
+                    border: '1px solid var(--border-color)',
+                    background: isBase ? 'rgba(99, 102, 241, 0.15)' : 'var(--editor-bg)',
+                    color: 'var(--text-primary)',
+                    outline: 'none'
+                  }}
+                />
+                <span
+                  style={{
+                    position: 'absolute',
+                    right: '0.75rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    fontWeight: 700,
+                    fontSize: '0.85rem',
+                    color: 'var(--text-muted)',
+                    pointerEvents: 'none'
+                  }}
+                >
+                  {c.symbol}
+                </span>
               </div>
 
               {/* Rate & Day-over-Day Change (+/-) */}

@@ -51,6 +51,18 @@ export const CurrencyConverterPage: React.FC = () => {
 
   const currentRate = ratesData?.rates[targetCurrency] || 1;
 
+  const handleCurrencyInputChange = (code: string, newAmount: number) => {
+    if (code === baseCurrency) {
+      setAmount(newAmount);
+    } else {
+      const rate = ratesData?.rates[code] || 1;
+      if (rate > 0) {
+        const equivalentBaseAmount = newAmount / rate;
+        setAmount(equivalentBaseAmount);
+      }
+    }
+  };
+
   return (
     <div className="app-container">
       <Header />
@@ -140,7 +152,7 @@ export const CurrencyConverterPage: React.FC = () => {
             </label>
             <input
               type="number"
-              value={amount || ''}
+              value={Number.isInteger(amount) ? amount : Number(amount.toFixed(baseCurrency === 'KRW' || baseCurrency === 'VND' || baseCurrency === 'JPY' ? 0 : 2))}
               onChange={(e) => setAmount(Math.max(0, Number(e.target.value)))}
               style={{
                 width: '100%',
@@ -157,12 +169,15 @@ export const CurrencyConverterPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Multi-Currency Overview Grid (12 Currencies with +/- Day Change) */}
+      {/* Multi-Currency Overview Grid (12 Currencies with +/- Day Change & Two-Way Interactive Input) */}
       <CurrencyGrid
         amount={amount}
         baseCurrency={baseCurrency}
         ratesData={ratesData}
         selectedTarget={targetCurrency}
+        onSelectTarget={(code) => setTargetCurrency(code)}
+        onCurrencyInputChange={handleCurrencyInputChange}
+      />
         onSelectTarget={(code) => setTargetCurrency(code)}
       />
 
