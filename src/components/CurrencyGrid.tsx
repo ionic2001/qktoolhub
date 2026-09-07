@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DEFAULT_CURRENCIES, ADDITIONAL_CURRENCIES, CurrencyInfo, RatesData } from '../utils/currencyRates';
 import { useLanguage } from '../i18n/LanguageContext';
-import { TrendingUp, TrendingDown, CheckCircle, PlusCircle, HelpCircle, Info } from 'lucide-react';
+import { TrendingUp, TrendingDown, CheckCircle, PlusCircle, HelpCircle, Info, X, Globe } from 'lucide-react';
 
 interface CurrencyGridProps {
   amount: number;
@@ -24,7 +24,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
   const currencyT = t.currency;
 
   const [activeCurrencies, setActiveCurrencies] = useState<CurrencyInfo[]>(DEFAULT_CURRENCIES);
-  const [showAddMenu, setShowAddMenu] = useState<boolean>(false);
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const [showExplanation, setShowExplanation] = useState<boolean>(true);
 
   if (!ratesData) {
@@ -37,14 +37,28 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
   const { rates, usdRates, usdPrevRates } = ratesData;
 
-  // Currencies remaining to add
+  // Currencies remaining to add from ADDITIONAL_CURRENCIES
   const availableToAdd = ADDITIONAL_CURRENCIES.filter(
     (addC) => !activeCurrencies.some((curr) => curr.code === addC.code)
   );
 
   const handleAddCurrency = (curr: CurrencyInfo) => {
-    setActiveCurrencies([...activeCurrencies, curr]);
-    setShowAddMenu(false);
+    setActiveCurrencies((prev) => [...prev, curr]);
+    onSelectTarget(curr.code);
+    setShowAddModal(false);
+  };
+
+  const handleRemoveCurrency = (code: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    // Do not allow removing if less than 2 currencies left
+    if (activeCurrencies.length <= 2) return;
+    setActiveCurrencies((prev) => prev.filter((c) => c.code !== code));
+    if (selectedTarget === code) {
+      const remaining = activeCurrencies.filter((c) => c.code !== code);
+      if (remaining.length > 0) {
+        onSelectTarget(remaining[0].code);
+      }
+    }
   };
 
   return (
@@ -104,6 +118,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
         {activeCurrencies.map((c) => {
           const isBase = c.code === baseCurrency;
           const isSelected = c.code === selectedTarget;
+          const isCustomAdded = ADDITIONAL_CURRENCIES.some((ac) => ac.code === c.code);
 
           // Convert current rate & prev rate for base currency
           const rate = rates[c.code] || 1;
@@ -142,11 +157,34 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 boxShadow: isSelected ? '0 8px 24px rgba(99, 102, 241, 0.2)' : 'none'
               }}
             >
-              {isSelected && (
-                <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', color: 'var(--accent-color)' }}>
-                  <CheckCircle size={16} />
-                </div>
-              )}
+              <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                {isSelected && (
+                  <span style={{ color: 'var(--accent-color)' }}>
+                    <CheckCircle size={16} />
+                  </span>
+                )}
+                {isCustomAdded && (
+                  <button
+                    onClick={(e) => handleRemoveCurrency(c.code, e)}
+                    title="이 통화 삭제"
+                    style={{
+                      background: 'rgba(239, 68, 68, 0.1)',
+                      border: 'none',
+                      borderRadius: '50%',
+                      width: '20px',
+                      height: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#ef4444',
+                      cursor: 'pointer',
+                      fontSize: '0.7rem'
+                    }}
+                  >
+                    <X size={12} />
+                  </button>
+                )}
+              </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 <span style={{ fontSize: '1.5rem' }}>{c.flag}</span>
@@ -236,7 +274,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
         {/* Add New Currency Button Card */}
         <div
           className="glass-card"
-          onClick={() => setShowAddMenu(!showAddMenu)}
+          onClick={() => setShowAddModal(true)}
           style={{
             minHeight: '140px',
             display: 'flex',
@@ -247,71 +285,132 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
             border: '2px dashed var(--accent-color)',
             background: 'rgba(99, 102, 241, 0.05)',
             color: 'var(--accent-color)',
-            transition: 'all 0.2s ease',
-            position: 'relative'
+            transition: 'all 0.2s ease'
           }}
         >
           <PlusCircle size={28} style={{ marginBottom: '0.4rem' }} />
           <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>+ 국가 통화 추가하기</span>
-
-          {/* Add Currency Dropdown Menu */}
-          {showAddMenu && (
-            <div
-              onClick={(e) => e.stopPropagation()}
-              style={{
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                right: 0,
-                zIndex: 50,
-                marginTop: '0.5rem',
-                background: 'var(--card-bg)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid var(--border-color)',
-                borderRadius: '12px',
-                padding: '0.75rem',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-                maxHeight: '220px',
-                overflowY: 'auto'
-              }}
-            >
-              <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
-                추가할 통화 선택:
-              </div>
-              {availableToAdd.length === 0 ? (
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', padding: '0.5rem' }}>
-                  모든 통화가 추가되었습니다.
-                </div>
-              ) : (
-                availableToAdd.map((addC) => (
-                  <div
-                    key={addC.code}
-                    onClick={() => handleAddCurrency(addC)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      padding: '0.45rem 0.65rem',
-                      borderRadius: '6px',
-                      cursor: 'pointer',
-                      fontSize: '0.85rem',
-                      fontWeight: 600,
-                      color: 'var(--text-primary)',
-                      transition: 'background 0.15s ease'
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(99, 102, 241, 0.15)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                  >
-                    <span>{addC.flag}</span>
-                    <span>{addC.code}</span>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>({currencyT?.currencyNames?.[addC.code] || addC.code})</span>
-                  </div>
-                ))
-              )}
-            </div>
-          )}
         </div>
       </div>
+
+      {/* Add Currency Modal Dialog */}
+      {showAddModal && (
+        <div
+          onClick={() => setShowAddModal(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            background: 'rgba(0, 0, 0, 0.65)',
+            backdropFilter: 'blur(8px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '1.25rem',
+              width: '100%',
+              maxWidth: '460px',
+              padding: '1.5rem',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
+              maxHeight: '85vh',
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+          >
+            {/* Modal Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.1rem', color: 'var(--text-primary)' }}>
+                <Globe size={20} color="var(--accent-color)" />
+                추가할 국가 통화 선택
+              </div>
+              <button
+                onClick={() => setShowAddModal(false)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  padding: '0.25rem'
+                }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Modal List */}
+            <div style={{ overflowY: 'auto', flex: 1, paddingRight: '0.25rem' }}>
+              {availableToAdd.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '2rem 1rem', color: 'var(--text-muted)' }}>
+                  <CheckCircle size={32} color="var(--accent-color)" style={{ marginBottom: '0.5rem' }} />
+                  <p style={{ fontWeight: 600 }}>모든 주요 국가 통화가 추가되었습니다.</p>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {availableToAdd.map((addC) => (
+                    <button
+                      key={addC.code}
+                      onClick={() => handleAddCurrency(addC)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '0.85rem 1rem',
+                        borderRadius: '0.75rem',
+                        border: '1px solid var(--border-color)',
+                        background: 'var(--card-bg)',
+                        color: 'var(--text-primary)',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        transition: 'all 0.15s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--accent-color)';
+                        e.currentTarget.style.background = 'rgba(99, 102, 241, 0.1)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--border-color)';
+                        e.currentTarget.style.background = 'var(--card-bg)';
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <span style={{ fontSize: '1.5rem' }}>{addC.flag}</span>
+                        <div>
+                          <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>
+                            {addC.code} <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>({addC.symbol})</span>
+                          </div>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
+                            {currencyT?.currencyNames?.[addC.code] || addC.code}
+                          </div>
+                        </div>
+                      </div>
+
+                      <span
+                        style={{
+                          fontSize: '0.8rem',
+                          fontWeight: 700,
+                          color: 'var(--accent-color)',
+                          background: 'rgba(99, 102, 241, 0.12)',
+                          padding: '0.25rem 0.6rem',
+                          borderRadius: '6px'
+                        }}
+                      >
+                        + 추가
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
