@@ -4,9 +4,8 @@ import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
 import { AdSlot } from '../components/AdSlot';
 import { CurrencyGrid } from '../components/CurrencyGrid';
-import { BankDiscountCalculator } from '../components/BankDiscountCalculator';
 import { fetchExchangeRates, RatesData } from '../utils/currencyRates';
-import { ArrowLeft, ArrowRightLeft, RefreshCw, Sparkles } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Sparkles, Info } from 'lucide-react';
 
 export const CurrencyConverterPage: React.FC = () => {
   const { t, language } = useLanguage();
@@ -47,8 +46,6 @@ export const CurrencyConverterPage: React.FC = () => {
   }, [baseCurrency]);
 
   const currencyT = t.currency;
-
-  const currentRate = ratesData?.rates[targetCurrency] || 1;
 
   const handleCurrencyInputChange = (code: string, newAmount: number) => {
     if (code !== baseCurrency) {
@@ -102,14 +99,14 @@ export const CurrencyConverterPage: React.FC = () => {
           {currencyT?.title || '실시간 다국어 환율 변환기'}
         </h1>
         <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '650px', margin: '0 auto' }}>
-          {currencyT?.subtitle || '전 세계 12개 주요 통화 실시간 변환, 전일 대비 변동폭 (+/-) 및 기간별 그래프 추이 분석'}
+          {currencyT?.subtitle || '전 세계 주요 국가 실시간 환율 수치 동시 변환'}
         </p>
       </section>
 
       {/* Top Banner Ad */}
       <AdSlot slotId="currency-top-banner" />
 
-      {/* Multi-Currency Overview Grid (12 Currencies with +/- Day Change & Two-Way Interactive Input) */}
+      {/* Multi-Currency Overview Grid */}
       <CurrencyGrid
         amount={amount}
         baseCurrency={baseCurrency}
@@ -119,13 +116,26 @@ export const CurrencyConverterPage: React.FC = () => {
         onCurrencyInputChange={handleCurrencyInputChange}
       />
 
-      {/* Bank Fee Discount Calculator */}
-      <BankDiscountCalculator
-        amount={amount}
-        baseCurrency={baseCurrency}
-        targetCurrency={targetCurrency}
-        currentRate={currentRate}
-      />
+      {/* Rate Difference Disclaimer Banner */}
+      <div
+        className="glass-card"
+        style={{
+          padding: '0.9rem 1.2rem',
+          marginBottom: '2rem',
+          background: 'rgba(245, 158, 11, 0.08)',
+          border: '1px solid rgba(245, 158, 11, 0.25)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.65rem',
+          fontSize: '0.85rem',
+          color: 'var(--text-secondary)'
+        }}
+      >
+        <Info size={18} color="var(--warning-color)" style={{ flexShrink: 0 }} />
+        <div>
+          <strong>💡 환율 차이 관련 안내:</strong> 본 서비스의 환율 정보는 국제 외환시장 실시간 고시 기준이며, 실제 시중은행 및 환전소 거래 시 거래 시점, 수수료, 우대율 등에 따라 <strong>약간의 차이가 발생할 수 있습니다.</strong>
+        </div>
+      </div>
 
       {/* Bottom Banner Ad */}
       <AdSlot slotId="currency-bottom-banner" />
