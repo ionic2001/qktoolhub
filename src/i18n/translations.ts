@@ -137,6 +137,12 @@ export interface TranslationStructure {
     faq1A: string;
     faq2Q: string;
     faq2A: string;
+    bankDiscountTitle?: string;
+    bankDiscountSubtitle?: string;
+    preferentialRate?: string;
+    totalPayable?: string;
+    estimatedSavings?: string;
+    timeframes?: { d7: string; m1: string; m3: string; y1: string };
     currencyNames: Record<string, string>;
   };
 }

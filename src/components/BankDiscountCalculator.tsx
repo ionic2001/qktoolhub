@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
-import { Landmark, PiggyBank, Percent } from 'lucide-react';
+import { Landmark, PiggyBank } from 'lucide-react';
 
 interface BankDiscountCalculatorProps {
   amount: number;
