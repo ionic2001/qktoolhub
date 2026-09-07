@@ -1,37 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 interface AdSlotProps {
   slotId?: string;
   provider?: 'google' | 'naver' | 'auto';
+  format?: 'auto' | 'fluid' | 'rectangle';
 }
 
-export const AdSlot: React.FC<AdSlotProps> = ({ slotId, provider = 'auto' }) => {
-  const { t, language } = useLanguage();
+export const AdSlot: React.FC<AdSlotProps> = ({ slotId, provider = 'auto', format = 'auto' }) => {
+  const { t } = useLanguage();
+  const publisherId = 'ca-pub-8866331689980638';
 
-  // If language is Korean, show Naver + Google minimal ad slot info
-  const isKorean = language === 'ko';
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && slotId) {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+      }
+    } catch (e) {
+      // Ignore adsbygoogle load errors in dev or adblock environments
+    }
+  }, [slotId]);
 
   return (
     <div className="ad-container" aria-label="Advertisement">
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
         <span className="ad-label">{t.adNotice}</span>
-        {isKorean && (
-          <span style={{ fontSize: '0.65rem', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', padding: '0.1rem 0.4rem', borderRadius: '4px', fontWeight: 600 }}>
-            Naver & Google Ads Compatible
-          </span>
-        )}
       </div>
 
-      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
-        {/* Ad script insertion container */}
-        <div id={`ad-slot-${slotId || 'default'}`}>
-          {provider === 'naver' || (provider === 'auto' && isKorean) ? (
-            <span>[네이버 GFA / 애드포스트 / 구글 아드센스 통합 반응형 배너 슬롯: {slotId}]</span>
-          ) : (
-            <span>[Google AdSense Responsive Banner Slot: {slotId}]</span>
-          )}
-        </div>
+      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', minHeight: '90px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {slotId ? (
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block', width: '100%' }}
+            data-ad-client={publisherId}
+            data-ad-slot={slotId}
+            data-ad-format={format}
+            data-full-width-responsive="true"
+          />
+        ) : (
+          <div style={{ opacity: 0.65, fontSize: '0.75rem' }}>
+            <span>[Google AdSense Ready - Pub ID: {publisherId}]</span>
+          </div>
+        )}
       </div>
     </div>
   );
