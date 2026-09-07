@@ -10,16 +10,20 @@ interface AdSlotProps {
 export const AdSlot: React.FC<AdSlotProps> = ({ slotId, format = 'auto' }) => {
   const { t } = useLanguage();
   const publisherId = 'ca-pub-8866331689980638';
+  const defaultSlotId = '2460449246';
+  
+  // Use numeric slot ID if provided, otherwise default to 2460449246
+  const activeSlotId = (slotId && /^\d+$/.test(slotId)) ? slotId : defaultSlotId;
 
   useEffect(() => {
     try {
-      if (typeof window !== 'undefined' && slotId) {
+      if (typeof window !== 'undefined') {
         ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
       }
     } catch (e) {
       // Ignore adsbygoogle load errors in dev or adblock environments
     }
-  }, [slotId]);
+  }, [activeSlotId]);
 
   return (
     <div className="ad-container" aria-label="Advertisement">
@@ -28,20 +32,14 @@ export const AdSlot: React.FC<AdSlotProps> = ({ slotId, format = 'auto' }) => {
       </div>
 
       <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', minHeight: '90px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        {slotId ? (
-          <ins
-            className="adsbygoogle"
-            style={{ display: 'block', width: '100%' }}
-            data-ad-client={publisherId}
-            data-ad-slot={slotId}
-            data-ad-format={format}
-            data-full-width-responsive="true"
-          />
-        ) : (
-          <div style={{ opacity: 0.65, fontSize: '0.75rem' }}>
-            <span>[Google AdSense Ready - Pub ID: {publisherId}]</span>
-          </div>
-        )}
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block', width: '100%' }}
+          data-ad-client={publisherId}
+          data-ad-slot={activeSlotId}
+          data-ad-format={format}
+          data-full-width-responsive="true"
+        />
       </div>
     </div>
   );
