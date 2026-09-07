@@ -5,7 +5,7 @@ export interface CurrencyInfo {
   flag: string;
 }
 
-export const SUPPORTED_CURRENCIES: CurrencyInfo[] = [
+export const DEFAULT_CURRENCIES: CurrencyInfo[] = [
   { code: 'KRW', nameKey: 'krw', symbol: '₩', flag: '🇰🇷' },
   { code: 'USD', nameKey: 'usd', symbol: '$', flag: '🇺🇸' },
   { code: 'JPY', nameKey: 'jpy', symbol: '¥', flag: '🇯🇵' },
@@ -19,6 +19,21 @@ export const SUPPORTED_CURRENCIES: CurrencyInfo[] = [
   { code: 'SGD', nameKey: 'sgd', symbol: '$', flag: '🇸🇬' },
   { code: 'VND', nameKey: 'vnd', symbol: '₫', flag: '🇻🇳' },
 ];
+
+export const ADDITIONAL_CURRENCIES: CurrencyInfo[] = [
+  { code: 'THB', nameKey: 'thb', symbol: '฿', flag: '🇹🇭' },
+  { code: 'TWD', nameKey: 'twd', symbol: 'NT$', flag: '🇹🇼' },
+  { code: 'PHP', nameKey: 'php', symbol: '₱', flag: '🇵🇭' },
+  { code: 'IDR', nameKey: 'idr', symbol: 'Rp', flag: '🇮🇩' },
+  { code: 'MYR', nameKey: 'myr', symbol: 'RM', flag: '🇲🇾' },
+  { code: 'INR', nameKey: 'inr', symbol: '₹', flag: '🇮🇳' },
+  { code: 'NZD', nameKey: 'nzd', symbol: '$', flag: '🇳🇿' },
+  { code: 'BRL', nameKey: 'brl', symbol: 'R$', flag: '🇧🇷' },
+  { code: 'MXN', nameKey: 'mxn', symbol: '$', flag: '🇲🇽' },
+  { code: 'TRY', nameKey: 'try', symbol: '₺', flag: '🇹🇷' },
+];
+
+export const ALL_CURRENCIES: CurrencyInfo[] = [...DEFAULT_CURRENCIES, ...ADDITIONAL_CURRENCIES];
 
 export interface RatesData {
   base: string;
@@ -48,22 +63,42 @@ const FALLBACK_USD_RATES: Record<string, number> = {
   HKD: 7.810,
   SGD: 1.340,
   VND: 24850.0,
+  THB: 35.20,
+  TWD: 31.80,
+  PHP: 56.40,
+  IDR: 15450.0,
+  MYR: 4.35,
+  INR: 83.50,
+  NZD: 1.64,
+  BRL: 5.52,
+  MXN: 19.80,
+  TRY: 34.10,
 };
 
 // Yesterday baseline against 1 USD ($1.00) for +/- day-over-day
 const FALLBACK_USD_PREV_RATES: Record<string, number> = {
   USD: 1.0,
-  KRW: 1330.20, // +5.30 (+0.40%)
-  JPY: 146.10,  // -0.90 (-0.62%)
-  EUR: 0.918,   // +0.002 (+0.22%)
-  CNY: 7.100,   // +0.020 (+0.28%)
-  GBP: 0.776,   // +0.004 (+0.52%)
-  CAD: 1.365,   // -0.005 (-0.37%)
-  AUD: 1.505,   // +0.005 (+0.33%)
-  CHF: 0.862,   // -0.002 (-0.23%)
-  HKD: 7.805,   // +0.005 (+0.06%)
-  SGD: 1.342,   // -0.002 (-0.15%)
-  VND: 24800.0  // +50.0 (+0.20%)
+  KRW: 1330.20,
+  JPY: 146.10,
+  EUR: 0.918,
+  CNY: 7.100,
+  GBP: 0.776,
+  CAD: 1.365,
+  AUD: 1.505,
+  CHF: 0.862,
+  HKD: 7.805,
+  SGD: 1.342,
+  VND: 24800.0,
+  THB: 35.10,
+  TWD: 31.75,
+  PHP: 56.25,
+  IDR: 15400.0,
+  MYR: 4.33,
+  INR: 83.40,
+  NZD: 1.635,
+  BRL: 5.50,
+  MXN: 19.75,
+  TRY: 34.00,
 };
 
 /**
@@ -85,7 +120,6 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
 
     // Fetch yesterday's USD rates from Frankfurter for accurate day-over-day +/-
     let usdPrevRates: Record<string, number> = {};
-    let prevRates: Record<string, number> = {};
 
     try {
       const yesterday = new Date();
@@ -102,21 +136,21 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
       // Ignore error
     }
 
-    // Fill missing prev rates with synthetic 0.2% fluctuation baseline if API lacks
-    SUPPORTED_CURRENCIES.forEach(c => {
+    const prevRates: Record<string, number> = {};
+
+    ALL_CURRENCIES.forEach(c => {
       if (!usdPrevRates[c.code]) {
         const currentUsdRate = usdRates[c.code] || FALLBACK_USD_RATES[c.code] || 1;
         const variation = (c.code.charCodeAt(0) % 2 === 0 ? 1 : -1) * 0.003;
         usdPrevRates[c.code] = Number((currentUsdRate * (1 - variation)).toFixed(4));
       }
 
-      // Compute prev rate for base currency
       const baseUsdToday = usdRates[baseCurrency] || 1;
       const baseUsdPrev = usdPrevRates[baseCurrency] || 1;
       const targetUsdToday = usdRates[c.code] || 1;
       const targetUsdPrev = usdPrevRates[c.code] || 1;
 
-      rates[c.code] = targetUsdToday / baseUsdToday;
+      rates[c.code] = rates[c.code] || (targetUsdToday / baseUsdToday);
       prevRates[c.code] = targetUsdPrev / baseUsdPrev;
     });
 
@@ -134,7 +168,7 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
     const rates: Record<string, number> = {};
     const prevRates: Record<string, number> = {};
 
-    SUPPORTED_CURRENCIES.forEach(c => {
+    ALL_CURRENCIES.forEach(c => {
       rates[c.code] = (FALLBACK_USD_RATES[c.code] || 1) / baseUsd;
       prevRates[c.code] = (FALLBACK_USD_PREV_RATES[c.code] || 1) / baseUsd;
     });
@@ -151,7 +185,7 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
 }
 
 /**
- * Fetch daily historical trend data for chart (7D, 1M, 3M, 1Y)
+ * Fetch daily historical trend data for chart up to today
  */
 export async function fetchHistoricalTrend(base: string, target: string, timeframe: '7D' | '1M' | '3M' | '1Y'): Promise<ChartPoint[]> {
   try {
@@ -172,7 +206,7 @@ export async function fetchHistoricalTrend(base: string, target: string, timefra
       if (data.rates) {
         Object.keys(data.rates).sort().forEach(d => {
           points.push({
-            date: d, // Full daily date format 'YYYY-MM-DD'
+            date: d, // 'YYYY-MM-DD'
             rate: Number(data.rates[d][target])
           });
         });
@@ -193,24 +227,22 @@ function generateDailyTrendPoints(base: string, target: string, timeframe: '7D' 
 
   const countMap = { '7D': 7, '1M': 30, '3M': 90, '1Y': 365 };
   const days = countMap[timeframe] || 30;
-  // Step sample rate for readability on 1Y (e.g. every 7th day for 1Y, daily for 7D/1M/3M)
-  const step = timeframe === '1Y' ? 7 : 1;
-
   const points: ChartPoint[] = [];
   const now = new Date();
 
-  for (let i = days; i >= 0; i -= step) {
+  // Daily interval step 1 day up to today
+  for (let i = days; i >= 0; i--) {
     const d = new Date(now);
     d.setDate(d.getDate() - i);
-    const dateStr = d.toISOString().split('T')[0]; // 'YYYY-MM-DD'
+    const dateStr = d.toISOString().split('T')[0];
     
-    // Wave Math for smooth realistic daily chart curve
+    // Realistic daily rate fluctuation
     const wave = Math.sin(i * 0.4) * 0.012 + Math.cos(i * 0.2) * 0.008;
     const rateVal = currentRate * (1 - (i / days) * 0.015 + wave);
     
     points.push({
       date: dateStr,
-      rate: Number(rateVal.toFixed(target === 'KRW' || target === 'VND' || target === 'JPY' ? 2 : 4))
+      rate: Number(rateVal.toFixed(target === 'KRW' || target === 'VND' || target === 'JPY' || target === 'IDR' ? 2 : 4))
     });
   }
 
