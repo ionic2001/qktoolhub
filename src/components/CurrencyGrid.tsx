@@ -169,15 +169,23 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
     });
   };
 
+  const getPresetLabel = (p: { code: string; val: number; labelKo: string; labelEn: string; labelJa: string; labelZh: string; labelEs: string }) => {
+    if (language === 'ko') return p.labelKo;
+    if (language === 'ja') return p.labelJa;
+    if (language === 'zh') return p.labelZh;
+    if (language === 'es') return p.labelEs;
+    return p.labelEn;
+  };
+
   // Preset Amount Quick Buttons
   const presetAmounts = [
-    { label: '$10', code: 'USD', val: 10 },
-    { label: '$100', code: 'USD', val: 100 },
-    { label: '$500', code: 'USD', val: 500 },
-    { label: '$1,000', code: 'USD', val: 1000 },
-    { label: '10만원', code: 'KRW', val: 100000 },
-    { label: '100만원', code: 'KRW', val: 1000000 },
-    { label: '1만엔', code: 'JPY', val: 10000 }
+    { labelKo: '$10', labelEn: '$10', labelJa: '$10', labelZh: '$10', labelEs: '$10', code: 'USD', val: 10 },
+    { labelKo: '$100', labelEn: '$100', labelJa: '$100', labelZh: '$100', labelEs: '$100', code: 'USD', val: 100 },
+    { labelKo: '$500', labelEn: '$500', labelJa: '$500', labelZh: '$500', labelEs: '$500', code: 'USD', val: 500 },
+    { labelKo: '$1,000', labelEn: '$1,000', labelJa: '$1,000', labelZh: '$1,000', labelEs: '$1,000', code: 'USD', val: 1000 },
+    { labelKo: '10만원', labelEn: '₩100K', labelJa: '10万ウォン', labelZh: '10万韩元', labelEs: '₩100K', code: 'KRW', val: 100000 },
+    { labelKo: '100만원', labelEn: '₩1M', labelJa: '100万ウォン', labelZh: '100万韩元', labelEs: '₩1M', code: 'KRW', val: 1000000 },
+    { labelKo: '1만엔', labelEn: '¥10,000', labelJa: '1万円', labelZh: '1万日元', labelEs: '¥10.000', code: 'JPY', val: 10000 }
   ];
 
   return (
@@ -201,33 +209,36 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           {currencyT?.quickPresetLabel || '자주 쓰는 금액 퀵 입력:'}
         </div>
         <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-          {presetAmounts.map((p) => (
-            <button
-              key={p.label}
-              onClick={() => onCurrencyInputChange(p.code, p.val)}
-              style={{
-                padding: '0.3rem 0.65rem',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-                borderRadius: '6px',
-                border: '1px solid var(--border-color)',
-                background: 'var(--card-bg)',
-                color: 'var(--text-primary)',
-                cursor: 'pointer',
-                transition: 'all 0.15s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--accent-color)';
-                e.currentTarget.style.color = 'var(--accent-color)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--border-color)';
-                e.currentTarget.style.color = 'var(--text-primary)';
-              }}
-            >
-              {p.label}
-            </button>
-          ))}
+          {presetAmounts.map((p) => {
+            const label = getPresetLabel(p);
+            return (
+              <button
+                key={p.code + p.val}
+                onClick={() => onCurrencyInputChange(p.code, p.val)}
+                style={{
+                  padding: '0.3rem 0.65rem',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  borderRadius: '6px',
+                  border: '1px solid var(--border-color)',
+                  background: 'var(--card-bg)',
+                  color: 'var(--text-primary)',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--accent-color)';
+                  e.currentTarget.style.color = 'var(--accent-color)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-color)';
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
         </div>
       </div>
 
