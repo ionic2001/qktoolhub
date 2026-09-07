@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DEFAULT_CURRENCIES, ADDITIONAL_CURRENCIES, CurrencyInfo, RatesData } from '../utils/currencyRates';
 import { useLanguage } from '../i18n/LanguageContext';
-import { CheckCircle, PlusCircle, X, Globe, Search } from 'lucide-react';
+import { CheckCircle, PlusCircle, X, Globe, Search, Pin, ChevronUp, ChevronDown, Zap } from 'lucide-react';
 
 interface CurrencyGridProps {
   amount: number;
@@ -10,6 +10,47 @@ interface CurrencyGridProps {
   selectedTarget: string;
   onSelectTarget: (code: string) => void;
   onCurrencyInputChange: (code: string, newAmount: number) => void;
+}
+
+// Korean digit scale helper for human-readable reading (억, 만 원/엔/동)
+function formatCurrencyScale(val: number, code: string): string {
+  if (isNaN(val) || val <= 0) return '';
+
+  if (code === 'KRW') {
+    if (val >= 100000000) {
+      const uk = Math.floor(val / 100000000);
+      const man = Math.floor((val % 100000000) / 10000);
+      return `≈ ${uk}억 ${man > 0 ? man + '만 ' : ''}원`;
+    }
+    if (val >= 10000) {
+      const man = Math.floor(val / 10000);
+      const rest = Math.floor(val % 10000);
+      return `≈ ${man}만 ${rest > 0 ? rest.toLocaleString() + ' ' : ''}원`;
+    }
+    return `≈ ${Math.floor(val).toLocaleString()}원`;
+  }
+
+  if (code === 'JPY') {
+    if (val >= 10000) {
+      const man = Math.floor(val / 10000);
+      const rest = Math.floor(val % 10000);
+      return `≈ ${man}만 ${rest > 0 ? rest.toLocaleString() + ' ' : ''}엔`;
+    }
+    return `≈ ${Math.floor(val).toLocaleString()}엔`;
+  }
+
+  if (code === 'VND' || code === 'IDR') {
+    if (val >= 10000) {
+      const man = Math.floor(val / 10000);
+      return `≈ ${man}만 ${code === 'VND' ? '동' : '루피아'}`;
+    }
+  }
+
+  const isZeroDecimal = ['KRW', 'JPY', 'VND', 'IDR'].includes(code);
+  return `≈ ${val.toLocaleString(undefined, {
+    minimumFractionDigits: isZeroDecimal ? 0 : 2,
+    maximumFractionDigits: isZeroDecimal ? 0 : 2
+  })}`;
 }
 
 export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
@@ -24,8 +65,13 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
   const currencyT = t.currency;
 
   const [activeCurrencies, setActiveCurrencies] = useState<CurrencyInfo[]>(DEFAULT_CURRENCIES);
+  const [pinnedCodes, setPinnedCodes] = useState<string[]>(['KRW', 'USD']);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Controlled input strings for smooth decimal typing (.5, 10., 0.05)
+  const [inputStrings, setInputStrings] = useState<Record<string, string>>({});
+  const [focusedCode, setFocusedCode] = useState<string | null>(null);
 
   if (!ratesData) {
     return (
@@ -37,7 +83,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
   const { rates } = ratesData;
 
-  // Currencies remaining to add from ADDITIONAL_CURRENCIES
+  // Available currencies to add from ADDITIONAL_CURRENCIES
   const availableToAdd = ADDITIONAL_CURRENCIES.filter(
     (addC) => !activeCurrencies.some((curr) => curr.code === addC.code)
   );
@@ -62,9 +108,9 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
   const handleRemoveCurrency = (code: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    // Do not allow removing if less than 2 currencies left
     if (activeCurrencies.length <= 2) return;
     setActiveCurrencies((prev) => prev.filter((c) => c.code !== code));
+    setPinnedCodes((prev) => prev.filter((p) => p !== code));
     if (selectedTarget === code) {
       const remaining = activeCurrencies.filter((c) => c.code !== code);
       if (remaining.length > 0) {
@@ -73,8 +119,118 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
     }
   };
 
+  const togglePin = (code: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setPinnedCodes((prev) =>
+      prev.includes(code) ? prev.filter((c) => c !== code) : [...prev, code]
+    );
+  };
+
+  const moveCurrency = (code: string, direction: 'up' | 'down', e: React.MouseEvent) => {
+    e.stopPropagation();
+    const index = activeCurrencies.findIndex((c) => c.code === code);
+    if (index < 0) return;
+    const newIndex = direction === 'up' ? index - 1 : index + 1;
+    if (newIndex < 0 || newIndex >= activeCurrencies.length) return;
+
+    const updated = [...activeCurrencies];
+    const [moved] = updated.splice(index, 1);
+    updated.splice(newIndex, 0, moved);
+    setActiveCurrencies(updated);
+  };
+
+  // Sort currencies: Pinned currencies float to the top
+  const sortedCurrencies = [...activeCurrencies].sort((a, b) => {
+    const aPinned = pinnedCodes.includes(a.code);
+    const bPinned = pinnedCodes.includes(b.code);
+    if (aPinned && !bPinned) return -1;
+    if (!aPinned && bPinned) return 1;
+    return 0;
+  });
+
+  const handleInputChange = (code: string, rawVal: string) => {
+    setInputStrings((prev) => ({ ...prev, [code]: rawVal }));
+
+    // Parse float value for calculation
+    const parsed = parseFloat(rawVal);
+    if (!isNaN(parsed) && parsed >= 0) {
+      onCurrencyInputChange(code, parsed);
+    } else if (rawVal === '') {
+      onCurrencyInputChange(code, 0);
+    }
+  };
+
+  const handleInputBlur = (code: string) => {
+    setFocusedCode(null);
+    setInputStrings((prev) => {
+      const copy = { ...prev };
+      delete copy[code];
+      return copy;
+    });
+  };
+
+  // Preset Amount Quick Buttons
+  const presetAmounts = [
+    { label: '$10', code: 'USD', val: 10 },
+    { label: '$100', code: 'USD', val: 100 },
+    { label: '$500', code: 'USD', val: 500 },
+    { label: '$1,000', code: 'USD', val: 1000 },
+    { label: '10만원', code: 'KRW', val: 100000 },
+    { label: '100만원', code: 'KRW', val: 1000000 },
+    { label: '1만엔', code: 'JPY', val: 10000 }
+  ];
+
   return (
     <div style={{ marginBottom: '2rem' }}>
+      {/* Quick Amount Preset Bar */}
+      <div
+        className="glass-card"
+        style={{
+          padding: '0.85rem 1rem',
+          marginBottom: '1.25rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.6rem',
+          flexWrap: 'wrap',
+          background: 'rgba(99, 102, 241, 0.06)',
+          border: '1px solid rgba(99, 102, 241, 0.2)'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: 700, fontSize: '0.85rem', color: 'var(--accent-color)', flexShrink: 0 }}>
+          <Zap size={16} />
+          자주 쓰는 금액 퀵 입력:
+        </div>
+        <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+          {presetAmounts.map((p) => (
+            <button
+              key={p.label}
+              onClick={() => onCurrencyInputChange(p.code, p.val)}
+              style={{
+                padding: '0.3rem 0.65rem',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                borderRadius: '6px',
+                border: '1px solid var(--border-color)',
+                background: 'var(--card-bg)',
+                color: 'var(--text-primary)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent-color)';
+                e.currentTarget.style.color = 'var(--accent-color)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-color)';
+                e.currentTarget.style.color = 'var(--text-primary)';
+              }}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Header & Controls */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
         <h2 className="section-title" style={{ marginBottom: 0 }}>
@@ -82,15 +238,16 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
         </h2>
 
         <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-          {currencyT?.selectChartNotice || '💡 수치를 직접 수정하면 모든 환율이 실시간 계산됩니다.'}
+          💡 📌 버튼으로 자주 쓰는 통화를 상단에 고정하거나 ▲▼ 버튼으로 순서를 변경하세요.
         </span>
       </div>
 
       {/* Currency Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem' }}>
-        {activeCurrencies.map((c) => {
+        {sortedCurrencies.map((c) => {
           const isBase = c.code === baseCurrency;
           const isSelected = c.code === selectedTarget;
+          const isPinned = pinnedCodes.includes(c.code);
           const isCustomAdded = ADDITIONAL_CURRENCIES.some((ac) => ac.code === c.code);
 
           // Convert current rate for base currency
@@ -101,10 +258,15 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           const isZeroDecimal = ['KRW', 'JPY', 'VND', 'IDR'].includes(c.code);
           const decimals = isZeroDecimal ? 0 : 2;
 
-          // Formatted input value for smooth display
-          const displayVal = Number.isInteger(convertedVal)
+          // Smooth Controlled Input Value (Preserves decimal dots like 10. or .5)
+          const isEditing = focusedCode === c.code && inputStrings[c.code] !== undefined;
+          const displayVal = isEditing
+            ? inputStrings[c.code]
+            : Number.isInteger(convertedVal)
             ? String(convertedVal)
             : convertedVal.toFixed(decimals);
+
+          const scaleText = formatCurrencyScale(convertedVal, c.code);
 
           return (
             <div
@@ -115,18 +277,78 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 cursor: 'pointer',
                 position: 'relative',
                 padding: '1.1rem',
-                border: isSelected ? '2px solid var(--accent-color)' : isBase ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid var(--border-color)',
-                background: isSelected ? 'rgba(99, 102, 241, 0.12)' : 'var(--card-bg)',
+                border: isPinned
+                  ? '2px solid #a855f7'
+                  : isSelected
+                  ? '2px solid var(--accent-color)'
+                  : isBase
+                  ? '1px solid rgba(99, 102, 241, 0.4)'
+                  : '1px solid var(--border-color)',
+                background: isPinned
+                  ? 'rgba(168, 85, 247, 0.08)'
+                  : isSelected
+                  ? 'rgba(99, 102, 241, 0.12)'
+                  : 'var(--card-bg)',
                 transition: 'all 0.2s ease',
-                boxShadow: isSelected ? '0 8px 24px rgba(99, 102, 241, 0.2)' : 'none'
+                boxShadow: isSelected || isPinned ? '0 8px 24px rgba(99, 102, 241, 0.18)' : 'none'
               }}
             >
-              <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              {/* Card Controls Header (Pin, Order Arrows, Selected Checkmark, Remove X) */}
+              <div style={{ position: 'absolute', top: '0.65rem', right: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+                {/* Order Up */}
+                <button
+                  onClick={(e) => moveCurrency(c.code, 'up', e)}
+                  title="위로 이동"
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer',
+                    padding: '0.15rem'
+                  }}
+                >
+                  <ChevronUp size={14} />
+                </button>
+
+                {/* Order Down */}
+                <button
+                  onClick={(e) => moveCurrency(c.code, 'down', e)}
+                  title="아래로 이동"
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer',
+                    padding: '0.15rem'
+                  }}
+                >
+                  <ChevronDown size={14} />
+                </button>
+
+                {/* Pin Toggle Button */}
+                <button
+                  onClick={(e) => togglePin(c.code, e)}
+                  title={isPinned ? '상단 고정 해제' : '상단 고정 (핀)'}
+                  style={{
+                    background: isPinned ? 'rgba(168, 85, 247, 0.2)' : 'transparent',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '0.2rem 0.35rem',
+                    color: isPinned ? '#a855f7' : 'var(--text-muted)',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center'
+                  }}
+                >
+                  <Pin size={13} style={{ transform: isPinned ? 'rotate(-45deg)' : 'none' }} />
+                </button>
+
                 {isSelected && (
-                  <span style={{ color: 'var(--accent-color)' }}>
+                  <span style={{ color: 'var(--accent-color)', marginLeft: '0.2rem' }}>
                     <CheckCircle size={16} />
                   </span>
                 )}
+
                 {isCustomAdded && (
                   <button
                     onClick={(e) => handleRemoveCurrency(c.code, e)}
@@ -150,11 +372,17 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 )}
               </div>
 
+              {/* Currency Flag & Name */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 <span style={{ fontSize: '1.5rem' }}>{c.flag}</span>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>
+                  <div style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                     {c.code} <span style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--text-muted)' }}>({c.symbol})</span>
+                    {isPinned && (
+                      <span style={{ fontSize: '0.65rem', color: '#a855f7', background: 'rgba(168, 85, 247, 0.15)', padding: '0.05rem 0.35rem', borderRadius: '4px', fontWeight: 700 }}>
+                        고정
+                      </span>
+                    )}
                   </div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                     {localizedName}
@@ -162,17 +390,18 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                 </div>
               </div>
 
-              {/* Two-Way Interactive Amount Input inside Card */}
+              {/* Two-Way Interactive Amount Input inside Card (Smooth Decimal Support) */}
               <div style={{ position: 'relative', marginTop: '0.5rem' }}>
                 <input
-                  type="number"
-                  step={isZeroDecimal ? '1' : '0.01'}
+                  type="text"
+                  inputMode="decimal"
                   value={displayVal}
+                  onFocus={() => setFocusedCode(c.code)}
+                  onBlur={() => handleInputBlur(c.code)}
                   onClick={(e) => e.stopPropagation()} // don't toggle card selection when clicking input
                   onChange={(e) => {
                     e.stopPropagation();
-                    const newAmount = Math.max(0, Number(e.target.value));
-                    onCurrencyInputChange(c.code, newAmount);
+                    handleInputChange(c.code, e.target.value);
                   }}
                   style={{
                     width: '100%',
@@ -201,6 +430,13 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                   {c.symbol}
                 </span>
               </div>
+
+              {/* Human Readable Currency Digit Scale Helper (억, 만 단위 표시) */}
+              {scaleText && (
+                <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--accent-color)', marginTop: '0.35rem', textAlign: 'right' }}>
+                  {scaleText}
+                </div>
+              )}
             </div>
           );
         })}
@@ -213,7 +449,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
             setSearchQuery('');
           }}
           style={{
-            minHeight: '120px',
+            minHeight: '130px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
