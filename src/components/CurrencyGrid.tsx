@@ -61,7 +61,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
   onSelectTarget,
   onCurrencyInputChange
 }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const currencyT = t.currency;
 
   const [activeCurrencies, setActiveCurrencies] = useState<CurrencyInfo[]>(DEFAULT_CURRENCIES);
