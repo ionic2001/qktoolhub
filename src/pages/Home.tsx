@@ -1,3 +1,6 @@
+import { worldText } from '../i18n/worldText';
+import { pdfText } from '../i18n/pdfTranslations';
+import { pixelTranslations } from '../i18n/pixelTranslations';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -7,11 +10,23 @@ import { Search, Sparkles, ArrowRight } from 'lucide-react';
 import { ToolItem } from '../i18n/translations';
 
 export const Home: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const rawTools: ToolItem[] = t.toolsList || [];
+  const localizedMenu = language === 'ko' || language === 'en';
+  const rawTools: ToolItem[] = (t.toolsList || []).map(tool => ({
+    ...tool,
+    title: localizedMenu && tool.path === '/currency-converter'
+      ? (language === 'ko' ? '실시간 환율 계산기' : 'Real-time Currency Converter')
+      : tool.title,
+    badge: localizedMenu && tool.isLive ? 'New' : tool.badge,
+  }));
+  rawTools.splice(Math.min(2, rawTools.length), 0, { id: 'pixel-art', title: pixelTranslations[language]['사진 픽셀 아트 변환'], desc: pixelTranslations[language]['사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.'], category: pixelTranslations[language]['이미지 도구'], badge: 'New', path: '/pixel-art', isLive: true });
+  const pdf = pdfText(language);
+  rawTools.splice(Math.min(3, rawTools.length), 0, { id: 'pdf-converter', title: pdf.title, desc: pdf.subtitle, category: pdf.docs, badge: 'New', path: '/pdf-converter', isLive: true });
+  const clock = worldText[language];
+  rawTools.splice(Math.min(4, rawTools.length), 0, { id: 'world-clock', title: clock.title, desc: clock.subtitle, category: clock.category, badge: 'New', path: '/world-clock', isLive: true });
   const filteredTools = rawTools.filter((tool: ToolItem) => {
     const q = searchTerm.toLowerCase();
     return (

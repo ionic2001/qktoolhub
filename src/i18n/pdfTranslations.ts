@@ -1,0 +1,48 @@
+import type { Language } from './translations';
+const rows = {
+  title: ['PDF 변환기', 'PDF Converter', 'PDF変換ツール', 'PDF转换器', 'Conversor PDF'],
+  subtitle: ['사진을 PDF로, PDF 페이지를 이미지로.', 'Photos to PDF. PDF pages to images.', '写真をPDFに、PDFページを画像に。', '照片转PDF，PDF页面转图片。', 'Fotos a PDF. Páginas PDF a imágenes.'],
+  privacy: ['파일은 브라우저에서만 처리되며 서버에 업로드되지 않습니다.', 'Files stay in your browser and are never uploaded to a server.', 'ファイルはブラウザー内で処理され、サーバーには送信されません。', '文件仅在浏览器中处理，不会上传到服务器。', 'Los archivos se procesan en tu navegador y no se suben a ningún servidor.'],
+  images: ['이미지 → PDF', 'Images → PDF', '画像 → PDF', '图片 → PDF', 'Imágenes → PDF'],
+  pdf: ['PDF → 이미지', 'PDF → Images', 'PDF → 画像', 'PDF → 图片', 'PDF → Imágenes'],
+  add: ['사진 추가', 'Add photos', '写真を追加', '添加照片', 'Añadir fotos'],
+  limits: ['JPG · PNG · WebP / 파일당 20MB, 최대 20장·총 100MB', 'JPG · PNG · WebP / 20MB each, up to 20 images and 100MB total', 'JPG · PNG · WebP / 1枚20MB、最大20枚・合計100MB', 'JPG · PNG · WebP / 每张20MB，最多20张、总计100MB', 'JPG · PNG · WebP / 20MB por foto, máximo 20 fotos y 100MB en total'],
+  drag: ['파일을 끌어 놓거나 버튼으로 선택하세요.', 'Drop files here or use the button.', 'ファイルをドロップするかボタンで選択。', '拖入文件或点击按钮选择。', 'Arrastra archivos aquí o usa el botón.'],
+  sample: ['샘플로 체험', 'Try a sample', 'サンプルで試す', '试用示例', 'Probar ejemplo'],
+  settings: ['PDF 설정', 'PDF settings', 'PDF設定', 'PDF设置', 'Ajustes PDF'],
+  paper: ['용지 크기', 'Page size', '用紙サイズ', '纸张尺寸', 'Tamaño de página'],
+  original: ['이미지 크기 (96dpi)', 'Image size (96dpi)', '画像サイズ (96dpi)', '图片尺寸 (96dpi)', 'Tamaño de imagen (96dpi)'],
+  orientation: ['용지 방향', 'Orientation', '用紙の向き', '纸张方向', 'Orientación'],
+  portrait: ['세로', 'Portrait', '縦', '纵向', 'Vertical'],
+  landscape: ['가로', 'Landscape', '横', '横向', 'Horizontal'],
+  margin: ['여백', 'Margin', '余白', '页边距', 'Margen'],
+  create: ['PDF 만들기', 'Create PDF', 'PDFを作成', '创建PDF', 'Crear PDF'],
+  downloadPdf: ['PDF 다운로드', 'Download PDF', 'PDFをダウンロード', '下载PDF', 'Descargar PDF'],
+  view: ['PDF 미리보기', 'Preview PDF', 'PDFプレビュー', '预览PDF', 'Vista previa PDF'],
+  empty: ['사진을 추가하면 순서를 바꾸고 PDF로 저장할 수 있습니다.', 'Add photos, arrange their order, and save as a PDF.', '写真を追加し、順番を変更してPDFに保存できます。', '添加照片、调整顺序并保存为PDF。', 'Añade fotos, ordénalas y guárdalas como PDF.'],
+  up: ['앞으로 이동', 'Move earlier', '前へ移動', '向前移动', 'Mover antes'],
+  down: ['뒤로 이동', 'Move later', '後ろへ移動', '向后移动', 'Mover después'],
+  remove: ['삭제', 'Remove', '削除', '移除', 'Eliminar'],
+  clear: ['전체 비우기', 'Clear all', 'すべてクリア', '清空', 'Vaciar todo'],
+  count: ['이미지', 'images', '枚', '张图片', 'imágenes'],
+  selectPdf: ['PDF 선택', 'Choose PDF', 'PDFを選択', '选择PDF', 'Elegir PDF'],
+  pdfLimit: ['PDF / 최대 50MB·300페이지. 암호화된 PDF는 지원하지 않습니다.', 'PDF / Up to 50MB and 300 pages. Encrypted PDFs are not supported.', 'PDF / 最大50MB・300ページ。暗号化PDFは非対応です。', 'PDF / 最大50MB、300页。不支持加密PDF。', 'PDF / Hasta 50MB y 300 páginas. No admite PDF cifrados.'],
+  page: ['페이지', 'Page', 'ページ', '页', 'Página'],
+  quality: ['출력 해상도', 'Output resolution', '出力解像度', '输出分辨率', 'Resolución de salida'],
+  downloadPng: ['현재 페이지 PNG 다운로드', 'Download current page as PNG', '現在のページをPNGで保存', '下载当前页PNG', 'Descargar página actual en PNG'],
+  preview: ['페이지 미리보기', 'Page preview', 'ページプレビュー', '页面预览', 'Vista previa de página'],
+  choose: ['PDF를 선택하면 페이지별로 미리보고 저장할 수 있습니다.', 'Choose a PDF to preview and save individual pages.', 'PDFを選ぶと各ページを表示・保存できます。', '选择PDF即可逐页预览和保存。', 'Elige un PDF para ver y guardar sus páginas.'],
+  busy: ['처리 중…', 'Processing…', '処理中…', '处理中…', 'Procesando…'],
+  imageError: ['이미지를 읽을 수 없습니다. JPG·PNG·WebP 형식과 용량을 확인해 주세요.', 'Cannot read the image. Check its JPG/PNG/WebP format and size.', '画像を読み込めません。形式と容量を確認してください。', '无法读取图片，请检查格式和大小。', 'No se puede leer la imagen. Revisa el formato y el tamaño.'],
+  batchError: ['최대 20장·총 100MB까지만 추가할 수 있습니다.', 'Add up to 20 images and 100MB total.', '最大20枚・合計100MBまで追加できます。', '最多添加20张，总计100MB。', 'Puedes añadir hasta 20 imágenes y 100MB en total.'],
+  pdfError: ['PDF를 읽을 수 없습니다. 파일 손상·암호·용량·페이지 수를 확인해 주세요.', 'Cannot read the PDF. Check for corruption, encryption, size or page limits.', 'PDFを読み込めません。破損・暗号・容量・ページ数を確認してください。', '无法读取PDF，请检查文件损坏、加密、大小或页数限制。', 'No se puede leer el PDF. Revisa si está dañado, cifrado o supera los límites.'],
+  renderError: ['이 페이지를 변환하지 못했습니다. 다른 페이지나 낮은 해상도를 선택해 주세요.', 'Could not render this page. Try another page or lower resolution.', '変換できません。別のページか低い解像度を選択してください。', '无法转换此页，请选择其他页或更低分辨率。', 'No se pudo convertir esta página. Prueba otra página o una resolución menor.'],
+  createError: ['PDF를 만들지 못했습니다. 이미지 수를 줄여 다시 시도해 주세요.', 'Could not create PDF. Try again with fewer images.', 'PDFを作成できません。画像数を減らして再試行してください。', '无法创建PDF，请减少图片后重试。', 'No se pudo crear el PDF. Prueba con menos imágenes.'],
+  note: ['큰 사진은 긴 변 2,400px로 축소하고 흰 배경으로 변환합니다. PDF 이미지 출력은 최대 600만 픽셀로 제한됩니다.', 'Large photos are resized to 2,400px on the longest side with a white background. PDF image output is capped at 6 megapixels.', '大きな写真は長辺2,400px・白背景に変換します。PDF画像出力は最大600万画素です。', '大图会缩小至长边2,400像素并使用白色背景。PDF图片输出最多600万像素。', 'Las fotos grandes se reducen a 2.400px con fondo blanco. La salida de imágenes PDF se limita a 6 megapíxeles.'],
+  docs: ['문서 도구', 'Document tools', '文書ツール', '文档工具', 'Herramientas de documentos'],
+};
+const languages: Language[] = ['ko', 'en', 'ja', 'zh', 'es'];
+export function pdfText(language: Language) {
+  const index = languages.indexOf(language);
+  return Object.fromEntries(Object.entries(rows).map(([key, value]) => [key, value[index]])) as Record<keyof typeof rows, string>;
+}

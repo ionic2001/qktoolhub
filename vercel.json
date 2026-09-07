@@ -1,6 +1,183 @@
 {
   "rewrites": [
     {
+      "source": "/world-clock",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/world-clock/ko.html"
+    },
+    {
+      "source": "/world-clock",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/world-clock/en.html"
+    },
+    {
+      "source": "/world-clock",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/world-clock/ja.html"
+    },
+    {
+      "source": "/world-clock",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/world-clock/zh.html"
+    },
+    {
+      "source": "/world-clock",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/world-clock/es.html"
+    },
+    {
+      "source": "/world-clock",
+      "destination": "/world-clock/ko.html"
+    },
+    {
+      "source": "/pdf-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/pdf-converter/ko.html"
+    },
+    {
+      "source": "/pdf-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/pdf-converter/en.html"
+    },
+    {
+      "source": "/pdf-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/pdf-converter/ja.html"
+    },
+    {
+      "source": "/pdf-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/pdf-converter/zh.html"
+    },
+    {
+      "source": "/pdf-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/pdf-converter/es.html"
+    },
+    {
+      "source": "/pdf-converter",
+      "destination": "/pdf-converter/ko.html"
+    },
+    {
+      "destination": "/pixel-art/ko.html",
+      "has": [
+        {
+          "key": "lang",
+          "type": "query",
+          "value": "ko"
+        }
+      ],
+      "source": "/pixel-art"
+    },
+    {
+      "destination": "/pixel-art/en.html",
+      "has": [
+        {
+          "key": "lang",
+          "type": "query",
+          "value": "en"
+        }
+      ],
+      "source": "/pixel-art"
+    },
+    {
+      "destination": "/pixel-art/ja.html",
+      "has": [
+        {
+          "key": "lang",
+          "type": "query",
+          "value": "ja"
+        }
+      ],
+      "source": "/pixel-art"
+    },
+    {
+      "destination": "/pixel-art/zh.html",
+      "has": [
+        {
+          "key": "lang",
+          "type": "query",
+          "value": "zh"
+        }
+      ],
+      "source": "/pixel-art"
+    },
+    {
+      "destination": "/pixel-art/es.html",
+      "has": [
+        {
+          "key": "lang",
+          "type": "query",
+          "value": "es"
+        }
+      ],
+      "source": "/pixel-art"
+    },
+    {
+      "source": "/pixel-art",
+      "destination": "/pixel-art/ko.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

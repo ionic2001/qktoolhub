@@ -22,10 +22,11 @@ function detectBrowserLanguage(): Language {
 }
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('ko');
+  const [language, setLanguageState] = useState<Language>(() => { const requested = new URLSearchParams(window.location.search).get('lang') as Language; return requested && ['ko', 'en', 'ja', 'zh', 'es'].includes(requested) ? requested : 'ko'; });
 
   const applySeoAndLanguage = (lang: Language) => {
     document.documentElement.lang = lang;
+    if (['/pixel-art', '/pdf-converter', '/world-clock'].includes(window.location.pathname)) return;
     const currentT = translations[lang] || translations.ko;
     
     const dynamicTitle = `${currentT.appTitle} | ${currentT.appSubtitle}`;
@@ -60,7 +61,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const saved = localStorage.getItem('app_language') as Language;
     let initialLang: Language = 'ko';
 
-    if (saved && ['ko', 'en', 'ja', 'zh', 'es'].includes(saved)) {
+    const requested = new URLSearchParams(window.location.search).get('lang') as Language;
+    if (requested && ['ko', 'en', 'ja', 'zh', 'es'].includes(requested)) {
+      initialLang = requested;
+    } else if (saved && ['ko', 'en', 'ja', 'zh', 'es'].includes(saved)) {
       initialLang = saved;
     } else {
       initialLang = detectBrowserLanguage();
