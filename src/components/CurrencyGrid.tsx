@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DEFAULT_CURRENCIES, ADDITIONAL_CURRENCIES, CurrencyInfo, RatesData } from '../utils/currencyRates';
 import { useLanguage } from '../i18n/LanguageContext';
-import { TrendingUp, TrendingDown, CheckCircle, PlusCircle, HelpCircle, Info, X, Globe } from 'lucide-react';
+import { TrendingUp, TrendingDown, CheckCircle, PlusCircle, HelpCircle, Info, X, Globe, Search } from 'lucide-react';
 
 interface CurrencyGridProps {
   amount: number;
@@ -26,6 +26,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
   const [activeCurrencies, setActiveCurrencies] = useState<CurrencyInfo[]>(DEFAULT_CURRENCIES);
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const [showExplanation, setShowExplanation] = useState<boolean>(true);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   if (!ratesData) {
     return (
@@ -42,10 +43,22 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
     (addC) => !activeCurrencies.some((curr) => curr.code === addC.code)
   );
 
+  // Filtered available currencies based on search query
+  const filteredAvailable = availableToAdd.filter((addC) => {
+    if (!searchQuery.trim()) return true;
+    const query = searchQuery.toLowerCase().trim();
+    const codeMatch = addC.code.toLowerCase().includes(query);
+    const symbolMatch = addC.symbol.toLowerCase().includes(query);
+    const localizedName = (currencyT?.currencyNames?.[addC.code] || '').toLowerCase();
+    const nameMatch = localizedName.includes(query);
+    return codeMatch || symbolMatch || nameMatch;
+  });
+
   const handleAddCurrency = (curr: CurrencyInfo) => {
     setActiveCurrencies((prev) => [...prev, curr]);
     onSelectTarget(curr.code);
     setShowAddModal(false);
+    setSearchQuery('');
   };
 
   const handleRemoveCurrency = (code: string, e: React.MouseEvent) => {
@@ -274,7 +287,10 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
         {/* Add New Currency Button Card */}
         <div
           className="glass-card"
-          onClick={() => setShowAddModal(true)}
+          onClick={() => {
+            setShowAddModal(true);
+            setSearchQuery('');
+          }}
           style={{
             minHeight: '140px',
             display: 'flex',
@@ -316,7 +332,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
               border: '1px solid var(--border-color)',
               borderRadius: '1.25rem',
               width: '100%',
-              maxWidth: '460px',
+              maxWidth: '480px',
               padding: '1.5rem',
               boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
               maxHeight: '85vh',
@@ -344,6 +360,54 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
               </button>
             </div>
 
+            {/* Real-Time Search Box */}
+            <div style={{ position: 'relative', marginBottom: '1rem' }}>
+              <Search
+                size={18}
+                style={{
+                  position: 'absolute',
+                  left: '0.85rem',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'var(--text-muted)'
+                }}
+              />
+              <input
+                type="text"
+                placeholder="국가명 또는 통화 코드 검색 (예: THB, 대만, 바트, JPY)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                autoFocus
+                style={{
+                  width: '100%',
+                  padding: '0.65rem 2.2rem 0.65rem 2.4rem',
+                  fontSize: '0.9rem',
+                  borderRadius: '0.75rem',
+                  border: '1px solid var(--border-color)',
+                  background: 'var(--bg-input)',
+                  color: 'var(--text-primary)',
+                  outline: 'none'
+                }}
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  style={{
+                    position: 'absolute',
+                    right: '0.75rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'transparent',
+                    border: 'none',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+
             {/* Modal List */}
             <div style={{ overflowY: 'auto', flex: 1, paddingRight: '0.25rem' }}>
               {availableToAdd.length === 0 ? (
@@ -351,9 +415,14 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                   <CheckCircle size={32} color="var(--accent-color)" style={{ marginBottom: '0.5rem' }} />
                   <p style={{ fontWeight: 600 }}>모든 주요 국가 통화가 추가되었습니다.</p>
                 </div>
+              ) : filteredAvailable.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '2rem 1rem', color: 'var(--text-muted)' }}>
+                  <p style={{ fontWeight: 600 }}>"{searchQuery}" 검색 결과가 없습니다.</p>
+                  <p style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>통화 코드(THB, TWD 등) 또는 한국어 국가명으로 검색해 보세요.</p>
+                </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  {availableToAdd.map((addC) => (
+                  {filteredAvailable.map((addC) => (
                     <button
                       key={addC.code}
                       onClick={() => handleAddCurrency(addC)}
