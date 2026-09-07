@@ -52,15 +52,10 @@ export const CurrencyConverterPage: React.FC = () => {
   const currentRate = ratesData?.rates[targetCurrency] || 1;
 
   const handleCurrencyInputChange = (code: string, newAmount: number) => {
-    if (code === baseCurrency) {
-      setAmount(newAmount);
-    } else {
-      const rate = ratesData?.rates[code] || 1;
-      if (rate > 0) {
-        const equivalentBaseAmount = newAmount / rate;
-        setAmount(equivalentBaseAmount);
-      }
+    if (code !== baseCurrency) {
+      setBaseCurrency(code);
     }
+    setAmount(newAmount);
   };
 
   return (
