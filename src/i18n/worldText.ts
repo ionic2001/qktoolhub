@@ -1,5 +1,7 @@
 export const worldText = {
   "ko": {
+    "skin": "시계 스킨",
+    "skins": {"default": "기본", "airport": "에어포트 플립", "minimal": "미니멀", "led": "레트로 LED"},
     "title": "세계시간 & 집중 타이머",
     "subtitle": "지금 이 순간, 세계의 시간과 나의 페이스를 한 화면에.",
     "clock": "세계시간",
@@ -72,6 +74,8 @@ export const worldText = {
     "closeSettings": "설정 닫기"
   },
   "en": {
+    "skin": "Clock skin",
+    "skins": {"default": "Default", "airport": "Airport flip", "minimal": "Minimal", "led": "Retro LED"},
     "title": "World Clock & Focus Timer",
     "subtitle": "World times and your own pace, together in one place.",
     "clock": "World clock",
@@ -144,6 +148,8 @@ export const worldText = {
     "closeSettings": "Close settings"
   },
   "ja": {
+    "skin": "時計のスキン",
+    "skins": {"default": "標準", "airport": "エアポートフリップ", "minimal": "ミニマル", "led": "レトロLED"},
     "title": "世界時計と集中タイマー",
     "subtitle": "世界の時間と自分のペースをひとつの画面に。",
     "clock": "世界時計",
@@ -216,6 +222,8 @@ export const worldText = {
     "closeSettings": "設定を閉じる"
   },
   "zh": {
+    "skin": "时钟外观",
+    "skins": {"default": "默认", "airport": "机场翻页", "minimal": "极简", "led": "复古LED"},
     "title": "世界时钟与专注计时器",
     "subtitle": "在同一屏幕查看世界时间，掌握自己的节奏。",
     "clock": "世界时间",
@@ -288,6 +296,8 @@ export const worldText = {
     "closeSettings": "关闭设置"
   },
   "es": {
+    "skin": "Estilo del reloj",
+    "skins": {"default": "Predeterminado", "airport": "Panel de aeropuerto", "minimal": "Minimalista", "led": "LED retro"},
     "title": "Reloj mundial y temporizador",
     "subtitle": "Las horas del mundo y tu propio ritmo en una pantalla.",
     "clock": "Reloj mundial",
