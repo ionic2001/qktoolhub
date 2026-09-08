@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
           <FileText size={24} />
         </div>
         <div>
-          <h1 className="logo-title">{t.appTitle}</h1>
+          <div className="logo-title">{t.appTitle}</div>
           <p className="logo-subtitle">{t.appSubtitle}</p>
         </div>
       </div>
@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
             className="lang-select"
             value={language}
             onChange={(e) => setLanguage(e.target.value as Language)}
-            aria-label="Language selector"
+            aria-label={{ko:'언어 선택',en:'Language selector',ja:'言語を選択',zh:'选择语言',es:'Seleccionar idioma'}[language]}
           >
             <option value="ko">🇰🇷 한국어</option>
             <option value="en">🇺🇸 English</option>
@@ -54,8 +54,8 @@ export const Header: React.FC = () => {
         <button
           className="theme-toggle"
           onClick={toggleTheme}
-          aria-label="Toggle theme"
-          title="Theme toggle"
+          aria-label={{ko:'테마 변경',en:'Toggle theme',ja:'テーマを切り替え',zh:'切换主题',es:'Cambiar tema'}[language]}
+          title={{ko:'테마 변경',en:'Toggle theme',ja:'テーマを切り替え',zh:'切换主题',es:'Cambiar tema'}[language]}
         >
           {isDark ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#6366f1" />}
         </button>

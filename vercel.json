@@ -1,6 +1,65 @@
 {
   "rewrites": [
     {
+      "source": "/image-editor",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/image-editor/ko.html"
+    },
+    {
+      "source": "/image-editor",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/image-editor/en.html"
+    },
+    {
+      "source": "/image-editor",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/image-editor/ja.html"
+    },
+    {
+      "source": "/image-editor",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/image-editor/zh.html"
+    },
+    {
+      "source": "/image-editor",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/image-editor/es.html"
+    },
+    {
+      "source": "/image-editor",
+      "destination": "/image-editor/ko.html"
+    },
+    {
       "source": "/world-clock",
       "has": [
         {

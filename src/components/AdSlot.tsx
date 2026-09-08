@@ -34,7 +34,7 @@ export const AdSlot: React.FC<AdSlotProps> = ({ slotId, format = 'auto' }) => {
   }, [activeSlotId]);
 
   return (
-    <div className="ad-container" aria-label="Advertisement">
+    <div className="ad-container" aria-label={t.adNotice}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.25rem' }}>
         <span className="ad-label">{t.adNotice}</span>
       </div>

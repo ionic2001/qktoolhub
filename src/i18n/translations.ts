@@ -845,7 +845,7 @@ export const translations: Record<Language, TranslationStructure> = {
         title: "Contador de Palabras y Caracteres",
         desc: "Análisis de caracteres, palabras, bytes y límites SEO",
         category: "Texto",
-        badge: "POPULAR LIVE",
+        badge: "Popular",
         path: "/word-counter",
         isLive: true
       },
@@ -916,7 +916,7 @@ export const translations: Record<Language, TranslationStructure> = {
       faq2Q: "¿Mi texto se sube a algún servidor?",
       faq2A: "No. Todo el procesamiento ocurre 100% en tu navegador para garantizar tu privacidad."
     },
-    adNotice: "Sponsored Advertisement",
+    adNotice: "Publicidad patrocinada",
     autoSavedNotice: "Guardado automático",
     currency: {
       title: "Conversor de Divisas en Tiempo Real",

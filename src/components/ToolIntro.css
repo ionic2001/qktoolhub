@@ -1,0 +1,1 @@
+.tool-intro{padding:2.5rem 0 1.5rem;text-align:left}.tool-intro h1{font-size:clamp(2rem,4vw,2.8rem);letter-spacing:-.04em;line-height:1.25;margin:.7rem 0;font-weight:800;overflow-wrap:anywhere}.tool-intro p{color:var(--text-secondary);line-height:1.7;margin:0 0 .6rem;max-width:800px}@media(max-width:640px){.tool-intro{padding:1.5rem 0 1.2rem}.tool-intro h1{font-size:1.9rem}}

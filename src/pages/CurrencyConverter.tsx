@@ -1,3 +1,5 @@
+import { ToolIntro } from '../components/ToolIntro';
+import toolIntro from '../i18n/toolIntro.json';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -5,7 +7,7 @@ import { Header } from '../components/Header';
 import { AdSlot } from '../components/AdSlot';
 import { CurrencyGrid } from '../components/CurrencyGrid';
 import { fetchExchangeRates, getInitialRatesData, RatesData } from '../utils/currencyRates';
-import { ArrowLeft, RefreshCw, Sparkles, Info, HelpCircle } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Info, HelpCircle } from 'lucide-react';
 
 export const CurrencyConverterPage: React.FC = () => {
   const { t, language } = useLanguage();
@@ -153,7 +155,7 @@ export const CurrencyConverterPage: React.FC = () => {
           style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}
         >
           <ArrowLeft size={16} />
-          {t.backToHub}
+          {t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}
         </button>
 
         <button
@@ -167,28 +169,7 @@ export const CurrencyConverterPage: React.FC = () => {
         </button>
       </div>
 
-      {/* Page Hero Banner */}
-      <section
-        className="glass-card"
-        style={{
-          padding: '1.75rem 1.25rem',
-          marginBottom: '2rem',
-          textAlign: 'center',
-          background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.12))',
-          borderColor: 'rgba(99, 102, 241, 0.3)'
-        }}
-      >
-        <div className="badge" style={{ marginBottom: '0.75rem', padding: '0.35rem 0.85rem', fontSize: '0.8rem' }}>
-          <Sparkles size={14} />
-          REAL-TIME CURRENCY HUB
-        </div>
-        <h1 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>
-          {currencyT?.title || '실시간 다국어 환율 변환기'}
-        </h1>
-        <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '650px', margin: '0 auto' }}>
-          {currencyT?.subtitle || '전 세계 주요 국가 실시간 환율 계산 및 수치 동시 변환'}
-        </p>
-      </section>
+      <ToolIntro badge={toolIntro[language].currencyBadge} title={toolIntro[language].currencyTitle} description={toolIntro[language].currencyDescription} />
 
       {/* Top Banner Ad */}
       <AdSlot slotId="currency-top-banner" />

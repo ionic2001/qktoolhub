@@ -1,3 +1,4 @@
+import { AdSlot } from '../components/AdSlot';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -154,9 +155,10 @@ export function PixelArtPage() {
 
   return <div className="app-container pixel-page">
     <Header />
-    <div style={{ marginBottom: '1.5rem' }}><button className="btn-tool" onClick={() => navigate('/')} style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}><ArrowLeft size={16} />{t.backToHub}</button></div>
+    <div style={{ marginBottom: '1.5rem' }}><button className="btn-tool" onClick={() => navigate('/')} style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}><ArrowLeft size={16} />{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</button></div>
     <main>
       <div className="pixel-intro"><span className="badge">IMAGE TO PIXEL</span><h1>{tr("사진 한 장, 픽셀 아트로.")}</h1><p>{tr("사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.")}</p><small>{tr("사진은 이 브라우저에서만 처리되며 서버에 업로드되지 않습니다.")}</small></div>
+      <AdSlot slotId="pixel-art-top-banner" />
       <div className="pixel-layout">
         <section className="glass-card pixel-settings" aria-label={tr("변환 설정")}>
           <h2>{tr("01. 이미지 선택")}</h2>
@@ -185,6 +187,7 @@ export function PixelArtPage() {
           {source ? <div className="pixel-comparison"><figure><figcaption>{tr("원본")}</figcaption><div className="pixel-image-area"><img src={source.src} alt={tr("선택한 원본 이미지")} /></div></figure><figure><figcaption>{tr("픽셀 변환")}</figcaption><div className="pixel-image-area"><canvas ref={canvas} aria-label={tr("픽셀 변환 결과")} /></div></figure></div> : <div className="pixel-empty"><div className="pixel-motif" aria-hidden="true">▦</div><h3>{tr("어떤 사진을 바꿔볼까요?")}</h3><p>{tr("풍경, 반려동물, 일상의 순간까지.")}<br />{tr("사진을 선택하면 변환 결과가 바로 나타납니다.")}</p><button className="pixel-text-button" onClick={sample}>{tr("샘플로 시작 →")}</button></div>}
         </section>
       </div>
+      <AdSlot slotId="pixel-art-bottom-banner" />
       <p className="pixel-footnote">{tr("작은 픽셀은 디테일을, 큰 픽셀은 추상적인 분위기를 살려줍니다. 색상을 줄이면 고전 게임 같은 느낌이 더해집니다.")}</p>
     </main>
   </div>;

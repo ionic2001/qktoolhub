@@ -1,3 +1,4 @@
+import editorMeta from '../i18n/editorMeta.json';
 import { worldText } from '../i18n/worldText';
 import { pdfText } from '../i18n/pdfTranslations';
 import { pixelTranslations } from '../i18n/pixelTranslations';
@@ -27,6 +28,7 @@ export const Home: React.FC = () => {
   rawTools.splice(Math.min(3, rawTools.length), 0, { id: 'pdf-converter', title: pdf.title, desc: pdf.subtitle, category: pdf.docs, badge: 'New', path: '/pdf-converter', isLive: true });
   const clock = worldText[language];
   rawTools.splice(Math.min(4, rawTools.length), 0, { id: 'world-clock', title: clock.title, desc: clock.subtitle, category: clock.category, badge: 'New', path: '/world-clock', isLive: true });
+  rawTools.splice(Math.min(5, rawTools.length), 0, { id: 'image-editor', title: editorMeta[language].name, desc: editorMeta[language].description, category: editorMeta[language].category, badge: 'New', path: '/image-editor', isLive: true });
   const filteredTools = rawTools.filter((tool: ToolItem) => {
     const q = searchTerm.toLowerCase();
     return (

@@ -1,3 +1,4 @@
+import { AdSlot } from '../components/AdSlot';
 import { worldGuide } from '../i18n/worldGuide';
 import { focusWindow, localDateInput } from '../utils/focusTime';
 import type { CSSProperties } from 'react';
@@ -62,9 +63,10 @@ export default function WorldClockPage(){
   function snooze(min:number){if(!alerts[0])return;setSnoozes(prev=>[...prev,{...alerts[0],at:Date.now()+min*60000}]);setAlerts(prev=>prev.slice(1));}
   const upcoming=[...alarms.filter(a=>a.enabled).map(a=>({name:a.name||s.alarm,at:a.next})),...snoozes].sort((a,b)=>a.at-b.at)[0];
   const matching=cityZones.filter(c=>c.some(v=>v.toLowerCase().includes(search.toLowerCase()))&&!zones.includes(c[0]));
-  return <div className="app-container world-page"><Header/><button className="btn-tool" onClick={()=>navigate('/')} style={{background:'var(--accent-light)',color:'var(--accent-color)'}}><ArrowLeft size={16}/>{t.backToHub}</button>
+  return <div className="app-container world-page"><Header/><button className="btn-tool" onClick={()=>navigate('/')} style={{background:'var(--accent-light)',color:'var(--accent-color)'}}><ArrowLeft size={16}/>{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</button>
     <div className="world-intro"><span className="badge">TIME STUDIO</span><h1>{s.title}</h1><p>{s.subtitle}</p></div>
-    <div ref={stage} className="world-stage" style={{background,'--world-ink':light?'#111827':'#f8fafc','--world-muted':light?'#27364a':'#cbd5e1'} as CSSProperties}><div className="world-stage-tools"><div className="world-tabs">{(['clock','stopwatch','timer','focus'] as const).map(v=><button key={v} aria-pressed={mode===v} onClick={()=>setMode(v)}>{s[v]}</button>)}</div><div className="world-row"><button className="world-settings-trigger" aria-haspopup="dialog" onClick={()=>setSettingsOpen(true)}><Settings size={18}/>{s.settings}</button><button onClick={()=>void fullscreen()} aria-label={full?s.exit:s.full}>{full?<Minimize size={20}/>:<Maximize size={20}/>}</button></div></div>
+    <AdSlot slotId="world-clock-top-banner" />
+      <div ref={stage} className="world-stage" style={{background,'--world-ink':light?'#111827':'#f8fafc','--world-muted':light?'#27364a':'#cbd5e1'} as CSSProperties}><div className="world-stage-tools"><div className="world-tabs">{(['clock','stopwatch','timer','focus'] as const).map(v=><button key={v} aria-pressed={mode===v} onClick={()=>setMode(v)}>{s[v]}</button>)}</div><div className="world-row"><button className="world-settings-trigger" aria-haspopup="dialog" onClick={()=>setSettingsOpen(true)}><Settings size={18}/>{s.settings}</button><button onClick={()=>void fullscreen()} aria-label={full?s.exit:s.full}>{full?<Minimize size={20}/>:<Maximize size={20}/>}</button></div></div>
       <div className="world-face"><div className="world-eyebrow">{mode==='clock'?`${main===localZone?s.local+' · ':''}${label(main)}`:s[mode]}</div><div className={`world-digits ${mode!=='clock'?'world-duration':''}`}>{mode==='clock'?time(main):mode==='stopwatch'?duration(elapsed,true):mode==='focus'?duration(focus?Math.ceil(Math.max(0,(now<focus.start?focus.start:focus.end)-now)/1000)*1000:0):duration(Math.ceil(left/1000)*1000)}</div><p>{mode==='clock'?`${date(main)} · ${offset(main)}`:mode==='focus'?(!focus?s.focusEmpty:focus.done?s.focusDone:now<focus.start?s.waiting:s.focusing):mode==='timer'?s.remaining:s.stopwatch}</p>
       {mode==='focus'&&focus&&<><p>{new Intl.DateTimeFormat(locale,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(focus.start)} → {new Intl.DateTimeFormat(locale,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(focus.end)} · {s.local}</p><progress aria-label={s.progress} max={100} value={Math.min(100,Math.max(0,(now-focus.start)/(focus.end-focus.start)*100))}/><div className="world-controls"><button onClick={()=>setFocus(null)}>{s.cancel}</button></div></>}
       {mode==='stopwatch'&&<div className="world-controls"><button onClick={()=>{if(swStart===null)setSwStart(Date.now());else{setSwTotal(swTotal+Date.now()-swStart);setSwStart(null);}}}>{swStart!==null?s.pause:swTotal?s.resume:s.start}</button><button disabled={swStart===null||laps.length>=100} onClick={()=>setLaps(prev=>[...prev,elapsed].slice(-100))}>{s.lap}</button><button onClick={()=>{setSwStart(null);setSwTotal(0);setLaps([]);}}>{s.reset}</button></div>}
@@ -87,6 +89,7 @@ export default function WorldClockPage(){
       </dialog>
     </div>
     {message&&!settingsOpen&&<p role="status" className="world-message">{message}<button onClick={()=>setMessage('')}>×</button></p>}
-    <section className="glass-card world-panel world-help" aria-labelledby="world-guide-title"><h2 id="world-guide-title">{s.help}</h2><div className="world-guide-grid">{guide.sections.map((item,i)=><section key={i}><h3>{i+1}. {item.title}</h3><p>{item.body}</p></section>)}</div></section>
+    <AdSlot slotId="world-clock-bottom-banner" />
+      <section className="glass-card world-panel world-help" aria-labelledby="world-guide-title"><h2 id="world-guide-title">{s.help}</h2><div className="world-guide-grid">{guide.sections.map((item,i)=><section key={i}><h3>{i+1}. {item.title}</h3><p>{item.body}</p></section>)}</div></section>
   </div>;
 }

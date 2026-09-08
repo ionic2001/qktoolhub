@@ -1,0 +1,1202 @@
+{
+  "Choose a PNG/JPG/WebP up to 20 MB.": {
+    "ja": "20MB以下のPNG・JPG・WebPを選択してください。",
+    "zh": "请选择不超过20MB的PNG、JPG或WebP图片。",
+    "es": "Elige un PNG, JPG o WebP de hasta 20 MB."
+  },
+  "Photo added to the selected cell.": {
+    "ja": "選択した枠に写真を追加しました。",
+    "zh": "已将照片添加到所选格子。",
+    "es": "Foto añadida a la celda seleccionada."
+  },
+  "Unable to read photo.": {
+    "ja": "写真を読み込めませんでした。",
+    "zh": "无法读取照片。",
+    "es": "No se pudo leer la foto."
+  },
+  "Choose a PNG, JPG or WebP up to 20 MB.": {
+    "ja": "20MB以下のPNG・JPG・WebPを選択してください。",
+    "zh": "请选择不超过20MB的PNG、JPG或WebP图片。",
+    "es": "Elige un PNG, JPG o WebP de hasta 20 MB."
+  },
+  "Image loaded. The longest edge is limited to 2400 px on import.": {
+    "ja": "画像を読み込みました。長辺は最大2400pxに調整されます。",
+    "zh": "图片已载入，导入时长边最多为2400px。",
+    "es": "Imagen cargada. El lado más largo se limita a 2400 px al importar."
+  },
+  "Unable to read this image.": {
+    "ja": "画像を読み込めませんでした。",
+    "zh": "无法读取此图片。",
+    "es": "No se pudo leer esta imagen."
+  },
+  "Image downloaded.": {
+    "ja": "画像をダウンロードしました。",
+    "zh": "图片已下载。",
+    "es": "Imagen descargada."
+  },
+  "Export failed. Try smaller dimensions.": {
+    "ja": "保存できませんでした。画像サイズを小さくしてください。",
+    "zh": "导出失败，请缩小图片尺寸。",
+    "es": "No se pudo exportar. Prueba con dimensiones menores."
+  },
+  "decrease by 1": {
+    "ja": "1減らす",
+    "zh": "减少1",
+    "es": "reducir en 1"
+  },
+  "increase by 1": {
+    "ja": "1増やす",
+    "zh": "增加1",
+    "es": "aumentar en 1"
+  },
+  "slider": {
+    "ja": "スライダー",
+    "zh": "滑块",
+    "es": "deslizador"
+  },
+  "Image editing studio": {
+    "ja": "画像編集スタジオ",
+    "zh": "图片编辑工作室",
+    "es": "Estudio de edición de imágenes"
+  },
+  "Resize, adjust colors, and add stickers and your own words.": {
+    "ja": "サイズ変更、色調整、ステッカーやオリジナルの文字入れをまとめて。",
+    "zh": "调整尺寸和色彩，添加贴纸与自定义文字。",
+    "es": "Cambia el tamaño, ajusta los colores y añade pegatinas y tus propias palabras."
+  },
+  "Local processing": {
+    "ja": "ローカル処理について",
+    "zh": "本地处理说明",
+    "es": "Procesamiento local"
+  },
+  "Edit locally on your device": {
+    "ja": "お使いの端末で画像を編集",
+    "zh": "在你的设备上编辑",
+    "es": "Edita en tu dispositivo"
+  },
+  "Photo editing happens in your current browser.": {
+    "ja": "写真の編集はこのブラウザー内で行われます。",
+    "zh": "照片编辑在当前浏览器内完成。",
+    "es": "Las fotos se editan en tu navegador actual."
+  },
+  "Your photo files are not uploaded or kept on a server.": {
+    "ja": "写真ファイルをサーバーに送信・保存しません。",
+    "zh": "照片文件不会上传或保存到服务器。",
+    "es": "Tus fotos no se suben ni se guardan en un servidor."
+  },
+  "Open image": {
+    "ja": "写真を読み込む",
+    "zh": "打开图片",
+    "es": "Abrir imagen"
+  },
+  "Collage layout": {
+    "ja": "コラージュのレイアウト",
+    "zh": "拼图布局",
+    "es": "Diseño de collage"
+  },
+  "Try sample": {
+    "ja": "サンプルで試す",
+    "zh": "试用示例",
+    "es": "Probar ejemplo"
+  },
+  "Undo": {
+    "ja": "元に戻す",
+    "zh": "撤销",
+    "es": "Deshacer"
+  },
+  "Redo": {
+    "ja": "やり直す",
+    "zh": "重做",
+    "es": "Rehacer"
+  },
+  "Photo settings": {
+    "ja": "写真・サイズ設定",
+    "zh": "照片与尺寸设置",
+    "es": "Ajustes de foto"
+  },
+  "Stickers, text & export": {
+    "ja": "ステッカー・文字・保存",
+    "zh": "贴纸、文字与导出",
+    "es": "Pegatinas, texto y exportación"
+  },
+  "Output image size": {
+    "ja": "完成画像のサイズ",
+    "zh": "成品图片尺寸",
+    "es": "Tamaño de salida"
+  },
+  "Width (px)": {
+    "ja": "幅（px）",
+    "zh": "宽度（px）",
+    "es": "Ancho (px)"
+  },
+  "Height (px)": {
+    "ja": "高さ（px）",
+    "zh": "高度（px）",
+    "es": "Alto (px)"
+  },
+  "Lock output aspect ratio": {
+    "ja": "完成画像の比率を固定",
+    "zh": "锁定成品宽高比",
+    "es": "Mantener proporción de salida"
+  },
+  "Presets": {
+    "ja": "プリセット",
+    "zh": "预设",
+    "es": "Preajustes"
+  },
+  "Social media size presets": {
+    "ja": "SNS用サイズプリセット",
+    "zh": "社交媒体尺寸预设",
+    "es": "Preajustes para redes sociales"
+  },
+  "Choose a format": {
+    "ja": "用途と比率を選択",
+    "zh": "选择用途与比例",
+    "es": "Elige un formato"
+  },
+  "Instagram square post": {
+    "ja": "Instagram正方形投稿",
+    "zh": "Instagram正方形帖子",
+    "es": "Publicación cuadrada de Instagram"
+  },
+  "Instagram portrait post": {
+    "ja": "Instagram縦長投稿",
+    "zh": "Instagram竖版帖子",
+    "es": "Publicación vertical de Instagram"
+  },
+  "Portrait photo": {
+    "ja": "縦長写真",
+    "zh": "竖版照片",
+    "es": "Foto vertical"
+  },
+  "Story / Reels background": {
+    "ja": "ストーリーズ・リール背景",
+    "zh": "快拍／Reels背景图",
+    "es": "Fondo para Stories / Reels"
+  },
+  "thumbnail": {
+    "ja": "サムネイル",
+    "zh": "缩略图",
+    "es": "miniatura"
+  },
+  "Landscape photo": {
+    "ja": "横長写真",
+    "zh": "横版照片",
+    "es": "Foto horizontal"
+  },
+  "Presets set both pixel dimensions. Choose Fill & crop to fill the canvas.": {
+    "ja": "プリセットは幅と高さを設定します。余白なく配置するには「枠いっぱいに切り抜く」を選択してください。",
+    "zh": "预设会同时设置宽高像素。选择“填满并裁剪”可铺满画布。",
+    "es": "Los preajustes establecen ancho y alto. Elige Rellenar y recortar para llenar el lienzo."
+  },
+  "Selected photo cell": {
+    "ja": "選択した写真枠",
+    "zh": "所选照片格子",
+    "es": "Celda de foto seleccionada"
+  },
+  "Add / replace photo": {
+    "ja": "写真を追加・差し替え",
+    "zh": "添加／替换照片",
+    "es": "Añadir / reemplazar foto"
+  },
+  "Selected photo zoom (%)": {
+    "ja": "選択した写真の拡大率（%）",
+    "zh": "所选照片缩放（%）",
+    "es": "Zoom de la foto seleccionada (%)"
+  },
+  "Reset photo placement": {
+    "ja": "写真の配置をリセット",
+    "zh": "重置照片位置",
+    "es": "Restablecer posición de foto"
+  },
+  "Clear cell": {
+    "ja": "枠を空にする",
+    "zh": "清空格子",
+    "es": "Vaciar celda"
+  },
+  "Select a cell and add a photo. Drag with touch or mouse and use arrow keys for precise placement. Adjustments affect all photos.": {
+    "ja": "枠を選んで写真を追加してください。指やマウスでドラッグし、矢印キーで微調整できます。色調整はすべての写真に適用されます。",
+    "zh": "选择格子并添加照片。用触控或鼠标拖动，方向键可精确移动。色彩调整会应用于所有照片。",
+    "es": "Selecciona una celda y añade una foto. Arrastra con el dedo o el ratón y ajusta con las flechas. Los ajustes afectan a todas las fotos."
+  },
+  "Photo size & placement": {
+    "ja": "写真のサイズ・配置",
+    "zh": "照片大小与位置",
+    "es": "Tamaño y posición de foto"
+  },
+  "These controls only affect the photo. Output proportions, stickers and text stay unchanged.": {
+    "ja": "この設定は写真のみに適用されます。完成画像の比率やステッカー・文字のサイズは変わりません。",
+    "zh": "这些设置仅影响照片，成品比例、贴纸和文字保持不变。",
+    "es": "Estos controles solo afectan a la foto. La proporción de salida, las pegatinas y el texto no cambian."
+  },
+  "Fit mode": {
+    "ja": "配置方法",
+    "zh": "适配方式",
+    "es": "Modo de ajuste"
+  },
+  "Fit entire image": {
+    "ja": "写真全体を収める",
+    "zh": "完整显示图片",
+    "es": "Ajustar imagen completa"
+  },
+  "Fill & crop": {
+    "ja": "枠いっぱいに切り抜く",
+    "zh": "填满并裁剪",
+    "es": "Rellenar y recortar"
+  },
+  "Photo zoom (%)": {
+    "ja": "写真の拡大・縮小（%）",
+    "zh": "照片缩放（%）",
+    "es": "Zoom de foto (%)"
+  },
+  "Reset photo size & position": {
+    "ja": "写真のサイズ・位置をリセット",
+    "zh": "重置照片大小和位置",
+    "es": "Restablecer tamaño y posición"
+  },
+  "Horizontal position": {
+    "ja": "左右の位置",
+    "zh": "水平位置",
+    "es": "Posición horizontal"
+  },
+  "Vertical position": {
+    "ja": "上下の位置",
+    "zh": "垂直位置",
+    "es": "Posición vertical"
+  },
+  "Background": {
+    "ja": "背景色",
+    "zh": "背景色",
+    "es": "Fondo"
+  },
+  "Transparent background": {
+    "ja": "透明な背景",
+    "zh": "透明背景",
+    "es": "Fondo transparente"
+  },
+  "Adjustments": {
+    "ja": "写真の色調整",
+    "zh": "照片调整",
+    "es": "Ajustes"
+  },
+  "Brightness": {
+    "ja": "明るさ",
+    "zh": "亮度",
+    "es": "Brillo"
+  },
+  "Contrast": {
+    "ja": "コントラスト",
+    "zh": "对比度",
+    "es": "Contraste"
+  },
+  "Saturation": {
+    "ja": "彩度",
+    "zh": "饱和度",
+    "es": "Saturación"
+  },
+  "Filter": {
+    "ja": "フィルター",
+    "zh": "滤镜",
+    "es": "Filtro"
+  },
+  "Reset adjustments": {
+    "ja": "色調整をリセット",
+    "zh": "重置调整",
+    "es": "Restablecer ajustes"
+  },
+  "Move photo: drag or arrow keys; Shift moves 10 pixels": {
+    "ja": "写真を移動：ドラッグまたは矢印キー。Shiftで10pxずつ移動",
+    "zh": "移动照片：拖动或方向键，按住Shift移动10像素",
+    "es": "Mover foto: arrastra o usa las flechas; Shift mueve 10 píxeles"
+  },
+  "Photo cell": {
+    "ja": "写真枠",
+    "zh": "照片格子",
+    "es": "Celda de foto"
+  },
+  "Drag the photo or click it and use arrow keys. Shift + arrows moves 10 px. Only the area inside the bright border is exported.": {
+    "ja": "写真をドラッグするか、クリックして矢印キーで移動してください。Shift＋矢印で10px移動します。明るい枠の内側のみ保存されます。",
+    "zh": "拖动照片，或点击后使用方向键。Shift＋方向键可移动10px。仅导出亮色边框内的区域。",
+    "es": "Arrastra la foto o haz clic y usa las flechas. Shift + flechas mueve 10 px. Solo se exporta el interior del borde claro."
+  },
+  "Select and drag stickers or text. You can also create a card without a photo.": {
+    "ja": "ステッカーや文字を選んでドラッグしてください。写真なしでカードも作れます。",
+    "zh": "选择并拖动贴纸或文字，也可以不使用照片直接制作卡片。",
+    "es": "Selecciona y arrastra pegatinas o texto. También puedes crear una tarjeta sin foto."
+  },
+  "Processing…": {
+    "ja": "処理中…",
+    "zh": "处理中…",
+    "es": "Procesando…"
+  },
+  "Stickers": {
+    "ja": "ステッカー",
+    "zh": "贴纸",
+    "es": "Pegatinas"
+  },
+  "Sticker category": {
+    "ja": "ステッカーの種類",
+    "zh": "贴纸分类",
+    "es": "Categoría de pegatinas"
+  },
+  "Search stickers": {
+    "ja": "ステッカーを検索",
+    "zh": "搜索贴纸",
+    "es": "Buscar pegatinas"
+  },
+  "Search categories or emoji": {
+    "ja": "種類や絵文字で検索",
+    "zh": "搜索分类或表情",
+    "es": "Buscar categorías o emoji"
+  },
+  "● Recolorable stickers": {
+    "ja": "● 色を変更できるステッカー",
+    "zh": "● 可更改颜色的贴纸",
+    "es": "● Pegatinas de color editable"
+  },
+  "· Recolorable": {
+    "ja": "· 色変更可能",
+    "zh": "· 可改色",
+    "es": "· Color editable"
+  },
+  "Added": {
+    "ja": "追加しました",
+    "zh": "已添加",
+    "es": "Añadido"
+  },
+  "No results.": {
+    "ja": "見つかりませんでした。",
+    "zh": "没有搜索结果。",
+    "es": "No hay resultados."
+  },
+  "Previous stickers": {
+    "ja": "前のステッカー",
+    "zh": "上一页贴纸",
+    "es": "Pegatinas anteriores"
+  },
+  "Next stickers": {
+    "ja": "次のステッカー",
+    "zh": "下一页贴纸",
+    "es": "Pegatinas siguientes"
+  },
+  "Recommended & custom colors": {
+    "ja": "おすすめの色・自由に選択",
+    "zh": "推荐色与自定义颜色",
+    "es": "Colores recomendados y personalizados"
+  },
+  "New sticker color": {
+    "ja": "追加するステッカーの色",
+    "zh": "新贴纸颜色",
+    "es": "Color de la nueva pegatina"
+  },
+  "Your words": {
+    "ja": "オリジナルのメッセージ",
+    "zh": "输入你的文字",
+    "es": "Tu mensaje"
+  },
+  "Add text": {
+    "ja": "文字を追加",
+    "zh": "添加文字",
+    "es": "Añadir texto"
+  },
+  "Selected element": {
+    "ja": "選択した要素",
+    "zh": "所选元素",
+    "es": "Elemento seleccionado"
+  },
+  "Text content": {
+    "ja": "文字を入力",
+    "zh": "文字内容",
+    "es": "Contenido del texto"
+  },
+  "Bold": {
+    "ja": "太字",
+    "zh": "加粗",
+    "es": "Negrita"
+  },
+  "White outline": {
+    "ja": "白い縁取り",
+    "zh": "白色描边",
+    "es": "Contorno blanco"
+  },
+  "Emoji use their original colors. Appearance may vary by device.": {
+    "ja": "絵文字は元の色で表示されます。端末によって見た目が異なる場合があります。",
+    "zh": "表情使用原有颜色，外观可能因设备而异。",
+    "es": "Los emoji conservan sus colores. Su apariencia puede variar según el dispositivo."
+  },
+  "Color can be changed": {
+    "ja": "色を変更できます",
+    "zh": "可以更改颜色",
+    "es": "Se puede cambiar el color"
+  },
+  "Choose a recommended color or pick your own.": {
+    "ja": "おすすめの色を選ぶか、好きな色を指定してください。",
+    "zh": "选择推荐颜色或自定义颜色。",
+    "es": "Elige un color recomendado o uno personalizado."
+  },
+  "Custom color": {
+    "ja": "好きな色を選択",
+    "zh": "自定义颜色",
+    "es": "Color personalizado"
+  },
+  "Element color": {
+    "ja": "要素の色",
+    "zh": "元素颜色",
+    "es": "Color del elemento"
+  },
+  "Use − / + to adjust by 1 px, 1° or 1%.": {
+    "ja": "−／＋で1px・1°・1%ずつ調整できます。",
+    "zh": "使用−／＋按1px、1°或1%逐步调整。",
+    "es": "Usa − / + para ajustar de 1 px, 1° o 1% en 1."
+  },
+  "Size (px)": {
+    "ja": "サイズ（px）",
+    "zh": "大小（px）",
+    "es": "Tamaño (px)"
+  },
+  "Rotation (°)": {
+    "ja": "回転（°）",
+    "zh": "旋转（°）",
+    "es": "Rotación (°)"
+  },
+  "Opacity (%)": {
+    "ja": "不透明度（%）",
+    "zh": "不透明度（%）",
+    "es": "Opacidad (%)"
+  },
+  "Bring to front": {
+    "ja": "最前面へ",
+    "zh": "置于顶层",
+    "es": "Traer al frente"
+  },
+  "Send to back": {
+    "ja": "最背面へ",
+    "zh": "置于底层",
+    "es": "Enviar al fondo"
+  },
+  "Duplicate": {
+    "ja": "複製",
+    "zh": "复制",
+    "es": "Duplicar"
+  },
+  "Delete": {
+    "ja": "削除",
+    "zh": "删除",
+    "es": "Eliminar"
+  },
+  "Add or select a sticker or text.": {
+    "ja": "ステッカーや文字を追加、または選択してください。",
+    "zh": "请添加或选择贴纸或文字。",
+    "es": "Añade o selecciona una pegatina o texto."
+  },
+  "Layers": {
+    "ja": "レイヤー",
+    "zh": "图层",
+    "es": "Capas"
+  },
+  "Empty text": {
+    "ja": "空の文字",
+    "zh": "空白文字",
+    "es": "Texto vacío"
+  },
+  "Download": {
+    "ja": "ダウンロード",
+    "zh": "下载",
+    "es": "Descargar"
+  },
+  "Export format": {
+    "ja": "保存形式",
+    "zh": "导出格式",
+    "es": "Formato de exportación"
+  },
+  "Quality": {
+    "ja": "画質",
+    "zh": "质量",
+    "es": "Calidad"
+  },
+  "JPG uses the selected background color for transparent areas.": {
+    "ja": "JPGでは透明な部分に選択した背景色が入ります。",
+    "zh": "JPG会用所选背景色填充透明区域。",
+    "es": "JPG rellena las áreas transparentes con el color de fondo elegido."
+  },
+  "Download image": {
+    "ja": "画像をダウンロード",
+    "zh": "下载图片",
+    "es": "Descargar imagen"
+  },
+  "Single photo": {
+    "ja": "写真1枚",
+    "zh": "单张照片",
+    "es": "Una foto"
+  },
+  "Side by side": {
+    "ja": "左右2分割",
+    "zh": "左右两格",
+    "es": "Dos columnas"
+  },
+  "Top and bottom": {
+    "ja": "上下2分割",
+    "zh": "上下两格",
+    "es": "Dos filas"
+  },
+  "Featured + two": {
+    "ja": "大きな写真＋2枚",
+    "zh": "大图＋两张小图",
+    "es": "Una grande y dos pequeñas"
+  },
+  "Four-cell grid": {
+    "ja": "4分割グリッド",
+    "zh": "四宫格",
+    "es": "Cuadrícula de cuatro"
+  },
+  "Original": {
+    "ja": "オリジナル",
+    "zh": "原图",
+    "es": "Original"
+  },
+  "Monochrome": {
+    "ja": "モノクロ",
+    "zh": "黑白",
+    "es": "Blanco y negro"
+  },
+  "Vintage": {
+    "ja": "ヴィンテージ",
+    "zh": "复古",
+    "es": "Vintage"
+  },
+  "Warm": {
+    "ja": "暖かい色調",
+    "zh": "暖色",
+    "es": "Cálido"
+  },
+  "Cool": {
+    "ja": "涼しい色調",
+    "zh": "冷色",
+    "es": "Frío"
+  },
+  "Coral": {
+    "ja": "コーラル",
+    "zh": "珊瑚色",
+    "es": "Coral"
+  },
+  "Pink": {
+    "ja": "ピンク",
+    "zh": "粉色",
+    "es": "Rosa"
+  },
+  "Lavender": {
+    "ja": "ラベンダー",
+    "zh": "薰衣草紫",
+    "es": "Lavanda"
+  },
+  "Sky blue": {
+    "ja": "スカイブルー",
+    "zh": "天蓝色",
+    "es": "Azul cielo"
+  },
+  "Mint": {
+    "ja": "ミント",
+    "zh": "薄荷绿",
+    "es": "Menta"
+  },
+  "Butter yellow": {
+    "ja": "バターイエロー",
+    "zh": "奶油黄",
+    "es": "Amarillo mantequilla"
+  },
+  "Cream": {
+    "ja": "クリーム",
+    "zh": "奶油色",
+    "es": "Crema"
+  },
+  "Brown": {
+    "ja": "ブラウン",
+    "zh": "棕色",
+    "es": "Marrón"
+  },
+  "Red": {
+    "ja": "レッド",
+    "zh": "红色",
+    "es": "Rojo"
+  },
+  "Indigo": {
+    "ja": "インディゴ",
+    "zh": "靛蓝色",
+    "es": "Índigo"
+  },
+  "White": {
+    "ja": "ホワイト",
+    "zh": "白色",
+    "es": "Blanco"
+  },
+  "Black": {
+    "ja": "ブラック",
+    "zh": "黑色",
+    "es": "Negro"
+  },
+  "Journal & decorations": {
+    "ja": "手帳・飾り",
+    "zh": "手帐与装饰",
+    "es": "Diario y adornos"
+  },
+  "Basic shapes": {
+    "ja": "基本の図形",
+    "zh": "基本形状",
+    "es": "Formas básicas"
+  },
+  "Faces & feelings": {
+    "ja": "表情・気持ち",
+    "zh": "表情与情绪",
+    "es": "Caras y emociones"
+  },
+  "Animals & nature": {
+    "ja": "動物・自然",
+    "zh": "动物与自然",
+    "es": "Animales y naturaleza"
+  },
+  "Food & drinks": {
+    "ja": "食べ物・飲み物",
+    "zh": "食物与饮品",
+    "es": "Comida y bebida"
+  },
+  "Travel & weather": {
+    "ja": "旅行・天気",
+    "zh": "旅行与天气",
+    "es": "Viajes y clima"
+  },
+  "Celebrations & activities": {
+    "ja": "お祝い・アクティビティ",
+    "zh": "庆祝与活动",
+    "es": "Celebraciones y actividades"
+  },
+  "Hearts & symbols": {
+    "ja": "ハート・記号",
+    "zh": "爱心与符号",
+    "es": "Corazones y símbolos"
+  },
+  "Icons": {
+    "ja": "アイコン",
+    "zh": "图标",
+    "es": "Iconos"
+  },
+  "heart": {
+    "ja": "ハート",
+    "zh": "爱心",
+    "es": "Corazón"
+  },
+  "star": {
+    "ja": "星",
+    "zh": "星星",
+    "es": "Estrella"
+  },
+  "arrow": {
+    "ja": "矢印",
+    "zh": "箭头",
+    "es": "Flecha"
+  },
+  "bubble": {
+    "ja": "吹き出し",
+    "zh": "对话气泡",
+    "es": "Bocadillo"
+  },
+  "sparkle": {
+    "ja": "きらめき",
+    "zh": "闪光",
+    "es": "Destello"
+  },
+  "circle": {
+    "ja": "円",
+    "zh": "圆形",
+    "es": "Círculo"
+  },
+  "tape": {
+    "ja": "テープ",
+    "zh": "胶带",
+    "es": "Cinta"
+  },
+  "Triangle": {
+    "ja": "三角形",
+    "zh": "三角形",
+    "es": "Triángulo"
+  },
+  "Diamond": {
+    "ja": "ひし形",
+    "zh": "菱形",
+    "es": "Rombo"
+  },
+  "Square": {
+    "ja": "四角形",
+    "zh": "正方形",
+    "es": "Cuadrado"
+  },
+  "Hexagon": {
+    "ja": "六角形",
+    "zh": "六边形",
+    "es": "Hexágono"
+  },
+  "Plus": {
+    "ja": "プラス",
+    "zh": "加号",
+    "es": "Más"
+  },
+  "Check": {
+    "ja": "チェック",
+    "zh": "对勾",
+    "es": "Marca de verificación"
+  },
+  "Cross": {
+    "ja": "バツ印",
+    "zh": "叉号",
+    "es": "Cruz"
+  },
+  "Lightning": {
+    "ja": "稲妻",
+    "zh": "闪电",
+    "es": "Rayo"
+  },
+  "Flag": {
+    "ja": "旗",
+    "zh": "旗帜",
+    "es": "Bandera"
+  },
+  "Location pin": {
+    "ja": "位置ピン",
+    "zh": "定位标记",
+    "es": "Marcador de ubicación"
+  },
+  "Home": {
+    "ja": "家",
+    "zh": "房屋",
+    "es": "Casa"
+  },
+  "Mountain": {
+    "ja": "山",
+    "zh": "山峰",
+    "es": "Montaña"
+  },
+  "Moon": {
+    "ja": "月",
+    "zh": "月亮",
+    "es": "Luna"
+  },
+  "Cloud": {
+    "ja": "雲",
+    "zh": "云朵",
+    "es": "Nube"
+  },
+  "Drop": {
+    "ja": "しずく",
+    "zh": "水滴",
+    "es": "Gota"
+  },
+  "Leaf": {
+    "ja": "葉",
+    "zh": "叶子",
+    "es": "Hoja"
+  },
+  "Flower": {
+    "ja": "花",
+    "zh": "花朵",
+    "es": "Flor"
+  },
+  "Crown": {
+    "ja": "王冠",
+    "zh": "皇冠",
+    "es": "Corona"
+  },
+  "Gift": {
+    "ja": "プレゼント",
+    "zh": "礼物",
+    "es": "Regalo"
+  },
+  "Music note": {
+    "ja": "音符",
+    "zh": "音符",
+    "es": "Nota musical"
+  },
+  "Play": {
+    "ja": "再生",
+    "zh": "播放",
+    "es": "Reproducir"
+  },
+  "Pause": {
+    "ja": "一時停止",
+    "zh": "暂停",
+    "es": "Pausa"
+  },
+  "Camera": {
+    "ja": "カメラ",
+    "zh": "相机",
+    "es": "Cámara"
+  },
+  "Bookmark": {
+    "ja": "しおり",
+    "zh": "书签",
+    "es": "Marcador"
+  },
+  "Tag": {
+    "ja": "タグ",
+    "zh": "标签",
+    "es": "Etiqueta"
+  },
+  "Left arrow": {
+    "ja": "左矢印",
+    "zh": "左箭头",
+    "es": "Flecha izquierda"
+  },
+  "Up arrow": {
+    "ja": "上矢印",
+    "zh": "上箭头",
+    "es": "Flecha arriba"
+  },
+  "Down arrow": {
+    "ja": "下矢印",
+    "zh": "下箭头",
+    "es": "Flecha abajo"
+  },
+  "Ribbon": {
+    "ja": "リボン",
+    "zh": "蝴蝶结",
+    "es": "Lazo"
+  },
+  "Long bow": {
+    "ja": "長いリボン",
+    "zh": "长蝴蝶结",
+    "es": "Lazo largo"
+  },
+  "Double hearts": {
+    "ja": "ダブルハート",
+    "zh": "双爱心",
+    "es": "Dos corazones"
+  },
+  "Doodle heart": {
+    "ja": "手描きハート",
+    "zh": "手绘爱心",
+    "es": "Corazón dibujado"
+  },
+  "Sparkle cluster": {
+    "ja": "きらめきセット",
+    "zh": "闪光组合",
+    "es": "Grupo de destellos"
+  },
+  "Twinkle": {
+    "ja": "星の輝き",
+    "zh": "星光",
+    "es": "Brillo estelar"
+  },
+  "Daisy": {
+    "ja": "デイジー",
+    "zh": "雏菊",
+    "es": "Margarita"
+  },
+  "Tulip": {
+    "ja": "チューリップ",
+    "zh": "郁金香",
+    "es": "Tulipán"
+  },
+  "Cherries": {
+    "ja": "さくらんぼ",
+    "zh": "樱桃",
+    "es": "Cerezas"
+  },
+  "Butterfly decoration": {
+    "ja": "蝶の飾り",
+    "zh": "蝴蝶装饰",
+    "es": "Mariposa decorativa"
+  },
+  "Instant photo frame": {
+    "ja": "インスタント写真フレーム",
+    "zh": "拍立得相框",
+    "es": "Marco de foto instantánea"
+  },
+  "Postage stamp frame": {
+    "ja": "切手フレーム",
+    "zh": "邮票边框",
+    "es": "Marco de sello"
+  },
+  "Torn paper": {
+    "ja": "ちぎり紙",
+    "zh": "撕纸",
+    "es": "Papel rasgado"
+  },
+  "Ticket": {
+    "ja": "チケット",
+    "zh": "票券",
+    "es": "Entrada"
+  },
+  "Paperclip": {
+    "ja": "クリップ",
+    "zh": "回形针",
+    "es": "Clip"
+  },
+  "Wavy underline": {
+    "ja": "波線",
+    "zh": "波浪下划线",
+    "es": "Subrayado ondulado"
+  },
+  "Doodle arrow": {
+    "ja": "手描き矢印",
+    "zh": "手绘箭头",
+    "es": "Flecha dibujada"
+  },
+  "Oval frame": {
+    "ja": "楕円フレーム",
+    "zh": "椭圆边框",
+    "es": "Marco ovalado"
+  },
+  "Scalloped badge": {
+    "ja": "波型バッジ",
+    "zh": "波浪徽章",
+    "es": "Insignia ondulada"
+  },
+  "Smiling sun": {
+    "ja": "笑顔の太陽",
+    "zh": "微笑太阳",
+    "es": "Sol sonriente"
+  },
+  "Image tools": {
+    "ja": "画像ツール",
+    "zh": "图片工具",
+    "es": "Herramientas de imagen"
+  },
+  "Quick start guide": {
+    "ja": "かんたんガイド",
+    "zh": "快速入门指南",
+    "es": "Guía de inicio rápido"
+  },
+  "Start with a photo": {
+    "ja": "写真を準備する",
+    "zh": "准备照片",
+    "es": "Empieza con una foto"
+  },
+  "Choose Open image and select a PNG, JPG or WebP up to 20 MB. Choose Try sample to explore before using your own photo.": {
+    "ja": "「写真を読み込む」から20MB以下のPNG・JPG・WebPを選んでください。まず試したい場合は「サンプルで試す」を選びましょう。",
+    "zh": "点击“打开图片”，选择不超过20MB的PNG、JPG或WebP。也可以先点击“试用示例”体验功能。",
+    "es": "Pulsa Abrir imagen y elige un PNG, JPG o WebP de hasta 20 MB. Usa Probar ejemplo para explorar antes de editar tu propia foto."
+  },
+  "Choose your output size": {
+    "ja": "完成画像のサイズを選ぶ",
+    "zh": "选择成品尺寸",
+    "es": "Elige el tamaño de salida"
+  },
+  "Choose a preset in the output-size panel, or enter width and height. Enable Lock output aspect ratio to adjust both dimensions together.": {
+    "ja": "サイズ設定でプリセットを選ぶか、幅と高さを入力してください。「完成画像の比率を固定」をオンにすると、縦横を連動して調整できます。",
+    "zh": "在成品尺寸面板中选择预设，或输入宽度和高度。开启“锁定成品宽高比”后，宽高会按比例一起调整。",
+    "es": "Elige un preajuste o introduce ancho y alto. Activa Mantener proporción de salida para ajustar ambas dimensiones a la vez."
+  },
+  "Frame your photo": {
+    "ja": "写真を配置する",
+    "zh": "调整照片位置",
+    "es": "Encuadra tu foto"
+  },
+  "For a single photo, use Photo zoom and drag it in the preview. Click the photo, then use arrow keys to move 1 px or Shift + arrows to move 10 px.": {
+    "ja": "写真1枚の場合は拡大・縮小を調整し、プレビュー上でドラッグします。写真をクリックすると矢印キーで1px、Shift＋矢印で10pxずつ移動できます。",
+    "zh": "单张照片可使用缩放功能，并在预览中拖动。点击照片后，方向键可移动1px，Shift＋方向键可移动10px。",
+    "es": "Para una sola foto, ajusta el zoom y arrástrala en la vista previa. Haz clic en ella y usa las flechas para mover 1 px, o Shift + flechas para mover 10 px."
+  },
+  "Adjust and decorate": {
+    "ja": "色と飾りを加える",
+    "zh": "调整色彩并装饰",
+    "es": "Ajusta y decora"
+  },
+  "Adjust brightness, contrast, saturation and filters. Click a sticker to add it in the center. Add text to type your own message with line breaks, bold and a white outline.": {
+    "ja": "明るさ・コントラスト・彩度やフィルターで雰囲気を調整します。ステッカーを押すと中央に追加されます。「文字を追加」でメッセージを入力し、改行・太字・白い縁取りも使えます。",
+    "zh": "调整亮度、对比度、饱和度和滤镜。点击贴纸即可添加到中央。使用“添加文字”输入内容，支持换行、加粗和白色描边。",
+    "es": "Ajusta brillo, contraste, saturación y filtros. Pulsa una pegatina para añadirla en el centro. Añade texto con saltos de línea, negrita y contorno blanco."
+  },
+  "Download your image": {
+    "ja": "完成画像を保存する",
+    "zh": "下载成品图片",
+    "es": "Descarga tu imagen"
+  },
+  "Choose an export format and click Download image. The preview is scaled for your screen, but the selected pixel dimensions are preserved. Photos, stickers and text are combined into one image.": {
+    "ja": "保存形式を選び「画像をダウンロード」を押してください。プレビューが小さくても、指定したピクセル数で保存されます。写真・ステッカー・文字が1枚の画像になります。",
+    "zh": "选择导出格式并点击“下载图片”。预览会适配屏幕，但导出仍使用所选像素尺寸。照片、贴纸和文字将合成为一张图片。",
+    "es": "Elige un formato y pulsa Descargar imagen. La vista previa se adapta a tu pantalla, pero se conservan los píxeles elegidos. Fotos, pegatinas y texto se combinan en una imagen."
+  },
+  "How are photo zoom and output size different?": {
+    "ja": "写真の拡大率と完成サイズの違いは？",
+    "zh": "照片缩放和成品尺寸有什么区别？",
+    "es": "¿Qué diferencia hay entre zoom y tamaño de salida?"
+  },
+  "Output size is the width and height of the saved image. Photo zoom only changes the photo inside it. Zooming to 150% in a 1080×1350 preset still exports at 1080×1350.": {
+    "ja": "完成サイズは保存画像の幅と高さです。写真の拡大率はその中の写真だけを変更します。1080×1350のプリセットで150%に拡大しても、保存サイズは1080×1350のままです。",
+    "zh": "成品尺寸是保存图片的宽高。照片缩放只改变画布内的照片。选择1080×1350预设后，即使放大至150%，仍按1080×1350导出。",
+    "es": "El tamaño de salida es el ancho y alto del archivo. El zoom solo cambia la foto interior. Ampliar al 150% en un preajuste de 1080×1350 sigue exportando a 1080×1350."
+  },
+  "Which fit mode should I choose?": {
+    "ja": "配置方法はどれを選べばよいですか？",
+    "zh": "应该选择哪种适配方式？",
+    "es": "¿Qué modo de ajuste debo elegir?"
+  },
+  "Fit entire image keeps the whole photo and may add padding. Fill & crop fills the frame but may crop the edges. For a single photo, dark outer areas are cropped and only the area inside the bright border is saved. Collage photos fill their individual cells.": {
+    "ja": "「写真全体を収める」は全体を表示し、余白ができる場合があります。「枠いっぱいに切り抜く」は枠を埋めますが端が切れる場合があります。写真1枚では暗い外側が切り落とされ、明るい枠の内側だけが保存されます。コラージュは各枠を埋めるように配置されます。",
+    "zh": "“完整显示图片”会保留整张照片，但可能产生留白。“填满并裁剪”会铺满边框，但可能裁掉边缘。单张照片外侧的暗色区域不会保存，仅保存亮色边框内的内容。拼图照片会填满各自格子。",
+    "es": "Ajustar imagen completa conserva toda la foto y puede dejar márgenes. Rellenar y recortar llena el marco, pero puede cortar bordes. En una sola foto, las zonas oscuras exteriores se recortan. Las fotos del collage llenan sus celdas."
+  },
+  "Why can’t I recolor this sticker?": {
+    "ja": "ステッカーの色を変えられません。",
+    "zh": "为什么这张贴纸不能改色？",
+    "es": "¿Por qué no puedo cambiar el color de esta pegatina?"
+  },
+  "Shapes and icons marked with a dot can be recolored. Choose a recommended or custom color under Selected element. Emoji retain their original colors and may look different across devices.": {
+    "ja": "点印のある図形・アイコンは色を変更できます。「選択した要素」でおすすめの色や好きな色を選んでください。絵文字は元の色を使い、端末によって見た目が変わる場合があります。",
+    "zh": "带圆点标记的形状和图标可以改色。在“所选元素”中选择推荐色或自定义颜色。表情保留原有颜色，且可能因设备不同而呈现不同外观。",
+    "es": "Las formas e iconos con un punto permiten cambiar el color. Elige un color recomendado o personalizado en Elemento seleccionado. Los emoji conservan sus colores y pueden variar según el dispositivo."
+  },
+  "How do I select overlapping elements?": {
+    "ja": "重なった要素を選択するには？",
+    "zh": "如何选择重叠的元素？",
+    "es": "¿Cómo selecciono elementos superpuestos?"
+  },
+  "Select the item in the Layers list. Bring it to front, send it to back, duplicate or delete it. Adjust size, rotation and opacity using sliders, numbers or −/+ buttons.": {
+    "ja": "レイヤー一覧から項目を選びます。最前面・最背面への移動、複製、削除ができます。サイズ・回転・不透明度はスライダー、数値入力、−／＋で調整してください。",
+    "zh": "在图层列表中选择元素，可置顶、置底、复制或删除。使用滑块、数字输入或−／＋按钮调整大小、旋转和不透明度。",
+    "es": "Selecciona el elemento en Capas. Puedes traerlo al frente, enviarlo al fondo, duplicarlo o eliminarlo. Ajusta tamaño, rotación y opacidad con deslizadores, números o −/+."
+  },
+  "What if the photo looks blurry?": {
+    "ja": "写真がぼやけるときは？",
+    "zh": "照片看起来模糊怎么办？",
+    "es": "¿Qué hago si la foto se ve borrosa?"
+  },
+  "Enlarging a small photo can reduce sharpness. Use a larger original and avoid excessive zoom. Imports are limited to a 2400 px longest edge for single photos and 2000 px for collage photos. Output supports up to 4096 px per edge.": {
+    "ja": "小さな写真を大きくすると鮮明さが低下します。大きな元画像を使い、拡大しすぎないようにしましょう。読み込み時の長辺は写真1枚で最大2400px、コラージュで2000pxです。保存画像は各辺最大4096pxに対応します。",
+    "zh": "过度放大小照片会降低清晰度。尽量使用较大的原图并避免过度缩放。导入时，单张照片长边最多2400px，拼图照片最多2000px。输出每边最多4096px。",
+    "es": "Ampliar una foto pequeña reduce la nitidez. Usa un original más grande y evita el zoom excesivo. El lado mayor al importar se limita a 2400 px para una foto y 2000 px para collages. La salida admite hasta 4096 px por lado."
+  },
+  "How can I undo or reset placement?": {
+    "ja": "編集を戻したり配置をリセットするには？",
+    "zh": "如何撤销或重置位置？",
+    "es": "¿Cómo deshago cambios o restablezco la posición?"
+  },
+  "Undo and Redo let you revisit the latest 30 changes. Reset photo placement restores the photo’s base zoom and position. Reset adjustments restores brightness, contrast, saturation and the original filter.": {
+    "ja": "「元に戻す」「やり直す」で直近30段階を操作できます。写真配置のリセットは拡大率と位置を基準に戻します。色調整のリセットは明るさ・コントラスト・彩度・フィルターを初期化します。",
+    "zh": "使用撤销和重做可回溯最近30步。重置照片位置会恢复基础缩放与位置。重置调整会恢复亮度、对比度、饱和度和原图滤镜。",
+    "es": "Deshacer y Rehacer permiten recorrer los últimos 30 cambios. Restablecer posición de foto recupera el zoom y posición base. Restablecer ajustes recupera brillo, contraste, saturación y filtro original."
+  },
+  "Your easy image editing guide": {
+    "ja": "はじめてでも簡単・画像編集ガイド",
+    "zh": "轻松上手图片编辑",
+    "es": "Tu guía sencilla de edición de imágenes"
+  },
+  "Polish one photo or combine several into a collage. Follow the steps below to get started.": {
+    "ja": "写真1枚を整えたり、複数の写真をコラージュにしたり。次の手順で始めましょう。",
+    "zh": "修饰单张照片，或将多张照片拼成一张。按照以下步骤开始吧。",
+    "es": "Mejora una foto o combina varias en un collage. Sigue estos pasos para empezar."
+  },
+  "Combine photos · Make a collage": {
+    "ja": "写真をまとめる・コラージュ作成",
+    "zh": "合并照片・制作拼图",
+    "es": "Combina fotos · Crea un collage"
+  },
+  "Choose Side by side, Top and bottom, Featured + two or Four-cell grid in the top toolbar. Your existing photo goes into the first cell.": {
+    "ja": "上部で左右2分割・上下2分割・大きな写真＋2枚・4分割グリッドを選びます。既存の写真は最初の枠に入ります。",
+    "zh": "在顶部选择左右两格、上下两格、大图＋两张小图或四宫格。已有照片会放入第一个格子。",
+    "es": "Elige Dos columnas, Dos filas, Una grande y dos pequeñas o Cuadrícula de cuatro. Tu foto actual se coloca en la primera celda."
+  },
+  "Select a cell in the preview or its number in settings, then choose Add / replace photo. Open image also adds a photo to the selected cell in collage mode.": {
+    "ja": "プレビューの枠か設定の番号を選び「写真を追加・差し替え」を押します。コラージュでは「写真を読み込む」も選択中の枠に追加します。",
+    "zh": "选择预览中的格子或设置中的编号，然后点击“添加／替换照片”。拼图模式下，“打开图片”也会将照片加入所选格子。",
+    "es": "Selecciona una celda o su número y pulsa Añadir / reemplazar foto. En modo collage, Abrir imagen también añade la foto a la celda seleccionada."
+  },
+  "Drag each photo into place and adjust Selected photo zoom. Arrow keys also work. Clear cell removes only the selected photo.": {
+    "ja": "各写真をドラッグし、選択した写真の拡大率を調整してください。矢印キーでも移動できます。「枠を空にする」は選択した写真だけを削除します。",
+    "zh": "拖动各张照片并调整所选照片的缩放，也可以使用方向键。“清空格子”仅移除所选照片。",
+    "es": "Arrastra cada foto y ajusta su zoom. También puedes usar las flechas. Vaciar celda elimina solo la foto seleccionada."
+  },
+  "Up to four photos are retained when changing layouts. Empty cells use your background setting. Adjustments affect all collage photos; cell numbers and selection borders are not exported.": {
+    "ja": "レイアウトを変更しても最大4枚の写真を保持します。空の枠には背景設定が適用されます。色調整は全写真に適用され、枠番号や選択枠は保存されません。",
+    "zh": "切换布局时最多保留4张照片。空格子采用背景设置。调整会影响拼图中的全部照片；格子编号和选中边框不会导出。",
+    "es": "Se conservan hasta cuatro fotos al cambiar de diseño. Las celdas vacías usan el fondo elegido. Los ajustes afectan a todas las fotos; los números y bordes de selección no se exportan."
+  },
+  "Editing on your phone": {
+    "ja": "スマートフォンでの使い方",
+    "zh": "手机上如何编辑",
+    "es": "Edita desde tu móvil"
+  },
+  "Use the two settings tabs to expand or collapse the panels below the preview.": {
+    "ja": "2つの設定タブでプレビュー下のパネルを開閉できます。",
+    "zh": "使用两个设置标签展开或收起预览下方的面板。",
+    "es": "Usa las dos pestañas para abrir o cerrar los paneles bajo la vista previa."
+  },
+  "Photo settings: presets, add/replace photos, zoom, background and adjustments.": {
+    "ja": "写真・サイズ設定：プリセット、写真の追加・差し替え、拡大率、背景、色調整。",
+    "zh": "照片与尺寸设置：预设、添加／替换照片、缩放、背景及调整。",
+    "es": "Ajustes de foto: preajustes, añadir/reemplazar, zoom, fondo y ajustes."
+  },
+  "Stickers, text & export: add decorations, edit layers and download.": {
+    "ja": "ステッカー・文字・保存：飾りの追加、レイヤー編集、ダウンロード。",
+    "zh": "贴纸、文字与导出：添加装饰、编辑图层及下载。",
+    "es": "Pegatinas, texto y exportación: añade adornos, edita capas y descarga."
+  },
+  "Drag on a photo or sticker to move it. Swipe outside the preview to scroll the page.": {
+    "ja": "写真やステッカーを指でドラッグすると移動します。ページをスクロールするときはプレビューの外側をスワイプしてください。",
+    "zh": "用手指拖动照片或贴纸即可移动。要滚动页面，请在预览区域外滑动。",
+    "es": "Arrastra una foto o pegatina para moverla. Desliza fuera de la vista previa para desplazar la página."
+  },
+  "Use −/+ for fine adjustments. Tap the active tab again to hide its panel.": {
+    "ja": "微調整には−／＋を使いましょう。開いているタブをもう一度押すとパネルが閉じます。",
+    "zh": "使用−／＋进行微调。再次点击当前标签即可收起面板。",
+    "es": "Usa −/+ para ajustes precisos. Toca de nuevo la pestaña activa para cerrar su panel."
+  },
+  "Which download format should I use?": {
+    "ja": "保存形式はどれを選ぶ？",
+    "zh": "应该使用哪种下载格式？",
+    "es": "¿Qué formato de descarga elijo?"
+  },
+  "Transparency, text & graphics": {
+    "ja": "透明背景・文字・図形",
+    "zh": "透明背景、文字与图形",
+    "es": "Transparencia, texto y gráficos"
+  },
+  "Choose for transparency and crisp graphics.": {
+    "ja": "透明背景や鮮明な図形を保存するときにおすすめです。",
+    "zh": "适合保留透明背景与清晰图形。",
+    "es": "Ideal para transparencias y gráficos nítidos."
+  },
+  "Photo sharing & file size": {
+    "ja": "写真の共有・容量調整",
+    "zh": "照片分享与文件大小",
+    "es": "Compartir fotos y ajustar el tamaño"
+  },
+  "Lower quality to reduce size. Transparent areas use the selected background color.": {
+    "ja": "画質を下げると容量を抑えられます。透明部分には選択した背景色が入ります。",
+    "zh": "降低质量可减小文件体积。透明区域使用所选背景色填充。",
+    "es": "Reduce la calidad para disminuir el tamaño. Las transparencias usan el color de fondo elegido."
+  },
+  "Transparency & compression": {
+    "ja": "透明背景と圧縮",
+    "zh": "透明背景与压缩",
+    "es": "Transparencia y compresión"
+  },
+  "Supports transparency and adjustable compression. Check your destination supports it.": {
+    "ja": "透明背景と圧縮率の調整に対応します。投稿先で使える形式か確認してください。",
+    "zh": "支持透明背景与可调压缩，请确认目标平台支持此格式。",
+    "es": "Admite transparencia y compresión ajustable. Comprueba que la plataforma de destino lo acepte."
+  },
+  "Download before leaving": {
+    "ja": "終了する前にダウンロード",
+    "zh": "离开前请先下载",
+    "es": "Descarga antes de salir"
+  },
+  "Photos are processed in your browser without uploading or server storage. Edits are not autosaved and are lost on refresh or closing the page. Opening another photo in single-photo mode, or starting the sample, resets existing edits.": {
+    "ja": "写真はブラウザー内で処理され、サーバーに送信・保存されません。編集内容は自動保存されず、再読み込みやページを閉じると失われます。写真1枚モードで別の写真を読み込む、またはサンプルを開始すると編集が初期化されます。",
+    "zh": "照片在浏览器内处理，不会上传或保存到服务器。编辑不会自动保存，刷新或关闭页面后会丢失。单张照片模式下打开新照片，或启动示例，会重置已有编辑。",
+    "es": "Las fotos se procesan en tu navegador sin subirse ni guardarse en un servidor. No hay autoguardado: al recargar o cerrar se pierden los cambios. Abrir otra foto en modo individual o iniciar el ejemplo reinicia la edición."
+  },
+  "Quick answers": {
+    "ja": "よくある質問",
+    "zh": "常见问题",
+    "es": "Respuestas rápidas"
+  },
+  "Local editing": {
+    "ja": "ローカル編集",
+    "zh": "本地编辑",
+    "es": "Edición local"
+  },
+  "Pinterest Pin": {
+    "ja": "Pinterestピン",
+    "zh": "Pinterest图钉",
+    "es": "Pin de Pinterest"
+  }
+}

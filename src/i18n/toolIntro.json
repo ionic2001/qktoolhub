@@ -1,0 +1,42 @@
+{
+  "ko": {
+    "wordTitle": "실시간 글자수 세기",
+    "wordDescription": "텍스트를 입력하면 글자수·단어수·바이트를 바로 확인할 수 있습니다. 플랫폼별 글자 제한과 키워드 빈도도 함께 살펴보세요.",
+    "wordBadge": "텍스트 도구",
+    "currencyTitle": "실시간 환율 계산기",
+    "currencyDescription": "최신 제공 환율로 주요 통화의 금액을 한눈에 비교하세요. 금액과 기준 통화를 바꾸면 여러 통화로 함께 계산됩니다.",
+    "currencyBadge": "금융 도구"
+  },
+  "en": {
+    "wordTitle": "Real-time Word & Character Counter",
+    "wordDescription": "Count characters, words and bytes as you type. Check platform limits and keyword frequency in one place.",
+    "wordBadge": "Text tools",
+    "currencyTitle": "Real-time Currency Converter",
+    "currencyDescription": "Compare major currencies using the latest available exchange rates. Change the amount and base currency to calculate multiple conversions at once.",
+    "currencyBadge": "Finance tools"
+  },
+  "ja": {
+    "wordTitle": "リアルタイム文字数カウント",
+    "wordDescription": "入力しながら文字数・単語数・バイト数を確認できます。サービスごとの文字数制限やキーワードの頻度もまとめてチェック。",
+    "wordBadge": "テキストツール",
+    "currencyTitle": "リアルタイム為替計算",
+    "currencyDescription": "取得可能な最新の為替レートで主要通貨を比較できます。金額と基準通貨を変更すると、複数の通貨へまとめて換算します。",
+    "currencyBadge": "金融ツール"
+  },
+  "zh": {
+    "wordTitle": "实时字数统计",
+    "wordDescription": "输入文字即可查看字符数、单词数和字节数，同时检查各平台字数限制与关键词频率。",
+    "wordBadge": "文本工具",
+    "currencyTitle": "实时汇率换算器",
+    "currencyDescription": "使用最新可用汇率比较主要货币。调整金额和基准货币，即可同时换算多种货币。",
+    "currencyBadge": "金融工具"
+  },
+  "es": {
+    "wordTitle": "Contador de palabras y caracteres",
+    "wordDescription": "Cuenta caracteres, palabras y bytes mientras escribes. Consulta los límites de cada plataforma y la frecuencia de palabras clave.",
+    "wordBadge": "Herramientas de texto",
+    "currencyTitle": "Conversor de divisas en tiempo real",
+    "currencyDescription": "Compara monedas con los últimos tipos de cambio disponibles. Cambia el importe y la moneda base para calcular varias conversiones a la vez.",
+    "currencyBadge": "Herramientas financieras"
+  }
+}

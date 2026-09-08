@@ -1,0 +1,32 @@
+{
+  "ko": {
+    "title": "무료 이미지 편집기 · 크기 변경, 사진 콜라주, 스티커",
+    "description": "브라우저에서 사진 크기 변경과 자르기, 색감 보정, 콜라주, 스티커와 문구 추가를 무료로 이용하세요. 사진을 서버에 업로드하지 않고 PNG·JPG·WebP로 저장합니다.",
+    "name": "이미지 편집 스튜디오",
+    "category": "이미지 도구"
+  },
+  "en": {
+    "title": "Free Image Editor · Resize Photos, Collages & Stickers",
+    "description": "Resize and crop photos, adjust colors, create collages, and add stickers and text for free in your browser. Export PNG, JPG or WebP without uploading photos to a server.",
+    "name": "Image Editing Studio",
+    "category": "Image tools"
+  },
+  "ja": {
+    "title": "無料画像編集 · サイズ変更・コラージュ・ステッカー",
+    "description": "ブラウザーで写真のサイズ変更、切り抜き、色調整、コラージュ、ステッカーや文字入れを無料で。写真をサーバーへ送信せずPNG・JPG・WebPで保存できます。",
+    "name": "画像編集スタジオ",
+    "category": "画像ツール"
+  },
+  "zh": {
+    "title": "免费图片编辑器 · 调整尺寸、照片拼图与贴纸",
+    "description": "在浏览器中免费调整照片尺寸、裁剪、调色、制作拼图并添加贴纸和文字。照片无需上传服务器，可导出为PNG、JPG或WebP。",
+    "name": "图片编辑工作室",
+    "category": "图片工具"
+  },
+  "es": {
+    "title": "Editor de imágenes gratis · Tamaño, collages y pegatinas",
+    "description": "Cambia el tamaño, recorta fotos, ajusta colores y crea collages con pegatinas y texto gratis en tu navegador. Exporta PNG, JPG o WebP sin subir fotos a un servidor.",
+    "name": "Estudio de edición de imágenes",
+    "category": "Herramientas de imagen"
+  }
+}

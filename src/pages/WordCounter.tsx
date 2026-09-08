@@ -1,3 +1,5 @@
+import { ToolIntro } from '../components/ToolIntro';
+import toolIntro from '../i18n/toolIntro.json';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -13,7 +15,7 @@ import { calculateTextStats } from '../utils/counter';
 import { ArrowLeft } from 'lucide-react';
 
 export const WordCounterPage: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
   const [text, setText] = useState<string>('');
 
@@ -45,10 +47,11 @@ export const WordCounterPage: React.FC = () => {
           style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}
         >
           <ArrowLeft size={16} />
-          {t.backToHub}
+          {t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}
         </button>
       </div>
 
+      <ToolIntro badge={toolIntro[language].wordBadge} title={toolIntro[language].wordTitle} description={toolIntro[language].wordDescription} />
       {/* Top Banner Ad Slot */}
       <AdSlot slotId="word-counter-top-banner" />
 
