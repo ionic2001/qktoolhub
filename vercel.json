@@ -1,6 +1,183 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/home/ko.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/home/en.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/home/ja.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/home/zh.html"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/home/es.html"
+    },
+    {
+      "source": "/",
+      "destination": "/home/ko.html"
+    },
+    {
+      "source": "/word-counter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/word-counter/ko.html"
+    },
+    {
+      "source": "/word-counter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/word-counter/en.html"
+    },
+    {
+      "source": "/word-counter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/word-counter/ja.html"
+    },
+    {
+      "source": "/word-counter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/word-counter/zh.html"
+    },
+    {
+      "source": "/word-counter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/word-counter/es.html"
+    },
+    {
+      "source": "/word-counter",
+      "destination": "/word-counter/ko.html"
+    },
+    {
+      "source": "/currency-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/currency-converter/ko.html"
+    },
+    {
+      "source": "/currency-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/currency-converter/en.html"
+    },
+    {
+      "source": "/currency-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/currency-converter/ja.html"
+    },
+    {
+      "source": "/currency-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/currency-converter/zh.html"
+    },
+    {
+      "source": "/currency-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/currency-converter/es.html"
+    },
+    {
+      "source": "/currency-converter",
+      "destination": "/currency-converter/ko.html"
+    },
+    {
       "source": "/image-editor",
       "has": [
         {

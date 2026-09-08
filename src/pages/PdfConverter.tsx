@@ -1,3 +1,4 @@
+import { track } from '../utils/analytics';
 import { AdSlot } from '../components/AdSlot';
 import { pdfGuide } from '../i18n/pdfGuide';
 import { usePdfSeo } from '../utils/usePdfSeo';
@@ -39,7 +40,7 @@ export default function PdfConverterPage() {
     if (operation.current || !files.length) return;
     setError('');
     if (imagesRef.current.length + files.length > 20 || imagesRef.current.reduce((sum, i) => sum + i.size, 0) + files.reduce((sum, f) => sum + f.size, 0) > 100 * 1024 * 1024) { setError('batchError'); return; }
-    operation.current = true; setBusy(true); const added: PdfImage[] = [];
+    track('tool_action',{action:'pdf_convert_start'}); operation.current = true; setBusy(true); const added: PdfImage[] = [];
     try {
       for (const file of files) { added.push(await prepareImage(file)); if (!alive.current) break; }
       if (alive.current) updateImages([...imagesRef.current, ...added]); else added.forEach(i => URL.revokeObjectURL(i.url));
@@ -121,7 +122,7 @@ export default function PdfConverterPage() {
         <label>{text.orientation}<select disabled={busy || paper === 'original'} value={landscape ? 'landscape' : 'portrait'} onChange={e => setLandscape(e.target.value === 'landscape')}><option value="portrait">{text.portrait}</option><option value="landscape">{text.landscape}</option></select></label>
         <label>{text.margin}<select disabled={busy} value={margin} onChange={e => setMargin(Number(e.target.value))}>{[0, 10, 20].map(n => <option key={n} value={n}>{n} mm</option>)}</select></label>
         <button className="pdf-button pdf-wide" disabled={busy || !images.length} onClick={() => void makePdf()}>{text.create}</button>
-        {result && <div className="pdf-result"><button className="pdf-button pdf-wide" onClick={() => saveBlob(result, 'qktoolhub-images.pdf')}>{text.downloadPdf}</button>{resultUrl && <a href={resultUrl} target="_blank" rel="noreferrer">{text.view} ↗</a>}</div>}
+        {result && <div className="pdf-result"><button className="pdf-button pdf-wide" onClick={() => {saveBlob(result, 'qktoolhub-images.pdf');track('tool_download',{action:'pdf_export'});}}>{text.downloadPdf}</button>{resultUrl && <a href={resultUrl} target="_blank" rel="noreferrer">{text.view} ↗</a>}</div>}
       </section><section className="glass-card pdf-panel"><div className="pdf-heading"><h2>{images.length} / 20 {text.count}</h2><button className="pdf-link" disabled={busy || !images.length} onClick={() => { images.forEach(i => URL.revokeObjectURL(i.url)); updateImages([]); }}>{text.clear}</button></div>
         {!images.length ? <div className="pdf-empty"><FileText size={64} /><p>{text.empty}</p></div> : <ol className="pdf-image-list">{images.map((item, index) => <li key={item.id}><img src={item.url} alt={item.name} /><div><strong>{index + 1}. {item.name}</strong><small>{item.width} × {item.height}px</small></div><div className="pdf-actions"><button aria-label={`${text.up}: ${item.name}`} disabled={busy || !index} onClick={() => reorder(index, -1)}><ArrowUp size={16} /></button><button aria-label={`${text.down}: ${item.name}`} disabled={busy || index === images.length - 1} onClick={() => reorder(index, 1)}><ArrowDown size={16} /></button><button aria-label={`${text.remove}: ${item.name}`} disabled={busy} onClick={() => removeImage(item.id)}><Trash2 size={16} /></button></div></li>)}</ol>}
       </section></div> : <div className="pdf-layout"><section className="glass-card pdf-panel"><h2>{text.selectPdf}</h2><div className="pdf-drop" onDragOver={e => e.preventDefault()} onDrop={e => { e.preventDefault(); if (e.dataTransfer.files[0]) void loadPdf(e.dataTransfer.files[0]); }}><FileText size={32} /><p>{text.drag}</p><button className="pdf-button" disabled={busy} onClick={() => pdfInput.current?.click()}>{text.selectPdf}</button><small>{text.pdfLimit}</small></div>

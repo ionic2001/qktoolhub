@@ -1,9 +1,13 @@
 export const worldText = {
   "ko": {
+    "day": "낮",
+    "night": "밤",
+    "dayNightHelp": "현지 시간 06:00–18:00 기준",
+
     "skin": "시계 스킨",
     "skins": {"default": "기본", "airport": "에어포트 플립", "minimal": "미니멀", "led": "레트로 LED"},
     "title": "세계시간 & 집중 타이머",
-    "subtitle": "지금 이 순간, 세계의 시간과 나의 페이스를 한 화면에.",
+    "subtitle": "지금 이 순간, 세계의 시간과 나의 시간을 한 화면에.",
     "clock": "세계시간",
     "stopwatch": "스톱워치",
     "timer": "카운트다운",
@@ -57,7 +61,7 @@ export const worldText = {
     "controls": "마우스를 움직이거나 Tab 키로 설정을 표시하세요. Esc로 종료합니다.",
     "category": "시간 / 생산성",
     "background": "시계 배경색",
-    "focus": "집중업무 시계",
+    "focus": "업무집중시계",
     "focusDate": "시작 날짜",
     "from": "시작 시간",
     "until": "종료 시간",
@@ -68,12 +72,16 @@ export const worldText = {
     "focusHelp": "로컬시간 기준입니다. 시작 전에는 대기하고 시작 후에는 종료까지 카운트다운합니다. 종료 시간이 시작보다 이르면 다음 날 종료합니다. 페이지를 닫거나 새로고침하면 집중 설정이 초기화됩니다.",
     "focusInvalid": "날짜와 시간을 확인해 주세요. 시작·종료는 달라야 하며 종료 시각은 현재보다 이후여야 합니다.",
     "cancel": "집중 설정 해제",
-    "focusEmpty": "아래에서 시작·종료 시간을 설정하세요.",
+    "focusEmpty": "설정버튼에서 시간을 설정하세요.",
     "progress": "집중 진행률",
     "settings": "설정",
     "closeSettings": "설정 닫기"
   },
   "en": {
+    "day": "Day",
+    "night": "Night",
+    "dayNightHelp": "Based on local time, 06:00–18:00",
+
     "skin": "Clock skin",
     "skins": {"default": "Default", "airport": "Airport flip", "minimal": "Minimal", "led": "Retro LED"},
     "title": "World Clock & Focus Timer",
@@ -142,12 +150,16 @@ export const worldText = {
     "focusHelp": "Uses local time. Waits until the start, then counts down to the end. An earlier end time means the following day. Closing or refreshing this page resets the session.",
     "focusInvalid": "Check the date and times. Start and end must differ, and the end must be in the future.",
     "cancel": "Cancel session",
-    "focusEmpty": "Set the start and end times below.",
+    "focusEmpty": "Set the times using the Settings button.",
     "progress": "Session progress",
     "settings": "Settings",
     "closeSettings": "Close settings"
   },
   "ja": {
+    "day": "昼",
+    "night": "夜",
+    "dayNightHelp": "現地時間06:00〜18:00が基準",
+
     "skin": "時計のスキン",
     "skins": {"default": "標準", "airport": "エアポートフリップ", "minimal": "ミニマル", "led": "レトロLED"},
     "title": "世界時計と集中タイマー",
@@ -216,12 +228,16 @@ export const worldText = {
     "focusHelp": "ローカル時間が基準です。開始まで待機し、その後は終了までカウントダウンします。終了が開始より早い場合は翌日です。ページ終了・再読み込みでリセットされます。",
     "focusInvalid": "日時を確認してください。開始と終了は異なる時刻で、終了は現在より後にしてください。",
     "cancel": "集中設定を解除",
-    "focusEmpty": "下で開始・終了時刻を設定してください。",
+    "focusEmpty": "設定ボタンから時刻を設定してください。",
     "progress": "集中進捗",
     "settings": "設定",
     "closeSettings": "設定を閉じる"
   },
   "zh": {
+    "day": "白天",
+    "night": "夜晚",
+    "dayNightHelp": "以当地时间06:00–18:00为准",
+
     "skin": "时钟外观",
     "skins": {"default": "默认", "airport": "机场翻页", "minimal": "极简", "led": "复古LED"},
     "title": "世界时钟与专注计时器",
@@ -290,12 +306,16 @@ export const worldText = {
     "focusHelp": "以本地时间为准，开始前等待，开始后倒计时至结束。结束时间早于开始时间时视为次日。关闭或刷新页面会重置设置。",
     "focusInvalid": "请检查日期和时间，开始与结束不能相同，结束必须晚于现在。",
     "cancel": "取消专注设置",
-    "focusEmpty": "请在下方设置开始和结束时间。",
+    "focusEmpty": "请点击设置按钮设置时间。",
     "progress": "专注进度",
     "settings": "设置",
     "closeSettings": "关闭设置"
   },
   "es": {
+    "day": "Día",
+    "night": "Noche",
+    "dayNightHelp": "Según la hora local, 06:00–18:00",
+
     "skin": "Estilo del reloj",
     "skins": {"default": "Predeterminado", "airport": "Panel de aeropuerto", "minimal": "Minimalista", "led": "LED retro"},
     "title": "Reloj mundial y temporizador",
@@ -364,7 +384,7 @@ export const worldText = {
     "focusHelp": "Usa la hora local. Espera al inicio y después cuenta hasta el final. Si la hora final es anterior, termina al día siguiente. Cerrar o recargar reinicia la sesión.",
     "focusInvalid": "Revisa la fecha y las horas. El inicio y el final deben ser distintos y el final debe estar en el futuro.",
     "cancel": "Cancelar sesión",
-    "focusEmpty": "Configura abajo las horas de inicio y fin.",
+    "focusEmpty": "Configura las horas con el botón Ajustes.",
     "progress": "Progreso de sesión",
     "settings": "Ajustes",
     "closeSettings": "Cerrar ajustes"

@@ -1,3 +1,4 @@
+import { track } from '../utils/analytics';
 import { AdSlot } from '../components/AdSlot';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -148,7 +149,7 @@ export function PixelArtPage() {
     canvas.current?.toBlob(blob => {
       if (!blob) { setError(tr("다운로드를 준비하지 못했습니다. 다시 시도해 주세요.")); return; }
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = `${name}-pixel-${size}px.png`; a.click();
+      const a = document.createElement('a'); a.href = url; a.download = `${name}-pixel-${size}px.png`; a.click(); track('tool_download', {action:'image_export'});
       setTimeout(() => URL.revokeObjectURL(url), 10000);
     }, 'image/png');
   }

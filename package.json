@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/build-pixel-seo.mjs && node scripts/build-pdf-seo.mjs && node scripts/build-world-seo.mjs && node scripts/build-editor-seo.mjs && node scripts/build-sitemap.mjs",
+    "build": "tsc && vite build && node scripts/build-pixel-seo.mjs && node scripts/build-pdf-seo.mjs && node scripts/build-world-seo.mjs && node scripts/build-editor-seo.mjs && node scripts/build-sitemap.mjs && node scripts/build-basic-seo.cjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "push": "cmd /c sync.bat"

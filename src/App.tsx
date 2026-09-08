@@ -1,3 +1,4 @@
+import { PageTracking } from './components/PageTracking';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { LanguageProvider } from './i18n/LanguageContext';
@@ -16,6 +17,7 @@ export const App: React.FC = () => {
     <ErrorBoundary>
       <LanguageProvider>
         <BrowserRouter>
+          <PageTracking />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/image-editor" element={<Suspense fallback={<div role="status">…</div>}><ImageEditor /></Suspense>} />

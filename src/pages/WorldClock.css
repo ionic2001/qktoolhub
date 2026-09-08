@@ -13,3 +13,7 @@
 @media(max-width:650px){.world-settings-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);border-radius:12px}.world-settings-body{padding:.8rem}.world-settings-header{padding:.8rem 1rem}}
 
 .world-background-bar{display:flex;align-items:center;justify-content:center;gap:.8rem;flex-wrap:wrap;padding:1rem 0 .2rem;color:var(--world-ink);font-size:.8rem}.world-background-bar>label{display:flex;gap:.6rem;align-items:center}.world-background-bar input[type=color]{width:35px;height:28px;padding:0;border:0;background:transparent}.world-guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 2rem}.world-guide-grid h3{font-size:1rem;margin-bottom:.6rem}.world-guide-grid p{line-height:1.95}.world-stage:fullscreen .world-background-bar{padding:.6rem 0 0}@media(max-width:750px){.world-guide-grid{grid-template-columns:1fr}}
+
+.world-city-heading{display:flex;align-items:center;justify-content:space-between;gap:.5rem;width:100%;text-align:left}
+.world-daylight{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#ffffff08}
+.world-daylight.is-day{color:#ffd166}.world-daylight.is-night{color:#c0caff}

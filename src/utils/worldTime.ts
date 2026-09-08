@@ -14,3 +14,15 @@ export function nextAlarm(time: string, zone: string, days: number[], after: num
   return after+86400000;
 }
 export function validZone(zone: string) { try { new Intl.DateTimeFormat('en',{timeZone:zone}).format(); return true; } catch { return false; } }
+
+// A local-time day/night indicator, not a weather or sunrise forecast.
+const daylightFormatters = new Map<string, Intl.DateTimeFormat>();
+export function isDaytime(now: number, zone: string): boolean {
+  let formatter = daylightFormatters.get(zone);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat('en-US', { timeZone: zone, hour: 'numeric', hourCycle: 'h23' });
+    daylightFormatters.set(zone, formatter);
+  }
+  const hour = Number(formatter.format(now));
+  return hour >= 6 && hour < 18;
+}

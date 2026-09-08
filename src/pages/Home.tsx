@@ -1,3 +1,4 @@
+import { track } from '../utils/analytics';
 import editorMeta from '../i18n/editorMeta.json';
 import { worldText } from '../i18n/worldText';
 import { pdfText } from '../i18n/pdfTranslations';
@@ -114,6 +115,7 @@ export const Home: React.FC = () => {
                 }}
                 onClick={() => {
                   if (isLive) {
+                    if (tool.id !== 'stickerbook') track('menu_click', { destination: tool.path, menu_id: tool.id, menu_location: 'home_grid' });
                     navigate(tool.path);
                   }
                 }}
