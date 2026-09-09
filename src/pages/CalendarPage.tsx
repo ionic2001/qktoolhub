@@ -390,7 +390,14 @@ export default function CalendarPage() {
 
           <button
             className="btn-print"
-            onClick={() => window.print()}
+            onClick={() => {
+              if (activeTab !== 'calendar') {
+                setActiveTab('calendar');
+                setTimeout(() => window.print(), 100);
+              } else {
+                window.print();
+              }
+            }}
             title="A4 규격 인쇄"
           >
             <Printer size={15} />
@@ -427,10 +434,35 @@ export default function CalendarPage() {
         </button>
       </div>
 
+      {/* Print Only Year Header */}
+      <div className="calendar-print-header">
+        <h1 className="print-year-title">
+          {currentYear}
+          {language === 'ko'
+            ? '년 달력'
+            : language === 'ja'
+            ? '年 カレンダー'
+            : language === 'zh'
+            ? '年 日历'
+            : language === 'es'
+            ? ' Calendario'
+            : ' Calendar'}
+        </h1>
+        {selectedCountries.length > 0 && (
+          <p className="print-subtitle">
+            {selectedCountries
+              .map((c) => {
+                const meta = SUPPORTED_COUNTRIES.find((item) => item.code === c);
+                return meta ? `${meta.flag} ${meta.name[language] || c}` : c;
+              })
+              .join(' · ')}
+          </p>
+        )}
+      </div>
+
       {/* TAB 1: Year View Calendar (Time.is Inspiration) */}
-      {activeTab === 'calendar' && (
-        <div className="calendar-grid-year">
-          {Array.from({ length: 12 }).map((_, monthIdx) => {
+      <div className={`calendar-grid-year ${activeTab !== 'calendar' ? 'print-only-grid' : ''}`}>
+        {Array.from({ length: 12 }).map((_, monthIdx) => {
             const firstDay = new Date(currentYear, monthIdx, 1);
             const daysInMonth = new Date(currentYear, monthIdx + 1, 0).getDate();
             const startDayOfWeek = firstDay.getDay(); // 0: 일, 6: 토
@@ -586,7 +618,6 @@ export default function CalendarPage() {
             );
           })}
         </div>
-      )}
 
       {/* TAB 2: Holidays & Golden Vacation Planner */}
       {activeTab === 'holidays' && (

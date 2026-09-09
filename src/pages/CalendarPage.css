@@ -1037,19 +1037,44 @@
   line-height: 1.6;
 }
 
+/* Screen hidden for print-only elements */
+.calendar-print-header {
+  display: none;
+}
+
+.calendar-grid-year.print-only-grid {
+  display: none;
+}
+
 /* ==========================================================================
-   Print Optimization (@media print)
+   Print Optimization (@media print) - Single A4 Page Precision Layout
    ========================================================================== */
 
+@page {
+  size: A4 portrait;
+  margin: 6mm 8mm;
+}
+
 @media print {
+  html,
   body {
-    background: #fff !important;
-    color: #000 !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 11px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  .site-header,
+  /* 1. 모든 불필요한 웹 UI 요소 숨김 (오직 달력과 연도 타이틀만 출력) */
+  header,
+  .header-wrapper,
   .btn-tool,
   .calendar-intro,
+  .ad-container,
   .ad-slot-container,
   .calendar-progress-card,
   .calendar-toolbar,
@@ -1057,50 +1082,205 @@
   .tab-holidays-container,
   .tab-calculator-container,
   .calendar-help,
-  footer {
+  footer,
+  .app-footer,
+  dialog,
+  .calendar-country-dialog,
+  .calendar-hover-tooltip {
     display: none !important;
   }
 
-  .calendar-page {
+  /* 2. 메인 컨테이너 여백 리셋 */
+  .calendar-page,
+  .app-container {
     padding: 0 !important;
+    margin: 0 !important;
     max-width: 100% !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    background: transparent !important;
   }
 
+  /* 3. 인쇄 전용 상단 연도 헤더 */
+  .calendar-print-header {
+    display: block !important;
+    text-align: center !important;
+    margin: 0 0 2.5mm 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-year-title {
+    font-size: 16pt !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .print-subtitle {
+    font-size: 7.5pt !important;
+    color: #4b5563 !important;
+    margin: 1mm 0 0 0 !important;
+    line-height: 1 !important;
+  }
+
+  /* 4. 12개월 연간 그리드: A4 세로(Portrait) 기준 3열 x 4행 */
   .calendar-grid-year {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 8px !important;
-    page-break-inside: avoid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2.5mm !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
+  /* A4 가로(Landscape) 인쇄 시: 4열 x 3행 자동 전환 */
+  @media (orientation: landscape) {
+    @page {
+      size: A4 landscape;
+      margin: 5mm 8mm;
+    }
+
+    .calendar-print-header {
+      margin: 0 0 2mm 0 !important;
+    }
+
+    .print-year-title {
+      font-size: 15pt !important;
+    }
+
+    .calendar-grid-year {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 2mm !important;
+    }
+  }
+
+  /* 5. 개별 월 카드 */
   .month-card {
-    border: 1px solid #ccc !important;
-    background: #fff !important;
-    padding: 4px !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 3px !important;
+    background: #ffffff !important;
+    padding: 1.5mm 1.8mm !important;
     box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .month-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 1mm !important;
+    padding-bottom: 0.8mm !important;
+    border-bottom: 1px solid #e5e7eb !important;
   }
 
   .month-name {
-    font-size: 0.9rem !important;
-    color: #000 !important;
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
   }
 
+  /* 상단에 메인 연도가 크게 있으므로 월별 내부 연도 표시는 숨김 */
+  .month-year {
+    display: none !important;
+  }
+
+  .month-table {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1px !important;
+  }
+
+  .week-header-row {
+    font-size: 6.5pt !important;
+    font-weight: 700 !important;
+    color: #4b5563 !important;
+    padding: 1px 0 !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+  }
+
+  .week-header-row.has-week-num,
+  .week-row.has-week-num {
+    grid-template-columns: 13px repeat(7, 1fr) !important;
+  }
+
+  .week-header-row:not(.has-week-num),
+  .week-row:not(.has-week-num) {
+    grid-template-columns: repeat(7, 1fr) !important;
+  }
+
+  .col-w,
+  .cell-week-num {
+    font-size: 5.5pt !important;
+    color: #9ca3af !important;
+    font-family: monospace !important;
+  }
+
+  .col-wd.is-sunday {
+    color: #dc2626 !important;
+  }
+
+  .col-wd.is-saturday {
+    color: #2563eb !important;
+  }
+
+  /* 6. 날짜 셀 */
   .day-cell {
-    min-height: 24px !important;
-    padding: 1px !important;
-    color: #000 !important;
+    min-height: 14px !important;
+    max-height: 19px !important;
+    padding: 0.5px !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    cursor: default !important;
+  }
+
+  /* 이전달/다음달 날짜는 투명 처리하여 현재 달 날짜만 깨끗하게 표시 */
+  .day-cell.other-month {
+    visibility: hidden !important;
   }
 
   .day-number {
-    font-size: 0.75rem !important;
+    font-size: 7pt !important;
+    line-height: 1 !important;
+    font-weight: 500 !important;
+    color: #1f2937 !important;
   }
 
   .day-cell.is-sunday .day-number {
     color: #dc2626 !important;
+    font-weight: 600 !important;
   }
 
   .day-cell.is-saturday .day-number {
     color: #2563eb !important;
+    font-weight: 600 !important;
+  }
+
+  /* 공휴일: 빨간색 볼드 */
+  .day-cell.has-holiday .day-number {
+    color: #dc2626 !important;
+    font-weight: 700 !important;
+  }
+
+  .day-cell.is-today {
+    border: 1px solid #111827 !important;
+    border-radius: 2px !important;
+  }
+
+  .day-cell.is-today .day-number {
+    color: #111827 !important;
+    font-weight: 800 !important;
+  }
+
+  /* 인쇄 시 이모지 배지 및 태그는 여백 및 높이 팽창 방지를 위해 숨김 */
+  .holiday-badges-container,
+  .son-free-tag,
+  .solar-term-tag {
+    display: none !important;
   }
 }
 
