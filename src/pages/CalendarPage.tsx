@@ -29,10 +29,17 @@ import {
   SOLAR_TERMS_2026,
   SON_FREE_DAYS_2026,
   calculateBusinessDays,
-  formatDateUtc,
 } from '../data/holidays';
 import { exportHolidaysToIcs } from '../utils/calendarIcs';
 import './CalendarPage.css';
+
+// 로컬 타임존 기준 YYYY-MM-DD 포맷 함수 (UTC 시차 오프셋 방지)
+function formatYmd(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
 
 // ISO 8601 Week Number 계산 함수
 function getIsoWeekNumber(d: Date): number {
@@ -220,7 +227,7 @@ export default function CalendarPage() {
         // 화요일 공휴일 -> 월요일 연차 추천
         const mon = new Date(d);
         mon.setDate(mon.getDate() - 1);
-        const mStr = formatDateUtc(mon);
+        const mStr = formatYmd(mon);
         tips.push({
           holiday: h,
           tipDate: mStr,
@@ -230,7 +237,7 @@ export default function CalendarPage() {
         // 목요일 공휴일 -> 금요일 연차 추천
         const fri = new Date(d);
         fri.setDate(fri.getDate() + 1);
-        const fStr = formatDateUtc(fri);
+        const fStr = formatYmd(fri);
         tips.push({
           holiday: h,
           tipDate: fStr,
@@ -429,8 +436,8 @@ export default function CalendarPage() {
             const startDayOfWeek = firstDay.getDay(); // 0: 일, 6: 토
 
             // 달력 행(주) 생성
-            const weeks: Array<Array<{ dateStr: string; day: number; isCurrentMonth: boolean; weekNum: number }>> = [];
-            let currentWeek: Array<{ dateStr: string; day: number; isCurrentMonth: boolean; weekNum: number }> = [];
+            const weeks: Array<Array<{ dateStr: string; day: number; dayOfWeek: number; isCurrentMonth: boolean; weekNum: number }>> = [];
+            let currentWeek: Array<{ dateStr: string; day: number; dayOfWeek: number; isCurrentMonth: boolean; weekNum: number }> = [];
 
             // 이전 달 빈 칸
             const prevMonthDays = new Date(currentYear, monthIdx, 0).getDate();
@@ -438,8 +445,9 @@ export default function CalendarPage() {
               const d = prevMonthDays - i;
               const dateObj = new Date(currentYear, monthIdx - 1, d);
               currentWeek.push({
-                dateStr: formatDateUtc(dateObj),
+                dateStr: formatYmd(dateObj),
                 day: d,
+                dayOfWeek: currentWeek.length,
                 isCurrentMonth: false,
                 weekNum: getIsoWeekNumber(dateObj),
               });
@@ -448,10 +456,11 @@ export default function CalendarPage() {
             // 이번 달 날짜 채우기
             for (let d = 1; d <= daysInMonth; d++) {
               const dateObj = new Date(currentYear, monthIdx, d);
-              const dateStr = formatDateUtc(dateObj);
+              const dateStr = formatYmd(dateObj);
               currentWeek.push({
                 dateStr,
                 day: d,
+                dayOfWeek: currentWeek.length,
                 isCurrentMonth: true,
                 weekNum: getIsoWeekNumber(dateObj),
               });
@@ -468,8 +477,9 @@ export default function CalendarPage() {
               while (currentWeek.length < 7) {
                 const dateObj = new Date(currentYear, monthIdx + 1, nextD);
                 currentWeek.push({
-                  dateStr: formatDateUtc(dateObj),
+                  dateStr: formatYmd(dateObj),
                   day: nextD,
+                  dayOfWeek: currentWeek.length,
                   isCurrentMonth: false,
                   weekNum: getIsoWeekNumber(dateObj),
                 });
@@ -486,7 +496,7 @@ export default function CalendarPage() {
                 </div>
 
                 <div className="month-table">
-                  <div className="week-header-row">
+                  <div className={`week-header-row ${showWeekNumbers ? 'has-week-num' : ''}`}>
                     {showWeekNumbers && <span className="col-w">W</span>}
                     {s.weekdays.map((wd, wIdx) => (
                       <span
@@ -501,14 +511,14 @@ export default function CalendarPage() {
                   {weeks.map((week, wIdx) => {
                     const rowWeekNum = week[0]?.weekNum;
                     return (
-                      <div key={wIdx} className="week-row">
+                      <div key={wIdx} className={`week-row ${showWeekNumbers ? 'has-week-num' : ''}`}>
                         {showWeekNumbers && <span className="cell-week-num">{rowWeekNum}</span>}
                         {week.map((cell) => {
                           const isToday = cell.dateStr === todayStr;
                           const holidaysOnDay = holidaysMap.get(cell.dateStr) || [];
                           const hasHoliday = holidaysOnDay.length > 0;
-                          const cellDateObj = new Date(cell.dateStr + 'T00:00:00');
-                          const dow = cellDateObj.getDay();
+                          const isSunday = cell.dayOfWeek === 0;
+                          const isSaturday = cell.dayOfWeek === 6;
                           const isPast = cell.dateStr < todayStr;
                           const isSonFree =
                             showLunar &&
@@ -525,7 +535,7 @@ export default function CalendarPage() {
                               className={`day-cell ${!cell.isCurrentMonth ? 'other-month' : ''} ${
                                 isToday ? 'is-today' : ''
                               } ${hasHoliday ? 'has-holiday' : ''} ${
-                                dow === 0 ? 'is-sunday' : dow === 6 ? 'is-saturday' : ''
+                                isSunday ? 'is-sunday' : isSaturday ? 'is-saturday' : ''
                               } ${isPast ? 'is-past' : ''}`}
                               onClick={() => setSelectedDateDetail(cell.dateStr)}
                               onMouseEnter={(e) => {
@@ -886,7 +896,8 @@ export default function CalendarPage() {
               const startOfYear = new Date(dt.getFullYear(), 0, 1);
               const dayOfYear = Math.floor((dt.getTime() - startOfYear.getTime()) / 86400000) + 1;
               const isoWeek = getIsoWeekNumber(dt);
-              const ddayDiff = Math.round((dt.getTime() - today.setHours(0, 0, 0, 0)) / 86400000);
+              const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+              const ddayDiff = Math.round((dt.getTime() - todayMidnight) / 86400000);
               const hOnDay = holidaysMap.get(selectedDateDetail) || [];
               const isSonFree = SON_FREE_DAYS_2026.has(selectedDateDetail);
               const solarTerm = SOLAR_TERMS_2026[selectedDateDetail];

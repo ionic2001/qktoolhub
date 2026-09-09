@@ -297,10 +297,19 @@
 .week-header-row,
 .week-row {
   display: grid;
-  grid-template-columns: 24px repeat(7, 1fr);
   align-items: center;
   text-align: center;
   gap: 2px;
+}
+
+.week-header-row.has-week-num,
+.week-row.has-week-num {
+  grid-template-columns: 24px repeat(7, 1fr);
+}
+
+.week-header-row:not(.has-week-num),
+.week-row:not(.has-week-num) {
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .week-header-row {
@@ -374,6 +383,11 @@
 
 .day-cell.has-holiday {
   background: rgba(239, 68, 68, 0.08);
+}
+
+.day-cell.has-holiday:not(.is-saturday) .day-number {
+  color: #ef4444;
+  font-weight: 600;
 }
 
 .day-number {
