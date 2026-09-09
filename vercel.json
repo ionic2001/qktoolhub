@@ -355,6 +355,65 @@
       "destination": "/world-clock/ko.html"
     },
     {
+      "source": "/calendar",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/calendar/ko.html"
+    },
+    {
+      "source": "/calendar",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/calendar/en.html"
+    },
+    {
+      "source": "/calendar",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/calendar/ja.html"
+    },
+    {
+      "source": "/calendar",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/calendar/zh.html"
+    },
+    {
+      "source": "/calendar",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/calendar/es.html"
+    },
+    {
+      "source": "/calendar",
+      "destination": "/calendar/ko.html"
+    },
+    {
       "source": "/pdf-converter",
       "has": [
         {

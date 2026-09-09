@@ -14,6 +14,7 @@ const ImageEditor = lazy(() => import('./pages/ImageEditor'));
 const PdfConverterPage = lazy(() => import('./pages/PdfConverter'));
 
 const WorldClockPage = lazy(() => import('./pages/WorldClock'));
+const CalendarPage = lazy(() => import('./pages/CalendarPage'));
 export const App: React.FC = () => {
   return (
     <ErrorBoundary>
@@ -23,6 +24,7 @@ export const App: React.FC = () => {
           <VercelAnalytics />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/calendar" element={<Suspense fallback={<div role="status">…</div>}><CalendarPage /></Suspense>} />
             <Route path="/unit-converter" element={<Suspense fallback={<div role="status">…</div>}><UnitConverter /></Suspense>} />
             <Route path="/image-editor" element={<Suspense fallback={<div role="status">…</div>}><ImageEditor /></Suspense>} />
             <Route path="/world-clock" element={<Suspense fallback={<div role="status">…</div>}><WorldClockPage /></Suspense>} />

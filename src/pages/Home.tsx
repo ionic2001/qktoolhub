@@ -1,3 +1,4 @@
+import { calendarText } from '../i18n/calendarText';
 import { copy as unitCopy } from '../features/units/text';
 import { track } from '../utils/analytics';
 import editorMeta from '../i18n/editorMeta.json';
@@ -30,9 +31,12 @@ export const Home: React.FC = () => {
   rawTools.splice(Math.min(3, rawTools.length), 0, { id: 'pdf-converter', title: pdf.title, desc: pdf.subtitle, category: pdf.docs, badge: 'New', path: '/pdf-converter', isLive: true });
   const clock = worldText[language];
   rawTools.splice(Math.min(4, rawTools.length), 0, { id: 'world-clock', title: clock.title, desc: clock.subtitle, category: clock.category, badge: 'New', path: '/world-clock', isLive: true });
-  rawTools.splice(Math.min(5, rawTools.length), 0, { id: 'image-editor', title: editorMeta[language].name, desc: editorMeta[language].description, category: editorMeta[language].category, badge: 'New', path: '/image-editor', isLive: true });
+  const cal = calendarText[language] || calendarText.ko;
+  const calCat = { ko: '시간 / 일정', en: 'Time / Calendar', ja: '時間・カレンダー', zh: '时间 / 日程', es: 'Tiempo / Calendario' }[language] || 'Time / Calendar';
+  rawTools.splice(Math.min(5, rawTools.length), 0, { id: 'calendar', title: cal.title, desc: cal.subtitle, category: calCat, badge: 'New', path: '/calendar', isLive: true });
+  rawTools.splice(Math.min(6, rawTools.length), 0, { id: 'image-editor', title: editorMeta[language].name, desc: editorMeta[language].description, category: editorMeta[language].category, badge: 'New', path: '/image-editor', isLive: true });
   const unitIndex=['ko','en','ja','zh','es'].indexOf(language);
-  rawTools.splice(6,0,{id:'unit-converter',title:unitCopy.title[unitIndex],desc:unitCopy.subtitle[unitIndex],category:unitCopy.title[unitIndex],badge:'New',path:'/unit-converter',isLive:true});
+  rawTools.splice(7,0,{id:'unit-converter',title:unitCopy.title[unitIndex],desc:unitCopy.subtitle[unitIndex],category:unitCopy.title[unitIndex],badge:'New',path:'/unit-converter',isLive:true});
   const filteredTools = rawTools.filter((tool: ToolItem) => {
     const q = searchTerm.toLowerCase();
     return (

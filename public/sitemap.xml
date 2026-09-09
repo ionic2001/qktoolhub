@@ -61,6 +61,66 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/"/>
   </url>
   <url>
+    <loc>https://qktoolhub.com/calendar</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/calendar?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/calendar?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/calendar?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/calendar?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/calendar?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/calendar"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/calendar?lang=ko</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/calendar?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/calendar?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/calendar?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/calendar?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/calendar?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/calendar"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/calendar?lang=en</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/calendar?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/calendar?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/calendar?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/calendar?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/calendar?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/calendar"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/calendar?lang=ja</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/calendar?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/calendar?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/calendar?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/calendar?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/calendar?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/calendar"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/calendar?lang=zh</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/calendar?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/calendar?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/calendar?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/calendar?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/calendar?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/calendar"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/calendar?lang=es</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/calendar?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/calendar?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/calendar?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/calendar?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/calendar?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/calendar"/>
+  </url>
+  <url>
     <loc>https://qktoolhub.com/unit-converter</loc>
     <lastmod>2026-09-09</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>

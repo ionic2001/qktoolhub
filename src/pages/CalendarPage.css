@@ -1,0 +1,1091 @@
+/* ==========================================================================
+   Calendar Page Styling (Time.is Minimalist & Modern Glassmorphism)
+   ========================================================================== */
+
+.calendar-page {
+  padding-bottom: 4rem;
+}
+
+.calendar-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.calendar-intro h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.calendar-intro p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Year Progress Bar Card */
+.calendar-progress-card {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.progress-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+}
+
+.progress-details {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color), #a855f7);
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+/* Toolbar Controls */
+.calendar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.year-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  padding: 0.2rem 0.5rem;
+}
+
+.stepper-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.stepper-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.current-year-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0 0.5rem;
+  min-width: 70px;
+  text-align: center;
+}
+
+.btn-today {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-today:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.btn-country-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent-light);
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-country-picker:hover {
+  filter: brightness(1.1);
+}
+
+.country-flags {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.flag-more {
+  font-size: 0.75rem;
+  background: var(--accent-color);
+  color: #fff;
+  border-radius: 9999px;
+  padding: 0.1rem 0.35rem;
+}
+
+.toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label input[type="checkbox"] {
+  accent-color: var(--accent-color);
+}
+
+.btn-export-ics,
+.btn-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-export-ics:hover,
+.btn-print:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-muted);
+}
+
+/* Tab Navigation */
+.calendar-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.calendar-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.calendar-tab:hover {
+  color: var(--text-primary);
+}
+
+.calendar-tab.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+/* ==========================================================================
+   TAB 1: 12-Month Grid (Time.is Style)
+   ========================================================================== */
+
+.calendar-grid-year {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .calendar-grid-year {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .calendar-grid-year {
+    grid-template-columns: 1fr;
+  }
+}
+
+.month-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.month-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.month-year {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.month-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.week-header-row,
+.week-row {
+  display: grid;
+  grid-template-columns: 24px repeat(7, 1fr);
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+}
+
+.week-header-row {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.25rem 0;
+}
+
+.col-w,
+.cell-week-num {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.col-wd.is-sunday {
+  color: #ef4444;
+}
+
+.col-wd.is-saturday {
+  color: #3b82f6;
+}
+
+.day-cell {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 0.35rem 0.1rem;
+  min-height: 42px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  transition: all 0.15s;
+  color: var(--text-primary);
+}
+
+.day-cell:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-color);
+}
+
+.day-cell.other-month {
+  opacity: 0.25;
+}
+
+.day-cell.is-past .day-number {
+  opacity: 0.65;
+}
+
+.day-cell.is-sunday .day-number {
+  color: #ef4444;
+}
+
+.day-cell.is-saturday .day-number {
+  color: #3b82f6;
+}
+
+.day-cell.is-today {
+  border: 1.5px solid var(--accent-color);
+  background: var(--accent-light);
+  font-weight: 800;
+}
+
+.day-cell.is-today .day-number {
+  color: var(--accent-color);
+}
+
+.day-cell.has-holiday {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.day-number {
+  font-size: 0.85rem;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.holiday-badges-container {
+  display: flex;
+  gap: 2px;
+  margin-top: 3px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.holiday-dot {
+  font-size: 0.65rem;
+  line-height: 1;
+  border-radius: 3px;
+  padding: 1px;
+}
+
+.son-free-tag {
+  font-size: 0.65rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.solar-term-tag {
+  font-size: 0.6rem;
+  line-height: 1;
+  color: #10b981;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   TAB 2: Holidays & Golden Planner
+   ========================================================================== */
+
+.tab-holidays-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bridge-tips-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.bridge-tips-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.bridge-tips-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.bridge-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
+.bridge-tip-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bridge-tip-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.badge-accent {
+  background: var(--accent-light);
+  color: var(--accent-color);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.holiday-timeline-card {
+  padding: 1.5rem;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.timeline-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.timeline-header p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.holiday-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holiday-timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.holiday-date-box {
+  display: flex;
+  flex-direction: column;
+  min-width: 110px;
+}
+
+.date-main {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.date-weekday {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.holiday-info-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.country-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.holiday-name {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.holiday-original {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.badge-substitute {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   TAB 3: Calculator Tools
+   ========================================================================== */
+
+.tab-calculator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calc-card {
+  padding: 1.5rem;
+}
+
+.calc-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calc-card-header h2,
+.calc-card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.calc-card-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.calc-inputs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .calc-inputs-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.calc-card input[type="date"],
+.calc-card input[type="number"] {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.biz-results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .biz-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.biz-metric-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.biz-metric-box.highlight-metric {
+  border-color: var(--accent-color);
+  background: var(--accent-light);
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.metric-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.text-muted { color: var(--text-muted); }
+.text-danger { color: #ef4444; }
+.text-accent { color: var(--accent-color); }
+
+.calc-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .calc-sub-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dday-display-box,
+.math-result-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.dday-tag {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+}
+
+.dday-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.dday-today {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #10b981;
+}
+
+.result-label {
+  color: var(--text-secondary);
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.result-value {
+  font-size: 1.15rem;
+  color: var(--accent-color);
+}
+
+/* ==========================================================================
+   Modals & Dialogs (Country Picker & Date Detail)
+   ========================================================================== */
+
+.calendar-country-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.dialog-content {
+  width: 100%;
+  max-width: 580px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.dialog-header h2 {
+  font-size: 1.3rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.dialog-header p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.btn-close-dialog {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+}
+
+.btn-close-dialog:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dialog-presets-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.btn-preset {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-preset-clear {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.dialog-search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dialog-search-box input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  width: 100%;
+  outline: none;
+}
+
+.dialog-country-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+  padding-right: 0.3rem;
+}
+
+.country-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.country-item-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-color);
+}
+
+.country-item-row.selected {
+  background: var(--accent-light);
+  border-color: var(--accent-color);
+}
+
+.country-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.country-meta-left .flag {
+  font-size: 1.2rem;
+}
+
+.country-meta-left .name {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.country-meta-left .code {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.dialog-footer .btn-primary {
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Date Detail Popup */
+.date-detail-card {
+  max-width: 440px;
+}
+
+.date-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.meta-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+}
+
+.meta-lbl {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.meta-val {
+  font-size: 1.05rem;
+  color: var(--accent-color);
+}
+
+.solar-term-info,
+.son-free-info {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.day-holidays-section h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.day-holidays-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.day-holiday-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.day-holiday-badge-item .original {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.no-holiday-msg {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Guide Section
+   ========================================================================== */
+
+.calendar-help {
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.calendar-help h2 {
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.calendar-guide-item h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guide-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--accent-light);
+  color: var(--accent-color);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.calendar-guide-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Print Optimization (@media print)
+   ========================================================================== */
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .site-header,
+  .btn-tool,
+  .calendar-intro,
+  .ad-slot-container,
+  .calendar-progress-card,
+  .calendar-toolbar,
+  .calendar-tabs,
+  .tab-holidays-container,
+  .tab-calculator-container,
+  .calendar-help,
+  footer {
+    display: none !important;
+  }
+
+  .calendar-page {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .calendar-grid-year {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+    page-break-inside: avoid;
+  }
+
+  .month-card {
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+    padding: 4px !important;
+    box-shadow: none !important;
+  }
+
+  .month-name {
+    font-size: 0.9rem !important;
+    color: #000 !important;
+  }
+
+  .day-cell {
+    min-height: 24px !important;
+    padding: 1px !important;
+    color: #000 !important;
+  }
+
+  .day-number {
+    font-size: 0.75rem !important;
+  }
+
+  .day-cell.is-sunday .day-number {
+    color: #dc2626 !important;
+  }
+
+  .day-cell.is-saturday .day-number {
+    color: #2563eb !important;
+  }
+}
