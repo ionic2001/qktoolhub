@@ -73,11 +73,21 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type }) => {
           ))}
 
           <div className="legal-contact-callout">
-            <h3>📬 공식 문의처</h3>
+            <h3>📬 {currentLegal.footer.contactLabel}</h3>
             <p>
-              본 내용에 대한 문의사항이나 의견은 공식 이메일(
-              <a href={`mailto:${doc.contactEmail}`}>{doc.contactEmail}</a>
-              )로 접수해 주시기 바랍니다.
+              {language === 'ko' ? (
+                <>
+                  본 내용에 대한 문의사항이나 의견은 이메일(
+                  <a href={`mailto:${doc.contactEmail}`}>{doc.contactEmail}</a>
+                  )로 접수해 주시기 바랍니다.
+                </>
+              ) : (
+                <>
+                  For inquiries or questions, please contact via email (
+                  <a href={`mailto:${doc.contactEmail}`}>{doc.contactEmail}</a>
+                  ).
+                </>
+              )}
             </p>
           </div>
         </div>

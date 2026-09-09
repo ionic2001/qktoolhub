@@ -46,7 +46,7 @@ for (const type of ['terms', 'privacy']) {
 
     const sectionsHtml = doc.sections.map(s => `<section><h2>${escape(s.title)}</h2>${s.content.map(c => `<p>${escape(c)}</p>`).join('')}</section>`).join('');
 
-    html = html.replace('<div id="root"></div>', `<div id="root"><main><h1>${escape(doc.title)}</h1><p>${escape(doc.effectiveDate)}</p>${sectionsHtml}<p>Contact: ${escape(doc.contactEmail)}</p></main></div>`);
+    html = html.replace('<div id="root"></div>', `<div id="root"><main><h1>${escape(doc.title)}</h1><p>${escape(doc.effectiveDate)}</p>${sectionsHtml}<p>${escape(docData.footer.contactLabel || 'Contact')}: ${escape(doc.contactEmail)}</p></main></div>`);
 
     fs.writeFileSync(`dist/${type}/${lang}.html`, html);
   }

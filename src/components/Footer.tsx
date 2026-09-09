@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
               ))}
 
               <div className="legal-contact-box">
-                <strong>공식 문의처:</strong>{' '}
+                <strong>{t.footer.contactLabel}:</strong>{' '}
                 <a href={`mailto:${doc.contactEmail}`}>{doc.contactEmail}</a>
               </div>
             </div>

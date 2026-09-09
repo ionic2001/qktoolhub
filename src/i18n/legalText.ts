@@ -19,6 +19,7 @@ export interface LegalI18n {
     copyright: string;
     tagline: string;
     close: string;
+    contactLabel: string;
   };
 }
 
@@ -135,7 +136,8 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       privacyLink: "개인정보처리방침",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "100% 클라이언트 사이드 개인정보 보호 무료 웹 유틸리티 툴킷",
-      close: "닫기"
+      close: "닫기",
+      contactLabel: "문의"
     }
   },
   en: {
@@ -250,7 +252,8 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       privacyLink: "Privacy Policy",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "100% Client-Side Privacy-First Free Online Web Utilities",
-      close: "Close"
+      close: "Close",
+      contactLabel: "Contact"
     }
   },
   ja: {
@@ -337,7 +340,8 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       privacyLink: "プライバシーポリシー",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "100%クライアントサイド動作・プライバシー優先の無料Webツール集",
-      close: "閉じる"
+      close: "閉じる",
+      contactLabel: "お問い合わせ"
     }
   },
   zh: {
@@ -424,7 +428,8 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       privacyLink: "隐私政策",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "100% 纯客户端运行·隐私至上的免费在线实用工具箱",
-      close: "关闭"
+      close: "关闭",
+      contactLabel: "咨询"
     }
   },
   es: {
@@ -511,7 +516,8 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       privacyLink: "Política de Privacidad",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). Todos los derechos reservados.",
       tagline: "Herramientas web online gratuitas con privacidad garantizada en el cliente",
-      close: "Cerrar"
+      close: "Cerrar",
+      contactLabel: "Contacto"
     }
   }
 };
