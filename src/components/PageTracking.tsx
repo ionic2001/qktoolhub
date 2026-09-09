@@ -1,3 +1,4 @@
+import { copy as unitCopy } from '../features/units/text';
 import { worldGuide } from '../i18n/worldGuide';
 import { pdfGuide } from '../i18n/pdfGuide';
 import { pixelTranslations } from '../i18n/pixelTranslations';
@@ -40,6 +41,7 @@ export function PageTracking() {
       timeout = window.setTimeout(() => {
         observer.disconnect();
         const titles: Record<string,string> = {
+          '/unit-converter': unitCopy.title[['ko','en','ja','zh','es'].indexOf(language)],
           '/world-clock': worldGuide[language].title,
           '/pdf-converter': pdfGuide[language].title,
           '/pixel-art': pixelTranslations[language]['사진 픽셀 아트 변환'],

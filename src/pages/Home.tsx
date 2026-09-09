@@ -1,3 +1,4 @@
+import { copy as unitCopy } from '../features/units/text';
 import { track } from '../utils/analytics';
 import editorMeta from '../i18n/editorMeta.json';
 import { worldText } from '../i18n/worldText';
@@ -30,6 +31,8 @@ export const Home: React.FC = () => {
   const clock = worldText[language];
   rawTools.splice(Math.min(4, rawTools.length), 0, { id: 'world-clock', title: clock.title, desc: clock.subtitle, category: clock.category, badge: 'New', path: '/world-clock', isLive: true });
   rawTools.splice(Math.min(5, rawTools.length), 0, { id: 'image-editor', title: editorMeta[language].name, desc: editorMeta[language].description, category: editorMeta[language].category, badge: 'New', path: '/image-editor', isLive: true });
+  const unitIndex=['ko','en','ja','zh','es'].indexOf(language);
+  rawTools.splice(6,0,{id:'unit-converter',title:unitCopy.title[unitIndex],desc:unitCopy.subtitle[unitIndex],category:unitCopy.title[unitIndex],badge:'New',path:'/unit-converter',isLive:true});
   const filteredTools = rawTools.filter((tool: ToolItem) => {
     const q = searchTerm.toLowerCase();
     return (

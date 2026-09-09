@@ -56,6 +56,60 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/"/>
   </url>
   <url>
+    <loc>https://qktoolhub.com/unit-converter</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/unit-converter?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/unit-converter?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/unit-converter?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/unit-converter?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/unit-converter"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/unit-converter?lang=ko</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/unit-converter?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/unit-converter?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/unit-converter?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/unit-converter?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/unit-converter"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/unit-converter?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/unit-converter?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/unit-converter?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/unit-converter?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/unit-converter?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/unit-converter"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/unit-converter?lang=ja</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/unit-converter?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/unit-converter?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/unit-converter?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/unit-converter?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/unit-converter"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/unit-converter?lang=zh</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/unit-converter?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/unit-converter?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/unit-converter?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/unit-converter?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/unit-converter"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/unit-converter?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/unit-converter?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/unit-converter?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/unit-converter?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/unit-converter?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/unit-converter"/>
+  </url>
+  <url>
     <loc>https://qktoolhub.com/image-editor</loc>
     <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/image-editor?lang=ko"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/image-editor?lang=en"/>

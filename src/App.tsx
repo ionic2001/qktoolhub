@@ -8,6 +8,7 @@ import { Home } from './pages/Home';
 import { WordCounterPage } from './pages/WordCounter';
 import { CurrencyConverterPage } from './pages/CurrencyConverter';
 
+const UnitConverter = lazy(() => import('./pages/UnitConverter'));
 const ImageEditor = lazy(() => import('./pages/ImageEditor'));
 const PdfConverterPage = lazy(() => import('./pages/PdfConverter'));
 
@@ -20,6 +21,7 @@ export const App: React.FC = () => {
           <PageTracking />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/unit-converter" element={<Suspense fallback={<div role="status">…</div>}><UnitConverter /></Suspense>} />
             <Route path="/image-editor" element={<Suspense fallback={<div role="status">…</div>}><ImageEditor /></Suspense>} />
             <Route path="/world-clock" element={<Suspense fallback={<div role="status">…</div>}><WorldClockPage /></Suspense>} />
             <Route path="/pdf-converter" element={<Suspense fallback={<div role="status">PDF…</div>}><PdfConverterPage /></Suspense>} />

@@ -1,4 +1,4 @@
-const routes = ['/', '/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', '/world-clock', '/image-editor'];
+const routes = ['/unit-converter', '/', '/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', '/world-clock', '/image-editor'];
 export function analyticsAllowed(host: string, path: string) {
   return ['qktoolhub.com', 'www.qktoolhub.com'].includes(host) && routes.includes(path);
 }

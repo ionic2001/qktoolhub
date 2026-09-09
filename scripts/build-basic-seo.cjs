@@ -2,11 +2,14 @@ const fs = require('node:fs');
 const ts = require('typescript');
 const mod = {exports:{}};
 new Function('exports', ts.transpileModule(fs.readFileSync('src/i18n/translations.ts','utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText)(mod.exports);
+const unit = {};
+new Function('exports',ts.transpileModule(fs.readFileSync('src/features/units/text.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText)(unit);
 const base = fs.readFileSync('dist/index.html','utf8');
 const escape = s => s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 for(const [lang,t] of Object.entries(mod.exports.translations)) {
-  for(const route of ['', 'word-counter','currency-converter']) {
-    const tool = t.toolsList.find(x=>x.path===`/${route}`);
+  for(const route of ['', 'word-counter','currency-converter','unit-converter']) {
+    const i=['ko','en','ja','zh','es'].indexOf(lang);
+    const tool = route==='unit-converter'?{title:unit.copy.title[i],desc:unit.copy.subtitle[i]}:t.toolsList.find(x=>x.path===`/${route}`);
     const title = route ? `${tool.title} | QK Tool Hub` : `QK Tool Hub | ${t.hubTitle}`;
     const description = route ? tool.desc : t.hubSubtitle;
     const url = `https://qktoolhub.com/${route}?lang=${lang}`;

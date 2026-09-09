@@ -1,6 +1,65 @@
 {
   "rewrites": [
     {
+      "source": "/unit-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/unit-converter/ko.html"
+    },
+    {
+      "source": "/unit-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/unit-converter/en.html"
+    },
+    {
+      "source": "/unit-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/unit-converter/ja.html"
+    },
+    {
+      "source": "/unit-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/unit-converter/zh.html"
+    },
+    {
+      "source": "/unit-converter",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/unit-converter/es.html"
+    },
+    {
+      "source": "/unit-converter",
+      "destination": "/unit-converter/ko.html"
+    },
+    {
       "source": "/",
       "has": [
         {
