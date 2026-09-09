@@ -1,3 +1,4 @@
+import { VercelAnalytics } from './components/VercelAnalytics';
 import { PageTracking } from './components/PageTracking';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -19,6 +20,7 @@ export const App: React.FC = () => {
       <LanguageProvider>
         <BrowserRouter>
           <PageTracking />
+          <VercelAnalytics />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/unit-converter" element={<Suspense fallback={<div role="status">…</div>}><UnitConverter /></Suspense>} />

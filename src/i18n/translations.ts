@@ -206,15 +206,6 @@ export const translations: Record<Language, TranslationStructure> = {
         isLive: true
       },
       {
-        id: "unit-converter",
-        title: "스마트 단위 변환기 (Unit Converter)",
-        desc: "길이, 넓이(평/㎡), 무게, 온도 등 생활 및 해외직구 단위 실시간 변환",
-        category: "생활 / 단위",
-        badge: "출시 예정",
-        path: "/unit-converter",
-        isLive: false
-      },
-      {
         id: "ocr-tool",
         title: "이미지 텍스트 추출기 (Image OCR)",
         desc: "이미지 및 사진 속 텍스트를 손쉽게 글자로 자동 추출 및 복사",
@@ -380,15 +371,6 @@ export const translations: Record<Language, TranslationStructure> = {
         badge: "NEW LIVE",
         path: "/currency-converter",
         isLive: true
-      },
-      {
-        id: "unit-converter",
-        title: "Smart Unit Converter",
-        desc: "Instant conversion for length, area, weight, and temperature",
-        category: "Utility / Unit",
-        badge: "Coming Soon",
-        path: "/unit-converter",
-        isLive: false
       },
       {
         id: "ocr-tool",
