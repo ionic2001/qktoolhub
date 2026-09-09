@@ -121,6 +121,126 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/calendar"/>
   </url>
   <url>
+    <loc>https://qktoolhub.com/terms</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/terms?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/terms?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/terms?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/terms?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/terms?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/terms"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/terms?lang=ko</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/terms?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/terms?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/terms?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/terms?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/terms?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/terms"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/terms?lang=en</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/terms?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/terms?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/terms?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/terms?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/terms?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/terms"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/terms?lang=ja</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/terms?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/terms?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/terms?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/terms?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/terms?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/terms"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/terms?lang=zh</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/terms?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/terms?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/terms?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/terms?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/terms?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/terms"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/terms?lang=es</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/terms?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/terms?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/terms?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/terms?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/terms?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/terms"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/privacy</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/privacy?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/privacy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/privacy?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/privacy?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/privacy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/privacy?lang=ko</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/privacy?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/privacy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/privacy?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/privacy?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/privacy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/privacy?lang=en</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/privacy?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/privacy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/privacy?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/privacy?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/privacy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/privacy?lang=ja</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/privacy?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/privacy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/privacy?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/privacy?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/privacy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/privacy?lang=zh</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/privacy?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/privacy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/privacy?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/privacy?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/privacy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://qktoolhub.com/privacy?lang=es</loc>
+    <lastmod>2026-09-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/privacy?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qktoolhub.com/privacy?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://qktoolhub.com/privacy?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qktoolhub.com/privacy?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qktoolhub.com/privacy?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://qktoolhub.com/privacy"/>
+  </url>
+  <url>
     <loc>https://qktoolhub.com/unit-converter</loc>
     <lastmod>2026-09-09</lastmod>
     <xhtml:link rel="alternate" hreflang="ko" href="https://qktoolhub.com/unit-converter?lang=ko"/>

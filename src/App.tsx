@@ -15,6 +15,7 @@ const PdfConverterPage = lazy(() => import('./pages/PdfConverter'));
 
 const WorldClockPage = lazy(() => import('./pages/WorldClock'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
+const LegalPage = lazy(() => import('./pages/LegalPage'));
 export const App: React.FC = () => {
   return (
     <ErrorBoundary>
@@ -25,6 +26,8 @@ export const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/calendar" element={<Suspense fallback={<div role="status">…</div>}><CalendarPage /></Suspense>} />
+            <Route path="/terms" element={<Suspense fallback={<div role="status">…</div>}><LegalPage type="terms" /></Suspense>} />
+            <Route path="/privacy" element={<Suspense fallback={<div role="status">…</div>}><LegalPage type="privacy" /></Suspense>} />
             <Route path="/unit-converter" element={<Suspense fallback={<div role="status">…</div>}><UnitConverter /></Suspense>} />
             <Route path="/image-editor" element={<Suspense fallback={<div role="status">…</div>}><ImageEditor /></Suspense>} />
             <Route path="/world-clock" element={<Suspense fallback={<div role="status">…</div>}><WorldClockPage /></Suspense>} />

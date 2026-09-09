@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 import { AdSlot } from '../components/AdSlot';
 import { Search, Sparkles, ArrowRight } from 'lucide-react';
 import { ToolItem } from '../i18n/translations';
@@ -163,13 +164,8 @@ export const Home: React.FC = () => {
       {/* Bottom Ad */}
       <AdSlot slotId="home-bottom-banner" />
 
-      {/* Footer */}
-      <footer className="app-footer">
-        <p>© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.</p>
-        <p style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>
-          Privacy-first Online Utilities | Google SEO & AdSense Optimized
-        </p>
-      </footer>
+      {/* Global Footer */}
+      <Footer />
     </div>
   );
 };

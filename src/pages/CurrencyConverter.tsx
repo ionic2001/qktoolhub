@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 import { AdSlot } from '../components/AdSlot';
 import { CurrencyGrid } from '../components/CurrencyGrid';
 import { fetchExchangeRates, getInitialRatesData, RatesData } from '../utils/currencyRates';
@@ -239,13 +240,8 @@ export const CurrencyConverterPage: React.FC = () => {
       {/* Bottom Banner Ad */}
       <AdSlot slotId="currency-bottom-banner" />
 
-      {/* Footer */}
-      <footer className="app-footer">
-        <p>© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.</p>
-        <p style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>
-          Real-time Privacy-first Financial & Utility Web Services | Multi-language Supported
-        </p>
-      </footer>
+      {/* Global Footer */}
+      <Footer />
     </div>
   );
 };

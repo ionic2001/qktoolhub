@@ -414,6 +414,124 @@
       "destination": "/calendar/ko.html"
     },
     {
+      "source": "/terms",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/terms/ko.html"
+    },
+    {
+      "source": "/terms",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/terms/en.html"
+    },
+    {
+      "source": "/terms",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/terms/ja.html"
+    },
+    {
+      "source": "/terms",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/terms/zh.html"
+    },
+    {
+      "source": "/terms",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/terms/es.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms/ko.html"
+    },
+    {
+      "source": "/privacy",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/privacy/ko.html"
+    },
+    {
+      "source": "/privacy",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/privacy/en.html"
+    },
+    {
+      "source": "/privacy",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/privacy/ja.html"
+    },
+    {
+      "source": "/privacy",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/privacy/zh.html"
+    },
+    {
+      "source": "/privacy",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/privacy/es.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy/ko.html"
+    },
+    {
       "source": "/pdf-converter",
       "has": [
         {

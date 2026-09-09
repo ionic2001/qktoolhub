@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 import { TextEditor } from '../components/TextEditor';
 import { TextStatsSummary } from '../components/TextStatsSummary';
 import { PlatformLimits } from '../components/PlatformLimits';
@@ -76,13 +77,8 @@ export const WordCounterPage: React.FC = () => {
       {/* Bottom Banner Ad Slot */}
       <AdSlot slotId="word-counter-bottom-banner" />
 
-      {/* Footer */}
-      <footer className="app-footer">
-        <p>© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.</p>
-        <p style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}>
-          Real-time Privacy-first Text Analytics | Google SEO & GA4 Optimized
-        </p>
-      </footer>
+      {/* Global Footer */}
+      <Footer />
     </div>
   );
 };

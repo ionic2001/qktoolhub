@@ -1089,3 +1089,84 @@
     color: #2563eb !important;
   }
 }
+
+/* ==========================================================================
+   Calendar Hover Floating Tooltip
+   ========================================================================== */
+
+.calendar-hover-tooltip {
+  transition: opacity 0.15s ease-out;
+}
+
+.tooltip-card {
+  background: rgba(20, 26, 40, 0.95);
+  border: 1px solid var(--accent-color);
+  backdrop-filter: blur(12px);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  min-width: 190px;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.35rem;
+}
+
+.tooltip-header strong {
+  font-size: 0.85rem;
+  color: #f8fafc;
+}
+
+.tooltip-dday {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  background: var(--accent-light);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.tooltip-meta {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.tooltip-extra {
+  font-size: 0.75rem;
+  color: #34d399;
+  font-weight: 500;
+}
+
+.tooltip-holidays {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 2px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-top: 4px;
+}
+
+.tooltip-holiday-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+}
+
+.tooltip-sub {
+  font-size: 0.65rem;
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.2);
+  padding: 0 3px;
+  border-radius: 2px;
+}

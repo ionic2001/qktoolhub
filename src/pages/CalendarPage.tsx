@@ -16,6 +16,7 @@ import {
   Square
 } from 'lucide-react';
 import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 import { AdSlot } from '../components/AdSlot';
 import { useLanguage } from '../i18n/LanguageContext';
 import { calendarText } from '../i18n/calendarText';
@@ -127,6 +128,10 @@ export default function CalendarPage() {
 
   // 날짜 클릭 상세 정보 모달
   const [selectedDateDetail, setSelectedDateDetail] = useState<string | null>(null);
+
+  // 날짜 마우스 오버(Hover) 플로팅 툴팁 상태
+  const [hoveredDate, setHoveredDate] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
 
   // 날짜 계산기 탭 상태
   const [ddayTarget, setDdayTarget] = useState<string>(() => `${currentYear}-12-31`);
@@ -523,6 +528,17 @@ export default function CalendarPage() {
                                 dow === 0 ? 'is-sunday' : dow === 6 ? 'is-saturday' : ''
                               } ${isPast ? 'is-past' : ''}`}
                               onClick={() => setSelectedDateDetail(cell.dateStr)}
+                              onMouseEnter={(e) => {
+                                setHoveredDate(cell.dateStr);
+                                setMousePos({ x: e.clientX, y: e.clientY });
+                              }}
+                              onMouseMove={(e) => {
+                                setMousePos({ x: e.clientX, y: e.clientY });
+                              }}
+                              onMouseLeave={() => {
+                                setHoveredDate(null);
+                                setMousePos(null);
+                              }}
                               title={`${cell.dateStr} ${holidaysOnDay.map((h) => h.name).join(', ')}`}
                             >
                               <span className="day-number">{cell.day}</span>
@@ -944,6 +960,62 @@ export default function CalendarPage() {
         </dialog>
       )}
 
+      {/* Floating Hover Tooltip */}
+      {hoveredDate && mousePos && !selectedDateDetail && (
+        <div
+          className="calendar-hover-tooltip"
+          style={{
+            position: 'fixed',
+            left: mousePos.x + 16 > (typeof window !== 'undefined' ? window.innerWidth - 260 : 600) ? mousePos.x - 260 : mousePos.x + 16,
+            top: mousePos.y + 16 > (typeof window !== 'undefined' ? window.innerHeight - 180 : 600) ? mousePos.y - 180 : mousePos.y + 16,
+            pointerEvents: 'none',
+            zIndex: 9999,
+          }}
+        >
+          {(() => {
+            const dt = new Date(hoveredDate + 'T00:00:00');
+            const dayOfWeek = s.weekdays[dt.getDay()];
+            const startOfYear = new Date(dt.getFullYear(), 0, 1);
+            const dayOfYear = Math.floor((dt.getTime() - startOfYear.getTime()) / 86400000) + 1;
+            const isoWeek = getIsoWeekNumber(dt);
+            const ddayDiff = Math.round((dt.getTime() - new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime()) / 86400000);
+            const hOnDay = holidaysMap.get(hoveredDate) || [];
+            const isSonFree = showLunar && selectedCountries.includes('KR') && SON_FREE_DAYS_2026.has(hoveredDate);
+            const solarTerm = showLunar && selectedCountries.includes('KR') && SOLAR_TERMS_2026[hoveredDate];
+
+            return (
+              <div className="tooltip-card">
+                <div className="tooltip-header">
+                  <strong>{hoveredDate} ({dayOfWeek})</strong>
+                  <span className="tooltip-dday">
+                    {ddayDiff === 0 ? 'D-Day' : ddayDiff > 0 ? `D-${ddayDiff}` : `D+${Math.abs(ddayDiff)}`}
+                  </span>
+                </div>
+                <div className="tooltip-meta">
+                  <span>W{isoWeek}주차 · {dayOfYear}일째</span>
+                </div>
+                {solarTerm && <div className="tooltip-extra">🌿 {solarTerm}</div>}
+                {isSonFree && <div className="tooltip-extra">🚚 {s.sonFreeDay}</div>}
+                {hOnDay.length > 0 && (
+                  <div className="tooltip-holidays">
+                    {hOnDay.map((h, i) => {
+                      const meta = SUPPORTED_COUNTRIES.find((c) => c.code === h.countryCode);
+                      return (
+                        <div key={i} className="tooltip-holiday-item">
+                          <span>{meta?.flag}</span>
+                          <strong>{h.name}</strong>
+                          {h.isSubstitute && <span className="tooltip-sub">대체</span>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+        </div>
+      )}
+
       <AdSlot slotId="calendar-bottom-banner" />
 
       {/* Guide Section */}
@@ -960,6 +1032,9 @@ export default function CalendarPage() {
           ))}
         </div>
       </section>
+
+      {/* Global Footer */}
+      <Footer />
     </div>
   );
 }

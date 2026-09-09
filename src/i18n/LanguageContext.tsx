@@ -26,7 +26,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const applySeoAndLanguage = (lang: Language) => {
     document.documentElement.lang = lang;
-    if (['/unit-converter', '/pixel-art', '/pdf-converter', '/world-clock', '/image-editor', '/calendar'].includes(window.location.pathname)) return;
+    if (['/unit-converter', '/pixel-art', '/pdf-converter', '/world-clock', '/image-editor', '/calendar', '/terms', '/privacy'].includes(window.location.pathname)) return;
     const currentT = translations[lang] || translations.ko;
     
     const dynamicTitle = `${currentT.appTitle} | ${currentT.appSubtitle}`;
