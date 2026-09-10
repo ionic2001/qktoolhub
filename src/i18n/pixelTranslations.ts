@@ -143,7 +143,7 @@ export const pixelTranslations: Record<string, Record<string, string>> = {
     "이미지는 4천만 픽셀 이하로 선택해 주세요.": "4,000万画素以下の画像を選択してください。",
     "이미지를 읽을 수 없습니다. 다른 파일을 선택해 주세요.": "画像を読み込めません。別のファイルを選択してください。",
     "다운로드를 준비하지 못했습니다. 다시 시도해 주세요.": "ダウンロードを準備できません。再試行してください。",
-    "사진 픽셀 아트 변환": "写真ピクセルアート変換",
+    "사진 픽셀 아트 변환": "写真をドット絵に変換",
     "이미지 도구": "画像ツール"
   },
   "zh": {
@@ -241,7 +241,7 @@ export const pixelTranslations: Record<string, Record<string, string>> = {
     "이미지는 4천만 픽셀 이하로 선택해 주세요.": "Elige una imagen de hasta 40 millones de píxeles.",
     "이미지를 읽을 수 없습니다. 다른 파일을 선택해 주세요.": "No se puede leer la imagen. Elige otro archivo.",
     "다운로드를 준비하지 못했습니다. 다시 시도해 주세요.": "No se pudo preparar la descarga. Inténtalo de nuevo.",
-    "사진 픽셀 아트 변환": "Conversor de fotos a arte píxel",
+    "사진 픽셀 아트 변환": "Conversor de fotos a pixel art",
     "이미지 도구": "Herramientas de imagen"
   }
 };

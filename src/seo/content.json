@@ -54,7 +54,16 @@
         "정밀도와 근사값",
         "표시 자릿수에 따라 반올림될 수 있습니다. 요리용 무게와 부피 변환은 재료별 밀도에 따른 근사값이므로 재료와 조건을 확인하세요."
       ]
-    ]
+    ],
+    "sentenceUnit": "문장",
+    "lineUnit": "줄",
+    "koreanLabel": "한국어",
+    "englishLabel": "영어",
+    "unitDescription": "길이, 무게, 온도 등 다양한 단위를 온라인으로 변환하세요. 값을 입력하고 단위를 선택하면 결과를 바로 확인하고 복사할 수 있습니다.",
+    "pixelDescription": "사진의 픽셀 크기와 색상 수를 조절해 픽셀아트로 변환하세요. 미리보기를 확인하고 PNG 이미지로 저장할 수 있습니다.",
+    "termsDescription": "QK Tool Hub의 이용 조건, 서비스 제공 범위와 문의 방법을 확인하세요.",
+    "privacyDescription": "QK Tool Hub의 데이터 처리, 광고·방문 통계 서비스와 개인정보 관련 문의 방법을 확인하세요.",
+    "calendarDescription": "연간 달력에서 여러 국가의 공휴일과 주차를 확인하세요. 날짜 간 영업일을 계산하고 일정을 .ics 파일로 내보낼 수 있습니다."
   },
   "en": {
     "homeTitle": "Free online tools",
@@ -111,7 +120,16 @@
         "Precision and estimates",
         "Results may be rounded to the selected display precision. Cooking mass and volume conversions depend on ingredient density and are estimates."
       ]
-    ]
+    ],
+    "sentenceUnit": "sentences",
+    "lineUnit": "lines",
+    "koreanLabel": "Korean",
+    "englishLabel": "English",
+    "unitDescription": "Convert length, weight, temperature and more online. Enter a value, choose your units and copy the result instantly.",
+    "pixelDescription": "Turn photos into pixel art online. Adjust pixel size and the number of colors, preview your image and download the result as PNG.",
+    "termsDescription": "Read the terms for using QK Tool Hub, including service availability, acceptable use and contact information.",
+    "privacyDescription": "Learn how QK Tool Hub handles data, uses advertising and analytics services, and responds to privacy inquiries.",
+    "calendarDescription": "View a yearly calendar with public holidays from multiple countries and ISO week numbers. Calculate business days and export dates as an .ics file."
   },
   "ja": {
     "homeTitle": "無料オンラインツール集",
@@ -168,7 +186,16 @@
         "精度と概算",
         "表示桁数に応じて丸められます。調理用の重さと体積の換算は材料の密度に基づく概算です。"
       ]
-    ]
+    ],
+    "sentenceUnit": "文",
+    "lineUnit": "行",
+    "koreanLabel": "韓国語",
+    "englishLabel": "英語",
+    "unitDescription": "長さ・重さ・温度などをオンラインで単位換算。数値と変換元・変換先を選ぶと結果をすぐに確認し、コピーできます。",
+    "pixelDescription": "写真をドット絵に変換。ピクセルの大きさと色数を調整し、プレビューを確認してPNG画像として保存できます。",
+    "termsDescription": "QK Tool Hubの利用条件、サービスの提供範囲、お問い合わせ方法をご確認ください。",
+    "privacyDescription": "QK Tool Hubのデータ処理、広告・アクセス解析サービス、プライバシーに関するお問い合わせ方法をご案内します。",
+    "calendarDescription": "年間カレンダーで複数の国の祝日とISO週番号を確認。日付間の営業日を計算し、予定を.icsファイルで保存できます。"
   },
   "zh": {
     "homeTitle": "免费在线工具集合",
@@ -225,12 +252,21 @@
         "精度与估算",
         "结果可能按显示精度四舍五入。烹饪质量与体积换算依赖材料密度，属于估算值。"
       ]
-    ]
+    ],
+    "sentenceUnit": "句",
+    "lineUnit": "行",
+    "koreanLabel": "韩语",
+    "englishLabel": "英语",
+    "unitDescription": "在线换算长度、重量、温度等单位。输入数值，选择原单位和目标单位，即可查看并复制换算结果。",
+    "pixelDescription": "将照片转换为像素画，调整像素大小与颜色数量，预览效果并将结果保存为PNG图片。",
+    "termsDescription": "了解QK Tool Hub的使用条件、服务范围和联系方式。",
+    "privacyDescription": "了解QK Tool Hub的数据处理方式、广告与访问统计服务，以及隐私相关问题的联系渠道。",
+    "calendarDescription": "查看全年日历、多国节假日和ISO周数，计算两个日期之间的工作日，并导出.ics日历文件。"
   },
   "es": {
     "homeTitle": "Herramientas online gratuitas",
-    "homeDescription": "Cuenta palabras y bytes, convierte divisas y unidades, edita imágenes y PDF, crea pixel art y consulta relojes y calendarios.",
-    "wordTitle": "Contador de palabras y bytes",
+    "homeDescription": "Cuenta palabras y caracteres, convierte divisas y unidades, edita imágenes, convierte PDF y consulta relojes y calendarios.",
+    "wordTitle": "Contador de palabras y caracteres",
     "currencyTitle": "Conversor de divisas",
     "groups": [
       "Texto",
@@ -282,6 +318,15 @@
         "Precisión y estimaciones",
         "Los resultados se redondean según la precisión elegida. Las conversiones culinarias de masa y volumen dependen de la densidad del ingrediente y son aproximadas."
       ]
-    ]
+    ],
+    "sentenceUnit": "oraciones",
+    "lineUnit": "líneas",
+    "koreanLabel": "coreano",
+    "englishLabel": "inglés",
+    "unitDescription": "Convierte longitud, peso, temperatura y otras unidades online. Introduce un valor, elige las unidades y copia el resultado al instante.",
+    "pixelDescription": "Convierte fotos en pixel art. Ajusta el tamaño de los píxeles y el número de colores, consulta la vista previa y descarga el resultado en PNG.",
+    "termsDescription": "Consulta las condiciones de uso de QK Tool Hub, la disponibilidad del servicio y los datos de contacto.",
+    "privacyDescription": "Conoce cómo QK Tool Hub trata los datos, utiliza servicios de publicidad y analítica y atiende consultas de privacidad.",
+    "calendarDescription": "Consulta un calendario anual con festivos de varios países y semanas ISO. Calcula días laborables y exporta fechas como archivo .ics."
   }
 }

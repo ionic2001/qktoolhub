@@ -37,7 +37,7 @@ export const Home: React.FC = () => {
   rawTools.splice(Math.min(6, rawTools.length), 0, { id: 'image-editor', title: editorMeta[language].name, desc: editorMeta[language].description, category: editorMeta[language].category, badge: 'New', path: '/image-editor', isLive: true });
   const unitIndex=['ko','en','ja','zh','es'].indexOf(language);
   rawTools.splice(7,0,{id:'unit-converter',title:unitCopy.title[unitIndex],desc:unitCopy.subtitle[unitIndex],category:unitCopy.title[unitIndex],badge:'New',path:'/unit-converter',isLive:true});
-  const filteredTools = rawTools.filter((tool: ToolItem) => {
+  const filteredTools = rawTools.map(tool => tool.isLive ? { ...tool, title: pageMeta(tool.path, language).name, desc: pageMeta(tool.path, language).description } : tool).filter((tool: ToolItem) => {
     const q = searchTerm.toLowerCase();
     return (
       tool.title.toLowerCase().includes(q) ||

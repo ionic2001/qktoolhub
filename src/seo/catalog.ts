@@ -27,13 +27,13 @@ export function pageMeta(path: string, lang: Language) {
   switch (path) {
     case '/word-counter': name = intro.wordTitle; title = c.wordTitle; description = intro.wordDescription; break;
     case '/currency-converter': name = c.currencyTitle; title = name; description = intro.currencyDescription; break;
-    case '/pixel-art': name = pixelTranslations[lang]['사진 픽셀 아트 변환']; title = name; description = pixelTranslations[lang]['사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.']; break;
+    case '/pixel-art': name = pixelTranslations[lang]['사진 픽셀 아트 변환']; title = name; description = c.pixelDescription; break;
     case '/pdf-converter': name = pdfGuide[lang].title; title = name; description = pdfGuide[lang].description; break;
     case '/image-editor': name = editor[lang].name; title = editor[lang].title; description = editor[lang].description; break;
     case '/world-clock': name = worldText[lang].title; title = worldGuide[lang].title; description = worldGuide[lang].description; break;
-    case '/calendar': name = calendarText[lang].title; title = calendarGuide[lang].title; description = calendarGuide[lang].description; break;
-    case '/unit-converter': name = copy.title[languages.indexOf(lang)]; title = name; description = copy.subtitle[languages.indexOf(lang)]; break;
-    case '/terms': case '/privacy': { const doc = legalText[lang][path === '/terms' ? 'terms' : 'privacy']; name = doc.title; title = name; description = `${doc.title} · QK Tool Hub. ${doc.sections[0].content[0]}`; break; }
+    case '/calendar': name = calendarText[lang].title; title = calendarGuide[lang].title; description = c.calendarDescription; break;
+    case '/unit-converter': name = copy.title[languages.indexOf(lang)]; title = name; description = c.unitDescription; break;
+    case '/terms': case '/privacy': { const doc = legalText[lang][path === '/terms' ? 'terms' : 'privacy']; name = doc.title; title = name; description = path === '/terms' ? c.termsDescription : c.privacyDescription; break; }
   }
   return { name, title: `${title} | QK Tool Hub`, description, url: canonicalUrl(path, lang) };
 }
