@@ -18,10 +18,10 @@ for(const path of pagePaths) for(const lang of languages){
 }
 assert.ok(!fs.existsSync('dist/index.html'), 'Root file must not shadow localized home rewrites');
 const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');
-assert.equal((sitemap.match(/<loc>/g)||[]).length,55);
+assert.equal((sitemap.match(/<loc>/g)||[]).length,60);
 assert.ok(!sitemap.includes('lang=ko')); assert.ok(!sitemap.includes('https://qktoolhub.com'));
 assert.ok(fs.readFileSync('dist/404.html','utf8').includes('noindex'));
 const config=JSON.parse(fs.readFileSync('vercel.json'));
 assert.ok(!config.rewrites.some(r=>r.source==='/(.*)'));
 const png=fs.readFileSync('dist/og-image.png'); assert.equal(png.readUInt32BE(16),1200);assert.equal(png.readUInt32BE(20),630);
-console.log('PASS: 55 pages, metadata, canonicals, language alternates, schemas, crawlable links, sitemap, 404 config and share image.');
+console.log('PASS: 60 pages, metadata, canonicals, language alternates, schemas, crawlable links, sitemap, 404 config and share image.');

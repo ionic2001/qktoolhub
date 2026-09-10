@@ -2,12 +2,13 @@
 
 ## 현재 인수인계
 
-- 분리 작업 기준 main: b38e2877caf6b9d1e7265e6ab5cc4fdb25a0066d
+- 작업 기준 main: 79b2db059911d6336455e55abe8d5f4b90ae129a
 - 저장소: https://github.com/ionic2001/qktoolhub
-- 최근 완료: 3D 디오라마 스티커북을 `ionic2001/diorama-stickerbook`으로 분리하고 QK Tool Hub 연결 코드 제거.
-- 다음 작업: QK Tool Hub 8개 도구의 모바일 회귀와 Search Console 상태 확인.
+- 현재 작업 브랜치: `improve/content-trust-pages`
+- 최근 완료: 환율 FAQ와 수수료 예시 보강, 개인정보 범주 구분, 사용 가능 도구 8개와 예정 OCR 분리, 5개 언어 소개·문의 페이지 추가. 빌드와 전체 스크립트 검사 통과.
+- 다음 작업: 변경 브랜치의 PR 병합·운영 배포 확인 후 QK Tool Hub 8개 도구의 모바일 회귀와 Search Console 상태 확인.
 - 사용자 확인 사항: sitemap 재제출 완료.
-- 독립 프로젝트: https://github.com/ionic2001/diorama-stickerbook (`main` 7acf7f8).
+- 독립 프로젝트: https://github.com/ionic2001/diorama-stickerbook (`main` 0500fd9).
 
 ## 권장 공유 구조
 

@@ -1,4 +1,4 @@
-import type { Language } from '../i18n/translations';
+import { translations, type Language } from '../i18n/translations';
 import toolIntro from '../i18n/toolIntro.json';
 import editor from '../i18n/editorMeta.json';
 import { pdfGuide } from '../i18n/pdfGuide';
@@ -7,6 +7,7 @@ import { worldText } from '../i18n/worldText';
 import { calendarGuide } from '../i18n/calendarGuide';
 import { calendarText } from '../i18n/calendarText';
 import { legalText } from '../i18n/legalText';
+import { aboutText } from '../i18n/aboutText';
 import { pixelTranslations } from '../i18n/pixelTranslations';
 import { copy } from '../features/units/text';
 import content from './content.json';
@@ -14,7 +15,7 @@ import content from './content.json';
 export const origin = 'https://www.qktoolhub.com';
 export const languages: Language[] = ['ko', 'en', 'ja', 'zh', 'es'];
 export const toolPaths = ['/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', '/world-clock', '/calendar', '/image-editor', '/unit-converter'];
-export const pagePaths = ['/', ...toolPaths, '/terms', '/privacy'];
+export const pagePaths = ['/', ...toolPaths, '/about', '/terms', '/privacy'];
 export const localUrl = (path: string, lang: Language) => path + (lang === 'ko' ? '' : `?lang=${lang}`);
 export const canonicalUrl = (path: string, lang: Language) => origin + localUrl(path, lang);
 export const languageFromSearch = (search: string): Language => {
@@ -33,6 +34,7 @@ export function pageMeta(path: string, lang: Language) {
     case '/world-clock': name = worldText[lang].title; title = worldGuide[lang].title; description = worldGuide[lang].description; break;
     case '/calendar': name = calendarText[lang].title; title = calendarGuide[lang].title; description = c.calendarDescription; break;
     case '/unit-converter': name = copy.title[languages.indexOf(lang)]; title = name; description = c.unitDescription; break;
+    case '/about': name = aboutText[lang].title; title = name; description = aboutText[lang].description; break;
     case '/terms': case '/privacy': { const doc = legalText[lang][path === '/terms' ? 'terms' : 'privacy']; name = doc.title; title = name; description = path === '/terms' ? c.termsDescription : c.privacyDescription; break; }
   }
   return { name, title: `${title} | QK Tool Hub`, description, url: canonicalUrl(path, lang) };
@@ -45,6 +47,10 @@ export function pageSchema(path: string, lang: Language) {
   if (toolPaths.includes(path)) graph.push({ '@type': 'WebApplication', '@id': meta.url + '#app', name: meta.name, description: meta.description, url: meta.url, inLanguage: lang, applicationCategory: path === '/currency-converter' ? 'FinanceApplication' : 'UtilitiesApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } });
   if (path !== '/') graph.push({ '@type': 'BreadcrumbList', '@id': meta.url + '#breadcrumb', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'QK Tool Hub', item: home }, { '@type': 'ListItem', position: 2, name: meta.name, item: meta.url }] });
   if (path === '/pdf-converter') graph.push({ '@type': 'FAQPage', inLanguage: lang, mainEntity: pdfGuide[lang].faqs.map(item => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) });
+  if (path === '/currency-converter') {
+    const currency = translations[lang].currency;
+    graph.push({ '@type': 'FAQPage', inLanguage: lang, mainEntity: [[currency.faq1Q, currency.faq1A], [currency.faq2Q, currency.faq2A], [currency.faq3Q, currency.faq3A]].map(([question, answer]) => ({ '@type': 'Question', name: question.replace(/^Q\.\s*/, ''), acceptedAnswer: { '@type': 'Answer', text: answer } })) });
+  }
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 export const seoContent = content;
