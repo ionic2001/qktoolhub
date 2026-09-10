@@ -26,16 +26,6 @@ export const Home: React.FC = () => {
       : tool.title,
     badge: localizedMenu && tool.isLive ? 'New' : tool.badge,
   }));
-  if (!rawTools.some(tool => tool.id === 'ocr-tool')) {
-    const missingOcrCopy: Partial<Record<typeof language, Pick<ToolItem, 'title' | 'desc' | 'category'>>> = {
-      ja: { title: '画像OCRテキスト抽出', desc: '画像から文字を読み取り、編集できるテキストとして抽出します。', category: '文書ツール' },
-      zh: { title: '图片OCR文字提取', desc: '识别图片中的文字并提取为可编辑文本。', category: '文档工具' },
-      es: { title: 'OCR de imágenes', desc: 'Reconoce texto en imágenes y lo extrae como texto editable.', category: 'Herramientas de documentos' },
-    };
-    const ocr = missingOcrCopy[language];
-    if (ocr) rawTools.push({ id: 'ocr-tool', ...ocr, badge: t.comingSoonStatus, path: '#', isLive: false });
-  }
-
   rawTools.splice(Math.min(2, rawTools.length), 0, { id: 'pixel-art', title: pixelTranslations[language]['사진 픽셀 아트 변환'], desc: pixelTranslations[language]['사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.'], category: pixelTranslations[language]['이미지 도구'], badge: 'New', path: '/pixel-art', isLive: true });
   const pdf = pdfText(language);
   rawTools.splice(Math.min(3, rawTools.length), 0, { id: 'pdf-converter', title: pdf.title, desc: pdf.subtitle, category: pdf.docs, badge: 'New', path: '/pdf-converter', isLive: true });
@@ -56,9 +46,7 @@ export const Home: React.FC = () => {
     );
   });
   const availableTools = filteredTools.filter(tool => tool.isLive);
-  const plannedTools = filteredTools.filter(tool => !tool.isLive);
   const availableHeading = { ko: '사용 가능한 도구', en: 'Available tools', ja: '利用できるツール', zh: '可用工具', es: 'Herramientas disponibles' }[language];
-  const plannedHeading = { ko: '출시 예정', en: 'Coming soon', ja: '公開予定', zh: '即将推出', es: 'Próximamente' }[language];
 
   return (
     <div className="app-container">
@@ -114,39 +102,27 @@ export const Home: React.FC = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
           {availableTools.map((tool: ToolItem) => {
-            const isLive = tool.isLive;
-            const cardBorder = isLive ? '1px solid var(--accent-color)' : '1px solid var(--border-color)';
-            const cardOpacity = isLive ? 1 : 0.7;
-            const badgeBg = isLive ? 'var(--accent-light)' : 'rgba(148, 163, 184, 0.2)';
-            const badgeColor = isLive ? 'var(--accent-color)' : 'var(--text-muted)';
-            const footerColor = isLive ? 'var(--accent-color)' : 'var(--text-muted)';
-
             return (
               <a
-                href={isLive ? localUrl(tool.path, language) : undefined}
+                href={localUrl(tool.path, language)}
                 key={tool.id}
                 className="glass-card"
                 style={{
-                  cursor: isLive ? 'pointer' : 'default',
-                  opacity: cardOpacity,
+                  cursor: 'pointer',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   padding: '1.5rem',
-                  border: cardBorder
+                  border: '1px solid var(--accent-color)'
                 }}
-                onClick={() => {
-                  if (isLive) {
-                    track('menu_click', { destination: tool.path, menu_id: tool.id, menu_location: 'home_grid' });
-                  }
-                }}
+                onClick={() => track('menu_click', { destination: tool.path, menu_id: tool.id, menu_location: 'home_grid' })}
               >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
                     <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)' }}>
                       {tool.category}
                     </span>
-                    <span className="badge" style={{ background: badgeBg, color: badgeColor }}>
+                    <span className="badge" style={{ background: 'var(--accent-light)', color: 'var(--accent-color)' }}>
                       {tool.badge}
                     </span>
                   </div>
@@ -159,38 +135,16 @@ export const Home: React.FC = () => {
                   </p>
                 </div>
 
-                <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', color: footerColor, fontWeight: 600, fontSize: '0.875rem' }}>
-                  {isLive ? (
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                      {t.useNow || '바로 이용하기'} <ArrowRight size={16} />
-                    </span>
-                  ) : (
-                    <span>{t.comingSoonStatus}</span>
-                  )}
+                <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', color: 'var(--accent-color)', fontWeight: 600, fontSize: '0.875rem' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                    {t.useNow || '바로 이용하기'} <ArrowRight size={16} />
+                  </span>
                 </div>
               </a>
             );
           })}
         </div>
       </section>
-
-      {plannedTools.length > 0 && (
-        <section style={{ marginBottom: '3rem' }} aria-labelledby="planned-tools-heading">
-          <h2 id="planned-tools-heading" className="section-title">🗓️ {plannedHeading}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
-            {plannedTools.map(tool => (
-              <article key={tool.id} className="glass-card" style={{ opacity: 0.72, padding: '1.5rem', border: '1px solid var(--border-color)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)' }}>{tool.category}</span>
-                  <span className="badge" style={{ background: 'rgba(148, 163, 184, 0.2)', color: 'var(--text-muted)' }}>{t.comingSoonStatus}</span>
-                </div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.5rem' }}>{tool.title}</h3>
-                <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>{tool.desc}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* Bottom Ad */}
       <AdSlot slotId="home-bottom-banner" />

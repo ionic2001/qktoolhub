@@ -5,7 +5,7 @@
 - 작업 기준 main: c3dd57b8948d491fdd0003b40d92e15d50b9949b
 - 저장소: https://github.com/ionic2001/qktoolhub
 - 현재 작업 브랜치: `main` (PR #3 병합 및 운영 배포 완료)
-- 최근 완료: 환율 FAQ와 수수료 예시 보강, 개인정보 범주 구분, 사용 가능 도구 8개와 예정 OCR 분리, 5개 언어 소개·문의 페이지 추가. 빌드·전체 스크립트 검사와 운영 화면 확인 통과.
+- 최근 완료: 환율 FAQ와 수수료 예시 보강, 개인정보 범주 구분, 홈에는 운영 중인 도구 8개만 표시, 5개 언어 소개·문의 페이지 추가. 빌드·전체 스크립트 검사와 운영 화면 확인 통과.
 - 다음 작업: QK Tool Hub 8개 도구의 모바일 회귀와 Search Console 색인 상태 확인.
 - 사용자 확인 사항: sitemap 재제출 완료.
 - 독립 프로젝트: https://github.com/ionic2001/diorama-stickerbook (`main` 0500fd9).
