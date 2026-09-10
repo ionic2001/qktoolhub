@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { localUrl, pageMeta, pagePaths } from '../seo/catalog';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Language } from '../i18n/translations';
 import { Moon, Sun, FileText } from 'lucide-react';
@@ -8,22 +8,14 @@ import { Moon, Sun, FileText } from 'lucide-react';
 export const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
   const { pathname } = useLocation();
-  const [isDark, setIsDark] = useState<boolean>(true);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('app_theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const shouldDark = savedTheme ? savedTheme === 'dark' : prefersDark;
-    
-    setIsDark(shouldDark);
-    document.documentElement.setAttribute('data-theme', shouldDark ? 'dark' : 'light');
-  }, []);
+  const [isDark, setIsDark] = useState<boolean>(() => document.documentElement.getAttribute('data-theme') === 'dark');
 
   const toggleTheme = () => {
     const nextDark = !isDark;
     setIsDark(nextDark);
     localStorage.setItem('app_theme', nextDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', nextDark ? 'dark' : 'light');
+    document.documentElement.style.colorScheme = nextDark ? 'dark' : 'light';
   };
 
   return (

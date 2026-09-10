@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "push": "cmd /c sync.bat",
-    "test:seo": "node scripts/test-seo.mjs"
+    "test:seo": "node scripts/test-seo.mjs",
+    "test:theme": "node scripts/test-theme.cjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

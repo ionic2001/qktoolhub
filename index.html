@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <script id="theme-bootstrap">
+      (function () {
+        var theme = 'light';
+        try {
+          var saved = localStorage.getItem('app_theme');
+          theme = saved ? saved : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        } catch (_) {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+        document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+      })();
+    </script>
     
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="Pi3f_Ju0hgND6lOhwZGY6QmWO9vc8QiBa2GnL3Ix_NI" />
