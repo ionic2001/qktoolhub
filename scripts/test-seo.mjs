@@ -16,6 +16,7 @@ for(const path of pagePaths) for(const lang of languages){
  assert.ok(!html.includes('https://qktoolhub.com'));
  for(const match of html.matchAll(/<a[^>]*href="(\/[^"#]*)"/g)) assert.ok(pagePaths.includes(new URL(match[1],'https://www.qktoolhub.com').pathname));
 }
+assert.ok(!fs.existsSync('dist/index.html'), 'Root file must not shadow localized home rewrites');
 const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');
 assert.equal((sitemap.match(/<loc>/g)||[]).length,55);
 assert.ok(!sitemap.includes('lang=ko')); assert.ok(!sitemap.includes('https://qktoolhub.com'));

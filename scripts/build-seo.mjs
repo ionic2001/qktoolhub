@@ -26,7 +26,7 @@ for (const path of pagePaths) for (const lang of languages) {
   const body=`<div id="root"><main class="app-container seo-static"><nav aria-label="Breadcrumb"><a href="${localUrl('/',lang)}">QK Tool Hub</a>${path==='/'?'':`<span aria-current="page"> / ${escape(meta.name)}</span>`}</nav><h1>${escape(meta.name)}</h1><p>${escape(meta.description)}</p>${guide}${renderToStaticMarkup(React.createElement(SeoSections,{path,language:lang}))}<footer class="app-footer"><a href="${localUrl('/terms',lang)}">${escape(legal.footer.termsLink)}</a> · <a href="${localUrl('/privacy',lang)}">${escape(legal.footer.privacyLink)}</a></footer></main></div>`;
   const html=head.replace(/<html lang="[^"]*"/,`<html lang="${lang}"`)+`<title>${escape(meta.title)}</title>`+Object.entries(tags).map(([name,value])=>`<meta name="${name}" content="${escape(value)}">`).join('\n')+Object.entries(og).map(([name,value])=>`<meta property="${name}" content="${escape(value)}">`).join('\n')+`<link rel="canonical" href="${escape(meta.url)}">${alternate}<script id="page-schema" type="application/ld+json">${JSON.stringify(pageSchema(path,lang)).replaceAll('<','\\u003c')}</script></head><body>${body}</body></html>`;
   const dir=`dist/${path==='/'?'home':path.slice(1)}`;fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(`${dir}/${lang}.html`,html);
-  if(path==='/'&&lang==='ko') fs.writeFileSync('dist/index.html',html);
+
   entries.push(`  <url><loc>${escape(meta.url)}</loc>${languages.map(l=>`<xhtml:link rel="alternate" hreflang="${l}" href="${escape(canonicalUrl(path,l))}"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${escape(canonicalUrl(path,'ko'))}"/></url>`);
 }
 // Omit lastmod until per-page content dates can be supplied reliably.
@@ -34,3 +34,6 @@ fs.writeFileSync('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<ur
 fs.writeFileSync('dist/robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 fs.writeFileSync('dist/404.html',`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, follow"><title>페이지를 찾을 수 없습니다 | QK Tool Hub</title><style>body{font:18px system-ui;max-width:700px;margin:12vh auto;padding:24px;line-height:1.8}a{color:#4f46e5}</style></head><body><main><h1>404 · 페이지를 찾을 수 없습니다</h1><p>Page not found. 주소를 확인하거나 필요한 도구를 선택하세요.</p><p><a href="/">QK Tool Hub</a> · <a href="/word-counter">글자수 세기</a> · <a href="/image-editor">이미지 편집기</a></p></main></body></html>`);
 console.log(`SEO: ${entries.length} canonical URLs with initial content, metadata, schema and links.`);
+
+// Let Vercel route every homepage query to its localized HTML before filesystem lookup.
+fs.unlinkSync('dist/index.html');
