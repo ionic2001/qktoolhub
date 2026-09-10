@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { localUrl } from '../seo/catalog';
+import React from 'react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -13,44 +13,21 @@ interface LegalPageProps {
 
 export const LegalPage: React.FC<LegalPageProps> = ({ type }) => {
   const { language, t } = useLanguage();
-  const navigate = useNavigate();
-  const location = useLocation();
   const currentLegal = legalText[language] || legalText.ko;
   const doc = type === 'terms' ? currentLegal.terms : currentLegal.privacy;
-
-  useEffect(() => {
-    const pageTitle = `${doc.title} | QK Tool Hub`;
-    document.title = pageTitle;
-
-    const metaTitle = document.querySelector('meta[name="title"]');
-    if (metaTitle) metaTitle.setAttribute('content', pageTitle);
-
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
-
-    const descContent = type === 'terms'
-      ? `${doc.title} - QK Tool Hub 서비스 이용 조건 및 책임에 관한 안내`
-      : `${doc.title} - QK Tool Hub 100% 클라이언트 사이드 개인정보 보호 및 쿠키 정책 안내`;
-
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', descContent);
-
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', descContent);
-  }, [doc, type, location]);
 
   return (
     <div className="app-container legal-page-container">
       <Header />
 
-      <button
+      <a
         className="btn-tool"
-        onClick={() => navigate('/')}
+        href={localUrl('/', language)}
         style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', marginBottom: '1.5rem' }}
       >
         <ArrowLeft size={16} />
         {t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}
-      </button>
+      </a>
 
       <main className="glass-card legal-main-card">
         <div className="legal-page-header">

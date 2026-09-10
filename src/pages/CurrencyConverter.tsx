@@ -1,7 +1,7 @@
+import { seoContent, localUrl } from '../seo/catalog';
 import { ToolIntro } from '../components/ToolIntro';
 import toolIntro from '../i18n/toolIntro.json';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -12,7 +12,6 @@ import { ArrowLeft, RefreshCw, Info, HelpCircle } from 'lucide-react';
 
 export const CurrencyConverterPage: React.FC = () => {
   const { t, language } = useLanguage();
-  const navigate = useNavigate();
 
   // Base Currency initial detection (KRW for ko, USD for en/es, JPY for ja, CNY for zh)
   const initialBaseMap: Record<string, string> = {
@@ -28,93 +27,6 @@ export const CurrencyConverterPage: React.FC = () => {
   const [amount, setAmount] = useState<number>(1000);
   const [ratesData, setRatesData] = useState<RatesData>(() => getInitialRatesData(initialBaseMap[language] || 'KRW'));
   const [loading, setLoading] = useState<boolean>(false);
-
-  // Dynamic SEO Head Updates for Google & Naver Search Engines
-  useEffect(() => {
-    const seoMap: Record<string, { title: string; desc: string; keywords: string }> = {
-      ko: {
-        title: 'QK Tool Hub | 실시간 환율 계산기 - 달러, 엔화, 유로, 원화 환전 연산',
-        desc: '전 세계 주요 국가 실시간 매매기준율 환율 계산기. 미국 달러($), 일본 엔화(1만엔), 유로(€), 원화(₩), 중국 위안화, 태국 바트, 대만 달러 환전 금액 실시간 변환.',
-        keywords: '환율 계산기, 실시간 환율, 원달러 환율, 엔화 환율, 1만엔 환율, 유로 환율, 환전 계산기, 달러 환율, 태국 바트 환율, 대만 달러 환율, currency converter, exchange rate calculator'
-      },
-      en: {
-        title: 'QK Tool Hub | Real-time Currency Converter - USD, EUR, JPY, KRW Exchange Rates',
-        desc: 'Convert real-time mid-market exchange rates for major global currencies including USD, EUR, JPY, KRW, CNY, GBP, THB, and TWD instantly.',
-        keywords: 'currency converter, exchange rate calculator, USD to EUR, USD to JPY, USD to KRW, real time exchange rates, forex converter'
-      },
-      ja: {
-        title: 'QK Tool Hub | リアルタイム為替レート計算機 - 米ドル・日本円・ユーロ・ウォン',
-        desc: '世界主要国のリアルタイム為替レートを一括計算。米ドル、日本円(1万円)、ユーロ、韓国ウォン、人民元の最新レート換算。',
-        keywords: '為替レート計算機, リアルタイム為替, 米ドル, 日本円, 1万円, ユーロ, 韓国ウォン, 通貨換算'
-      },
-      zh: {
-        title: 'QK Tool Hub | 实时汇率换算器 - 美元, 日元, 欧元, 韩元',
-        desc: '实时换算全球主要国家与地区汇率。支持美元、日元、欧元、韩元、人民币、泰铢、新台币等实时汇率一键计算。',
-        keywords: '汇率换算器, 实时汇率, 美元汇率, 日元汇率, 欧元汇率, 韩元汇率, 外汇换算'
-      },
-      es: {
-        title: 'QK Tool Hub | Conversor de Divisas en Tiempo Real - USD, JPY, EUR, KRW',
-        desc: 'Calculadora de tipos de cambio en tiempo real para las principales monedas del mundo: USD, EUR, JPY, KRW, CNY, GBP, THB, TWD.',
-        keywords: 'conversor de divisas, calculadora de tipo de cambio, USD a EUR, USD a JPY, cambio de moneda'
-      }
-    };
-
-    const currentSeo = seoMap[language] || seoMap.ko;
-    document.title = currentSeo.title;
-
-    // Update Meta Description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute('content', currentSeo.desc);
-
-    // Update Meta Keywords
-    let metaKw = document.querySelector('meta[name="keywords"]');
-    if (!metaKw) {
-      metaKw = document.createElement('meta');
-      metaKw.setAttribute('name', 'keywords');
-      document.head.appendChild(metaKw);
-    }
-    metaKw.setAttribute('content', currentSeo.keywords);
-
-    // Update Canonical URL
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', 'https://qktoolhub.com/currency-converter');
-
-    // Inject Schema.org JSON-LD for Search Rich Snippets
-    const existingScript = document.getElementById('currency-jsonld');
-    if (existingScript) existingScript.remove();
-
-    const script = document.createElement('script');
-    script.id = 'currency-jsonld';
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FinancialProduct',
-      'name': currentSeo.title,
-      'url': 'https://qktoolhub.com/currency-converter',
-      'description': currentSeo.desc,
-      'offers': {
-        '@type': 'Offer',
-        'price': '0',
-        'priceCurrency': 'USD'
-      }
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      const scriptToRemove = document.getElementById('currency-jsonld');
-      if (scriptToRemove) scriptToRemove.remove();
-    };
-  }, [language]);
 
   // Default target currency setup if target matches base
   useEffect(() => {
@@ -150,14 +62,14 @@ export const CurrencyConverterPage: React.FC = () => {
 
       {/* Navigation Breadcrumb */}
       <div style={{ marginBottom: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <button
+        <a
           className="btn-tool"
-          onClick={() => navigate('/')}
+          href={localUrl('/', language)}
           style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}
         >
           <ArrowLeft size={16} />
           {t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}
-        </button>
+        </a>
 
         <button
           onClick={loadRates}
@@ -203,7 +115,7 @@ export const CurrencyConverterPage: React.FC = () => {
         <Info size={18} color="var(--warning-color)" style={{ flexShrink: 0 }} />
         <div>
           <strong>💡 {language === 'ko' ? '환율 차이 안내' : language === 'ja' ? '為替レートのご案内' : language === 'zh' ? '汇率提示' : language === 'es' ? 'Aviso' : 'Notice'}:</strong>{' '}
-          {currencyT?.disclaimerNotice}
+          {seoContent[language].currency[0][1]}
         </div>
       </div>
 
@@ -222,7 +134,7 @@ export const CurrencyConverterPage: React.FC = () => {
               {currencyT?.faq1Q || 'Q. 매매기준율이란 무엇인가요?'}
             </h3>
             <p>
-              {currencyT?.faq1A || '매매기준율(Mid-Market Rate)은 국제 외환시장에서 금융기관 간 거래 시 적용되는 수수료가 포함되지 않은 순수한 시장 기준 환율입니다. 본 서비스는 유럽중앙은행(ECB) 및 국제 공식 데이터를 바탕으로 당일 매매기준율을 제공합니다.'}
+              {seoContent[language].currency[0][1]}
             </p>
           </div>
 

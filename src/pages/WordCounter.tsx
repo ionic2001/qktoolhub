@@ -1,7 +1,7 @@
+import { localUrl } from '../seo/catalog';
 import { ToolIntro } from '../components/ToolIntro';
 import toolIntro from '../i18n/toolIntro.json';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -17,7 +17,6 @@ import { ArrowLeft } from 'lucide-react';
 
 export const WordCounterPage: React.FC = () => {
   const { t, language } = useLanguage();
-  const navigate = useNavigate();
   const [text, setText] = useState<string>('');
 
   // Load from LocalStorage
@@ -42,14 +41,14 @@ export const WordCounterPage: React.FC = () => {
 
       {/* Back to Hub Breadcrumb Navigation */}
       <div style={{ marginBottom: '1.5rem' }}>
-        <button
+        <a
           className="btn-tool"
-          onClick={() => navigate('/')}
+          href={localUrl('/', language)}
           style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}
         >
           <ArrowLeft size={16} />
           {t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}
-        </button>
+        </a>
       </div>
 
       <ToolIntro badge={toolIntro[language].wordBadge} title={toolIntro[language].wordTitle} description={toolIntro[language].wordDescription} />

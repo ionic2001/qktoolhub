@@ -1,12 +1,12 @@
+import { Footer } from '../components/Footer';
+import { localUrl } from '../seo/catalog';
 import { track } from '../utils/analytics';
 import { ClockFace, DurationFace, ClockDisplay, clockSkins, validClockSkin, type ClockSkin } from '../components/clock/ClockFace';
 import { AdSlot } from '../components/AdSlot';
 import { worldGuide } from '../i18n/worldGuide';
 import { focusWindow, localDateInput } from '../utils/focusTime';
 import type { CSSProperties } from 'react';
-import { useWorldSeo } from '../utils/useWorldSeo';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Maximize, Minimize, Bell, Settings, Sun, Moon, X } from 'lucide-react';
 import { Header } from '../components/Header';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -19,8 +19,7 @@ function read(key: string): unknown { try { return JSON.parse(localStorage.getIt
 function initialZones() { const saved=read('qk-clock-zones'); return Array.isArray(saved)&&saved.length?saved.filter((z):z is string=>typeof z==='string'&&validZone(z)).slice(0,8):Array.from(new Set([localZone,'America/New_York','Europe/London','Asia/Tokyo'])); }
 function initialAlarms(): Alarm[] { const saved=read('qk-clock-alarms'); if(!Array.isArray(saved))return []; return saved.filter(a=>a&&typeof a.id==='string'&&typeof a.name==='string'&&typeof a.time==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(a.time)&&typeof a.zone==='string'&&validZone(a.zone)&&typeof a.next==='number'&&typeof a.enabled==='boolean').slice(0,12).map(a=>({...a,days:[],next:a.next<Date.now()?nextAlarm(a.time,a.zone,[],Date.now()):a.next})); }
 export default function WorldClockPage(){
-  const {language,t}=useLanguage(), s=worldText[language], navigate=useNavigate();
-  useWorldSeo(language);
+  const {language,t}=useLanguage(), s=worldText[language];
   const guide = worldGuide[language];
   const locale={ko:'ko-KR',en:'en-US',ja:'ja-JP',zh:'zh-CN',es:'es-ES'}[language];
   const [zones,setZones]=useState(initialZones); const [main,setMain]=useState(()=>{const v=read('qk-clock-main');return typeof v==='string'&&validZone(v)?v:localZone;});
@@ -66,7 +65,7 @@ export default function WorldClockPage(){
   function snooze(min:number){if(!alerts[0])return;setSnoozes(prev=>[...prev,{...alerts[0],at:Date.now()+min*60000}]);setAlerts(prev=>prev.slice(1));}
   const upcoming=[...alarms.filter(a=>a.enabled).map(a=>({name:a.name||s.alarm,at:a.next})),...snoozes].sort((a,b)=>a.at-b.at)[0];
   const matching=cityZones.filter(c=>c.some(v=>v.toLowerCase().includes(search.toLowerCase()))&&!zones.includes(c[0]));
-  return <div className="app-container world-page"><Header/><button className="btn-tool" onClick={()=>navigate('/')} style={{background:'var(--accent-light)',color:'var(--accent-color)'}}><ArrowLeft size={16}/>{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</button>
+  return <div className="app-container world-page"><Header/><a className="btn-tool" href={localUrl('/', language)} style={{background:'var(--accent-light)',color:'var(--accent-color)'}}><ArrowLeft size={16}/>{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</a>
     <div className="world-intro"><span className="badge">TIME STUDIO</span><h1>{s.title}</h1><p>{s.subtitle}</p></div>
     <AdSlot slotId="world-clock-top-banner" />
       <div ref={stage} className="world-stage" style={{background,'--world-ink':light?'#111827':'#f8fafc','--world-muted':light?'#27364a':'#cbd5e1'} as CSSProperties}><div className="world-stage-tools"><div className="world-tabs">{(['clock','stopwatch','timer','focus'] as const).map(v=><button key={v} aria-pressed={mode===v} onClick={()=>{if(v!==mode)track('clock_mode_change',{clock_mode:v,previous_mode:mode});setMode(v);}}>{s[v]}</button>)}</div><div className="world-row"><button className="world-settings-trigger" aria-haspopup="dialog" onClick={()=>setSettingsOpen(true)}><Settings size={18}/>{s.settings}</button><button onClick={()=>void fullscreen()} aria-label={full?s.exit:s.full}>{full?<Minimize size={20}/>:<Maximize size={20}/>}</button></div></div>
@@ -95,5 +94,5 @@ export default function WorldClockPage(){
     {message&&!settingsOpen&&<p role="status" className="world-message">{message}<button onClick={()=>setMessage('')}>×</button></p>}
     <AdSlot slotId="world-clock-bottom-banner" />
       <section className="glass-card world-panel world-help" aria-labelledby="world-guide-title"><h2 id="world-guide-title">{s.help}</h2><div className="world-guide-grid">{guide.sections.map((item,i)=><section key={i}><h3>{i+1}. {item.title}</h3><p>{item.body}</p></section>)}</div></section>
-  </div>;
+  <Footer /></div>;
 }

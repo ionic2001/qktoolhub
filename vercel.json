@@ -648,10 +648,294 @@
     {
       "source": "/pixel-art",
       "destination": "/pixel-art/ko.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/home/ko.html",
+      "destination": "/",
+      "permanent": true
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/home/en.html",
+      "destination": "/?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/home/ja.html",
+      "destination": "/?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/home/zh.html",
+      "destination": "/?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/home/es.html",
+      "destination": "/?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/word-counter/ko.html",
+      "destination": "/word-counter",
+      "permanent": true
+    },
+    {
+      "source": "/word-counter/en.html",
+      "destination": "/word-counter?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/word-counter/ja.html",
+      "destination": "/word-counter?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/word-counter/zh.html",
+      "destination": "/word-counter?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/word-counter/es.html",
+      "destination": "/word-counter?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/currency-converter/ko.html",
+      "destination": "/currency-converter",
+      "permanent": true
+    },
+    {
+      "source": "/currency-converter/en.html",
+      "destination": "/currency-converter?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/currency-converter/ja.html",
+      "destination": "/currency-converter?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/currency-converter/zh.html",
+      "destination": "/currency-converter?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/currency-converter/es.html",
+      "destination": "/currency-converter?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/pixel-art/ko.html",
+      "destination": "/pixel-art",
+      "permanent": true
+    },
+    {
+      "source": "/pixel-art/en.html",
+      "destination": "/pixel-art?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/pixel-art/ja.html",
+      "destination": "/pixel-art?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/pixel-art/zh.html",
+      "destination": "/pixel-art?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/pixel-art/es.html",
+      "destination": "/pixel-art?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-converter/ko.html",
+      "destination": "/pdf-converter",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-converter/en.html",
+      "destination": "/pdf-converter?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-converter/ja.html",
+      "destination": "/pdf-converter?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-converter/zh.html",
+      "destination": "/pdf-converter?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-converter/es.html",
+      "destination": "/pdf-converter?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/world-clock/ko.html",
+      "destination": "/world-clock",
+      "permanent": true
+    },
+    {
+      "source": "/world-clock/en.html",
+      "destination": "/world-clock?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/world-clock/ja.html",
+      "destination": "/world-clock?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/world-clock/zh.html",
+      "destination": "/world-clock?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/world-clock/es.html",
+      "destination": "/world-clock?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/calendar/ko.html",
+      "destination": "/calendar",
+      "permanent": true
+    },
+    {
+      "source": "/calendar/en.html",
+      "destination": "/calendar?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/calendar/ja.html",
+      "destination": "/calendar?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/calendar/zh.html",
+      "destination": "/calendar?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/calendar/es.html",
+      "destination": "/calendar?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/image-editor/ko.html",
+      "destination": "/image-editor",
+      "permanent": true
+    },
+    {
+      "source": "/image-editor/en.html",
+      "destination": "/image-editor?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/image-editor/ja.html",
+      "destination": "/image-editor?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/image-editor/zh.html",
+      "destination": "/image-editor?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/image-editor/es.html",
+      "destination": "/image-editor?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/unit-converter/ko.html",
+      "destination": "/unit-converter",
+      "permanent": true
+    },
+    {
+      "source": "/unit-converter/en.html",
+      "destination": "/unit-converter?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/unit-converter/ja.html",
+      "destination": "/unit-converter?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/unit-converter/zh.html",
+      "destination": "/unit-converter?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/unit-converter/es.html",
+      "destination": "/unit-converter?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/terms/ko.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/terms/en.html",
+      "destination": "/terms?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/terms/ja.html",
+      "destination": "/terms?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/terms/zh.html",
+      "destination": "/terms?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/terms/es.html",
+      "destination": "/terms?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/ko.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/en.html",
+      "destination": "/privacy?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/ja.html",
+      "destination": "/privacy?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/zh.html",
+      "destination": "/privacy?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/es.html",
+      "destination": "/privacy?lang=es",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/404.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     }
   ]
 }

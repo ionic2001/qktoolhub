@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+import { localUrl, pageMeta, pagePaths } from '../seo/catalog';
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Language } from '../i18n/translations';
@@ -5,6 +7,7 @@ import { Moon, Sun, FileText } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
+  const { pathname } = useLocation();
   const [isDark, setIsDark] = useState<boolean>(true);
 
   useEffect(() => {
@@ -24,8 +27,8 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="header-wrapper">
-      <div className="logo-area">
+    <><header className="header-wrapper">
+      <a className="logo-area" href={localUrl('/', language)}>
         <div className="logo-icon">
           <FileText size={24} />
         </div>
@@ -33,7 +36,7 @@ export const Header: React.FC = () => {
           <div className="logo-title">{t.appTitle}</div>
           <p className="logo-subtitle">{t.appSubtitle}</p>
         </div>
-      </div>
+      </a>
 
       <div className="controls-group">
         <div className="lang-select-wrapper">
@@ -60,6 +63,6 @@ export const Header: React.FC = () => {
           {isDark ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#6366f1" />}
         </button>
       </div>
-    </header>
+    </header>{pathname !== '/' && pagePaths.includes(pathname) && <nav className="seo-breadcrumb" aria-label="Breadcrumb"><a href={localUrl('/', language)}>QK Tool Hub</a><span aria-hidden="true"> / </span><span aria-current="page">{pageMeta(pathname, language).name}</span></nav>}</>
   );
 };

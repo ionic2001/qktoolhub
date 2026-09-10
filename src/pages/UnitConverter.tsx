@@ -1,5 +1,6 @@
+import { Footer } from '../components/Footer';
+import { localUrl } from '../seo/catalog';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowDownUp, Copy, Star, Link as LinkIcon } from 'lucide-react';
 import { Header } from '../components/Header';
 import { AdSlot } from '../components/AdSlot';
@@ -22,7 +23,7 @@ function initial(language:string) {
  return {region,selection:validSelection(selection)?selection:validSelection(saved.selection)?saved.selection:fallback};
 }
 export default function UnitConverter(){
- const {language,t}=useLanguage(),nav=useNavigate(),i=['ko','en','ja','zh','es'].indexOf(language),tr=(k:keyof typeof copy)=>copy[k][i];
+ const {language,t}=useLanguage(),i=['ko','en','ja','zh','es'].indexOf(language),tr=(k:keyof typeof copy)=>copy[k][i];
  const [start]=useState(()=>initial(language));const [region]=useState<Region>(start.region),[s,setS]=useState<Selection>(start.selection);
  const [raw,setRaw]=useState('1'),[digits,setDigits]=useState('auto'),[query,setQuery]=useState(''),[message,setMessage]=useState('');
  const [favorites,setFavorites]=useState<Selection[]>(()=>{const f=read().favorites;return Array.isArray(f)?f.filter(validSelection).slice(0,12):[];});
@@ -37,13 +38,6 @@ export default function UnitConverter(){
  const change=(next:Selection)=>{setS(next);setQuery('');setMessage('');track('unit_selection',{category:next.category,from_unit:next.from,to_unit:next.to});};
  const selectCategory=(id:string)=>{const p=preferred(id,region);change({category:id,from:p[0],to:p[1],ingredient:s.ingredient});};
  useEffect(()=>{try{localStorage.setItem(key,JSON.stringify({region,selection:s,favorites}));}catch{setMessage('storage');}},[region,s,favorites]);
- useEffect(()=>{
-  const title=`${tr('title')} | QK Tool Hub`,url=`https://qktoolhub.com/unit-converter?lang=${language}`;document.title=title;
-  const set=(selector:string,tag:string,attrs:Record<string,string>)=>{const el=document.head.querySelector(selector)||document.head.appendChild(document.createElement(tag));Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));};
-  for(const [name,content] of Object.entries({title,description:tr('subtitle')}))set(`meta[name="${name}"]`,'meta',{name,content});
-  for(const [property,content] of Object.entries({'og:title':title,'og:description':tr('subtitle'),'og:url':url,'twitter:title':title,'twitter:description':tr('subtitle'),'twitter:url':url}))set(`meta[property="${property}"]`,'meta',{property,content});
-  set('link[rel="canonical"]','link',{rel:'canonical',href:url});for(const lang of ['ko','en','ja','zh','es','x-default'])set(`link[hreflang="${lang}"]`,'link',{rel:'alternate',hreflang:lang,href:`https://qktoolhub.com/unit-converter${lang==='x-default'?'':`?lang=${lang}`}`});
- },[language]);
  async function clipboard(text:string,event:string){try{await navigator.clipboard.writeText(text);setMessage('copied');track(event,{category:s.category});}catch{setMessage('failed');}}
  function saveFavorite(){if(favorites.some(f=>JSON.stringify(f)===JSON.stringify(s)))return;if(favorites.length>=12){setMessage('limit');return;}setFavorites([...favorites,s]);setMessage('saved');track('unit_favorite',{category:s.category});}
  function share(){const url=new URL('/unit-converter',location.origin);Object.entries({...s,region,lang:language}).forEach(([k,v])=>url.searchParams.set(k,v));void clipboard(url.toString(),'unit_share');}
@@ -57,7 +51,7 @@ export default function UnitConverter(){
  useEffect(()=>{const hit=exactUnit(query);if(!hit)return;const timer=setTimeout(()=>chooseSearch(hit.category.id,hit.unit.id,true),500);return ()=>clearTimeout(timer);},[query,region,s]);
  const options=()=>{const list=c.units;const p=preferred(c.id,region);return <><optgroup label={tr('popular')}>{p.map(id=>list.find(u=>u.id===id)).filter((u):u is Unit=>!!u).map(u=><option key={u.id} value={u.id}>{label(u)}</option>)}</optgroup><optgroup label={tr('all')}>{list.filter(u=>!p.includes(u.id)).map(u=><option key={u.id} value={u.id}>{label(u)}</option>)}</optgroup></>;};
  const ft=parseNumber(feet,locale),inch=parseNumber(inches,locale),height=ft!==null&&inch!==null&&Number.isInteger(ft)&&ft>=0&&inch>=0&&inch<12?(ft*12+inch)*2.54:null;
- return <div className="app-container unit-page"><Header/><button className="btn-tool" onClick={()=>nav('/')}><ArrowLeft size={16}/>{t.backToHub.replace(/^[\s←⇐⟵]+/, "")}</button><section className="unit-intro"><span className="badge">QK TOOL HUB</span><h1>{tr('title')}</h1><p>{tr('subtitle')}</p></section>
+ return <div className="app-container unit-page"><Header/><a className="btn-tool" href={localUrl('/', language)}><ArrowLeft size={16}/>{t.backToHub.replace(/^[\s←⇐⟵]+/, "")}</a><section className="unit-intro"><span className="badge">QK TOOL HUB</span><h1>{tr('title')}</h1><p>{tr('subtitle')}</p></section>
  <nav className="unit-tabs" aria-label={tr('title')}>{categories.map(cat=><button key={cat.id} aria-pressed={cat.id===c.id} onClick={()=>selectCategory(cat.id)}>{cat.names[i]}</button>)}</nav>
  <section className="glass-card unit-search"><h2>{tr('search')}</h2><p id="unit-search-help">{tr('searchHelp')}</p><input type="search" aria-label={tr('search')} aria-describedby="unit-search-help" placeholder={tr('search')} value={query} onChange={e=>setQuery(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&matches.length===1){e.preventDefault();chooseSearch(matches[0].category.id,matches[0].unit.id);}if(e.key==='Escape')setQuery('');}}/>{query.trim()&&<div className="unit-search-results">{matches.length?matches.map(({category,unit})=><button key={`${category.id}-${unit.id}`} onClick={()=>chooseSearch(category.id,unit.id)}>{category.names[i]} · {label(unit)}</button>):<p role="status">{tr('noResults')}</p>}</div>}</section>
  <section className="glass-card unit-work"><div className="unit-work-head"><h2>{c.names[i]}</h2></div>
@@ -69,5 +63,5 @@ export default function UnitConverter(){
  {c.id==='length'&&<details><summary>{tr('height')}</summary>{value!==null&&Number.isFinite(value)&&value>=0&&<p>{(()=>{let total;try{total=convert(value,'length',s.from,'in');}catch{return tr('range');}const rounded=total<1e15?Math.round(total*100)/100:total;return `${Math.floor(rounded/12)} ft + ${format(rounded%12)} in`;})()}</p>}<p>{tr('heightNote')}</p><div className="unit-height"><label>{tr('feet')} (ft)<input inputMode="numeric" value={feet} onChange={e=>setFeet(e.target.value)}/></label><label>{tr('inches')} (in)<input inputMode="decimal" value={inches} onChange={e=>setInches(e.target.value)}/></label><output>{height===null?tr('invalid'):`≈ ${format(height)} cm`}</output></div></details>}
  <details onToggle={e=>{if(e.currentTarget.open)track('unit_expand',{category:c.id});}}><summary>{tr('more')}</summary><div className="unit-all">{c.units.map(u=>{let n;try{n=value!==null?convert(value,c.id,s.from,u.id,s.ingredient):null;}catch{n=null;}return <div key={u.id}><span>{label(u)}</span><strong>{n!==null&&Number.isFinite(n)?format(n):'—'}</strong></div>;})}</div></details></section>
  {favorites.length>0&&<section className="glass-card unit-favorites"><h2>{tr('favorites')}</h2>{favorites.map((f,index)=>{const cat=categories.find(c=>c.id===f.category)!;return <div key={index}><button onClick={()=>{change(f);track('unit_favorite_use',{category:f.category,from_unit:f.from,to_unit:f.to});}}>{cat.names[i]} · {symbol(cat.units.find(u=>u.id===f.from)!)} → {symbol(cat.units.find(u=>u.id===f.to)!)}{f.category==='cooking'?` · ${ingredients.find(x=>x.id===f.ingredient)!.names[i]}`:''}</button><button aria-label={tr('remove')} onClick={()=>setFavorites(favorites.filter((_,n)=>n!==index))}>×</button></div>;})}</section>}
- <AdSlot slotId="unit-bottom"/><section className="glass-card unit-guide"><h2>{tr('guide')}</h2><p>{tr('note')}</p><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors" target="_blank" rel="noreferrer">{tr('source')} · NIST</a></section></div>;
+ <AdSlot slotId="unit-bottom"/><section className="glass-card unit-guide"><h2>{tr('guide')}</h2><p>{tr('note')}</p><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors" target="_blank" rel="noreferrer">{tr('source')} · NIST</a></section><Footer /></div>;
 }

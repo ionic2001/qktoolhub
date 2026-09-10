@@ -1,0 +1,287 @@
+{
+  "ko": {
+    "homeTitle": "무료 온라인 도구 모음",
+    "homeDescription": "글자수·바이트 계산, 환율과 단위 변환, 이미지 편집, PDF 변환, 픽셀아트, 세계시계와 달력까지. 필요한 온라인 도구와 사용 방법을 확인하세요.",
+    "wordTitle": "글자수 세기와 바이트 계산기",
+    "currencyTitle": "환율 계산기와 통화 변환",
+    "groups": [
+      "텍스트 도구",
+      "이미지와 PDF 도구",
+      "계산과 변환",
+      "시간과 일정"
+    ],
+    "aboutTitle": "QK Tool Hub 사용 안내",
+    "about": "필요한 도구를 선택하면 입력 화면과 사용 안내를 함께 볼 수 있습니다. 파일 변환 도구에서는 지원 형식과 용량을 확인하고 작업이 끝나면 결과를 다운로드하세요. 파일의 브라우저 처리와 별개로 사이트는 광고와 방문 통계 서비스를 사용합니다. 자세한 내용은 개인정보처리방침에서 확인할 수 있습니다.",
+    "related": "관련 도구",
+    "languageLabel": "언어별 페이지",
+    "seoNote": "제목 50자·설명 150자는 참고용 표시 기준이며 Google의 고정 제한이 아닙니다. 검색결과는 기기와 검색어에 따라 달라집니다.",
+    "word": [
+      [
+        "글자수와 바이트를 확인하는 방법",
+        "텍스트를 입력하거나 붙여 넣으면 공백 포함·제외 글자수, 단어수와 바이트 수를 확인할 수 있습니다. 제출처의 기준이 다를 수 있으므로 최종 제출 화면과 결과를 비교하세요."
+      ],
+      [
+        "이모지와 인코딩 기준",
+        "글자수는 JavaScript 문자열 길이를 기준으로 계산하므로 이모지 하나가 여러 단위로 표시될 수 있습니다. UTF-8 바이트와 EUC-KR 방식의 추정치는 다릅니다. EUC-KR 값은 실제 인코딩 검증 결과가 아니므로 제출처의 최종 계산을 확인하세요."
+      ]
+    ],
+    "currency": [
+      [
+        "환율 계산 방법",
+        "금액과 기준 통화를 선택하면 제공된 환율로 여러 통화를 비교합니다. 현재 환율은 ExchangeRate-API에서 가져오며 거래소 실시간 체결 가격이 아닙니다. 은행 수수료와 환전 우대율은 포함하지 않습니다."
+      ],
+      [
+        "갱신과 데이터 확인",
+        "환율 제공일과 데이터 상태를 확인하세요. 네트워크 요청에 실패하면 예시 환율이 표시될 수 있습니다. 실제 거래 전에는 금융기관의 고시 환율을 확인하세요."
+      ]
+    ],
+    "pixel": [
+      [
+        "사진을 픽셀아트로 바꾸는 방법",
+        "사진을 선택하고 픽셀 크기와 색상 수를 조절하세요. 작은 픽셀은 세부를 남기고 큰 픽셀은 형태를 단순하게 만듭니다. 미리보기를 확인한 뒤 PNG로 저장할 수 있습니다."
+      ],
+      [
+        "저장 크기와 원본",
+        "큰 사진은 긴 변 1600px로 줄여 처리합니다. 원본 사진은 별도로 보관하세요. 결과는 원본과 같은 세부 묘사나 인쇄 해상도를 보장하지 않습니다."
+      ]
+    ],
+    "units": [
+      [
+        "단위 변환 방법",
+        "분류를 선택하거나 단위를 검색하고 입력값과 변환할 단위를 지정하세요. 결과를 복사하거나 선택한 단위 조합을 즐겨찾기에 보관할 수 있습니다."
+      ],
+      [
+        "정밀도와 근사값",
+        "표시 자릿수에 따라 반올림될 수 있습니다. 요리용 무게와 부피 변환은 재료별 밀도에 따른 근사값이므로 재료와 조건을 확인하세요."
+      ]
+    ]
+  },
+  "en": {
+    "homeTitle": "Free online tools",
+    "homeDescription": "Count words and bytes, convert currencies and units, edit images, convert PDFs, create pixel art, and explore world clocks and calendars.",
+    "wordTitle": "Word and character counter",
+    "currencyTitle": "Currency converter",
+    "groups": [
+      "Text tools",
+      "Image and PDF tools",
+      "Calculators and converters",
+      "Time and calendars"
+    ],
+    "aboutTitle": "Using QK Tool Hub",
+    "about": "Choose a tool to see its controls and instructions. Check supported formats and file limits before converting, and download your result when finished. Browser file processing is separate from the advertising and analytics services used by this site. See the privacy policy for details.",
+    "related": "Related tools",
+    "languageLabel": "Languages",
+    "seoNote": "The 50-character title and 150-character description markers are guides, not fixed Google limits. Search display varies by device and query.",
+    "word": [
+      [
+        "How to count text",
+        "Type or paste text to see characters with and without spaces, words and byte counts. Compare the results with your final submission form because counting rules can differ."
+      ],
+      [
+        "Emoji and encoding",
+        "Character counts use JavaScript string length, so one emoji can occupy multiple units. UTF-8 bytes and the EUC-KR estimate differ. The EUC-KR value is not a validation of actual encoding; check the destination form."
+      ]
+    ],
+    "currency": [
+      [
+        "How conversion works",
+        "Select an amount and base currency to compare currencies. Current rates come from ExchangeRate-API, not a live trade feed. Bank fees and exchange discounts are excluded."
+      ],
+      [
+        "Check the rate date",
+        "Check the provider date and data status. Example rates may appear when network requests fail. Verify rates with your financial institution before a transaction."
+      ]
+    ],
+    "pixel": [
+      [
+        "Turn a photo into pixel art",
+        "Choose a photo, then adjust pixel size and palette. Small pixels retain detail; large pixels simplify shapes. Preview the result and save it as PNG."
+      ],
+      [
+        "Output size",
+        "Large photos are reduced to 1600 pixels on the long edge. Keep your original separately. The result does not preserve all original detail or guarantee print resolution."
+      ]
+    ],
+    "units": [
+      [
+        "How to convert units",
+        "Choose a category or search for a unit, then enter a value and select source and target units. Copy the result or save the combination to favorites."
+      ],
+      [
+        "Precision and estimates",
+        "Results may be rounded to the selected display precision. Cooking mass and volume conversions depend on ingredient density and are estimates."
+      ]
+    ]
+  },
+  "ja": {
+    "homeTitle": "無料オンラインツール集",
+    "homeDescription": "文字数・バイト数の計算、為替と単位の換算、画像編集、PDF変換、ドット絵、世界時計、カレンダーを利用できます。",
+    "wordTitle": "文字数とバイト数カウント",
+    "currencyTitle": "為替レート計算機",
+    "groups": [
+      "テキストツール",
+      "画像とPDF",
+      "計算と換算",
+      "時間と予定"
+    ],
+    "aboutTitle": "QK Tool Hubの使い方",
+    "about": "ツールを選ぶと操作画面と説明が表示されます。変換前に対応形式と容量を確認し、完成後に結果を保存してください。ファイルのブラウザー処理とは別に広告とアクセス解析を使用します。詳細はプライバシーポリシーをご覧ください。",
+    "related": "関連ツール",
+    "languageLabel": "言語別ページ",
+    "seoNote": "タイトル50文字・説明150文字は目安であり、Googleの固定上限ではありません。表示は端末や検索語によって変わります。",
+    "word": [
+      [
+        "文字数の確認方法",
+        "文章を入力すると空白を含む文字数、空白を除く文字数、単語数とバイト数を確認できます。提出先で計算方法が異なる場合があるため、最終画面でも確認してください。"
+      ],
+      [
+        "絵文字とエンコーディング",
+        "JavaScriptの文字列の長さで数えるため、絵文字1個が複数単位になる場合があります。UTF-8とEUC-KRの推定値は異なります。EUC-KR値は実際の変換検証ではないため提出先の計算を確認してください。"
+      ]
+    ],
+    "currency": [
+      [
+        "換算方法",
+        "金額と基準通貨を選ぶと通貨を比較できます。現在レートはExchangeRate-APIから取得し、リアルタイム約定価格ではありません。銀行手数料や優遇率は含みません。"
+      ],
+      [
+        "更新日の確認",
+        "提供日とデータ状態を確認してください。通信に失敗するとサンプルレートが表示される場合があります。取引前に金融機関のレートを確認してください。"
+      ]
+    ],
+    "pixel": [
+      [
+        "写真をドット絵に変換",
+        "写真を選び、ピクセルの大きさと色数を調整します。小さいピクセルは細部を残し、大きいピクセルは形を単純化します。確認後PNGで保存できます。"
+      ],
+      [
+        "保存サイズ",
+        "大きな写真は長辺1600pxに縮小されます。元の写真は別に保管してください。細部や印刷解像度の維持は保証されません。"
+      ]
+    ],
+    "units": [
+      [
+        "単位の換算方法",
+        "分類を選ぶか単位を検索し、値と変換元・変換先を指定します。結果のコピーや組み合わせのお気に入り保存ができます。"
+      ],
+      [
+        "精度と概算",
+        "表示桁数に応じて丸められます。調理用の重さと体積の換算は材料の密度に基づく概算です。"
+      ]
+    ]
+  },
+  "zh": {
+    "homeTitle": "免费在线工具集合",
+    "homeDescription": "统计字数与字节，换算货币和单位，编辑图片、转换PDF、制作像素画，以及查看世界时钟和日历。",
+    "wordTitle": "字数与字节统计",
+    "currencyTitle": "汇率换算器",
+    "groups": [
+      "文本工具",
+      "图片与PDF工具",
+      "计算与换算",
+      "时间与日程"
+    ],
+    "aboutTitle": "QK Tool Hub使用说明",
+    "about": "选择工具后可查看操作界面和说明。转换前请确认格式和大小限制，完成后下载结果。文件在浏览器中处理与网站使用的广告及访问统计服务是不同事项，详情请阅读隐私政策。",
+    "related": "相关工具",
+    "languageLabel": "语言版本",
+    "seoNote": "标题50字和描述150字仅供参考，并非Google固定限制。搜索展示会随设备和查询而变化。",
+    "word": [
+      [
+        "如何统计文本",
+        "输入或粘贴文本即可查看包含和不包含空格的字符数、单词数与字节数。各提交平台规则可能不同，请核对最终提交页面。"
+      ],
+      [
+        "表情符号与编码",
+        "字符数以JavaScript字符串长度计算，一个表情符号可能占多个单位。UTF-8字节数与EUC-KR估算值不同；后者不是实际编码验证结果，请以目标平台为准。"
+      ]
+    ],
+    "currency": [
+      [
+        "如何换算",
+        "选择金额和基准货币即可比较多种货币。当前汇率来自ExchangeRate-API，并非实时成交价格，不含银行手续费或优惠。"
+      ],
+      [
+        "确认更新日期",
+        "请检查数据日期与状态。网络请求失败时可能显示示例汇率，交易前请核对金融机构报价。"
+      ]
+    ],
+    "pixel": [
+      [
+        "将照片转换为像素画",
+        "选择照片后调整像素大小和颜色数量。较小像素保留细节，较大像素简化形状。预览后可保存为PNG。"
+      ],
+      [
+        "输出尺寸",
+        "大图会缩小至长边1600像素。请另行保存原图，结果不保证保留全部细节或打印分辨率。"
+      ]
+    ],
+    "units": [
+      [
+        "单位换算方法",
+        "选择分类或搜索单位，然后输入数值并选择原单位与目标单位。可复制结果或收藏单位组合。"
+      ],
+      [
+        "精度与估算",
+        "结果可能按显示精度四舍五入。烹饪质量与体积换算依赖材料密度，属于估算值。"
+      ]
+    ]
+  },
+  "es": {
+    "homeTitle": "Herramientas online gratuitas",
+    "homeDescription": "Cuenta palabras y bytes, convierte divisas y unidades, edita imágenes y PDF, crea pixel art y consulta relojes y calendarios.",
+    "wordTitle": "Contador de palabras y bytes",
+    "currencyTitle": "Conversor de divisas",
+    "groups": [
+      "Texto",
+      "Imágenes y PDF",
+      "Cálculos y conversiones",
+      "Tiempo y calendario"
+    ],
+    "aboutTitle": "Cómo usar QK Tool Hub",
+    "about": "Elige una herramienta para ver los controles y las instrucciones. Revisa los formatos y límites antes de convertir y descarga el resultado. El procesamiento de archivos en el navegador es independiente de la publicidad y analítica del sitio. Consulta la política de privacidad.",
+    "related": "Herramientas relacionadas",
+    "languageLabel": "Idiomas",
+    "seoNote": "Las referencias de 50 caracteres para títulos y 150 para descripciones no son límites fijos de Google. La visualización varía según dispositivo y búsqueda.",
+    "word": [
+      [
+        "Cómo contar texto",
+        "Escribe o pega texto para ver caracteres con y sin espacios, palabras y bytes. Comprueba el formulario final, ya que las reglas pueden variar."
+      ],
+      [
+        "Emoji y codificación",
+        "Se usa la longitud de cadenas JavaScript, por lo que un emoji puede ocupar varias unidades. Los bytes UTF-8 y la estimación EUC-KR difieren. Esta última no valida una codificación real; comprueba el formulario de destino."
+      ]
+    ],
+    "currency": [
+      [
+        "Cómo funciona la conversión",
+        "Elige un importe y una moneda base. Los tipos actuales proceden de ExchangeRate-API, no de operaciones en tiempo real. No incluyen comisiones bancarias ni descuentos."
+      ],
+      [
+        "Comprueba la fecha",
+        "Consulta la fecha del proveedor y el estado de los datos. Si falla la conexión pueden mostrarse tipos de ejemplo. Verifica el tipo con tu entidad antes de operar."
+      ]
+    ],
+    "pixel": [
+      [
+        "Convierte una foto en pixel art",
+        "Selecciona una foto y ajusta el tamaño del píxel y la paleta. Los píxeles pequeños conservan detalle y los grandes simplifican formas. Guarda la vista previa como PNG."
+      ],
+      [
+        "Tamaño de salida",
+        "Las fotos grandes se reducen a 1600 píxeles en el lado largo. Conserva el original; el resultado no garantiza el detalle ni la resolución de impresión originales."
+      ]
+    ],
+    "units": [
+      [
+        "Cómo convertir unidades",
+        "Elige una categoría o busca una unidad, introduce el valor y selecciona las unidades de origen y destino. Copia el resultado o guarda la combinación."
+      ],
+      [
+        "Precisión y estimaciones",
+        "Los resultados se redondean según la precisión elegida. Las conversiones culinarias de masa y volumen dependen de la densidad del ingrediente y son aproximadas."
+      ]
+    ]
+  }
+}

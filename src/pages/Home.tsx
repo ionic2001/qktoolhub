@@ -6,7 +6,7 @@ import { worldText } from '../i18n/worldText';
 import { pdfText } from '../i18n/pdfTranslations';
 import { pixelTranslations } from '../i18n/pixelTranslations';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { pageMeta, localUrl } from '../seo/catalog';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -16,14 +16,13 @@ import { ToolItem } from '../i18n/translations';
 
 export const Home: React.FC = () => {
   const { t, language } = useLanguage();
-  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const localizedMenu = language === 'ko' || language === 'en';
   const rawTools: ToolItem[] = (t.toolsList || []).map(tool => ({
     ...tool,
     title: localizedMenu && tool.path === '/currency-converter'
-      ? (language === 'ko' ? '실시간 환율 계산기' : 'Real-time Currency Converter')
+      ? (language === 'ko' ? '환율 계산기' : 'Currency Converter')
       : tool.title,
     badge: localizedMenu && tool.isLive ? 'New' : tool.badge,
   }));
@@ -68,10 +67,10 @@ export const Home: React.FC = () => {
         </div>
 
         <h1 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '0.75rem', lineHeight: 1.25 }}>
-          {t.hubTitle}
+          {pageMeta('/', language).name}
         </h1>
         <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', maxWidth: '680px', margin: '0 auto 1.75rem' }}>
-          {t.hubSubtitle}
+          {pageMeta('/', language).description}
         </p>
 
         {/* Search Bar */}
@@ -109,7 +108,8 @@ export const Home: React.FC = () => {
             const footerColor = isLive ? 'var(--accent-color)' : 'var(--text-muted)';
 
             return (
-              <div
+              <a
+                href={isLive ? localUrl(tool.path, language) : undefined}
                 key={tool.id}
                 className="glass-card"
                 style={{
@@ -124,7 +124,7 @@ export const Home: React.FC = () => {
                 onClick={() => {
                   if (isLive) {
                     if (tool.id !== 'stickerbook') track('menu_click', { destination: tool.path, menu_id: tool.id, menu_location: 'home_grid' });
-                    navigate(tool.path);
+
                   }
                 }}
               >
@@ -155,7 +155,7 @@ export const Home: React.FC = () => {
                     <span>{t.comingSoonStatus}</span>
                   )}
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
