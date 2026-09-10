@@ -1,5 +1,5 @@
+import { localUrl } from '../seo/catalog';
 import { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
   Calendar as CalendarIcon,
@@ -21,7 +21,6 @@ import { AdSlot } from '../components/AdSlot';
 import { useLanguage } from '../i18n/LanguageContext';
 import { calendarText } from '../i18n/calendarText';
 import { calendarGuide } from '../i18n/calendarGuide';
-import { useCalendarSeo } from '../utils/useCalendarSeo';
 import {
   SUPPORTED_COUNTRIES,
   HolidayItem,
@@ -62,9 +61,6 @@ export default function CalendarPage() {
   const { language, t } = useLanguage();
   const s = calendarText[language] || calendarText.ko;
   const guide = calendarGuide[language] || calendarGuide.ko;
-  const navigate = useNavigate();
-
-  useCalendarSeo(language);
 
   const today = useMemo(() => new Date(), []);
   const todayStr = useMemo(() => {
@@ -270,14 +266,14 @@ export default function CalendarPage() {
     <div className="app-container calendar-page">
       <Header />
 
-      <button
+      <a
         className="btn-tool"
-        onClick={() => navigate('/')}
+        href={localUrl('/', language)}
         style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', marginBottom: '1.25rem' }}
       >
         <ArrowLeft size={16} />
         {t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}
-      </button>
+      </a>
 
       {/* Intro Header */}
       <div className="calendar-intro">

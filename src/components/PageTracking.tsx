@@ -11,28 +11,7 @@ import { track } from '../utils/analytics';
 export function PageTracking() {
   const { pathname } = useLocation();
   const previousPage = useRef(document.referrer);
-  const { language, t } = useLanguage();
-  useEffect(() => {
-    // Run after the tool's own metadata effect, including lazy-loaded pages.
-    const timer = window.setTimeout(() => {
-      if (['/', '/word-counter', '/currency-converter'].includes(pathname)) {
-        const tool = t.toolsList.find(item => item.path === pathname);
-        const title = pathname === '/' ? `QK Tool Hub | ${t.hubTitle}` : `${tool?.title || t.appTitle} | QK Tool Hub`;
-        const description = pathname === '/' ? t.hubSubtitle : tool?.desc || t.hubSubtitle;
-        document.title = title;
-        const url = `https://qktoolhub.com${pathname}?lang=${language}`;
-        const set = (selector: string, tag: string, attrs: Record<string,string>) => {
-          const el = document.head.querySelector(selector) || document.head.appendChild(document.createElement(tag));
-          Object.entries(attrs).forEach(([key,value]) => el.setAttribute(key,value));
-        };
-        for (const [name, content] of Object.entries({title,description})) set(`meta[name="${name}"]`, 'meta', {name,content});
-        for (const [property,content] of Object.entries({'og:title':title,'og:description':description,'og:url':url,'twitter:title':title,'twitter:description':description,'twitter:url':url})) set(`meta[property="${property}"]`, 'meta', {property,content});
-        set('link[rel="canonical"]','link',{rel:'canonical',href:url});
-        for (const lang of ['ko','en','ja','zh','es','x-default']) set(`link[hreflang="${lang}"]`,'link',{rel:'alternate',hreflang:lang,href:`https://qktoolhub.com${pathname}${lang==='x-default'?'':`?lang=${lang}`}`});
-      }
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [pathname, language, t]);
+  const { language } = useLanguage();
   useEffect(() => {
     // Observer waits for lazy tool metadata; one event per route/language navigation.
     let timeout: number;

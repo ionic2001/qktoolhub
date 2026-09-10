@@ -1,9 +1,9 @@
+import { Footer } from '../components/Footer';
+import { localUrl } from '../seo/catalog';
 import { track } from '../utils/analytics';
 import { AdSlot } from '../components/AdSlot';
 import { pdfGuide } from '../i18n/pdfGuide';
-import { usePdfSeo } from '../utils/usePdfSeo';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUp, ArrowDown, Trash2, FileText, ImagePlus } from 'lucide-react';
 import { PDFDocument, rgb } from 'pdf-lib';
 import { Header } from '../components/Header';
@@ -14,9 +14,8 @@ import type { PDFDocumentProxy, RenderTask } from 'pdfjs-dist';
 import './PdfConverter.css';
 
 export default function PdfConverterPage() {
-  const { language, t } = useLanguage(); const text = pdfText(language); const navigate = useNavigate();
+  const { language, t } = useLanguage(); const text = pdfText(language);
   const guide = pdfGuide[language];
-  usePdfSeo(language);
   const [mode, setMode] = useState<'images' | 'pdf'>('images');
   const [images, setImages] = useState<PdfImage[]>([]); const imagesRef = useRef<PdfImage[]>([]);
   const [paper, setPaper] = useState('a4'); const [landscape, setLandscape] = useState(false); const [margin, setMargin] = useState(10);
@@ -108,7 +107,7 @@ export default function PdfConverterPage() {
   }
 
   return <div className="app-container pdf-page"><Header />
-    <button className="btn-tool" onClick={() => navigate('/')} style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99,102,241,.3)' }}><ArrowLeft size={16} />{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</button>
+    <a className="btn-tool" href={localUrl('/', language)} style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99,102,241,.3)' }}><ArrowLeft size={16} />{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</a>
     <main><div className="pdf-intro"><span className="badge">PDF STUDIO</span><h1>{text.title}</h1><p>{text.subtitle}</p><small>{text.privacy}</small></div>
       <AdSlot slotId="pdf-converter-top-banner" />
       <div className="pdf-tabs" role="group" aria-label={text.title}>{(['images', 'pdf'] as const).map(value => <button key={value} disabled={busy} aria-pressed={mode === value} onClick={() => { setMode(value); setError(''); }}>{value === 'images' ? <ImagePlus size={18} /> : <FileText size={18} />}{text[value]}</button>)}</div>
@@ -137,5 +136,5 @@ export default function PdfConverterPage() {
         <div className="pdf-guide-columns">{[{ title: guide.imageHeading, steps: guide.imageSteps }, { title: guide.pdfHeading, steps: guide.pdfSteps }].map(section => <section key={section.title}><h3>{section.title}</h3><ol>{section.steps.map(step => <li key={step}>{step}</li>)}</ol></section>)}</div>
         <h2>{guide.faqHeading}</h2><div className="pdf-faq">{guide.faqs.map(item => <details key={item.q}><summary>{item.q}</summary><p>{item.a}</p></details>)}</div>
       </section>
-    </main></div>;
+    </main><Footer /></div>;
 }

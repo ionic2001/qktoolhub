@@ -481,3 +481,22 @@ h1, h2, h3 {
   color: var(--text-muted);
   font-size: 0.85rem;
 }
+
+/* Crawlable navigation and shared instructions. */
+a.glass-card, a.logo-area, a.btn-tool { text-decoration: none; color: inherit; }
+a.glass-card:focus-visible, a:focus-visible { outline: 3px solid var(--accent-color); outline-offset: 4px; }
+.seo-breadcrumb { margin: -1rem 0 1.5rem; font-size: .875rem; color: var(--text-secondary); }
+.seo-breadcrumb a, .seo-sections a { color: var(--accent-color); }
+.seo-sections { margin: 2.5rem auto; max-width: 100%; line-height: 1.75; }
+.seo-sections section, .seo-sections nav { margin: 1.5rem 0; }
+.seo-sections h2 { font-size: 1.15rem; margin-bottom: .65rem; }
+.seo-sections p { color: var(--text-secondary); }
+.seo-sections ul { padding-left: 1.35rem; }
+.seo-sections li { margin: .65rem 0; }
+.seo-languages { display: flex; flex-wrap: wrap; gap: 1rem; }
+.seo-static { padding: 1.5rem; }
+.seo-static h1 { margin: 1.5rem 0 1rem; }
+.seo-static h2, .seo-static h3 { margin: 1.25rem 0 .5rem; }
+.seo-static p { margin: .65rem 0; }
+.seo-static nav a { display: inline-block; margin-right: 1rem; }
+@media print { .seo-sections, .seo-breadcrumb { display: none; } }

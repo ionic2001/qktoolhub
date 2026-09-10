@@ -1,19 +1,17 @@
+import { Footer } from '../components/Footer';
+import { localUrl } from '../seo/catalog';
 import { track } from '../utils/analytics';
 import { AdSlot } from '../components/AdSlot';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { pixelTranslations } from '../i18n/pixelTranslations';
-import { usePixelSeo } from '../utils/usePixelSeo';
 import { Header } from '../components/Header';
 import './PixelArt.css';
 
 export function PixelArtPage() {
   const { language, t } = useLanguage();
-  const navigate = useNavigate();
   const tr = (key: string) => pixelTranslations[language][key] || key;
-  usePixelSeo(language);
   const [source, setSource] = useState<HTMLImageElement | null>(null);
   const [name, setName] = useState('image');
   const [size, setSize] = useState(12);
@@ -156,7 +154,7 @@ export function PixelArtPage() {
 
   return <div className="app-container pixel-page">
     <Header />
-    <div style={{ marginBottom: '1.5rem' }}><button className="btn-tool" onClick={() => navigate('/')} style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}><ArrowLeft size={16} />{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</button></div>
+    <div style={{ marginBottom: '1.5rem' }}><a className="btn-tool" href={localUrl('/', language)} style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99, 102, 241, 0.3)' }}><ArrowLeft size={16} />{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</a></div>
     <main>
       <div className="pixel-intro"><span className="badge">IMAGE TO PIXEL</span><h1>{tr("사진 한 장, 픽셀 아트로.")}</h1><p>{tr("사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.")}</p><small>{tr("사진은 이 브라우저에서만 처리되며 서버에 업로드되지 않습니다.")}</small></div>
       <AdSlot slotId="pixel-art-top-banner" />
@@ -191,5 +189,5 @@ export function PixelArtPage() {
       <AdSlot slotId="pixel-art-bottom-banner" />
       <p className="pixel-footnote">{tr("작은 픽셀은 디테일을, 큰 픽셀은 추상적인 분위기를 살려줍니다. 색상을 줄이면 고전 게임 같은 느낌이 더해집니다.")}</p>
     </main>
-  </div>;
+  <Footer /></div>;
 }

@@ -1,3 +1,4 @@
+import { seoContent } from '../seo/catalog';
 import React from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { TextStats } from '../utils/counter';
@@ -8,7 +9,8 @@ interface TextStatsSummaryProps {
 }
 
 export const TextStatsSummary: React.FC<TextStatsSummaryProps> = ({ stats }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const labels = seoContent[language];
 
   return (
     <div className="stats-grid">
@@ -54,7 +56,7 @@ export const TextStatsSummary: React.FC<TextStatsSummaryProps> = ({ stats }) => 
           {t.stats.sentenceCount} / {t.stats.paragraphCount}
         </div>
         <div className="stat-value" style={{ fontSize: '1.4rem' }}>
-          {stats.sentenceCount} <span className="stat-unit">문장</span> | {stats.lineCount} <span className="stat-unit">줄</span>
+          {stats.sentenceCount} <span className="stat-unit">{labels.sentenceUnit}</span> | {stats.lineCount} <span className="stat-unit">{labels.lineUnit}</span>
         </div>
       </div>
 

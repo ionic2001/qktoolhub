@@ -126,7 +126,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           content: [
             "본 개인정보처리방침에 관한 문의사항이나 의견은 아래 공식 연락처로 접수해 주시기 바랍니다.",
             "- 문의 이메일: contact@qktoolhub.com",
-            "- 웹사이트: https://qktoolhub.com"
+            "- 웹사이트: https://www.qktoolhub.com"
           ]
         }
       ]
@@ -242,7 +242,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           content: [
             "If you have questions or feedback about this Privacy Policy, please contact us at:",
             "- Email: contact@qktoolhub.com",
-            "- Website: https://qktoolhub.com"
+            "- Website: https://www.qktoolhub.com"
           ]
         }
       ]

@@ -1,3 +1,4 @@
+import { seoContent } from '../seo/catalog';
 import React from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { TextStats } from '../utils/counter';
@@ -17,7 +18,7 @@ interface LimitItem {
 }
 
 export const PlatformLimits: React.FC<PlatformLimitsProps> = ({ stats }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const platformItems: LimitItem[] = [
     {
@@ -65,6 +66,7 @@ export const PlatformLimits: React.FC<PlatformLimitsProps> = ({ stats }) => {
         {t.platforms.title}
       </h2>
 
+      <p>{seoContent[language].seoNote}</p>
       <div className="platform-grid">
         {platformItems.map((item, idx) => {
           const percent = Math.min(100, Math.round((item.current / item.max) * 100));

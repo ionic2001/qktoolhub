@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-User-agent: Yeti
-Allow: /
-
-Sitemap: https://qktoolhub.com/sitemap.xml
+Sitemap: https://www.qktoolhub.com/sitemap.xml

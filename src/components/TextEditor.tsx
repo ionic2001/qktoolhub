@@ -1,3 +1,4 @@
+import { seoContent } from '../seo/catalog';
 import React, { useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Copy, RotateCcw, Scissors, Check, Save } from 'lucide-react';
@@ -8,7 +9,8 @@ interface TextEditorProps {
 }
 
 export const TextEditor: React.FC<TextEditorProps> = ({ text, setText }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const labels = seoContent[language];
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [truncateValue, setTruncateValue] = useState<number>(280);
 
@@ -76,8 +78,8 @@ export const TextEditor: React.FC<TextEditorProps> = ({ text, setText }) => {
             onChange={(e) => setTruncateValue(Number(e.target.value))}
             style={{ padding: '0.4rem 0.6rem', fontSize: '0.8rem' }}
           >
-            <option value={140}>140{t.platforms.chars} (X 한글)</option>
-            <option value={280}>280{t.platforms.chars} (X 영문)</option>
+            <option value={140}>140{t.platforms.chars} (X {labels.koreanLabel})</option>
+            <option value={280}>280{t.platforms.chars} (X {labels.englishLabel})</option>
             <option value={50}>50{t.platforms.chars} (SEO Title)</option>
             <option value={150}>150{t.platforms.chars} (Meta Desc)</option>
             <option value={500}>500{t.platforms.chars}</option>

@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/build-pixel-seo.mjs && node scripts/build-pdf-seo.mjs && node scripts/build-world-seo.mjs && node scripts/build-calendar-seo.mjs && node scripts/build-editor-seo.mjs && node scripts/build-legal-seo.mjs && node scripts/build-sitemap.mjs && node scripts/build-basic-seo.cjs",
+    "build": "tsc && vite build && node scripts/build-seo.mjs",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "push": "cmd /c sync.bat"
+    "push": "cmd /c sync.bat",
+    "test:seo": "node scripts/test-seo.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

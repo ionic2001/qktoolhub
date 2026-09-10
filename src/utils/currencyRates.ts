@@ -121,7 +121,7 @@ export function getInitialRatesData(baseCurrency: string = 'KRW'): RatesData {
     prevRates,
     usdRates: FALLBACK_USD_RATES,
     usdPrevRates: FALLBACK_USD_PREV_RATES,
-    lastUpdated: new Date().toLocaleDateString(),
+    lastUpdated: '',
   };
 }
 
