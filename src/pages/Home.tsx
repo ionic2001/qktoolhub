@@ -27,40 +27,6 @@ export const Home: React.FC = () => {
     badge: localizedMenu && tool.isLive ? 'New' : tool.badge,
   }));
 
-  const dioramaTitle = {
-    ko: '비 오는 밤의 카페 디오라마',
-    en: 'Rainy Night Café Diorama',
-    ja: '雨の夜のカフェジオラマ',
-    zh: '雨夜咖啡馆立体透视',
-    es: 'Diorama Café de Noche Lluviosa',
-  }[language] || 'Rainy Night Café Diorama';
-
-  const dioramaDesc = {
-    ko: '따뜻한 호박색 조명과 빗소리 앰비언트 속에서 나만의 아늑한 카페 공간을 스티커로 꾸미는 힐링 디오라마.',
-    en: 'Cozy stickerbook diorama creator with ambient rain sounds and interactive lighting.',
-    ja: '温かい明かりと雨音の中で、自分だけのカフェを作る癒やしのステッカーブック。',
-    zh: '在温暖灯光与淅沥雨声中，用贴纸布置属于你的治愈咖啡馆。',
-    es: 'Crea tu propio café acogedor con pegatinas, lluvia relajante e iluminación interactiva.',
-  }[language] || 'Cozy stickerbook diorama creator with ambient rain sounds and interactive lighting.';
-
-  const dioramaCat = {
-    ko: '힐링 / 인터랙티브',
-    en: 'Cozy / Interactive',
-    ja: 'ヒーリング・体験',
-    zh: '治愈 / 互动',
-    es: 'Relajación / Interactivo',
-  }[language] || 'Cozy / Interactive';
-
-  rawTools.splice(0, 0, {
-    id: 'stickerbook',
-    title: dioramaTitle,
-    desc: dioramaDesc,
-    category: dioramaCat,
-    badge: 'New',
-    path: '/stickerbook',
-    isLive: true,
-  });
-
   rawTools.splice(Math.min(2, rawTools.length), 0, { id: 'pixel-art', title: pixelTranslations[language]['사진 픽셀 아트 변환'], desc: pixelTranslations[language]['사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.'], category: pixelTranslations[language]['이미지 도구'], badge: 'New', path: '/pixel-art', isLive: true });
   const pdf = pdfText(language);
   rawTools.splice(Math.min(3, rawTools.length), 0, { id: 'pdf-converter', title: pdf.title, desc: pdf.subtitle, category: pdf.docs, badge: 'New', path: '/pdf-converter', isLive: true });
@@ -158,8 +124,7 @@ export const Home: React.FC = () => {
                 }}
                 onClick={() => {
                   if (isLive) {
-                    if (tool.id !== 'stickerbook') track('menu_click', { destination: tool.path, menu_id: tool.id, menu_location: 'home_grid' });
-
+                    track('menu_click', { destination: tool.path, menu_id: tool.id, menu_location: 'home_grid' });
                   }
                 }}
               >

@@ -15,8 +15,6 @@ const UnitConverter = lazy(() => import('./pages/UnitConverter'));
 const ImageEditor = lazy(() => import('./pages/ImageEditor'));
 const PdfConverterPage = lazy(() => import('./pages/PdfConverter'));
 
-import { StickerbookPage } from './pages/StickerbookPage';
-
 const WorldClockPage = lazy(() => import('./pages/WorldClock'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
@@ -30,7 +28,6 @@ export const App: React.FC = () => {
           <VercelAnalytics />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/stickerbook" element={<StickerbookPage />} />
             <Route path="/calendar" element={<Suspense fallback={<RouteFallback />}><CalendarPage /></Suspense>} />
             <Route path="/terms" element={<Suspense fallback={<RouteFallback />}><LegalPage type="terms" /></Suspense>} />
             <Route path="/privacy" element={<Suspense fallback={<RouteFallback />}><LegalPage type="privacy" /></Suspense>} />
