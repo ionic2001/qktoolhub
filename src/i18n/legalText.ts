@@ -16,6 +16,7 @@ export interface LegalI18n {
   footer: {
     termsLink: string;
     privacyLink: string;
+    aboutLink: string;
     copyright: string;
     tagline: string;
     close: string;
@@ -40,7 +41,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           title: "제2조 (서비스의 제공 및 특성)",
           content: [
             "1. 서비스는 별도의 회원가입이나 로그인 절차 없이 누구나 100% 무료로 이용할 수 있습니다.",
-            "2. 서비스에서 제공하는 모든 텍스트 분석, 파일 변환, 이미지 편집 작업은 이용자의 웹 브라우저 로컬 환경(클라이언트 사이드)에서 처리되며 서버로 전송되지 않습니다.",
+            "2. 텍스트 분석, 파일 변환, 이미지 편집 도구에 입력한 콘텐츠는 브라우저 안에서 처리하도록 설계되어 있습니다. 환율 조회, 사이트 제공, 방문 통계 및 광고에 필요한 외부 통신은 개인정보처리방침에서 별도로 안내합니다.",
             "3. 서비스는 성능 개선 및 기능 추가를 위해 사전 고지 없이 서비스의 일부 또는 전부를 수정하거나 변경할 수 있습니다."
           ]
         },
@@ -82,28 +83,28 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "개인정보처리방침",
-      effectiveDate: "시행일자: 2026년 9월 9일",
+      effectiveDate: "시행일자: 2026년 9월 10일",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
-          title: "1. 개인식별정보 미수집 원칙",
+          title: "1. 회원 정보와 문의 정보",
           content: [
-            "QK Tool Hub는 회원가입이나 로그인 없이 100% 무료로 운영되며, 이용자의 성명, 생년월일, 주민번호, 연락처, 이메일, 주소 등 개인을 식별할 수 있는 정보를 일체 수집하거나 저장하지 않습니다."
+            "QK Tool Hub는 회원가입이나 로그인을 요구하지 않으며, 도구 이용을 위해 성명·주소·결제정보를 직접 입력받지 않습니다.",
+            "이메일로 문의하는 경우에는 답변을 위해 발신 이메일 주소와 문의 내용을 처리합니다. 문의 기록은 답변과 후속 대응에 필요한 기간 동안 이메일 서비스에 보관될 수 있습니다."
           ]
         },
         {
-          title: "2. 브라우저 내 데이터 처리 (Zero-Server Processing)",
+          title: "2. 도구에 입력한 텍스트와 파일",
           content: [
-            "이용자가 글자수 세기, 단위 변환, 이미지 편집, PDF 변환, 픽셀 아트, 스마트 달력 등에서 입력하거나 업로드하는 모든 텍스트, 문서, 이미지 파일은 이용자의 웹 브라우저 로컬 메모리(WebAssembly, Canvas, Local API) 내에서만 처리됩니다.",
-            "어떠한 데이터도 서비스의 외부 서버로 전송되거나 저장되지 않으며, 브라우저 창을 닫으면 즉시 메모리에서 완전 소멸합니다."
+            "글자수 세기, 이미지 편집, PDF 변환, 픽셀 아트 등에서 이용자가 입력하거나 선택한 텍스트·문서·이미지는 해당 기능을 실행하는 브라우저 안에서 처리하도록 설계되어 있으며, QK Tool Hub가 운영하는 저장 서버로 의도적으로 업로드하지 않습니다.",
+            "페이지 메모리에만 있는 작업 데이터는 새로고침이나 탭 종료 시 사라집니다. 다만 이용자가 다운로드한 결과 파일과 아래 로컬 저장소에 저장된 설정·임시 텍스트는 자동으로 삭제되지 않습니다."
           ]
         },
         {
-          title: "3. 방문자 통계 분석 도구 (Google Analytics, Vercel Analytics)",
+          title: "3. 사이트 제공 및 방문 통계 데이터",
           content: [
-            "서비스는 안정적인 서버 성능 유지와 방문자 이용 패턴 분석을 위해 익명 통계 도구를 활용합니다.",
-            "- 수집 항목: 익명화된 IP 주소, 브라우저 종류, 운영체제(OS), 방문 일시, 페이지 조회 기록, 기기 유형 등 개인을 특정할 수 없는 비식별 로그 데이터",
-            "- 사용 도구: Google Analytics 4 (Google LLC), Vercel Analytics (Vercel Inc.)"
+            "사이트 접속 과정에서 호스팅 및 분석 제공업체는 IP 주소, 브라우저·기기 정보, 요청 시각, 방문·참조 페이지, 오류 및 성능 정보와 같은 기술 데이터를 처리할 수 있습니다.",
+            "서비스는 이용 현황과 성능을 확인하기 위해 Google Analytics 4(Google LLC)와 Vercel Analytics(Vercel Inc.)를 사용합니다. 이 데이터는 도구에 입력한 텍스트나 파일과 구분되며 각 제공업체의 정책과 보관 설정에 따라 처리됩니다."
           ]
         },
         {
@@ -111,14 +112,15 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           content: [
             "서비스는 무료 운영 유지를 위해 Google AdSense를 통한 제3자 광고를 게재하고 있습니다.",
             "- Google을 포함한 제3자 공급업체는 이용자가 본 웹사이트나 다른 웹사이트를 방문한 기록을 바탕으로 맞춤형 광고를 게재하기 위해 쿠키(Cookie)를 사용합니다.",
-            "- 이용자는 Google 광고 설정(https://adssettings.google.com) 또는 AboutAds(http://www.aboutads.info)를 방문하여 개인 맞춤설정 광고 쿠키 사용을 선택 해제(Opt-out)할 수 있습니다.",
+            "- 이용자는 Google 광고 설정(https://adssettings.google.com)에서 개인 맞춤 광고를 관리하거나 해제할 수 있습니다.",
             "- 또한 이용자는 웹 브라우저의 옵션 설정을 통해 모든 쿠키의 저장을 거부하거나 삭제할 수 있습니다."
           ]
         },
         {
           title: "5. 브라우저 로컬 저장소(LocalStorage)의 사용",
           content: [
-            "서비스는 이용자의 편의성(다크/라이트 테마, 언어 선택, 세계시계 관심 도시, 달력 선택 국가 등)을 유지하기 위해 이용자 기기의 로컬 저장소(LocalStorage)를 사용합니다. 이 정보는 전적으로 이용자 기기에만 머무르며 외부로 전송되지 않습니다."
+            "서비스는 다크/라이트 테마, 언어, 글자수 세기 임시 텍스트, 세계시계 도시·알람, 달력 국가, 단위 변환 설정 등을 기억하기 위해 이용자 기기의 로컬 저장소(LocalStorage)를 사용합니다.",
+            "이 정보는 브라우저에 남아 다음 방문 때 다시 사용될 수 있으며, 브라우저의 사이트 데이터 삭제 기능으로 지울 수 있습니다. 방문 통계나 광고 서비스가 별도로 처리하는 데이터와는 구분됩니다."
           ]
         },
         {
@@ -134,8 +136,9 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     footer: {
       termsLink: "이용약관",
       privacyLink: "개인정보처리방침",
+      aboutLink: "서비스 소개",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
-      tagline: "100% 클라이언트 사이드 개인정보 보호 무료 웹 유틸리티 툴킷",
+      tagline: "설치 없이 바로 쓰는 생활·업무용 무료 웹 도구",
       close: "닫기",
       contactLabel: "문의"
     }
@@ -156,7 +159,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           title: "Article 2 (Service Characteristics & Free Access)",
           content: [
             "1. The Service is provided 100% free of charge without requiring any registration or login.",
-            "2. All text analytics, file conversion, and image manipulation operate entirely within your local browser environment (client-side) and are never transmitted to our servers.",
+            "2. Content entered into text, file-conversion, and image tools is designed to be processed in your browser. External requests needed for exchange-rate retrieval, site delivery, analytics, and advertising are described separately in the Privacy Policy.",
             "3. We reserve the right to modify or discontinue features at any time to improve system stability and capabilities."
           ]
         },
@@ -198,28 +201,28 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "Privacy Policy",
-      effectiveDate: "Effective Date: September 9, 2026",
+      effectiveDate: "Effective Date: September 10, 2026",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
-          title: "1. No Personally Identifiable Information (Zero-PII)",
+          title: "1. Account and contact information",
           content: [
-            "QK Tool Hub is committed to protecting your privacy. We do not require account registration and do not collect, store, or sell any Personally Identifiable Information (PII) such as your name, email, phone number, address, or payment details."
+            "QK Tool Hub does not require registration or login and does not ask for your name, address, or payment information to use its tools.",
+            "If you email us, we process your email address and message to reply. The correspondence may remain with our email provider for as long as needed to answer and follow up."
           ]
         },
         {
-          title: "2. Client-Side Processing (Zero-Server Architecture)",
+          title: "2. Text and files used in tools",
           content: [
-            "All text inputs, documents, PDF files, and images processed through our tools (Word Counter, Image Editor, PDF Converter, Calendar, etc.) are handled exclusively in your local browser memory using modern WebAssembly and Canvas APIs.",
-            "No user content is ever uploaded to or stored on our servers. When you close or refresh the browser tab, all session data is permanently cleared."
+            "Text, documents, PDFs, and images selected for the word, image, PDF, and pixel-art tools are designed to be processed in the browser and are not intentionally uploaded to storage servers operated by QK Tool Hub.",
+            "Work held only in page memory disappears when the page is refreshed or closed. Downloaded output and preferences or draft text saved in browser local storage do not disappear automatically."
           ]
         },
         {
-          title: "3. Anonymous Web Analytics (Google Analytics & Vercel Analytics)",
+          title: "3. Site delivery and analytics data",
           content: [
-            "To understand traffic trends and ensure server reliability, we collect anonymous, aggregated diagnostic metrics.",
-            "- Collected Data: Anonymized IP addresses, browser types, operating systems, visit timestamps, referring URLs, and pageview counts.",
-            "- Providers: Google Analytics 4 (Google LLC) and Vercel Analytics (Vercel Inc.)."
+            "Hosting and analytics providers may process technical data such as IP address, browser and device information, request time, viewed and referring pages, errors, and performance data when the site is accessed.",
+            "We use Google Analytics 4 (Google LLC) and Vercel Analytics (Vercel Inc.) to understand usage and performance. This data is separate from content entered into tools and is handled under each provider's policy and retention settings."
           ]
         },
         {
@@ -227,14 +230,15 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           content: [
             "We serve third-party ads through Google AdSense to fund our free web tools.",
             "- Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this or other websites.",
-            "- You may opt out of personalized advertising by visiting Google Ads Settings (https://adssettings.google.com) or www.aboutads.info.",
+            "- You may manage or opt out of personalized advertising through Google Ads Settings (https://adssettings.google.com).",
             "- You can also disable or clear cookies in your web browser settings at any time."
           ]
         },
         {
           title: "5. Browser LocalStorage Usage",
           content: [
-            "We utilize browser LocalStorage solely to remember your user preferences (e.g., dark/light theme, language selection, selected holiday countries). This data remains strictly on your device and is never sent to our servers."
+            "Browser LocalStorage remembers settings such as theme, language, word-counter draft text, world-clock cities and alarms, calendar countries, and unit-converter preferences.",
+            "These items can remain for later visits until you clear the site's browser data. They are separate from data processed by analytics and advertising services."
           ]
         },
         {
@@ -250,8 +254,9 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     footer: {
       termsLink: "Terms of Service",
       privacyLink: "Privacy Policy",
+      aboutLink: "About",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
-      tagline: "100% Client-Side Privacy-First Free Online Web Utilities",
+      tagline: "Free browser tools for everyday and work tasks",
       close: "Close",
       contactLabel: "Contact"
     }
@@ -272,7 +277,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           title: "第2条（サービスの特徴と完全無料提供）",
           content: [
             "1. 本サービスは会員登録やログインを一切必要とせず、誰でも100%完全無料でご利用いただけます。",
-            "2. 本サービス上のすべてのテキスト解析、画像編集、PDF変換等の処理はお客様のブラウザ内（クライアントサイド）でのみ実行され、当社のサーバーへ送信されることはありません。"
+            "2. テキスト、ファイル変換、画像ツールに入力した内容はブラウザ内で処理するよう設計されています。為替取得、サイト配信、アクセス解析、広告に必要な外部通信はプライバシーポリシーで別途説明します。"
           ]
         },
         {
@@ -299,35 +304,44 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "プライバシーポリシー (Privacy Policy)",
-      effectiveDate: "制定日: 2026年9月9日",
+      effectiveDate: "改定日: 2026年9月10日",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
-          title: "1. 個人識別情報の非収集原則",
+          title: "1. アカウント情報とお問い合わせ情報",
           content: [
-            "QK Tool Hubは氏名、生年月日、住所、電話番号、メールアドレス等の個人を特定できる情報（PII）を一切収集・保存・販売いたしません。"
+            "QK Tool Hubは登録やログインを求めず、ツール利用のために氏名、住所、決済情報を直接入力させることはありません。",
+            "メールでお問い合わせいただいた場合、返信のため送信元アドレスと内容を処理し、対応に必要な期間メールサービス上に保管されることがあります。"
           ]
         },
         {
-          title: "2. クライアントサイド処理（Zero-Server Processing）",
+          title: "2. ツールに入力したテキストとファイル",
           content: [
-            "入力されたテキストやアップロードされた画像・PDF等のファイルは、お客様のブラウザメモリ内でのみ処理されます。外部サーバーにアップロードされることはなく、ブラウザを閉じると完全に消去されます。"
+            "文字数、画像、PDF、ピクセルアートの各ツールで選択したテキストやファイルはブラウザ内で処理するよう設計され、QK Tool Hubの保存サーバーへ意図的にアップロードしません。",
+            "ページメモリ上の作業データは再読み込みやタブ終了で消えますが、ダウンロード済みファイルやローカル保存された設定・下書きは自動では消えません。"
           ]
         },
         {
-          title: "3. アクセス解析ツール（Google Analytics, Vercel Analytics）",
+          title: "3. サイト配信とアクセス解析",
           content: [
-            "サービス改善および統計分析のため、匿名化されたIPアドレス、ブラウザ種類、閲覧履歴などの個人を特定しないログデータを収集しています。"
+            "サイト接続時、ホスティングおよび解析事業者はIPアドレス、ブラウザ・端末情報、時刻、閲覧・参照ページ、エラー、性能情報などを処理する場合があります。",
+            "利用状況と性能の把握にGoogle Analytics 4とVercel Analyticsを使用します。これはツール入力内容とは別で、各提供者の方針と保存設定に従って処理されます。"
           ]
         },
         {
           title: "4. 第三者配信広告とクッキー（Cookie）について",
           content: [
-            "本サイトではGoogle AdSenseによる広告を配信しています。Google等の第三者事業者はクッキーを使用してお客様の過去のアクセス情報に基づき適切な広告を配信します。広告設定（https://adssettings.google.com）よりパーソナライズ広告を無効化できます。"
+            "本サイトではGoogle AdSenseによる広告を配信します。Google等の第三者事業者は、本サイトや他サイトへの過去のアクセスに基づく広告のためCookieを使用する場合があります。広告設定（https://adssettings.google.com）でパーソナライズ広告を管理または無効化できます。"
           ]
         },
         {
-          title: "5. お問い合わせ窓口",
+          title: "5. ブラウザのローカル保存",
+          content: [
+            "テーマ、言語、文字数ツールの下書き、世界時計、カレンダー、単位変換の設定はLocalStorageに残り、次回利用時に再使用されます。ブラウザのサイトデータ削除で消去できます。解析・広告サービスが処理するデータとは別です。"
+          ]
+        },
+        {
+          title: "6. お問い合わせ窓口",
           content: [
             "プライバシーポリシーに関するご質問は、下記までご連絡ください。",
             "- メール: contact@qktoolhub.com"
@@ -338,8 +352,9 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     footer: {
       termsLink: "利用規約",
       privacyLink: "プライバシーポリシー",
+      aboutLink: "サービス紹介",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
-      tagline: "100%クライアントサイド動作・プライバシー優先の無料Webツール集",
+      tagline: "インストール不要の日常・業務向け無料Webツール",
       close: "閉じる",
       contactLabel: "お問い合わせ"
     }
@@ -360,7 +375,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           title: "第二条（服务特色与完全免费）",
           content: [
             "1. 本服务无需任何注册或登录，任何人均可100%免费使用。",
-            "2. 所有文字统计、图片编辑及文件转换均在您的本地浏览器（客户端）内完成，绝不上传至外部服务器。"
+            "2. 文本、文件转换和图像工具的输入内容按设计在浏览器内处理。汇率查询、网站交付、访问统计和广告所需的外部通信在隐私政策中另行说明。"
           ]
         },
         {
@@ -387,35 +402,44 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "隐私政策 (Privacy Policy)",
-      effectiveDate: "生效日期：2026年9月9日",
+      effectiveDate: "更新日期：2026年9月10日",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
-          title: "1. 不收集个人身份信息（Zero-PII）",
+          title: "1. 账户与联系信息",
           content: [
-            "QK Tool Hub 严格保护用户隐私，无需注册账户，绝不收集、保存或贩卖任何个人身份信息（如姓名、身份证号、电话、邮箱或住址等）。"
+            "QK Tool Hub 无需注册或登录，使用工具时不会直接要求姓名、地址或付款信息。",
+            "如果您通过邮件联系我们，我们会为回复而处理发件地址和消息内容；邮件记录可能在完成答复和后续处理所需期间保存在邮件服务中。"
           ]
         },
         {
-          title: "2. 本地浏览器处理（纯客户端运行）",
+          title: "2. 工具中的文本与文件",
           content: [
-            "您在各工具中输入的文本、上传的图像及PDF文件仅在本地浏览器内存中即时处理，不会上传至任何云端服务器，关闭网页标签后立即销毁。"
+            "字数、图像、PDF和像素画工具所选文本与文件按设计在浏览器内处理，不会被有意上传到QK Tool Hub运营的存储服务器。",
+            "仅存在页面内存中的工作数据会在刷新或关闭标签页时消失；已下载文件以及保存在本地存储中的设置或草稿不会自动删除。"
           ]
         },
         {
-          title: "3. 访问统计工具（Google Analytics & Vercel Analytics）",
+          title: "3. 网站交付与访问统计",
           content: [
-            "为优化服务质量，我们使用 Google Analytics 4 与 Vercel Analytics 收集匿名的非身份识别日志（如匿名IP、浏览器类型、操作系统、访问时长与页面浏览量）。"
+            "访问网站时，托管和分析服务商可能处理IP地址、浏览器与设备信息、请求时间、访问与来源页面、错误和性能信息等技术数据。",
+            "我们使用Google Analytics 4和Vercel Analytics了解使用情况与性能。此类数据与工具输入内容分开，并依各服务商的政策和保留设置处理。"
           ]
         },
         {
           title: "4. 第三方广告与 Cookie 说明（Google AdSense）",
           content: [
-            "本站使用 Google AdSense 展示广告以维持免费运营。Google 等第三方供应商使用 Cookie 根据用户过往浏览记录投放广告。用户可访问 Google 广告设置（https://adssettings.google.com）停用个性化广告 Cookie。"
+            "本站使用Google AdSense展示广告。Google等第三方供应商可能使用Cookie，根据您此前访问本网站或其他网站的情况投放广告。可在Google广告设置（https://adssettings.google.com）管理或停用个性化广告，也可通过浏览器清除Cookie。"
           ]
         },
         {
-          title: "5. 隐私咨询联系",
+          title: "5. 浏览器本地存储",
+          content: [
+            "主题、语言、字数工具草稿、世界时钟、日历和单位换算设置可保存在LocalStorage中供下次使用，直至您清除浏览器网站数据。它与分析和广告服务处理的数据相互区分。"
+          ]
+        },
+        {
+          title: "6. 隐私咨询联系",
           content: [
             "如有关于隐私政策的建议或问题，请通过以下方式联系我们：",
             "- 电子邮箱：contact@qktoolhub.com"
@@ -426,8 +450,9 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     footer: {
       termsLink: "使用条款",
       privacyLink: "隐私政策",
+      aboutLink: "服务介绍",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
-      tagline: "100% 纯客户端运行·隐私至上的免费在线实用工具箱",
+      tagline: "无需安装的日常与办公免费网页工具",
       close: "关闭",
       contactLabel: "咨询"
     }
@@ -448,7 +473,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
           title: "Artículo 2 (Características y Gratuidad)",
           content: [
             "1. El Servicio es 100% gratuito y no requiere ningún tipo de registro ni inicio de sesión.",
-            "2. Todos los cálculos y conversiones se ejecutan localmente en su navegador (lado del cliente) sin enviarse a servidores externos."
+            "2. El contenido introducido en las herramientas de texto, archivos e imágenes está diseñado para procesarse en el navegador. Las comunicaciones externas para divisas, entrega del sitio, analítica y publicidad se describen en la Política de Privacidad."
           ]
         },
         {
@@ -475,35 +500,44 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "Política de Privacidad (Privacy Policy)",
-      effectiveDate: "Fecha de entrada en vigor: 9 de septiembre de 2026",
+      effectiveDate: "Fecha de actualización: 10 de septiembre de 2026",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
-          title: "1. No Recopilación de Información Personal (Zero-PII)",
+          title: "1. Datos de cuenta y contacto",
           content: [
-            "QK Tool Hub no solicita registro ni recopila datos personales identificables como nombre, teléfono, dirección o datos bancarios."
+            "QK Tool Hub no requiere registro ni inicio de sesión y no solicita nombre, dirección o datos de pago para usar las herramientas.",
+            "Si nos escribe por correo, procesamos la dirección del remitente y el mensaje para responder. La correspondencia puede permanecer en el servicio de correo durante el tiempo necesario para la respuesta y el seguimiento."
           ]
         },
         {
-          title: "2. Procesamiento en el Navegador (Lado del Cliente)",
+          title: "2. Textos y archivos usados en las herramientas",
           content: [
-            "Los textos, imágenes y archivos PDF se procesan en la memoria local de su navegador y nunca se transmiten a servidores externos. Los datos se eliminan al cerrar la pestaña."
+            "Los textos, documentos, PDF e imágenes seleccionados para las herramientas están diseñados para procesarse en el navegador y no se suben intencionadamente a servidores de almacenamiento operados por QK Tool Hub.",
+            "Los datos que solo están en la memoria de la página desaparecen al actualizarla o cerrarla. Los archivos descargados y las preferencias o borradores guardados en LocalStorage no se eliminan automáticamente."
           ]
         },
         {
-          title: "3. Herramientas de Análisis Anónimo",
+          title: "3. Entrega del sitio y analítica",
           content: [
-            "Utilizamos Google Analytics 4 y Vercel Analytics para recopilar registros anónimos no identificables (tipo de navegador, páginas visitadas y tiempos de carga) con fines estadísticos."
+            "Al acceder al sitio, los proveedores de alojamiento y analítica pueden procesar datos técnicos como dirección IP, navegador, dispositivo, hora, páginas vistas y de referencia, errores y rendimiento.",
+            "Usamos Google Analytics 4 y Vercel Analytics para conocer el uso y el rendimiento. Estos datos están separados del contenido introducido en las herramientas y se tratan según las políticas y la retención de cada proveedor."
           ]
         },
         {
           title: "4. Publicidad y Cookies de Terceros (Google AdSense)",
           content: [
-            "Google utiliza cookies para mostrar anuncios basados en visitas anteriores. Puede desactivar la personalización de anuncios en la Configuración de Anuncios de Google (https://adssettings.google.com)."
+            "Google y otros proveedores pueden usar cookies para mostrar anuncios basados en visitas anteriores a este u otros sitios. Puede gestionar o desactivar la personalización en la Configuración de Anuncios de Google (https://adssettings.google.com) y borrar cookies desde el navegador."
           ]
         },
         {
-          title: "5. Contacto sobre Privacidad",
+          title: "5. Almacenamiento local del navegador",
+          content: [
+            "LocalStorage puede conservar el tema, idioma, borrador del contador, ciudades y alarmas, países del calendario y ajustes del conversor para próximas visitas, hasta que borre los datos del sitio. Es distinto de los datos tratados por analítica y publicidad."
+          ]
+        },
+        {
+          title: "6. Contacto sobre privacidad",
           content: [
             "Para dudas sobre esta política de privacidad, escríbanos a:",
             "- Correo: contact@qktoolhub.com"
@@ -514,8 +548,9 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     footer: {
       termsLink: "Términos del Servicio",
       privacyLink: "Política de Privacidad",
+      aboutLink: "Acerca de",
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). Todos los derechos reservados.",
-      tagline: "Herramientas web online gratuitas con privacidad garantizada en el cliente",
+      tagline: "Herramientas web gratuitas para tareas cotidianas y de trabajo",
       close: "Cerrar",
       contactLabel: "Contacto"
     }

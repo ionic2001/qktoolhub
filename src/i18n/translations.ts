@@ -137,6 +137,8 @@ export interface TranslationStructure {
     faq1A: string;
     faq2Q: string;
     faq2A: string;
+    faq3Q: string;
+    faq3A: string;
     bankDiscountTitle?: string;
     bankDiscountSubtitle?: string;
     preferentialRate?: string;
@@ -289,7 +291,7 @@ export const translations: Record<Language, TranslationStructure> = {
       quickPresetLabel: "자주 쓰는 금액 퀵 입력:",
       pinNotice: "💡 📌 버튼으로 자주 쓰는 통화를 상단에 고정하거나 ▲▼ 버튼으로 순서를 변경하세요.",
       searchPlaceholder: "국가명 또는 통화 코드 검색 (예: THB, 대만, 바트, JPY)...",
-      disclaimerNotice: "본 서비스의 환율 정보는 국제 외환시장 실시간 고시 기준이며, 실제 시중은행 및 환전소 거래 시 거래 시점, 수수료, 우대율 등에 따라 약간의 차이가 발생할 수 있습니다.",
+      disclaimerNotice: "표시 환율은 환산을 위한 참고 환율입니다. 은행·카드사·환전소의 실제 적용 환율에는 환전 스프레드와 수수료가 더해질 수 있으므로 거래 전에 최종 금액을 확인하세요.",
       addCurrencyTitle: "추가할 국가 통화 선택",
       addCurrencyBtn: "+ 국가 통화 추가하기",
       moveUp: "위로 이동",
@@ -304,9 +306,11 @@ export const translations: Record<Language, TranslationStructure> = {
       searchTipNotice: "통화 코드(THB, TWD 등) 또는 국가명으로 검색해 보세요.",
       faqTitle: "💡 환율 변환기 이용 안내 및 FAQ",
       faq1Q: "Q. 매매기준율이란 무엇인가요?",
-      faq1A: "매매기준율(Mid-Market Rate)은 국제 외환시장에서 금융기관 간 거래 시 적용되는 수수료가 포함되지 않은 순수한 시장 기준 환율입니다. 본 서비스는 유럽중앙은행(ECB) 및 국제 공식 데이터를 바탕으로 당일 매매기준율을 제공합니다.",
+      faq1A: "매매기준율은 통화를 환산할 때 출발점으로 삼는 기준 환율입니다. 고객에게 적용되는 현찰·송금·카드 환율과는 다르며, 금융회사는 여기에 스프레드와 수수료를 반영할 수 있습니다. 이 계산기의 결과도 실제 거래 금액이 아닌 비교용 참고값입니다.",
       faq2Q: "Q. 1만엔(JPY 10,000) 등 주요 퀵 입력은 어떻게 이용하나요?",
       faq2A: "상단의 퀵 입력 버튼(예: $100, 10만원, 1만엔 등)을 클릭하시면 원클릭으로 해당 금액과 통화가 즉시 적용되어 전 세계 모든 주요 통화의 최신 수치가 동시 계산됩니다.",
+      faq3Q: "Q. 환전 수수료와 우대율은 어떻게 계산하나요?",
+      faq3A: "예를 들어 기준 환율이 1달러=1,350원이고 100달러를 사며 환전 스프레드가 1.75%라면, 우대 전 예상 금액은 135,000원+2,362.5원입니다. 스프레드에 90% 우대를 받으면 스프레드의 10%인 236.25원만 더해 약 135,236.25원이 됩니다. 실제 계산 방식과 별도 수수료는 금융회사마다 다릅니다.",
       currencyNames: {
         KRW: "대한민국 원", USD: "미국 달러", JPY: "일본 엔화", EUR: "유로", CNY: "중국 위안화", GBP: "영국 파운드",
         CAD: "캐나다 달러", AUD: "호주 달러", CHF: "스위스 프랑", HKD: "홍콩 달러", SGD: "싱가포르 달러", VND: "베트남 동",
@@ -455,7 +459,7 @@ export const translations: Record<Language, TranslationStructure> = {
       quickPresetLabel: "Quick Amount Presets:",
       pinNotice: "💡 Use 📌 to pin favorite currencies or ▲▼ to reorder cards.",
       searchPlaceholder: "Search country or currency code (e.g. THB, TWD, JPY)...",
-      disclaimerNotice: "Exchange rates are based on real-time international market quotes. Slight differences may occur in actual bank or exchange office transactions.",
+      disclaimerNotice: "Displayed rates are reference rates for conversion. Banks, card issuers, and exchange offices may add a spread or fee, so check the final amount before a transaction.",
       addCurrencyTitle: "Select Currency to Add",
       addCurrencyBtn: "+ Add Country Currency",
       moveUp: "Move Up",
@@ -470,9 +474,11 @@ export const translations: Record<Language, TranslationStructure> = {
       searchTipNotice: "Try searching by currency code (e.g. THB, TWD) or country name.",
       faqTitle: "💡 Currency Converter Guide & FAQ",
       faq1Q: "Q. What is the mid-market rate?",
-      faq1A: "The mid-market rate is the real-time midpoint between buy and sell prices in global currency markets without bank markups. We provide live mid-market rates powered by ECB and official global data.",
+      faq1A: "A reference or mid-market rate is a starting point for currency conversion. It usually differs from customer cash, transfer, or card rates because providers add a spread and sometimes a separate fee. Results here are comparison estimates, not transaction quotes.",
       faq2Q: "Q. How do quick presets like ¥10,000 (10k JPY) work?",
       faq2A: "Click any quick preset button ($10, $100, 10k JPY) at the top to instantly apply that value and calculate exchange rates across all major world currencies in real time.",
+      faq3Q: "Q. How do exchange spreads and preferential discounts work?",
+      faq3A: "For example, if the reference rate is KRW 1,350 per USD and the spread is 1.75%, buying USD 100 would be KRW 135,000 plus KRW 2,362.50 before any discount. A 90% discount on the spread leaves 10%, or KRW 236.25, for an estimated KRW 135,236.25. Providers may calculate differently or add separate fees.",
       currencyNames: {
         KRW: "South Korean Won", USD: "US Dollar", JPY: "Japanese Yen", EUR: "Euro", CNY: "Chinese Yuan", GBP: "British Pound",
         CAD: "Canadian Dollar", AUD: "Australian Dollar", CHF: "Swiss Franc", HKD: "Hong Kong Dollar", SGD: "Singapore Dollar", VND: "Vietnamese Dong",
@@ -606,7 +612,7 @@ export const translations: Record<Language, TranslationStructure> = {
       quickPresetLabel: "よく使う金額のクイック入力:",
       pinNotice: "💡 📌ボタンでお気に入り通貨を固定、▲▼ボタンで表示順を変更できます。",
       searchPlaceholder: "国名または通貨コードを検索 (例: THB, 台湾, JPY)...",
-      disclaimerNotice: "為替レート情報は国際市場のリアルタイム基準であり、実際の銀行や両替所での取引時に若干の差が生じる場合があります。",
+      disclaimerNotice: "表示レートは換算用の参考値です。銀行・カード会社・両替所ではスプレッドや手数料が加算される場合があるため、取引前に最終金額をご確認ください。",
       addCurrencyTitle: "追加する通貨を選択",
       addCurrencyBtn: "+ 国・通貨を追加",
       moveUp: "上に移動",
@@ -621,9 +627,11 @@ export const translations: Record<Language, TranslationStructure> = {
       searchTipNotice: "通貨コード（THB、TWDなど）または国名で検索してください。",
       faqTitle: "💡 為替レート計算機のご案内 & FAQ",
       faq1Q: "Q. 仲値（TTS・TTB基準）とは何ですか？",
-      faq1A: "仲値（ミッドマーケットレート）は、国際外国為替市場で金融機関間で取引される手数料を含まない基準レートです。本サービスは欧州中央銀行（ECB）等の公式データを基に最新レートを提供します。",
+      faq1A: "仲値・参考レートは通貨換算の出発点となるレートです。銀行やカード会社、両替所が顧客に適用する現金・送金・カードのレートには、通常スプレッドや手数料が反映されます。この計算結果は比較用の目安であり、取引価格ではありません。",
       faq2Q: "Q. 1万円などのクイック入力機能の使い方を教えてください。",
       faq2A: "上部のクイック入力ボタン（$100、1万円など）をクリックすると、ワンクリックで該当金額と通貨が即時適用され、世界中の主要通貨の換算値が一括計算されます。",
+      faq3Q: "Q. 為替スプレッドと優遇率はどのように計算しますか？",
+      faq3A: "例として、基準レートが1米ドル=1,350ウォン、100米ドル購入時のスプレッドが1.75%なら、優遇前は135,000ウォンに2,362.5ウォンが加わります。スプレッド90%優遇なら負担は10%の236.25ウォンとなり、概算は135,236.25ウォンです。計算方法や別途手数料は金融機関により異なります。",
       currencyNames: {
         KRW: "韓国ウォン", USD: "米ドル", JPY: "日本円", EUR: "ユーロ", CNY: "中国人民元", GBP: "英ポンド",
         CAD: "カナダドル", AUD: "豪ドル", CHF: "スイスフラン", HKD: "香港ドル", SGD: "シンガポールドル", VND: "ベトナムドン",
@@ -757,7 +765,7 @@ export const translations: Record<Language, TranslationStructure> = {
       quickPresetLabel: "常用金额快捷输入：",
       pinNotice: "💡 使用 📌 置顶常用货币，或使用 ▲▼ 调整顺序。",
       searchPlaceholder: "搜索国家名或货币代码 (例如: THB, 台湾, JPY)...",
-      disclaimerNotice: "本服务汇率信息基于国际外汇市场实时行情，实际银行或换汇所交易时可能存在微小差异。",
+      disclaimerNotice: "显示汇率仅供换算参考。银行、发卡机构或兑换点可能另加点差或手续费，交易前请确认最终金额。",
       addCurrencyTitle: "选择要添加的货币",
       addCurrencyBtn: "+ 添加国家/货币",
       moveUp: "向上移动",
@@ -772,9 +780,11 @@ export const translations: Record<Language, TranslationStructure> = {
       searchTipNotice: "请尝试搜索货币代码（如 THB、TWD）或国家名称。",
       faqTitle: "💡 汇率换算器使用指南与常见问题 FAQ",
       faq1Q: "Q. 什么是中间价汇率（Mid-Market Rate）？",
-      faq1A: "中间价汇率是国际外汇市场上金融机构间交易的不含银行手续费的纯净市场基准汇率。本服务基于欧洲中央银行 (ECB) 及国际官方数据提供实时中间价。",
+      faq1A: "中间价或参考汇率是货币换算的起点。银行、发卡机构和兑换点向客户提供的现钞、汇款或刷卡汇率通常会加入点差，有时还会另收费用。本计算器结果仅供比较，并非实际成交报价。",
       faq2Q: "Q. 如何使用 1万日元 等快捷输入功能？",
       faq2A: "点击顶部快捷按钮（如 $100、1万日元等），即可一键应用对应金额与货币，并实时同步计算全球所有主要货币的换算数值。",
+      faq3Q: "Q. 汇兑点差和优惠率如何计算？",
+      faq3A: "例如，参考汇率为1美元=1,350韩元，购买100美元的点差为1.75%，优惠前金额为135,000韩元加2,362.5韩元。若点差优惠90%，只承担点差的10%，即236.25韩元，估算总额为135,236.25韩元。各金融机构的算法及额外费用可能不同。",
       currencyNames: {
         KRW: "韩元", USD: "美元", JPY: "日元", EUR: "欧元", CNY: "人民币", GBP: "英镑",
         CAD: "加元", AUD: "澳元", CHF: "瑞士法郎", HKD: "港币", SGD: "新加坡元", VND: "越南盾",
@@ -908,7 +918,7 @@ export const translations: Record<Language, TranslationStructure> = {
       quickPresetLabel: "Acceso rápido a montos:",
       pinNotice: "💡 Usa 📌 para fijar monedas favoritas o ▲▼ para reordenar.",
       searchPlaceholder: "Buscar país o código (ej. THB, TWD, JPY)...",
-      disclaimerNotice: "Las tasas se basan en cotizaciones de mercado en tiempo real. Pueden existir ligeras diferencias en transacciones bancarias reales.",
+      disclaimerNotice: "Las tasas mostradas son referencias para la conversión. Los bancos, emisores de tarjetas y casas de cambio pueden añadir un margen o una comisión; confirma el importe final antes de operar.",
       addCurrencyTitle: "Seleccionar moneda para añadir",
       addCurrencyBtn: "+ Añadir moneda de país",
       moveUp: "Mover arriba",
@@ -923,9 +933,11 @@ export const translations: Record<Language, TranslationStructure> = {
       searchTipNotice: "Intenta buscar por código de moneda (ej. THB, TWD) o nombre de país.",
       faqTitle: "💡 Guía del Conversor de Divisas y Preguntas Frecuentes FAQ",
       faq1Q: "Q. ¿Qué es el tipo de cambio medio del mercado?",
-      faq1A: "El tipo de cambio medio del mercado es el punto medio en tiempo real entre los precios de compra y venta en los mercados globales sin comisiones bancarias. Proporcionamos tasas basadas en el BCE y datos oficiales.",
+      faq1A: "El tipo medio o de referencia es el punto de partida para convertir monedas. Suele diferir del tipo para efectivo, transferencias o tarjetas porque cada proveedor añade un margen y, a veces, una comisión. El resultado de esta calculadora es una estimación comparativa, no una cotización de operación.",
       faq2Q: "Q. ¿Cómo funcionan los accesos rápidos como ¥10.000?",
       faq2A: "Haz clic en cualquier botón de acceso rápido ($10, $100, ¥10.000) en la parte superior para aplicar instantáneamente ese monto y calcular el cambio en todas las monedas principales.",
+      faq3Q: "Q. ¿Cómo se calculan el margen y el descuento de cambio?",
+      faq3A: "Por ejemplo, con una referencia de 1 USD=1.350 KRW y un margen del 1,75%, comprar 100 USD costaría 135.000 KRW más 2.362,50 KRW antes del descuento. Un descuento del 90% sobre el margen deja el 10%, o 236,25 KRW, para un total estimado de 135.236,25 KRW. Cada entidad puede calcularlo de otra forma o añadir comisiones.",
       currencyNames: {
         KRW: "Won Surcoreano", USD: "Dólar Estadounidense", JPY: "Yen Japonés", EUR: "Euro", CNY: "Yuan Chino", GBP: "Libra Esterlina",
         CAD: "Dólar Canadiense", AUD: "Dólar Australiano", CHF: "Franco Suizo", HKD: "Dólar de Hong Kong", SGD: "Dólar de Singapur", VND: "Dong Vietnamita",

@@ -1,4 +1,4 @@
-import { seoContent, localUrl } from '../seo/catalog';
+import { localUrl } from '../seo/catalog';
 import { ToolIntro } from '../components/ToolIntro';
 import toolIntro from '../i18n/toolIntro.json';
 import React, { useState, useEffect } from 'react';
@@ -115,7 +115,7 @@ export const CurrencyConverterPage: React.FC = () => {
         <Info size={18} color="var(--warning-color)" style={{ flexShrink: 0 }} />
         <div>
           <strong>💡 {language === 'ko' ? '환율 차이 안내' : language === 'ja' ? '為替レートのご案内' : language === 'zh' ? '汇率提示' : language === 'es' ? 'Aviso' : 'Notice'}:</strong>{' '}
-          {seoContent[language].currency[0][1]}
+          {currencyT.disclaimerNotice}
         </div>
       </div>
 
@@ -134,7 +134,7 @@ export const CurrencyConverterPage: React.FC = () => {
               {currencyT?.faq1Q || 'Q. 매매기준율이란 무엇인가요?'}
             </h3>
             <p>
-              {seoContent[language].currency[0][1]}
+              {currencyT.faq1A}
             </p>
           </div>
 
@@ -145,6 +145,13 @@ export const CurrencyConverterPage: React.FC = () => {
             <p>
               {currencyT?.faq2A || '상단의 퀵 입력 버튼(예: $100, 10만원, 1만엔 등)을 클릭하시면 원클릭으로 해당 금액과 통화가 즉시 적용되어 전 세계 모든 주요 통화의 최신 수치가 동시 계산됩니다.'}
             </p>
+          </div>
+
+          <div>
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+              {currencyT.faq3Q}
+            </h3>
+            <p>{currencyT.faq3A}</p>
           </div>
         </div>
       </section>

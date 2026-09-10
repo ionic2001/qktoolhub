@@ -532,6 +532,35 @@
       "destination": "/privacy/ko.html"
     },
     {
+      "source": "/about",
+      "has": [{ "type": "query", "key": "lang", "value": "ko" }],
+      "destination": "/about/ko.html"
+    },
+    {
+      "source": "/about",
+      "has": [{ "type": "query", "key": "lang", "value": "en" }],
+      "destination": "/about/en.html"
+    },
+    {
+      "source": "/about",
+      "has": [{ "type": "query", "key": "lang", "value": "ja" }],
+      "destination": "/about/ja.html"
+    },
+    {
+      "source": "/about",
+      "has": [{ "type": "query", "key": "lang", "value": "zh" }],
+      "destination": "/about/zh.html"
+    },
+    {
+      "source": "/about",
+      "has": [{ "type": "query", "key": "lang", "value": "es" }],
+      "destination": "/about/es.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/ko.html"
+    },
+    {
       "source": "/pdf-converter",
       "has": [
         {
