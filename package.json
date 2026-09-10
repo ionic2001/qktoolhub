@@ -9,7 +9,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "push": "cmd /c sync.bat",
-    "test:seo": "node scripts/test-seo.mjs"
+    "test:seo": "node scripts/test-seo.mjs",
+    "test:regression": "npm run test:seo && node scripts/test-units.cjs && node scripts/test-clock-skins.cjs && node scripts/test-analytics.cjs",
+    "verify": "npm run build && npm run test:regression"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

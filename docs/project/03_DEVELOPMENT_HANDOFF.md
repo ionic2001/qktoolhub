@@ -2,6 +2,8 @@
 
 ## 현재 인수인계
 
+2026-09-10 후속 검토: `chore/handoff-regression-20260910`에서 기존 검사 통합과 상태 정리를 진행했다. 현재 컴퓨터의 과거 복사본에는 미반영 변경이 없지만, 다른 컴퓨터의 스티커 작업은 여전히 미확인이다. 상세 결과와 다음 우선순위는 [04_STATUS_AND_NEXT_STEPS.md](04_STATUS_AND_NEXT_STEPS.md)를 우선 확인한다.
+
 - 운영 기준: cbfd3a0ce9c52a7ab7c673bb9bef0e47a0161275
 - 저장소: https://github.com/ionic2001/qktoolhub
 - 최근 완료: 기술 SEO와 다국어 설명 보완 배포.
@@ -68,6 +70,8 @@ npm run dev
 npm run build
 npm run test:seo
 ```
+
+빌드와 기존 SEO·단위 변환·시계·분석 검사를 모두 실행하려면 `npm run verify`를 사용한다. 이미 최신 빌드를 완료한 경우에만 `npm run test:regression`으로 검사만 실행할 수 있다.
 
 단위 변환 변경 시 node scripts/test-units.cjs를 추가한다. 다른 도구도 변경 범위에 맞게 실제 기능을 검사한다. npm run preview만으로 Vercel의 언어별 쿼리 라우팅을 검증했다고 보지 않는다. 최종 배포에서는 공개 URL로 확인한다.
 
