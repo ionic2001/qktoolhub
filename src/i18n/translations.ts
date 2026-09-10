@@ -28,7 +28,6 @@ export interface TranslationStructure {
   searchToolsPlaceholder: string;
   allToolsCategory: string;
   liveStatus: string;
-  comingSoonStatus: string;
   stats: {
     charCount: string;
     charNoSpaceCount: string;
@@ -161,7 +160,6 @@ export const translations: Record<Language, TranslationStructure> = {
     searchToolsPlaceholder: "원하는 유틸리티 도구를 검색하세요...",
     allToolsCategory: "전체 도구",
     liveStatus: "즉시 사용 가능",
-    comingSoonStatus: "출시 예정",
     stats: {
       charCount: "글자 수 (공백 포함)",
       charNoSpaceCount: "글자 수 (공백 제외)",
@@ -206,15 +204,6 @@ export const translations: Record<Language, TranslationStructure> = {
         badge: "신규 LIVE",
         path: "/currency-converter",
         isLive: true
-      },
-      {
-        id: "ocr-tool",
-        title: "이미지 텍스트 추출기 (Image OCR)",
-        desc: "이미지 및 사진 속 텍스트를 손쉽게 글자로 자동 추출 및 복사",
-        category: "이미지 / AI",
-        badge: "출시 예정",
-        path: "/ocr-tool",
-        isLive: false
       }
     ],
     tools: {
@@ -330,7 +319,6 @@ export const translations: Record<Language, TranslationStructure> = {
     searchToolsPlaceholder: "Search utility tools...",
     allToolsCategory: "All Tools",
     liveStatus: "LIVE",
-    comingSoonStatus: "Coming Soon",
     stats: {
       charCount: "Characters (with spaces)",
       charNoSpaceCount: "Characters (no spaces)",
@@ -375,15 +363,6 @@ export const translations: Record<Language, TranslationStructure> = {
         badge: "NEW LIVE",
         path: "/currency-converter",
         isLive: true
-      },
-      {
-        id: "ocr-tool",
-        title: "Image Text Extractor (OCR)",
-        desc: "Extract text from images and photos automatically",
-        category: "Image / AI",
-        badge: "Coming Soon",
-        path: "/ocr-tool",
-        isLive: false
       }
     ],
     tools: {
@@ -498,7 +477,6 @@ export const translations: Record<Language, TranslationStructure> = {
     searchToolsPlaceholder: "ツールを検索...",
     allToolsCategory: "全ツール",
     liveStatus: "利用可能",
-    comingSoonStatus: "公開予定",
     stats: {
       charCount: "文字数 (スペース込み)",
       charNoSpaceCount: "文字数 (スペースなし)",
@@ -651,7 +629,6 @@ export const translations: Record<Language, TranslationStructure> = {
     searchToolsPlaceholder: "搜索工具...",
     allToolsCategory: "全部工具",
     liveStatus: "已上线",
-    comingSoonStatus: "即将推出",
     stats: {
       charCount: "字符数 (含空格)",
       charNoSpaceCount: "字符数 (不含空格)",
@@ -804,7 +781,6 @@ export const translations: Record<Language, TranslationStructure> = {
     searchToolsPlaceholder: "Buscar herramientas...",
     allToolsCategory: "Todas las herramientas",
     liveStatus: "DISPONIBLE",
-    comingSoonStatus: "Próximamente",
     stats: {
       charCount: "Caracteres (con espacios)",
       charNoSpaceCount: "Caracteres (sin espacios)",
