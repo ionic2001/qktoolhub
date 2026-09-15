@@ -1,18 +1,14 @@
-# QK Tool Hub 공유 문서 묶음
+# QK Tool Hub 공유 기획·인수인계 문서
 
-기존 제품·SEO 문서의 작성 기준은 2026-09-10 커밋 `cbfd3a0`이다. PDF 전용 도구 기획서는 2026-09-16 코드 커밋 `72ba19b`를 기준으로 작성했다. 현재 배포 상태는 원격 `main`과 Vercel에서 다시 확인한다.
+갱신일: 2026-09-16. 현재 운영 코드 기준은 [GitHub `main` 커밋 `aebdcad`](https://github.com/ionic2001/qktoolhub/commit/aebdcad)이다. 문서 업로드 뒤에는 원격 `main`을 다시 확인한다. 9월 10일의 8개 도구·60개 URL 설명은 당시 배포 이력이며 현재 운영 상태가 아니다.
 
 읽는 순서:
 
-1. 01_PRODUCT_PLAN.md — 제품 목적, 운영 기능, 다국어·SEO 정책, 스티커 확장 기획과 다음 작업.
-2. 02_RELEASE_AND_DECISIONS.md — 배포 이력, 결정 이유, 검증 범위와 주의사항.
-3. 03_DEVELOPMENT_HANDOFF.md — 두 컴퓨터 작업 규칙, 현재 인수인계, 템플릿과 코드 위치.
-4. PDF_TOOLS_PRODUCT_PLAN_2026-09-16.md — 이미지→PDF와 PDF 전용 기능 분리, SEO·메타·개발·검증 기획. 기획 상태이며 기능은 아직 출시되지 않았다.
+1. [01_PRODUCT_PLAN.md](01_PRODUCT_PLAN.md) — 현재 18개 경로·90개 언어별 URL, 홈·서비스 안내, 데이터·SEO 정책과 다음 작업.
+2. [PDF_TOOLS_PRODUCT_PLAN_2026-09-16.md](PDF_TOOLS_PRODUCT_PLAN_2026-09-16.md) — PDF 전용 기능의 원 기획, 실제 출시 범위, 홈·정책 변경과 후속 결정.
+3. [02_RELEASE_AND_DECISIONS.md](02_RELEASE_AND_DECISIONS.md) — 역사적 배포 이력과 2026-09-16 결정·검증 범위.
+4. [03_DEVELOPMENT_HANDOFF.md](03_DEVELOPMENT_HANDOFF.md) — 두 컴퓨터의 작업 기준, 현재 인수인계와 주요 코드 위치.
 
-이 묶음은 저장소 docs/project에서 공동 관리하는 Markdown 문서다. 이번 업로드는 문서만 변경하며 애플리케이션 소스는 변경하지 않는다. main 업데이트로 Vercel 자동 배포가 실행될 수 있다. 과거 SEO 감사 보고서보다 최신 배포 상태와 이 문서의 기준 커밋을 우선한다.
+이 문서 묶음은 `ionic2001/qktoolhub`의 `docs/project`에서 공동 관리한다. PDF 도구 6개는 이미 출시됐고, 기존 `/pdf-converter`는 별도 URL로 유지한다. 디오라마 스티커북은 독립 저장소 `ionic2001/diorama-stickerbook`에서 관리한다. Search Console 계정의 색인·유입 수치와 전체 모바일·복잡한 PDF 검수는 아직 완료됐다고 기록하지 않는다.
 
-새 작업을 시작하는 개발 도구에는 다음과 같이 요청한다:
-
-“docs/project의 문서를 읽고 원격 최신 버전과 로컬 변경을 확인해줘. 현재 인수인계 브랜치에서 작업을 이어가고, 완료 시 변경 내용·검증·다음 작업을 메모에 갱신해줘.”
-
-두 컴퓨터 모두 최신 main을 가져온 뒤 위 요청을 사용한다.
+새 컴퓨터에서 시작할 때는 원격 `main`과 로컬 변경을 확인하고 이 문서의 운영 코드 기준과 최신 문서 커밋을 대조한다. 작업을 마칠 때는 기능·메타·다국어·문서 변경과 실제 검증 결과를 함께 기록해 원격으로 공유한다.

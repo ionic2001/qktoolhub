@@ -1,16 +1,13 @@
 # 두 컴퓨터 개발 인수인계 메모
 
-## 현재 인수인계
+## 현재 인수인계 (2026-09-16)
 
-- 배포 원칙: 변경 사항은 로컬에서 먼저 확인하고 사용자 확인 후 배포한다.
-
-- 작업 기준 main: c3dd57b8948d491fdd0003b40d92e15d50b9949b
-- 저장소: https://github.com/ionic2001/qktoolhub
-- 현재 작업 브랜치: `main` (PR #3 병합 및 운영 배포 완료)
-- 최근 완료: 환율 FAQ와 수수료 예시 보강, 개인정보 범주 구분, 홈에는 운영 중인 도구 8개만 표시, 5개 언어 소개·문의 페이지 추가. 빌드·전체 스크립트 검사와 운영 화면 확인 통과.
-- 다음 작업: QK Tool Hub 8개 도구의 모바일 회귀와 Search Console 색인 상태 확인.
-- 사용자 확인 사항: sitemap 재제출 완료.
-- 독립 프로젝트: https://github.com/ionic2001/diorama-stickerbook (`main` 0500fd9).
+- 운영 코드 기준: 원격 `main` 커밋 `aebdcad`; 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
+- 최근 완료: 이미지→PDF 및 PDF 전용 6개 경로, 홈 주요 PDF 카드 2개·바로가기 4개, 홈 하단 5개 언어 PDF 설명, 현재 도구 소개·문의·약관·개인정보처리방침과 메타·관련 링크. 18개 경로 × 5개 언어 = 90개 canonical URL이며 `/pdf-converter`는 유지한다.
+- 검증: 운영 코드 빌드, 90개 URL 정적 SEO, PDF 병합·추출·정리, 테마 검사 통과; Vercel 성공 및 공개 대표 페이지 확인. 전체 모바일·복잡한 PDF 표본·Search Console 계정 지표 검수는 미완료.
+- 다음 작업: 신규/기존 PDF URL의 Search Console 색인·검색 의도와 모바일 성능 확인. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
+- 사용자 확인 사항: sitemap 재제출 완료. 독립 스티커북: https://github.com/ionic2001/diorama-stickerbook.
+- 배포 작업은 사용자 지시와 현재 작업의 권한 범위를 따른다. 작업별 브랜치에서 변경·검증을 기록하고 원격 `main` 반영을 두 컴퓨터의 공유 기준으로 삼는다.
 
 ## 권장 공유 구조
 
@@ -59,6 +56,9 @@ QK Tool Hub의 코드와 이미지 편집기 내부 스티커는 이 저장소�
 | 언어와 URL | src/i18n/LanguageContext.tsx |
 | 이미지 편집기 | src/pages/ImageEditor.tsx |
 | 기존 스티커 자료 | src/pages/stickerLibrary.ts |
+| PDF 기능·문구 | src/pages/PdfWorkPage.tsx, src/pages/PdfConverter.tsx, src/i18n/pdfWork.ts, src/i18n/pdfHomeMenu.ts |
+| PDF 페이지 작업 | src/utils/pdfOperations.ts |
+| 소개·약관·방침 | src/i18n/aboutText.ts, src/i18n/legalText.ts |
 | 개별 번역 | src/i18n/ 및 src/features/units/text.ts |
 | 정적 SEO 생성 | scripts/build-seo.mjs |
 | 배포 라우팅 | vercel.json |
@@ -70,11 +70,13 @@ npm ci
 npm run dev
 npm run build
 npm run test:seo
+npm run test:pdf
+npm run test:theme
 ```
 
 단위 변환 변경 시 node scripts/test-units.cjs를 추가한다. 다른 도구도 변경 범위에 맞게 실제 기능을 검사한다. npm run preview만으로 Vercel의 언어별 쿼리 라우팅을 검증했다고 보지 않는다. 최종 배포에서는 공개 URL로 확인한다.
 
-실제 검증 환경은 Node 24.15.0이었다. 저장소가 이 버전을 강제 고정한 상태라는 뜻은 아니다. 두 컴퓨터의 Node와 잠금 파일을 맞춘다. package.json의 push 스크립트는 Windows용 cmd /c sync.bat이므로 Mac의 공통 동기화 명령으로 사용하지 않는다.
+2026-09-10 과거 검증 환경은 Node 24.15.0이었다. 저장소가 이 버전을 강제 고정한 상태라는 뜻은 아니다. 두 컴퓨터의 Node와 잠금 파일을 맞춘다. package.json의 push 스크립트는 Windows용 cmd /c sync.bat이므로 Mac의 공통 동기화 명령으로 사용하지 않는다.
 
 비밀값은 문서·저장소에 넣지 않는다. 필요한 환경변수의 이름만 공유하고 값은 별도로 설정한다. node_modules와 빌드 결과 대신 소스와 잠금 파일을 공유한다.
 

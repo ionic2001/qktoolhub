@@ -1,8 +1,8 @@
 # QK Tool Hub PDF 전용 도구 기획서
 
-작성일: 2026-09-16  
-상태: 첫 출시 기능 구현 (2026-09-16 기준)
-기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), `main` 커밋 `72ba19bb35395233388d36febb59f0aafb1fe9b7`  
+작성일: 2026-09-16
+상태: 첫 출시·홈 정리·정책 안내까지 운영 배포 완료. 1~11절은 기획 당시의 목표와 출시 기준이고, 12~15절은 실제 구현 상태와 남은 작업을 기록한다.
+기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 운영 코드 `main` 커밋 `aebdcad`
 운영 사이트: https://www.qktoolhub.com/
 
 ## 1. 목표와 제품 경계
@@ -48,14 +48,14 @@
 |---|---|---|
 | 병합 | PDF 여러 개 선택; 파일과 페이지 순서 표시; 순서 변경; 모든 페이지를 하나의 PDF로 저장 | 파일 선택 순서가 결과 순서로 반영. 일부 파일 실패 시 완성된 것처럼 다운로드하지 않고 실패 파일을 표시 |
 | 분리 | 1개 PDF에서 `1-3, 5, 8-10` 같은 범위 또는 개별 페이지 선택; 선택한 페이지를 새 PDF로 저장 | 중복·역순·범위 밖·빈 선택을 명확히 처리. 원본 페이지 순서 유지가 기본값 |
-| 추출 | 분리 화면에서 선택한 페이지를 **한 파일**로 저장하거나 각 페이지를 개별 파일로 저장 | 대량 개별 저장은 브라우저 다운로드 제한을 확인하고 ZIP 제공 여부를 별도 결정 |
-| 정리 | 페이지 미리보기; 드래그 또는 버튼으로 순서 변경; 90도 회전; 선택 삭제; 빈 페이지 추가; 결과 저장 | 마지막 페이지 삭제는 결과가 빈 PDF가 되지 않도록 막거나 명시적인 새 빈 페이지 정책 적용 |
+| 추출 | 분리 화면에서 선택한 페이지를 **한 파일**로 저장 | 페이지별 개별 파일·ZIP 저장은 후속 검토 |
+| 정리 | 페이지 미리보기; 버튼으로 순서 변경; 90도 회전; 선택 삭제; 빈 페이지 추가; 결과 저장 | 마지막 페이지 삭제를 막아 빈 PDF 생성 방지. 드래그 이동은 후속 검토 |
 | PDF→PNG | 기존 페이지 선택·72/144/216 DPI·미리보기·개별 PNG 다운로드 유지 | 현재 50MB·300페이지 제한, 암호화 PDF 미지원, 흰 배경·최대 6MP 제한을 새 안내에도 반영 |
 | 진행 상태 | 파일 로드, 페이지 파싱·미리보기, 결과 생성, 다운로드 준비를 분리 표시 | 작업 중 이중 실행 방지. 취소 가능 단계와 취소 불가 단계를 구별 |
 
 기존 코드에는 `pdf-lib`과 PDF.js가 이미 있다. `pdf-lib`의 `copyPages`, `removePage`, `insertPage`, `save`, 페이지 회전 API로 위 페이지 작업을 설계할 수 있고 PDF.js로 미리보기를 렌더링할 수 있다. [pdf-lib PDFDocument API](https://pdf-lib.js.org/docs/api/classes/pdfdocument), [PDFPage API](https://pdf-lib.js.org/docs/api/classes/pdfpage), [PDF.js 브라우저 예제](https://mozilla.github.io/pdf.js/examples/). 미리보기는 빠른 탐색용으로 저해상도·필요 페이지부터 생성하고, 출력은 원본 PDF 페이지를 복사하는 경로를 우선해 불필요한 이미지 변환을 피한다.
 
-**기본 한도 초안:** 병합 최대 10파일, 파일당 50MB, 총 입력 100MB, 결과 최대 300페이지; 분리·정리는 파일당 50MB·300페이지. 이는 확정 운영 한도가 아니다. 실제 브라우저 메모리·모바일 처리 시간·파일별 PDF 크기를 측정한 후 조정한다. 초과할 때는 입력 단계에서 이유와 현재 한도를 표시한다.
+**초기 운영 한도:** 병합 최대 10파일, 파일당 50MB, 총 입력 100MB, 결과 최대 300페이지; 분리·정리는 파일당 50MB·300페이지. 이미지→PDF는 최대 20장, 장당 20MB·총 100MB이며 큰 이미지는 긴 변 2,400px로 축소한다. PDF→PNG는 50MB·300페이지·최대 600만 픽셀을 적용한다. 모바일 메모리와 처리 시간을 측정해 필요하면 조정한다.
 
 ## 5. 후속 기능과 명칭 제한
 
@@ -112,20 +112,22 @@
 - 구조화 데이터: 현재의 `WebPage`, 실제 사용 가능한 페이지의 `WebApplication`, 사용자 경로와 맞는 `BreadcrumbList`; 무료 이용 가격은 실제로 무료일 때만 `Offer.price=0`. 같은 JSON-LD 내용이 정적 HTML과 실행 후 문서에 중복되지 않게 한다. Google의 앱 리치 결과 조건은 [공식 문서](https://developers.google.com/search/docs/appearance/structured-data/software-app)를 따르고, 표시를 보장하지 않는다.
 - FAQ는 화면에 보이는 실제 질문과 답만 작성한다. FAQ 스키마를 검색 결과 표시를 늘리는 핵심 작업으로 보지 않는다. Google의 FAQ 리치 결과는 대부분 권위 있는 정부·건강 사이트에 제한된다. [공식 발표](https://developers.google.com/search/blog/2023/08/howto-faq-changes).
 
-### 제목·설명 초안과 번역 계약
+### 운영 제목·설명과 번역 계약
 
-| 기능 | 한국어 title 초안 | 영어 title 초안 |
+아래는 현재 도구 제목의 본문 부분이다. 페이지 `<title>`에는 공통으로 ` | QK Tool Hub`가 붙는다.
+
+| 기능 | 한국어 제목 | 영어 제목 |
 |---|---|---|
-| 이미지→PDF | 이미지 PDF 변환기 · JPG·PNG를 PDF로 | QK Tool Hub | Images to PDF Converter · JPG & PNG to PDF | QK Tool Hub |
-| PDF 홈 | 무료 PDF 도구 · 병합·분리·페이지 정리 | QK Tool Hub | Free PDF Tools · Merge, Split & Organize PDFs | QK Tool Hub |
-| 병합 | PDF 병합 · 여러 파일을 하나로 | QK Tool Hub | Merge PDF Files Online | QK Tool Hub |
-| 분리 | PDF 분리·페이지 추출 | QK Tool Hub | Split PDF & Extract Pages | QK Tool Hub |
-| 정리 | PDF 페이지 순서 변경·회전·삭제 | QK Tool Hub | Organize PDF Pages · Reorder, Rotate & Delete | QK Tool Hub |
-| PNG | PDF PNG 변환 · 페이지별 이미지 저장 | QK Tool Hub | PDF to PNG · Export Individual Pages | QK Tool Hub |
+| 이미지→PDF | 이미지 PDF 변환기 · JPG·PNG를 PDF로 | Images to PDF Converter · JPG & PNG to PDF |
+| PDF 홈 | 무료 PDF 도구 · 병합·분리·페이지 정리 | Free PDF Tools · Merge, Split & Organize PDFs |
+| 병합 | PDF 병합 · 여러 파일을 하나로 | Merge PDF Files Online |
+| 분리 | PDF 분리·페이지 추출 | Split PDF & Extract Pages |
+| 정리 | PDF 페이지 순서 변경·회전·삭제 | Organize PDF Pages · Reorder, Rotate & Delete |
+| PNG | PDF PNG 변환 · 페이지별 이미지 저장 | PDF to PNG · Export Individual Pages |
 
 각 페이지 설명은 **입력 → 주요 조작 → 결과 → 실제 제한**을 1~2문장으로 쓴다. 예: 한국어 병합은 “여러 PDF를 원하는 순서로 합쳐 하나의 파일로 저장하세요. 페이지를 확인하고 브라우저에서 처리한 결과를 다운로드할 수 있습니다.” 영어는 “Merge multiple PDFs in the order you choose. Review the pages and download one combined file, processed in your browser.”
 
-| 기능 | 일본어 이름 초안 | 간체 중국어 이름 초안 | 스페인어 이름 초안 |
+| 기능 | 일본어 용어 | 간체 중국어 용어 | 스페인어 용어 |
 |---|---|---|---|
 | 이미지→PDF | 画像をPDFに変換 | 图片转PDF | Imágenes a PDF |
 | PDF 홈 | 無料PDFツール | 免费PDF工具 | Herramientas PDF gratis |
@@ -134,7 +136,7 @@
 | 정리 | PDFページを並べ替え・回転 | 整理PDF页面·排序和旋转 | Organizar páginas PDF |
 | PNG | PDFをPNGに変換 | PDF转PNG | PDF a PNG |
 
-위 이름은 현지화 초안이다. 각 언어의 title에는 브랜드를 붙이고, description은 실제 입력·작업·다운로드와 한도를 반영해 별도로 작성한다. 특히 일본어의 結合/分割, 중국어의 合并/拆分, 스페인어의 unir/dividir 용어를 버튼·가이드·메타에 동일하게 사용한다. 번역 QA에서 해당 언어의 검색 결과 표현과 UI 용어를 확인한다.
+표의 세 언어 용어는 기획 당시 기준이며 실제 운영 제목은 `src/i18n/pdfWork.ts`를 확인한다. 각 언어의 title에는 브랜드를 붙이고, description은 실제 입력·작업·다운로드와 한도를 반영해 별도로 작성했다. 일본어의 結合/分割, 중국어의 合并/拆分, 스페인어의 unir/dividir 용어를 버튼·가이드·메타에서 일관되게 관리한다. 검색 결과의 현지 표현은 실제 노출 데이터를 얻은 뒤 재검토한다.
 
 일본어·간체 중국어·스페인어도 같은 기능 범위를 번역하되 검색어 표현은 자연스러운 현지 용어로 검수한다. `PDF 병합`, `PDF 분리`, `페이지 추출`, `회전`, `양식` 등 용어집을 만들고 UI·title·description·본문·파일명에 일관되게 적용한다. 번역이 준비되지 않은 언어 URL을 한국어·영어 본문으로 생성하지 않는다.
 
@@ -190,7 +192,7 @@
 6. **미리보기·운영 검증:** 기능·성능·60→90개 URL 감사, Search Console 대표 URL 검사.
 7. **후속 기능:** 내용 추가·워터마크·양식 채우기는 별도 기능 검증과 번역·SEO 페이지 준비 후 출시.
 
-기획상 모든 URL·제목·한도는 제안이다. 입력 한도와 기존 URL 이전은 실제 성능 및 검색 데이터 확인 후 확정하고, 이미 제공한다고 표기할 시점은 해당 기능의 운영 검증이 끝난 뒤로 한다.
+1~11절의 후속 기능과 검사 기준은 기획안이다. 12절 이후의 구현 기록을 현재 제공 기능의 기준으로 사용한다. 기존 URL 이전과 입력 한도 변경은 실제 성능 및 검색 데이터 확인 후 결정한다.
 
 ## 12. 첫 구현 범위 기록 (2026-09-16)
 
@@ -203,3 +205,17 @@
 메인 카드에는 이미지로 PDF 한 파일을 만드는 `/image-to-pdf`와 기존 PDF에서 작업을 선택하는 `/pdf-tools`만 표시한다. 병합·페이지 추출·페이지 정리·선택 페이지 PNG 저장은 네 개의 짧은 바로가기에서 각각 `/pdf-merge`, `/pdf-split`, `/pdf-organize`, `/pdf-to-png`로 연결한다. `/pdf-split`은 현재 선택 페이지를 **한 PDF 파일**로 저장하므로, 메인 메뉴에서 페이지별 여러 파일 분리라고 표현하지 않는다. `/pdf-to-png`도 선택한 페이지를 저장한다고 안내한다.
 
 기존 `/pdf-converter` 카드는 메인에서 제거하지만 색인된 주소와 기능, 고유 메타, sitemap URL은 유지한다. 이 단계의 sitemap은 90개 언어별 canonical URL로 계속 제공한다. 홈페이지 5개 언어의 설명·카테고리·초기 HTML 링크를 메뉴와 함께 업데이트하고, `/pdf-converter`의 리디렉션 여부는 Search Console의 실제 유입 의도를 더 확인한 뒤 결정한다.
+
+## 14. 메인 하단 설명과 서비스·정책 안내 (2026-09-16)
+
+메인 하단에 5개 언어의 PDF 설명 문단을 추가했다. 이미지로 새 PDF를 만드는 기능과 기존 PDF의 병합·선택 페이지 추출·정리·PNG 저장을 구분하며, 선택 페이지 추출 결과는 **새 PDF 한 파일**, PNG 결과는 **선택 페이지 이미지**라고 명시한다. 암호 PDF, OCR, 원문 텍스트 수정은 현재 제공하지 않는다. 페이지 작업 뒤 서명·양식·책갈피가 유지되지 않을 수 있으므로 중요한 출력은 다운로드 후 확인하도록 안내한다. 추가 문단은 메뉴 카드나 바로가기를 중복하지 않는다.
+
+서비스 소개에서 오래된 “8개 도구” 목록을 제거하고 현재 텍스트·이미지·계산·시간 및 PDF 도구 범위를 설명한다. 문의에는 사용 도구·브라우저·재현 단계·PDF 오류 문구를 적도록 안내하고, 원본 문서를 첨부하지 않아도 문의할 수 있다고 밝힌다. 이용약관은 현재 PDF 작업 범위와 출력의 보존 제한을, 개인정보처리방침은 PDF 내용·미리보기의 브라우저 처리와 파일명·본문·페이지 이미지의 분석 이벤트 제외 설계를 설명한다. 사용자가 문의 메일에 직접 문서를 첨부하면 이메일 서비스가 그 첨부를 처리할 수 있다는 점도 별도로 안내한다. 약관·방침의 개정 표기는 2026-09-16이다.
+
+홈·소개·약관·방침의 한국어·영어·일본어·간체 중국어·스페인어 본문과 메타 설명을 함께 갱신했다. 소개·약관·방침의 관련 도구 링크는 PDF 홈, 이미지→PDF 및 대표 도구로 연결한다. 모든 안내는 첫 HTTP HTML에도 들어가며, 새 도구 경로를 추가하지 않아 sitemap은 18개 경로 × 5개 언어 = **90개 canonical URL**을 유지한다.
+
+## 15. 배포 검증과 남은 결정
+
+운영 코드 `aebdcad`에서 TypeScript·Vite·정적 SEO 빌드, 90개 URL의 메타·canonical·hreflang·JSON-LD·링크·sitemap 검사, PDF 병합·추출·정리 검사와 테마 검사가 통과했다. GitHub `main` 반영 후 Vercel 성공 상태를 확인했고, 공개 홈 5개 언어와 소개·약관·방침 대표 언어 응답에서 새 문구·canonical·sitemap 90개를 확인했다. 전체 모바일·대형/암호/서명/양식 PDF 표본 검수와 Search Console의 실제 색인·유입 데이터 분석까지 완료했다고 기록하지 않는다.
+
+다음 결정은 (1) Search Console의 `/pdf-converter` 유입 의도에 따라 고유 페이지 유지 또는 언어 보존 리디렉션, (2) 모바일 성능과 실패 유형을 보고 입력 한도 조정, (3) 페이지별 개별 추출·ZIP, 드래그 정리, 워터마크·양식·OCR 등 후속 기능의 별도 검증 순서다. 운영에서 제공하지 않는 기능은 홈·메타·sitemap에 먼저 노출하지 않는다.
