@@ -21,6 +21,7 @@ export interface LegalI18n {
     tagline: string;
     close: string;
     contactLabel: string;
+    contactIntro: string;
   };
 }
 
@@ -28,13 +29,13 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
   ko: {
     terms: {
       title: "서비스 이용약관",
-      effectiveDate: "시행일자: 2026년 9월 9일",
+      effectiveDate: "개정 시행일자: 2026년 9월 16일",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
           title: "제1조 (목적)",
           content: [
-            "본 약관은 QK Tool Hub(이하 '서비스')가 제공하는 브라우저 기반 온라인 웹 유틸리티 도구(글자수 세기, 환율 계산기, 단위 변환기, 이미지 에디터, PDF 도구, 픽셀 아트 변환, 세계시계, 스마트 달력 등)의 이용 조건 및 절차, 권리와 의무를 규정함을 목적으로 합니다."
+            "본 약관은 QK Tool Hub(이하 '서비스')가 제공하는 브라우저 기반 온라인 웹 도구(글자수 세기, 환율·단위 변환, 이미지 편집·픽셀 아트, 세계시계·달력, 이미지 → PDF 및 PDF 병합·페이지 추출·정리·PNG 저장 등)의 이용 조건을 규정합니다."
           ]
         },
         {
@@ -51,6 +52,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "1. 이용자는 서비스를 불법적이거나 타인의 권리를 침해하는 목적으로 이용해서는 안 됩니다.",
             "2. 서비스의 정상적인 운영을 방해하거나, 과도한 자동화 트래픽(DDoS, 악의적인 대량 스크래핑 등)을 유발하는 행위를 금지합니다."
           ]
+        },
+        {
+          title: "PDF 도구의 범위와 결과 확인",
+          content: ["이미지 → PDF 도구는 이미지로 새 PDF를 만듭니다. 기존 PDF 도구는 여러 파일 병합, 선택 페이지를 새 PDF 한 파일로 추출, 페이지 순서·회전·삭제·빈 페이지 추가, 선택 페이지의 PNG 저장을 지원합니다.", "암호가 걸린 PDF, OCR 및 원본 문장 수정은 지원하지 않습니다. 페이지 작업 결과에서 디지털 서명, 양식, 북마크 등이 유지되지 않을 수 있으므로 중요한 문서는 결과를 다운로드한 뒤 확인해 주세요."]
         },
         {
           title: "제4조 (면책 조항 및 책임의 한계)",
@@ -83,7 +88,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "개인정보처리방침",
-      effectiveDate: "시행일자: 2026년 9월 10일",
+      effectiveDate: "개정 시행일자: 2026년 9월 16일",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
@@ -96,9 +101,13 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
         {
           title: "2. 도구에 입력한 텍스트와 파일",
           content: [
-            "글자수 세기, 이미지 편집, PDF 변환, 픽셀 아트 등에서 이용자가 입력하거나 선택한 텍스트·문서·이미지는 해당 기능을 실행하는 브라우저 안에서 처리하도록 설계되어 있으며, QK Tool Hub가 운영하는 저장 서버로 의도적으로 업로드하지 않습니다.",
+            "글자수 세기, 이미지 편집·픽셀 아트, 이미지 → PDF 및 PDF 병합·페이지 추출·정리·PNG 저장 도구에서 선택한 텍스트·문서·이미지는 브라우저 안에서 처리하도록 설계되어 있으며, QK Tool Hub가 운영하는 저장 서버로 의도적으로 업로드하지 않습니다.",
             "페이지 메모리에만 있는 작업 데이터는 새로고침이나 탭 종료 시 사라집니다. 다만 이용자가 다운로드한 결과 파일과 아래 로컬 저장소에 저장된 설정·임시 텍스트는 자동으로 삭제되지 않습니다."
           ]
+        },
+        {
+          title: "PDF 작업 데이터와 문의",
+          content: ["PDF 파일의 내용과 페이지 미리보기는 이용 중인 브라우저에서 처리됩니다. 파일 이름·본문·페이지 이미지를 방문 통계 이벤트로 보내도록 설계하지 않았습니다.", "문의 이메일에 원본 문서를 첨부하지 않아도 됩니다. 문서를 직접 첨부하면 그 파일과 문의 내용은 이메일 서비스에서 처리될 수 있으므로 첨부 여부를 확인해 주세요."]
         },
         {
           title: "3. 사이트 제공 및 방문 통계 데이터",
@@ -140,19 +149,20 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "설치 없이 바로 쓰는 생활·업무용 무료 웹 도구",
       close: "닫기",
-      contactLabel: "문의"
+      contactLabel: "문의",
+      contactIntro: "본 내용에 대한 문의사항이나 의견은 이메일로 접수해 주시기 바랍니다."
     }
   },
   en: {
     terms: {
       title: "Terms of Service",
-      effectiveDate: "Effective Date: September 9, 2026",
+      effectiveDate: "Updated: September 16, 2026",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
           title: "Article 1 (Purpose)",
           content: [
-            "These Terms of Service govern your use of QK Tool Hub (the 'Service') and its suite of browser-based online web utilities, including Word Counter, Currency Converter, Unit Converter, Image Editor, PDF Tools, Pixel Art Converter, World Clock, and Smart Calendar."
+            "These Terms govern QK Tool Hub's browser tools, including word counting, currency and unit conversion, image editing and pixel art, world clock and calendar, images to PDF, PDF merging, page extraction and organization, and PDF-page export to PNG."
           ]
         },
         {
@@ -169,6 +179,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "1. You agree not to use the Service for any unlawful purpose or to infringe upon the rights of others.",
             "2. You may not interfere with the proper working of the Service, nor generate excessive abusive automated traffic (such as DDoS or malicious scraping)."
           ]
+        },
+        {
+          title: "PDF tool scope and output review",
+          content: ["Images to PDF creates a new PDF from images. Existing-PDF tools merge files, extract selected pages into one PDF, reorder, rotate or remove pages, add blank pages and save a selected page as PNG.", "Password-protected PDFs, OCR and editing original text are not supported. Signatures, forms and bookmarks may not survive page operations. Review important documents after downloading the output."]
         },
         {
           title: "Article 4 (Disclaimer of Warranties & Limitation of Liability)",
@@ -201,7 +215,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "Privacy Policy",
-      effectiveDate: "Effective Date: September 10, 2026",
+      effectiveDate: "Updated: September 16, 2026",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
@@ -214,7 +228,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
         {
           title: "2. Text and files used in tools",
           content: [
-            "Text, documents, PDFs, and images selected for the word, image, PDF, and pixel-art tools are designed to be processed in the browser and are not intentionally uploaded to storage servers operated by QK Tool Hub.",
+            "Text, images and PDFs selected for word counting, image editing, pixel art, images to PDF, PDF merging, page extraction or organization, and PDF-page export to PNG are designed to be processed in the browser and are not intentionally uploaded to storage servers operated by QK Tool Hub.",
             "Work held only in page memory disappears when the page is refreshed or closed. Downloaded output and preferences or draft text saved in browser local storage do not disappear automatically."
           ]
         },
@@ -224,6 +238,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "Hosting and analytics providers may process technical data such as IP address, browser and device information, request time, viewed and referring pages, errors, and performance data when the site is accessed.",
             "We use Google Analytics 4 (Google LLC) and Vercel Analytics (Vercel Inc.) to understand usage and performance. This data is separate from content entered into tools and is handled under each provider's policy and retention settings."
           ]
+        },
+        {
+          title: "PDF work data and inquiries",
+          content: ["PDF content and page previews are processed in your browser. The site is not designed to send file names, document text or page images as analytics events.", "You can ask for help without attaching the original document. If you choose to attach it to an email, the file and message may be processed by the email provider."]
         },
         {
           title: "4. Third-Party Advertising & Cookies (Google AdSense)",
@@ -258,19 +276,20 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "Free browser tools for everyday and work tasks",
       close: "Close",
-      contactLabel: "Contact"
+      contactLabel: "Contact",
+      contactIntro: "For questions or feedback about this page, contact us by email."
     }
   },
   ja: {
     terms: {
       title: "利用規約 (Terms of Service)",
-      effectiveDate: "制定日: 2026年9月9日",
+      effectiveDate: "改定日: 2026年9月16日",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
           title: "第1条（目的）",
           content: [
-            "本規約は、QK Tool Hub（以下「本サービス」）が提供するブラウザ完結型オンラインWebツール（文字数カウント、為替計算機、単位換算、画像編集、PDF変換、ドット絵変換、世界時計、年間カレンダー等）の利用条件を定めるものです。"
+            "本規約は、QK Tool Hubのブラウザツール（文字数、為替・単位換算、画像編集・ドット絵、世界時計・カレンダー、画像からPDF、PDF結合・ページ抽出・整理・PNG保存等）の利用条件を定めます。"
           ]
         },
         {
@@ -286,6 +305,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "1. 参考情報の提供：為替レート、通貨換算、祝日・営業日計算、単位換算、文字数・バイト数計算等の出力結果は参考情報であり、完全性や正確性を保証するものではありません。",
             "2. 取引・契約の免責：本サービスの計算結果に基づいて行われた金融取引、国際送金、契約、航空予約等により生じたいかなる損害についても、本サービスは一切の責任を負いません。"
           ]
+        },
+        {
+          title: "PDFツールの範囲と出力確認",
+          content: ["画像からPDFを作成できます。既存PDFの結合、選んだページを一つの新しいPDFへ抽出、並べ替え・回転・削除・空白ページ追加、選択ページのPNG保存に対応します。", "パスワード付きPDF、OCR、元の文章の編集には対応しません。ページ操作で署名・フォーム・しおりが保持されない場合があるため、重要な文書はダウンロード後に確認してください。"]
         },
         {
           title: "第4条（知的財産権および広告）",
@@ -304,7 +327,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "プライバシーポリシー (Privacy Policy)",
-      effectiveDate: "改定日: 2026年9月10日",
+      effectiveDate: "改定日: 2026年9月16日",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
@@ -317,7 +340,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
         {
           title: "2. ツールに入力したテキストとファイル",
           content: [
-            "文字数、画像、PDF、ピクセルアートの各ツールで選択したテキストやファイルはブラウザ内で処理するよう設計され、QK Tool Hubの保存サーバーへ意図的にアップロードしません。",
+            "文字数、画像編集・ドット絵、画像からPDF、PDF結合・ページ抽出・整理・PNG保存で選択したテキストやファイルはブラウザ内で処理するよう設計され、QK Tool Hubの保存サーバーへ意図的にアップロードしません。",
             "ページメモリ上の作業データは再読み込みやタブ終了で消えますが、ダウンロード済みファイルやローカル保存された設定・下書きは自動では消えません。"
           ]
         },
@@ -327,6 +350,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "サイト接続時、ホスティングおよび解析事業者はIPアドレス、ブラウザ・端末情報、時刻、閲覧・参照ページ、エラー、性能情報などを処理する場合があります。",
             "利用状況と性能の把握にGoogle Analytics 4とVercel Analyticsを使用します。これはツール入力内容とは別で、各提供者の方針と保存設定に従って処理されます。"
           ]
+        },
+        {
+          title: "PDF作業データとお問い合わせ",
+          content: ["PDFの内容とページプレビューはブラウザ内で処理されます。ファイル名・本文・ページ画像をアクセス解析イベントへ送る設計ではありません。", "元の文書を添付せずにお問い合わせできます。メールに文書を添付した場合、ファイルとメッセージはメールサービスで処理される場合があります。"]
         },
         {
           title: "4. 第三者配信広告とクッキー（Cookie）について",
@@ -356,19 +383,20 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "インストール不要の日常・業務向け無料Webツール",
       close: "閉じる",
-      contactLabel: "お問い合わせ"
+      contactLabel: "お問い合わせ",
+      contactIntro: "このページに関するご質問やご意見はメールでお寄せください。"
     }
   },
   zh: {
     terms: {
       title: "服务使用条款 (Terms of Service)",
-      effectiveDate: "生效日期：2026年9月9日",
+      effectiveDate: "修订生效日期：2026年9月16日",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
           title: "第一条（宗旨）",
           content: [
-            "本条款规范您使用 QK Tool Hub（以下简称“本服务”）所提供的所有基于浏览器的免费在线实用工具（字数统计、实时汇率换算、单位换算、图片编辑、PDF工具、像素画转换、世界时钟及智能日历等）。"
+            "本条款规范 QK Tool Hub 浏览器工具的使用，包括字数统计、汇率与单位换算、图像编辑与像素画、世界时钟与日历、图片转PDF以及PDF合并、页面提取与整理、页面转PNG等。"
           ]
         },
         {
@@ -384,6 +412,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "1. 仅供参考：汇率数据、节假日算法、工作日计算、单位转换及字数统计结果仅供日常参考，本服务不对绝对准确性承担法律责任。",
             "2. 交易与合约免责：用户依据本服务计算结果进行的任何实际金融外汇交易、法律合同签署或物流出行决策，所产生的损益均由用户自行负责。"
           ]
+        },
+        {
+          title: "PDF工具范围与结果核对",
+          content: ["图片转PDF可创建新文件。现有PDF工具可合并文件、将选定页面提取到一个新PDF、排序、旋转、删除或添加空白页，并将选定页面保存为PNG。", "不支持加密PDF、OCR或修改原文。页面操作可能无法保留签名、表单或书签，重要文档下载后请检查。"]
         },
         {
           title: "第四条（知识产权与广告）",
@@ -402,7 +434,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "隐私政策 (Privacy Policy)",
-      effectiveDate: "更新日期：2026年9月10日",
+      effectiveDate: "更新日期：2026年9月16日",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
@@ -415,7 +447,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
         {
           title: "2. 工具中的文本与文件",
           content: [
-            "字数、图像、PDF和像素画工具所选文本与文件按设计在浏览器内处理，不会被有意上传到QK Tool Hub运营的存储服务器。",
+            "字数统计、图像编辑与像素画、图片转PDF、PDF合并、页面提取与整理及页面转PNG使用的文本与文件按设计在浏览器内处理，不会被有意上传到QK Tool Hub运营的存储服务器。",
             "仅存在页面内存中的工作数据会在刷新或关闭标签页时消失；已下载文件以及保存在本地存储中的设置或草稿不会自动删除。"
           ]
         },
@@ -425,6 +457,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "访问网站时，托管和分析服务商可能处理IP地址、浏览器与设备信息、请求时间、访问与来源页面、错误和性能信息等技术数据。",
             "我们使用Google Analytics 4和Vercel Analytics了解使用情况与性能。此类数据与工具输入内容分开，并依各服务商的政策和保留设置处理。"
           ]
+        },
+        {
+          title: "PDF工作数据与咨询",
+          content: ["PDF内容和页面预览在浏览器中处理。网站没有设计为将文件名、正文或页面图片作为统计事件发送。", "无需附上原始文档即可咨询。如主动通过邮件附上文档，邮件服务可能处理该文件及消息内容。"]
         },
         {
           title: "4. 第三方广告与 Cookie 说明（Google AdSense）",
@@ -454,19 +490,20 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). All rights reserved.",
       tagline: "无需安装的日常与办公免费网页工具",
       close: "关闭",
-      contactLabel: "咨询"
+      contactLabel: "咨询",
+      contactIntro: "关于本页面的问题或意见，请通过电子邮件联系我们。"
     }
   },
   es: {
     terms: {
       title: "Términos del Servicio (Terms of Service)",
-      effectiveDate: "Fecha de entrada en vigor: 9 de septiembre de 2026",
+      effectiveDate: "Actualizado: 16 de septiembre de 2026",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
           title: "Artículo 1 (Objeto)",
           content: [
-            "Los presentes Términos regulan el uso de QK Tool Hub (el 'Servicio') y su conjunto de herramientas en línea gratuitas ejecutadas en navegador (contador de palabras, conversor de divisas, conversor de unidades, editor de imágenes, herramientas PDF, reloj mundial y calendario)."
+            "Estos términos regulan las herramientas de navegador de QK Tool Hub: contador de palabras, divisas y unidades, edición de imágenes y arte píxel, reloj y calendario, imágenes a PDF, unión y extracción u organización de páginas PDF y exportación de páginas a PNG."
           ]
         },
         {
@@ -482,6 +519,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "1. Uso Informativo: Los tipos de cambio, días festivos, días hábiles netos y recuentos de texto se ofrecen exclusivamente a título orientativo. No garantizamos exactitud absoluta.",
             "2. Exención en Transacciones: El Servicio no se hace responsable de daños derivados de transacciones financieras, contratos legales o reservas realizadas en base a estos datos."
           ]
+        },
+        {
+          title: "Alcance de PDF y revisión del resultado",
+          content: ["Imágenes a PDF crea un documento nuevo. Las herramientas para PDF existentes unen archivos, extraen páginas elegidas en un PDF, ordenan, giran o borran páginas, añaden una página en blanco y guardan una página como PNG.", "No se admiten PDF protegidos con contraseña, OCR ni edición del texto original. Las firmas, formularios o marcadores pueden perderse en las operaciones de páginas; revisa los documentos importantes después de descargarlos."]
         },
         {
           title: "Artículo 4 (Propiedad Intelectual y Publicidad)",
@@ -500,7 +541,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
     },
     privacy: {
       title: "Política de Privacidad (Privacy Policy)",
-      effectiveDate: "Fecha de actualización: 10 de septiembre de 2026",
+      effectiveDate: "Actualizado: 16 de septiembre de 2026",
       contactEmail: "contact@qktoolhub.com",
       sections: [
         {
@@ -513,7 +554,7 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
         {
           title: "2. Textos y archivos usados en las herramientas",
           content: [
-            "Los textos, documentos, PDF e imágenes seleccionados para las herramientas están diseñados para procesarse en el navegador y no se suben intencionadamente a servidores de almacenamiento operados por QK Tool Hub.",
+            "Los textos, imágenes y PDF elegidos para contar palabras, editar imágenes, arte píxel, imágenes a PDF, unir PDF, extraer u organizar páginas y guardar una página como PNG están diseñados para procesarse en el navegador y no se suben intencionadamente a servidores de almacenamiento de QK Tool Hub.",
             "Los datos que solo están en la memoria de la página desaparecen al actualizarla o cerrarla. Los archivos descargados y las preferencias o borradores guardados en LocalStorage no se eliminan automáticamente."
           ]
         },
@@ -523,6 +564,10 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
             "Al acceder al sitio, los proveedores de alojamiento y analítica pueden procesar datos técnicos como dirección IP, navegador, dispositivo, hora, páginas vistas y de referencia, errores y rendimiento.",
             "Usamos Google Analytics 4 y Vercel Analytics para conocer el uso y el rendimiento. Estos datos están separados del contenido introducido en las herramientas y se tratan según las políticas y la retención de cada proveedor."
           ]
+        },
+        {
+          title: "Datos de trabajo PDF y consultas",
+          content: ["El contenido PDF y las vistas previas de páginas se procesan en el navegador. El sitio no está diseñado para enviar nombres de archivo, texto o imágenes de páginas como eventos de analítica.", "Puedes consultar sin adjuntar el documento original. Si decides enviarlo por correo, el archivo y el mensaje pueden ser procesados por el proveedor de correo."]
         },
         {
           title: "4. Publicidad y Cookies de Terceros (Google AdSense)",
@@ -552,7 +597,8 @@ export const legalText: Record<'ko' | 'en' | 'ja' | 'zh' | 'es', LegalI18n> = {
       copyright: "© 2026 QK Tool Hub (qktoolhub.com). Todos los derechos reservados.",
       tagline: "Herramientas web gratuitas para tareas cotidianas y de trabajo",
       close: "Cerrar",
-      contactLabel: "Contacto"
+      contactLabel: "Contacto",
+      contactIntro: "Para preguntas o comentarios sobre esta página, escríbenos por correo."
     }
   }
 };
