@@ -14,6 +14,7 @@ function friendlyName(name: string) { return name.trim().replace(/[\\/:*?"<>|\x0
 export default function PdfWorkPage({ path }: { path: PdfPath }) {
   const { language, t } = useLanguage();
   const copy = pdfWork[language][path];
+  const chooseLabel = pdfLabel(language, path === '/pdf-merge' ? 'chooseMany' : 'choose');
   const [files, setFiles] = useState<PdfInput[]>([]);
   const [plan, setPlan] = useState<PagePlan[]>([]);
   const [range, setRange] = useState('1');
@@ -100,7 +101,7 @@ export default function PdfWorkPage({ path }: { path: PdfPath }) {
     <a className="btn-tool" href={localUrl(path === '/pdf-tools' ? '/' : '/pdf-tools', language)}><ArrowLeft size={16} />{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</a>
     <main><div className="pdf-intro"><span className="badge">PDF TOOLS</span><h1>{copy.name}</h1><p>{copy.description}</p></div>
       {path === '/pdf-tools' ? <div className="pdf-tool-grid">{pdfPaths.filter(p => p !== '/pdf-tools').map(p => <a className="glass-card pdf-tool-card" key={p} href={localUrl(p, language)}><FileText size={26} /><h2>{pdfWork[language][p].name}</h2><p>{pdfWork[language][p].description}</p></a>)}</div> : <div className="pdf-layout"><section className="glass-card pdf-panel">
-        <h2>{pdfLabel(language, 'choose')}</h2><div className="pdf-drop" onDragOver={event => event.preventDefault()} onDrop={event => { event.preventDefault(); void addFiles(Array.from(event.dataTransfer.files)); }}><FileText size={32} /><p>{copy.how}</p><button className="pdf-button" disabled={busy} onClick={() => inputRef.current?.click()}>{pdfLabel(language, 'choose')}</button><small>{copy.note}</small></div>
+        <h2>{chooseLabel}</h2><div className="pdf-drop" onDragOver={event => event.preventDefault()} onDrop={event => { event.preventDefault(); void addFiles(Array.from(event.dataTransfer.files)); }}><FileText size={32} /><p>{copy.how}</p><button className="pdf-button" disabled={busy} onClick={() => inputRef.current?.click()}>{chooseLabel}</button><small>{copy.note}</small></div>
         <input hidden ref={inputRef} type="file" accept="application/pdf,.pdf" multiple={path === '/pdf-merge'} onChange={event => { void addFiles(Array.from(event.target.files || [])); event.target.value = ''; }} />
         {path === '/pdf-split' && files[0] && <><p>{files[0].name} · {files[0].pages} {pdfLabel(language, 'page')}</p><label htmlFor="pdf-page-range">{pdfLabel(language, 'range')}</label><input id="pdf-page-range" className="pdf-text-input" value={range} onChange={event => setRange(event.target.value)} /><p>{pdfLabel(language, 'selected')}: {range}</p></>}
         {files.length > 0 && <><label htmlFor="pdf-output-name">{pdfLabel(language, 'result')}</label><input id="pdf-output-name" className="pdf-text-input" value={outputName} maxLength={100} onChange={event => setOutputName(event.target.value)} /><button className="pdf-button pdf-wide" disabled={busy || (path === '/pdf-merge' ? files.length < 2 : path === '/pdf-organize' ? !plan.length : !range.trim())} onClick={() => void create()}>{pdfLabel(language, path === '/pdf-merge' ? 'merge' : path === '/pdf-split' ? 'split' : 'organize')}</button></>}

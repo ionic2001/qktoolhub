@@ -47,7 +47,8 @@ export const pdfWork: Record<Language, Record<PdfPath, Copy>> = {
 };
 
 const labels = {
-  choose: ['PDF 선택', 'Choose PDFs', 'PDFを選択', '选择PDF', 'Elegir PDF'],
+  choose: ['PDF 선택', 'Choose PDF', 'PDFを選択', '选择PDF', 'Elegir PDF'],
+  chooseMany: ['PDF 파일 추가', 'Add PDF files', 'PDFファイルを追加', '添加PDF文件', 'Añadir archivos PDF'],
   merge: ['PDF 병합', 'Merge PDFs', 'PDFを結合', '合并PDF', 'Unir PDF'],
   split: ['페이지 추출', 'Extract pages', 'ページを抽出', '提取页面', 'Extraer páginas'],
   organize: ['정리한 PDF 저장', 'Save organized PDF', '整理したPDFを保存', '保存整理后的PDF', 'Guardar PDF organizado'],
