@@ -1,12 +1,12 @@
 {
   "ko": {
     "homeTitle": "무료 온라인 도구 모음",
-    "homeDescription": "글자수·바이트 계산, 환율과 단위 변환, 이미지 편집, PDF 변환, 픽셀아트, 세계시계와 달력까지. 필요한 온라인 도구와 사용 방법을 확인하세요.",
+    "homeDescription": "글자수·바이트 계산, 환율·단위 변환, 이미지 편집과 픽셀아트, 이미지→PDF 만들기, PDF 병합·페이지 추출·정리, 세계시계와 달력 도구를 이용하세요.",
     "wordTitle": "글자수 세기와 바이트 계산기",
     "currencyTitle": "환율 계산기와 통화 변환",
     "groups": [
       "텍스트 도구",
-      "이미지와 PDF 도구",
+      "이미지 도구",
       "계산과 변환",
       "시간과 일정"
     ],
@@ -67,12 +67,12 @@
   },
   "en": {
     "homeTitle": "Free online tools",
-    "homeDescription": "Count words and bytes, convert currencies and units, edit images, convert PDFs, create pixel art, and explore world clocks and calendars.",
+    "homeDescription": "Count words and bytes, convert currencies and units, edit images, create PDFs from images, merge or extract PDF pages, and use world clocks and calendars.",
     "wordTitle": "Word and character counter",
     "currencyTitle": "Currency converter",
     "groups": [
       "Text tools",
-      "Image and PDF tools",
+      "Image tools",
       "Calculators and converters",
       "Time and calendars"
     ],
@@ -133,12 +133,12 @@
   },
   "ja": {
     "homeTitle": "無料オンラインツール集",
-    "homeDescription": "文字数・バイト数の計算、為替と単位の換算、画像編集、PDF変換、ドット絵、世界時計、カレンダーを利用できます。",
+    "homeDescription": "文字数・バイト数、為替・単位換算、画像編集、画像からPDF作成、PDFの結合・ページ抽出・整理、世界時計とカレンダーを利用できます。",
     "wordTitle": "文字数とバイト数カウント",
     "currencyTitle": "為替レート計算機",
     "groups": [
       "テキストツール",
-      "画像とPDF",
+      "画像ツール",
       "計算と換算",
       "時間と予定"
     ],
@@ -199,12 +199,12 @@
   },
   "zh": {
     "homeTitle": "免费在线工具集合",
-    "homeDescription": "统计字数与字节，换算货币和单位，编辑图片、转换PDF、制作像素画，以及查看世界时钟和日历。",
+    "homeDescription": "统计字数与字节、换算货币和单位、编辑图片、用图片创建PDF、合并与提取PDF页面，并查看世界时钟和日历。",
     "wordTitle": "字数与字节统计",
     "currencyTitle": "汇率换算器",
     "groups": [
       "文本工具",
-      "图片与PDF工具",
+      "图片工具",
       "计算与换算",
       "时间与日程"
     ],
@@ -265,12 +265,12 @@
   },
   "es": {
     "homeTitle": "Herramientas online gratuitas",
-    "homeDescription": "Cuenta palabras y caracteres, convierte divisas y unidades, edita imágenes, convierte PDF y consulta relojes y calendarios.",
+    "homeDescription": "Cuenta palabras y caracteres, convierte divisas y unidades, edita imágenes, crea PDF con imágenes, une y extrae páginas PDF y consulta relojes y calendarios.",
     "wordTitle": "Contador de palabras y caracteres",
     "currencyTitle": "Conversor de divisas",
     "groups": [
       "Texto",
-      "Imágenes y PDF",
+      "Imágenes",
       "Cálculos y conversiones",
       "Tiempo y calendario"
     ],

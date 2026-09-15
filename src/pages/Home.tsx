@@ -3,8 +3,7 @@ import { copy as unitCopy } from '../features/units/text';
 import { track } from '../utils/analytics';
 import editorMeta from '../i18n/editorMeta.json';
 import { worldText } from '../i18n/worldText';
-import { pdfText } from '../i18n/pdfTranslations';
-import { pdfWork, pdfPaths } from '../i18n/pdfWork';
+import { pdfHomeMenu } from '../i18n/pdfHomeMenu';
 import { pixelTranslations } from '../i18n/pixelTranslations';
 import React, { useState } from 'react';
 import { pageMeta, localUrl } from '../seo/catalog';
@@ -14,12 +13,14 @@ import { Footer } from '../components/Footer';
 import { AdSlot } from '../components/AdSlot';
 import { Search, Sparkles, ArrowRight } from 'lucide-react';
 import { ToolItem } from '../i18n/translations';
+import './Home.css';
 
 export const Home: React.FC = () => {
   const { t, language } = useLanguage();
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const localizedMenu = language === 'ko' || language === 'en';
+  const pdfMenu = pdfHomeMenu[language];
   const rawTools: ToolItem[] = (t.toolsList || []).map(tool => ({
     ...tool,
     title: localizedMenu && tool.path === '/currency-converter'
@@ -27,19 +28,17 @@ export const Home: React.FC = () => {
       : tool.title,
     badge: localizedMenu && tool.isLive ? 'New' : tool.badge,
   }));
-  rawTools.splice(Math.min(2, rawTools.length), 0, { id: 'pixel-art', title: pixelTranslations[language]['사진 픽셀 아트 변환'], desc: pixelTranslations[language]['사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.'], category: pixelTranslations[language]['이미지 도구'], badge: 'New', path: '/pixel-art', isLive: true });
-  const pdf = pdfText(language);
-  rawTools.splice(Math.min(3, rawTools.length), 0, { id: 'pdf-converter', title: pdf.title, desc: pdf.subtitle, category: pdf.docs, badge: 'New', path: '/pdf-converter', isLive: true });
-  pdfPaths.forEach((path, index) => rawTools.splice(Math.min(4 + index, rawTools.length), 0, { id: path.slice(1), title: pdfWork[language][path].name, desc: pdfWork[language][path].description, category: pdf.docs, badge: 'New', path, isLive: true }));
+  rawTools.push({ id: 'pixel-art', title: pixelTranslations[language]['사진 픽셀 아트 변환'], desc: pixelTranslations[language]['사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.'], category: pixelTranslations[language]['이미지 도구'], badge: 'New', path: '/pixel-art', isLive: true });
+  pdfMenu.featured.forEach((item, index) => rawTools.push({ id: item.path.slice(1), title: item.title, desc: item.description, category: index === 0 ? pdfMenu.imageCategory : pdfMenu.category, badge: 'New', path: item.path, isLive: true }));
   const clock = worldText[language];
-  rawTools.splice(Math.min(4, rawTools.length), 0, { id: 'world-clock', title: clock.title, desc: clock.subtitle, category: clock.category, badge: 'New', path: '/world-clock', isLive: true });
+  rawTools.push({ id: 'world-clock', title: clock.title, desc: clock.subtitle, category: clock.category, badge: 'New', path: '/world-clock', isLive: true });
   const cal = calendarText[language] || calendarText.ko;
   const calCat = { ko: '시간 / 일정', en: 'Time / Calendar', ja: '時間・カレンダー', zh: '时间 / 日程', es: 'Tiempo / Calendario' }[language] || 'Time / Calendar';
-  rawTools.splice(Math.min(5, rawTools.length), 0, { id: 'calendar', title: cal.title, desc: cal.subtitle, category: calCat, badge: 'New', path: '/calendar', isLive: true });
-  rawTools.splice(Math.min(6, rawTools.length), 0, { id: 'image-editor', title: editorMeta[language].name, desc: editorMeta[language].description, category: editorMeta[language].category, badge: 'New', path: '/image-editor', isLive: true });
+  rawTools.push({ id: 'calendar', title: cal.title, desc: cal.subtitle, category: calCat, badge: 'New', path: '/calendar', isLive: true });
+  rawTools.push({ id: 'image-editor', title: editorMeta[language].name, desc: editorMeta[language].description, category: editorMeta[language].category, badge: 'New', path: '/image-editor', isLive: true });
   const unitIndex=['ko','en','ja','zh','es'].indexOf(language);
-  rawTools.splice(7,0,{id:'unit-converter',title:unitCopy.title[unitIndex],desc:unitCopy.subtitle[unitIndex],category:unitCopy.title[unitIndex],badge:'New',path:'/unit-converter',isLive:true});
-  const filteredTools = rawTools.map(tool => tool.isLive ? { ...tool, title: pageMeta(tool.path, language).name, desc: pageMeta(tool.path, language).description } : tool).filter((tool: ToolItem) => {
+  rawTools.push({id:'unit-converter',title:unitCopy.title[unitIndex],desc:unitCopy.subtitle[unitIndex],category:unitCopy.title[unitIndex],badge:'New',path:'/unit-converter',isLive:true});
+  const filteredTools = rawTools.map(tool => tool.isLive && !pdfMenu.featured.some(item => item.path === tool.path) ? { ...tool, title: pageMeta(tool.path, language).name, desc: pageMeta(tool.path, language).description } : tool).filter((tool: ToolItem) => {
     const q = searchTerm.toLowerCase();
     return (
       tool.title.toLowerCase().includes(q) ||
@@ -146,6 +145,11 @@ export const Home: React.FC = () => {
             );
           })}
         </div>
+      </section>
+
+      <section className="pdf-home-shortcuts" aria-labelledby="pdf-home-shortcuts-heading">
+        <h2 id="pdf-home-shortcuts-heading">{pdfMenu.shortcutsHeading}</h2>
+        <div>{pdfMenu.shortcuts.map(item => <a key={item.path} href={localUrl(item.path, language)} onClick={() => track('menu_click', { destination: item.path, menu_id: item.path.slice(1), menu_location: 'home_shortcuts' })}><strong>{item.title}</strong><span>{item.description}</span><ArrowRight size={16} aria-hidden="true" /></a>)}</div>
       </section>
 
       {/* Bottom Ad */}

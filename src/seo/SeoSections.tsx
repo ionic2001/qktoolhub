@@ -11,7 +11,7 @@ export function SeoSections({ path, language }: { path: string; language: Langua
     '/calendar': ['/world-clock', '/unit-converter'], '/unit-converter': ['/currency-converter', '/calendar'],
   };
   for (const pdfPath of pdfPaths) related[pdfPath] = pdfPaths.filter(p => p !== pdfPath);
-  const groups = [['/word-counter', '/pdf-tools', '/pdf-merge', '/pdf-split', '/pdf-organize'], ['/image-editor', '/pixel-art', '/image-to-pdf', '/pdf-to-png'], ['/currency-converter', '/unit-converter'], ['/world-clock', '/calendar']];
+  const groups = [['/word-counter'], ['/image-editor', '/pixel-art'], ['/currency-converter', '/unit-converter'], ['/world-clock', '/calendar']];
   return <div className="seo-sections">
     {path === '/' && <>{groups.map((paths, i) => <section key={i}><h2>{c.groups[i]}</h2><ul>{paths.map(p => <li key={p}><a href={localUrl(p, language)}>{pageMeta(p, language).name}</a><p>{pageMeta(p, language).description}</p></li>)}</ul></section>)}<section><h2>{c.aboutTitle}</h2><p>{c.about}</p></section></>}
     {sections.map((section, i) => <section key={i}><h2>{section[0]}</h2><p>{section[1]}</p></section>)}

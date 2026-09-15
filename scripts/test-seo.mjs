@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import { loadSource } from './load-source.mjs';
-const {pagePaths,languages,canonicalUrl}=loadSource('src/seo/catalog.ts');
+const {pagePaths,languages,canonicalUrl,pageMeta}=loadSource('src/seo/catalog.ts');
+const {pdfHomeMenu}=loadSource('src/i18n/pdfHomeMenu.ts');
 for(const path of pagePaths) for(const lang of languages){
  const html=fs.readFileSync(`dist/${path==='/'?'home':path.slice(1)}/${lang}.html`,'utf8');
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`${path} ${lang} H1`);
@@ -19,6 +20,24 @@ for(const path of pagePaths) for(const lang of languages){
 assert.ok(!fs.existsSync('dist/index.html'), 'Root file must not shadow localized home rewrites');
 const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');
 assert.equal((sitemap.match(/<loc>/g)||[]).length,pagePaths.length*languages.length);
+for(const lang of languages) {
+ const html=fs.readFileSync(`dist/home/${lang}.html`,'utf8');
+ const menu=pdfHomeMenu[lang];
+ const links=[...html.matchAll(/<a[^>]*href="(\/[^"#]*)"/g)].map(match=>new URL(match[1],'https://www.qktoolhub.com').pathname);
+ for(const item of [...menu.featured,...menu.shortcuts]) {
+  assert.equal(links.filter(path=>path===item.path).length,1,`${lang} ${item.path} homepage link`);
+  assert.ok(html.includes(item.title),`${lang} ${item.path} localized label`);
+  assert.ok(html.includes(item.description),`${lang} ${item.path} localized explanation`);
+ }
+ assert.ok(!links.includes('/pdf-converter'),`${lang} legacy converter removed from homepage menu`);
+ const description=pageMeta('/',lang).description;
+ assert.ok(html.includes(`name="description" content="${description}"`),`${lang} homepage metadata`);
+ assert.ok(html.includes(`name="twitter:description" content="${description}"`),`${lang} homepage Twitter metadata`);
+ assert.ok(html.includes(`property="og:description" content="${description}"`),`${lang} homepage Open Graph metadata`);
+ const graph=JSON.parse([...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)][0][1])['@graph'];
+ assert.ok(graph.some(node=>node['@type']==='WebPage'&&node.description===description),`${lang} homepage JSON-LD`);
+}
+assert.ok(sitemap.includes('<loc>https://www.qktoolhub.com/pdf-converter</loc>'),'Indexed legacy URL retained in sitemap');
 assert.ok(!sitemap.includes('lang=ko')); assert.ok(!sitemap.includes('https://qktoolhub.com'));
 assert.ok(fs.readFileSync('dist/404.html','utf8').includes('noindex'));
 const config=JSON.parse(fs.readFileSync('vercel.json'));

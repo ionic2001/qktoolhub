@@ -6,6 +6,7 @@ const { origin, pagePaths, languages, pageMeta, pageSchema, canonicalUrl, localU
 const { SeoSections } = loadSource('src/seo/SeoSections.tsx');
 const { ImageEditorGuide } = loadSource('src/pages/ImageEditorGuide.tsx');
 const { pdfGuide } = loadSource('src/i18n/pdfGuide.ts');
+const { pdfHomeMenu } = loadSource('src/i18n/pdfHomeMenu.ts');
 const { worldGuide } = loadSource('src/i18n/worldGuide.ts');
 const { calendarGuide } = loadSource('src/i18n/calendarGuide.ts');
 const { legalText } = loadSource('src/i18n/legalText.ts');
@@ -21,6 +22,7 @@ for (const path of pagePaths) for (const lang of languages) {
   const tags={title:meta.title,description:meta.description,robots:'index, follow, max-image-preview:large','twitter:card':'summary_large_image','twitter:title':meta.title,'twitter:description':meta.description,'twitter:url':meta.url,'twitter:image':origin+'/og-image.png','twitter:image:alt':'QK Tool Hub'};
   const og={'og:type':'website','og:site_name':'QK Tool Hub','og:title':meta.title,'og:description':meta.description,'og:url':meta.url,'og:image':origin+'/og-image.png','og:image:width':'1200','og:image:height':'630','og:image:alt':'QK Tool Hub','og:locale':{ko:'ko_KR',en:'en_US',ja:'ja_JP',zh:'zh_CN',es:'es_ES'}[lang]};
   let guide='';
+  if(path==='/') { const menu=pdfHomeMenu[lang];guide=`<section class="seo-home-pdf"><h2>${escape(menu.category)}</h2><div class="seo-home-pdf-featured">${menu.featured.map(item=>`<article><h3><a href="${escape(localUrl(item.path,lang))}">${escape(item.title)}</a></h3><p>${escape(item.description)}</p></article>`).join('')}</div><h3>${escape(menu.shortcutsHeading)}</h3><ul>${menu.shortcuts.map(item=>`<li><a href="${escape(localUrl(item.path,lang))}">${escape(item.title)}</a><p>${escape(item.description)}</p></li>`).join('')}</ul></section>`; }
   if(path==='/image-editor') guide=renderToStaticMarkup(React.createElement(ImageEditorGuide,{language:lang}));
   if(path==='/world-clock'||path==='/calendar') guide=(path==='/world-clock'?worldGuide:calendarGuide)[lang].sections.map(s=>`<section><h2>${escape(s.title)}</h2><p>${escape(s.body)}</p></section>`).join('');
   if(path==='/pdf-converter') { const g=pdfGuide[lang];guide=[[g.imageHeading,g.imageSteps],[g.pdfHeading,g.pdfSteps]].map(([h,steps])=>`<section><h2>${escape(h)}</h2><ol>${steps.map(s=>`<li>${escape(s)}</li>`).join('')}</ol></section>`).join('')+`<section><h2>${escape(g.faqHeading)}</h2>${g.faqs.map(f=>`<details><summary>${escape(f.q)}</summary><p>${escape(f.a)}</p></details>`).join('')}</section>`; }
