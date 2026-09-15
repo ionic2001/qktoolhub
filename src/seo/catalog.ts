@@ -2,6 +2,7 @@ import { translations, type Language } from '../i18n/translations';
 import toolIntro from '../i18n/toolIntro.json';
 import editor from '../i18n/editorMeta.json';
 import { pdfGuide } from '../i18n/pdfGuide';
+import { pdfPaths, pdfWork } from '../i18n/pdfWork';
 import { worldGuide } from '../i18n/worldGuide';
 import { worldText } from '../i18n/worldText';
 import { calendarGuide } from '../i18n/calendarGuide';
@@ -14,7 +15,7 @@ import content from './content.json';
 
 export const origin = 'https://www.qktoolhub.com';
 export const languages: Language[] = ['ko', 'en', 'ja', 'zh', 'es'];
-export const toolPaths = ['/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', '/world-clock', '/calendar', '/image-editor', '/unit-converter'];
+export const toolPaths = ['/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', ...pdfPaths, '/world-clock', '/calendar', '/image-editor', '/unit-converter'];
 export const pagePaths = ['/', ...toolPaths, '/about', '/terms', '/privacy'];
 export const localUrl = (path: string, lang: Language) => path + (lang === 'ko' ? '' : `?lang=${lang}`);
 export const canonicalUrl = (path: string, lang: Language) => origin + localUrl(path, lang);
@@ -37,6 +38,7 @@ export function pageMeta(path: string, lang: Language) {
     case '/about': name = aboutText[lang].title; title = name; description = aboutText[lang].description; break;
     case '/terms': case '/privacy': { const doc = legalText[lang][path === '/terms' ? 'terms' : 'privacy']; name = doc.title; title = name; description = path === '/terms' ? c.termsDescription : c.privacyDescription; break; }
   }
+  if (pdfPaths.some(pdfPath => pdfPath === path)) { const pdf = pdfWork[lang][path as typeof pdfPaths[number]]; name = pdf.name; title = name; description = pdf.description; }
   return { name, title: `${title} | QK Tool Hub`, description, url: canonicalUrl(path, lang) };
 }
 export function pageSchema(path: string, lang: Language) {

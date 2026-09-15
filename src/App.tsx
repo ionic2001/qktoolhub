@@ -14,6 +14,7 @@ import { CurrencyConverterPage } from './pages/CurrencyConverter';
 const UnitConverter = lazy(() => import('./pages/UnitConverter'));
 const ImageEditor = lazy(() => import('./pages/ImageEditor'));
 const PdfConverterPage = lazy(() => import('./pages/PdfConverter'));
+const PdfWorkPage = lazy(() => import('./pages/PdfWorkPage'));
 
 const WorldClockPage = lazy(() => import('./pages/WorldClock'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
@@ -37,6 +38,12 @@ export const App: React.FC = () => {
             <Route path="/image-editor" element={<Suspense fallback={<RouteFallback />}><ImageEditor /></Suspense>} />
             <Route path="/world-clock" element={<Suspense fallback={<RouteFallback />}><WorldClockPage /></Suspense>} />
             <Route path="/pdf-converter" element={<Suspense fallback={<RouteFallback />}><PdfConverterPage /></Suspense>} />
+            <Route path="/image-to-pdf" element={<Suspense fallback={<RouteFallback />}><PdfConverterPage forcedMode="images" /></Suspense>} />
+            <Route path="/pdf-to-png" element={<Suspense fallback={<RouteFallback />}><PdfConverterPage forcedMode="pdf" /></Suspense>} />
+            <Route path="/pdf-tools" element={<Suspense fallback={<RouteFallback />}><PdfWorkPage path="/pdf-tools" /></Suspense>} />
+            <Route path="/pdf-merge" element={<Suspense fallback={<RouteFallback />}><PdfWorkPage path="/pdf-merge" /></Suspense>} />
+            <Route path="/pdf-split" element={<Suspense fallback={<RouteFallback />}><PdfWorkPage path="/pdf-split" /></Suspense>} />
+            <Route path="/pdf-organize" element={<Suspense fallback={<RouteFallback />}><PdfWorkPage path="/pdf-organize" /></Suspense>} />
             <Route path="/pixel-art" element={<PixelArtPage />} />
             <Route path="/word-counter" element={<WordCounterPage />} />
             <Route path="/currency-converter" element={<CurrencyConverterPage />} />

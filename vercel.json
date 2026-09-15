@@ -677,6 +677,360 @@
     {
       "source": "/pixel-art",
       "destination": "/pixel-art/ko.html"
+    },
+    {
+      "source": "/image-to-pdf",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/image-to-pdf/ko.html"
+    },
+    {
+      "source": "/image-to-pdf",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/image-to-pdf/en.html"
+    },
+    {
+      "source": "/image-to-pdf",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/image-to-pdf/ja.html"
+    },
+    {
+      "source": "/image-to-pdf",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/image-to-pdf/zh.html"
+    },
+    {
+      "source": "/image-to-pdf",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/image-to-pdf/es.html"
+    },
+    {
+      "source": "/image-to-pdf",
+      "destination": "/image-to-pdf/ko.html"
+    },
+    {
+      "source": "/pdf-tools",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/pdf-tools/ko.html"
+    },
+    {
+      "source": "/pdf-tools",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/pdf-tools/en.html"
+    },
+    {
+      "source": "/pdf-tools",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/pdf-tools/ja.html"
+    },
+    {
+      "source": "/pdf-tools",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/pdf-tools/zh.html"
+    },
+    {
+      "source": "/pdf-tools",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/pdf-tools/es.html"
+    },
+    {
+      "source": "/pdf-tools",
+      "destination": "/pdf-tools/ko.html"
+    },
+    {
+      "source": "/pdf-merge",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/pdf-merge/ko.html"
+    },
+    {
+      "source": "/pdf-merge",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/pdf-merge/en.html"
+    },
+    {
+      "source": "/pdf-merge",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/pdf-merge/ja.html"
+    },
+    {
+      "source": "/pdf-merge",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/pdf-merge/zh.html"
+    },
+    {
+      "source": "/pdf-merge",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/pdf-merge/es.html"
+    },
+    {
+      "source": "/pdf-merge",
+      "destination": "/pdf-merge/ko.html"
+    },
+    {
+      "source": "/pdf-split",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/pdf-split/ko.html"
+    },
+    {
+      "source": "/pdf-split",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/pdf-split/en.html"
+    },
+    {
+      "source": "/pdf-split",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/pdf-split/ja.html"
+    },
+    {
+      "source": "/pdf-split",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/pdf-split/zh.html"
+    },
+    {
+      "source": "/pdf-split",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/pdf-split/es.html"
+    },
+    {
+      "source": "/pdf-split",
+      "destination": "/pdf-split/ko.html"
+    },
+    {
+      "source": "/pdf-organize",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/pdf-organize/ko.html"
+    },
+    {
+      "source": "/pdf-organize",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/pdf-organize/en.html"
+    },
+    {
+      "source": "/pdf-organize",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/pdf-organize/ja.html"
+    },
+    {
+      "source": "/pdf-organize",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/pdf-organize/zh.html"
+    },
+    {
+      "source": "/pdf-organize",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/pdf-organize/es.html"
+    },
+    {
+      "source": "/pdf-organize",
+      "destination": "/pdf-organize/ko.html"
+    },
+    {
+      "source": "/pdf-to-png",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
+      "destination": "/pdf-to-png/ko.html"
+    },
+    {
+      "source": "/pdf-to-png",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/pdf-to-png/en.html"
+    },
+    {
+      "source": "/pdf-to-png",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
+      "destination": "/pdf-to-png/ja.html"
+    },
+    {
+      "source": "/pdf-to-png",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
+      "destination": "/pdf-to-png/zh.html"
+    },
+    {
+      "source": "/pdf-to-png",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
+      "destination": "/pdf-to-png/es.html"
+    },
+    {
+      "source": "/pdf-to-png",
+      "destination": "/pdf-to-png/ko.html"
     }
   ],
   "redirects": [
@@ -953,6 +1307,156 @@
     {
       "source": "/privacy/es.html",
       "destination": "/privacy?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf/ko.html",
+      "destination": "/image-to-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf/en.html",
+      "destination": "/image-to-pdf?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf/ja.html",
+      "destination": "/image-to-pdf?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf/zh.html",
+      "destination": "/image-to-pdf?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf/es.html",
+      "destination": "/image-to-pdf?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-tools/ko.html",
+      "destination": "/pdf-tools",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-tools/en.html",
+      "destination": "/pdf-tools?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-tools/ja.html",
+      "destination": "/pdf-tools?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-tools/zh.html",
+      "destination": "/pdf-tools?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-tools/es.html",
+      "destination": "/pdf-tools?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-merge/ko.html",
+      "destination": "/pdf-merge",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-merge/en.html",
+      "destination": "/pdf-merge?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-merge/ja.html",
+      "destination": "/pdf-merge?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-merge/zh.html",
+      "destination": "/pdf-merge?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-merge/es.html",
+      "destination": "/pdf-merge?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-split/ko.html",
+      "destination": "/pdf-split",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-split/en.html",
+      "destination": "/pdf-split?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-split/ja.html",
+      "destination": "/pdf-split?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-split/zh.html",
+      "destination": "/pdf-split?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-split/es.html",
+      "destination": "/pdf-split?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-organize/ko.html",
+      "destination": "/pdf-organize",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-organize/en.html",
+      "destination": "/pdf-organize?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-organize/ja.html",
+      "destination": "/pdf-organize?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-organize/zh.html",
+      "destination": "/pdf-organize?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-organize/es.html",
+      "destination": "/pdf-organize?lang=es",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-to-png/ko.html",
+      "destination": "/pdf-to-png",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-to-png/en.html",
+      "destination": "/pdf-to-png?lang=en",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-to-png/ja.html",
+      "destination": "/pdf-to-png?lang=ja",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-to-png/zh.html",
+      "destination": "/pdf-to-png?lang=zh",
+      "permanent": true
+    },
+    {
+      "source": "/pdf-to-png/es.html",
+      "destination": "/pdf-to-png?lang=es",
       "permanent": true
     }
   ],

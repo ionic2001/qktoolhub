@@ -9,14 +9,15 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import { Header } from '../components/Header';
 import { useLanguage } from '../i18n/LanguageContext';
 import { pdfText } from '../i18n/pdfTranslations';
+import { pdfWork, pdfPaths } from '../i18n/pdfWork';
 import { createImagePdf, prepareImage, saveBlob, type PdfImage } from '../utils/pdfTools';
 import type { PDFDocumentProxy, RenderTask } from 'pdfjs-dist';
 import './PdfConverter.css';
 
-export default function PdfConverterPage() {
+export default function PdfConverterPage({ forcedMode }: { forcedMode?: 'images' | 'pdf' }) {
   const { language, t } = useLanguage(); const text = pdfText(language);
   const guide = pdfGuide[language];
-  const [mode, setMode] = useState<'images' | 'pdf'>('images');
+  const [mode, setMode] = useState<'images' | 'pdf'>(forcedMode || 'images');
   const [images, setImages] = useState<PdfImage[]>([]); const imagesRef = useRef<PdfImage[]>([]);
   const [paper, setPaper] = useState('a4'); const [landscape, setLandscape] = useState(false); const [margin, setMargin] = useState(10);
   const [busy, setBusy] = useState(false); const operation = useRef(false); const alive = useRef(true);
@@ -108,9 +109,9 @@ export default function PdfConverterPage() {
 
   return <div className="app-container pdf-page"><Header />
     <a className="btn-tool" href={localUrl('/', language)} style={{ background: 'var(--accent-light)', color: 'var(--accent-color)', border: '1px solid rgba(99,102,241,.3)' }}><ArrowLeft size={16} />{t.backToHub.replace(/^\s*[←⇐⟵]\s*/, '')}</a>
-    <main><div className="pdf-intro"><span className="badge">PDF STUDIO</span><h1>{text.title}</h1><p>{text.subtitle}</p><small>{text.privacy}</small></div>
+    <main><div className="pdf-intro"><span className="badge">PDF STUDIO</span><h1>{forcedMode ? pdfWork[language][forcedMode === 'images' ? '/image-to-pdf' : '/pdf-to-png'].name : text.title}</h1><p>{forcedMode ? pdfWork[language][forcedMode === 'images' ? '/image-to-pdf' : '/pdf-to-png'].description : text.subtitle}</p><small>{text.privacy}</small></div>
       <AdSlot slotId="pdf-converter-top-banner" />
-      <div className="pdf-tabs" role="group" aria-label={text.title}>{(['images', 'pdf'] as const).map(value => <button key={value} disabled={busy} aria-pressed={mode === value} onClick={() => { setMode(value); setError(''); }}>{value === 'images' ? <ImagePlus size={18} /> : <FileText size={18} />}{text[value]}</button>)}</div>
+      {!forcedMode && <div className="pdf-tabs" role="group" aria-label={text.title}>{(['images', 'pdf'] as const).map(value => <button key={value} disabled={busy} aria-pressed={mode === value} onClick={() => { setMode(value); setError(''); }}>{value === 'images' ? <ImagePlus size={18} /> : <FileText size={18} />}{text[value]}</button>)}</div>}
       {error && <p className="pdf-error" role="alert">{text[error]}</p>}
       <p className="pdf-status" role="status">{busy || rendering && mode === 'pdf' ? text.busy : ''}</p>
       {mode === 'images' ? <div className="pdf-layout"><section className="glass-card pdf-panel">
@@ -130,11 +131,12 @@ export default function PdfConverterPage() {
         {pdf && <><p className="pdf-filename">{pdfName}.pdf</p><label>{text.page}<select disabled={busy} value={page} onChange={e => setPage(Number(e.target.value))}>{Array.from({ length: pdf.numPages }, (_, i) => <option key={i} value={i + 1}>{i + 1} / {pdf.numPages}</option>)}</select></label><label>{text.quality}<select disabled={busy} value={dpi} onChange={e => setDpi(Number(e.target.value))}>{[72, 144, 216].map(n => <option key={n} value={n}>{n} DPI</option>)}</select></label><button className="pdf-button pdf-wide" disabled={busy || rendering || !png} onClick={() => png && saveBlob(png, `${pdfName}-page-${page}.png`)}>{text.downloadPng}</button></>}
       </section><section className="glass-card pdf-panel"><div className="pdf-heading"><h2>{text.preview}</h2><small>{outputSize}</small></div>{pngUrl && !busy && !rendering ? <img className="pdf-page-preview" src={pngUrl} alt={`${text.page} ${page}`} /> : <div className="pdf-empty"><FileText size={64} /><p>{busy || rendering ? text.busy : text.choose}</p></div>}</section></div>}
       <p className="pdf-note">{text.note}</p>
+      <nav className="pdf-guide" aria-label="PDF tools"><h2>{pdfWork[language]['/pdf-tools'].name}</h2><ul>{pdfPaths.map(path => <li key={path}><a href={localUrl(path, language)}>{pdfWork[language][path].name}</a></li>)}</ul></nav>
       <AdSlot slotId="pdf-converter-bottom-banner" />
-      <section className="glass-card pdf-guide" aria-labelledby="pdf-guide-heading">
+      {forcedMode ? <section className="glass-card pdf-guide"><h2>{pdfWork[language][forcedMode === 'images' ? '/image-to-pdf' : '/pdf-to-png'].name}</h2><p>{pdfWork[language][forcedMode === 'images' ? '/image-to-pdf' : '/pdf-to-png'].how}</p><p>{pdfWork[language][forcedMode === 'images' ? '/image-to-pdf' : '/pdf-to-png'].note}</p></section> : <section className="glass-card pdf-guide" aria-labelledby="pdf-guide-heading">
         <h2 id="pdf-guide-heading">{guide.heading}</h2>
         <div className="pdf-guide-columns">{[{ title: guide.imageHeading, steps: guide.imageSteps }, { title: guide.pdfHeading, steps: guide.pdfSteps }].map(section => <section key={section.title}><h3>{section.title}</h3><ol>{section.steps.map(step => <li key={step}>{step}</li>)}</ol></section>)}</div>
         <h2>{guide.faqHeading}</h2><div className="pdf-faq">{guide.faqs.map(item => <details key={item.q}><summary>{item.q}</summary><p>{item.a}</p></details>)}</div>
-      </section>
+      </section>}
     </main><Footer /></div>;
 }

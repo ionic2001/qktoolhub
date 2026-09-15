@@ -4,6 +4,7 @@ import { track } from '../utils/analytics';
 import editorMeta from '../i18n/editorMeta.json';
 import { worldText } from '../i18n/worldText';
 import { pdfText } from '../i18n/pdfTranslations';
+import { pdfWork, pdfPaths } from '../i18n/pdfWork';
 import { pixelTranslations } from '../i18n/pixelTranslations';
 import React, { useState } from 'react';
 import { pageMeta, localUrl } from '../seo/catalog';
@@ -29,6 +30,7 @@ export const Home: React.FC = () => {
   rawTools.splice(Math.min(2, rawTools.length), 0, { id: 'pixel-art', title: pixelTranslations[language]['사진 픽셀 아트 변환'], desc: pixelTranslations[language]['사진을 넣고 픽셀과 색상을 조절해 나만의 레트로 이미지를 만들어 보세요.'], category: pixelTranslations[language]['이미지 도구'], badge: 'New', path: '/pixel-art', isLive: true });
   const pdf = pdfText(language);
   rawTools.splice(Math.min(3, rawTools.length), 0, { id: 'pdf-converter', title: pdf.title, desc: pdf.subtitle, category: pdf.docs, badge: 'New', path: '/pdf-converter', isLive: true });
+  pdfPaths.forEach((path, index) => rawTools.splice(Math.min(4 + index, rawTools.length), 0, { id: path.slice(1), title: pdfWork[language][path].name, desc: pdfWork[language][path].description, category: pdf.docs, badge: 'New', path, isLive: true }));
   const clock = worldText[language];
   rawTools.splice(Math.min(4, rawTools.length), 0, { id: 'world-clock', title: clock.title, desc: clock.subtitle, category: clock.category, badge: 'New', path: '/world-clock', isLive: true });
   const cal = calendarText[language] || calendarText.ko;

@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "push": "cmd /c sync.bat",
     "test:seo": "node scripts/test-seo.mjs",
+    "test:pdf": "node scripts/test-pdf.mjs",
     "test:theme": "node scripts/test-theme.cjs"
   },
   "dependencies": {
