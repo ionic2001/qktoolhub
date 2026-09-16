@@ -260,17 +260,39 @@ export const guides: Guide[] = [
     relatedTools: [{ path: '/image-editor', label: '1. 스캔 이미지 방향·여백 정리' }, { path: '/image-to-pdf', label: '2. 이미지를 PDF 한 파일로 만들기' }, { path: '/pdf-organize', label: '3. PDF 페이지 순서·회전 수정' }, { path: '/pdf-tools', label: '4. 다른 PDF 작업 선택하기' }],
     downloads: [{ href: '/guide-samples/scanned-document-pdf-checklist.txt', label: '스캔 문서 PDF 품질 체크리스트', detail: '촬영·순서·가독성·제출 조건을 확인하는 UTF-8 텍스트 양식' }],
   },
+  {
+    path: '/guides/pdf-submission-error-troubleshooting',
+    title: 'PDF 제출 오류 해결: 용량·페이지·방향·글자 흐림 문제 점검표',
+    description: 'PDF 파일 선택 실패, 용량 초과, 페이지 누락·순서·회전, 흐린 글자와 서명·양식 문제를 증상별로 진단하고 맞는 도구를 찾습니다.',
+    category: 'PDF 문제 해결',
+    summary: 'PDF 제출 오류는 같은 메시지처럼 보여도 원인이 다릅니다. 제출 사이트의 제한, 입력 파일의 암호·손상, 브라우저 메모리, 페이지 구성, 스캔 품질을 순서대로 분리하면 불필요한 재작업을 줄일 수 있습니다. 먼저 원본을 보관하고 어느 단계에서 실패했는지 기록하세요.',
+    published: '2026-09-16', updated: '2026-09-16', readingTime: '약 10분',
+    method: 'QK Tool Hub의 이미지→PDF, 병합, 페이지 추출, 페이지 정리, PDF→PNG 입력 검증과 운영 한도를 작업 단계별로 대조했습니다. 오류를 파일 선택·도구 처리·결과 검수·제출 사이트 접수로 나누고, 현재 도구로 해결할 수 있는 항목과 압축·암호 해제·OCR처럼 제공하지 않는 항목을 구분했습니다.',
+    sections: [
+      { title: '먼저 실패한 단계를 구분하기', paragraphs: ['“PDF가 안 올라간다”는 말만으로는 원인을 찾기 어렵습니다. QK Tool Hub에서 파일 선택이 안 되는지, 처리 버튼을 누른 뒤 오류가 나는지, 결과 PDF는 열리지만 제출 사이트가 거부하는지부터 구분합니다. 마지막 단계에서만 실패한다면 제출처의 파일명·용량·페이지·보안 규칙을 다시 확인해야 합니다.', '원본 파일은 그대로 보관하고 오류 문구, 사용한 도구, 브라우저, 파일 크기와 페이지 수를 적습니다. 민감한 문서의 원본을 문의 메일에 바로 첨부하지 않아도 이 정보로 재현 범위를 좁힐 수 있습니다.'], table: { caption: '실패 단계별 첫 확인', headers: ['실패 지점', '먼저 확인할 것', '다음 행동'], rows: [['파일 선택', '확장자·파일 크기·암호 여부', '지원 형식과 도구 한도 비교'], ['도구 처리', '페이지 수·전체 입력 크기·브라우저 메모리', '입력을 줄이고 원본 상태 확인'], ['결과 열기', '다운로드 완료·파일 크기·PDF 뷰어', '다른 뷰어에서 다시 열기'], ['제출 사이트', '제출처의 형식·용량·파일명 규칙', '해당 기관 안내를 기준으로 수정']] } },
+      { title: '1. 파일을 선택할 수 없거나 읽기 오류가 날 때', paragraphs: ['이미지→PDF는 JPG·PNG·WebP만 받고, 기존 PDF 도구는 PDF 파일만 받습니다. 확장자만 `.pdf`로 바꾼 이미지나 다른 문서 형식은 실제 PDF 구조가 아니므로 읽히지 않습니다. 원본 프로그램에서 PDF로 다시 내보낸 뒤 열리는지 확인합니다.', '현재 PDF 도구는 암호화되거나 손상된 PDF를 지원하지 않습니다. 암호 입력이나 암호 해제 기능도 제공하지 않으므로 권한이 있는 원본 프로그램에서 보호 설정을 확인해야 합니다. 브라우저에서 파일을 열 수 있다는 사실만으로 페이지 복사 도구가 모든 내부 구조를 처리할 수 있다는 뜻은 아닙니다.'], bullets: ['파일 확장자와 실제 형식이 일치하는지 확인합니다.', '암호 입력 창이 뜨는 PDF인지 확인합니다.', '원본 PDF를 다른 뷰어에서도 열어 손상 여부를 확인합니다.', '클라우드 전용 파일이면 기기에 다운로드가 끝난 뒤 다시 선택합니다.', '전자서명·양식이 중요한 원본은 변환 전에 별도로 보관합니다.'] },
+      { title: '2. 파일이 너무 크다는 메시지가 나올 때', paragraphs: ['제출 사이트의 한도와 QK Tool Hub의 작업 한도는 서로 다릅니다. 병합은 최대 10파일, 파일당 50MB, 전체 100MB, 결과 300페이지입니다. 추출·페이지 정리·PDF→PNG는 파일당 50MB·300페이지이고, 이미지→PDF는 최대 20장, 장당 20MB·전체 100MB입니다.', '현재 QK Tool Hub는 기존 PDF의 파일 크기를 줄이는 압축 기능을 제공하지 않습니다. 페이지를 삭제하거나 필요한 페이지만 추출하면 결과가 작아질 수 있지만 일정 비율의 압축을 보장하지 않습니다. 제출처가 10MB를 요구한다면 결과 파일의 실제 크기를 다시 확인하고, 원본 제작 프로그램의 내보내기 품질 조절 또는 신뢰할 수 있는 별도 압축 절차를 검토합니다.'], table: { caption: '운영 도구의 입력 한도', headers: ['작업', '파일·개수 한도', '페이지 한도', '압축 기능'], rows: [['이미지→PDF', '20장·장당 20MB·전체 100MB', '최대 20페이지', '원본 이미지를 JPEG 품질 0.92로 정규화'], ['PDF 병합', '10파일·각 50MB·전체 100MB', '결과 300페이지', '별도 압축 없음'], ['페이지 추출', 'PDF 1개·50MB', '300페이지', '선택 페이지를 새 PDF 한 파일로 저장'], ['페이지 정리', 'PDF 1개·50MB', '300페이지', '별도 압축 없음'], ['PDF→PNG', 'PDF 1개·50MB', '300페이지 중 한 페이지 선택', 'PNG 한 장 저장']] } },
+      { title: '3. 페이지가 빠지거나 순서가 틀렸을 때', paragraphs: ['여러 PDF 전체를 이어 붙일 때는 PDF 병합, 한 문서에서 일부 페이지만 남길 때는 페이지 추출, 이미 만들어진 PDF의 순서를 바꿀 때는 페이지 정리를 사용합니다. 현재 페이지 추출은 페이지마다 여러 파일을 만드는 기능이 아니라 선택 페이지를 모은 PDF 한 파일을 만듭니다.', '결과를 만든 뒤 예상 페이지 수, 첫 페이지, 파일 사이의 경계 페이지와 마지막 페이지를 확인합니다. `1-3,5`처럼 범위를 입력할 때 0, 범위 밖 번호, 역방향 범위와 중복 페이지는 허용되지 않습니다. 누락이 의심되면 원본 페이지 수와 입력 범위를 나란히 적어 비교합니다.'], table: { caption: '페이지 문제에 맞는 도구', headers: ['증상', '사용할 도구', '결과'], rows: [['PDF 여러 개를 한 파일로', 'PDF 병합', '파일 순서대로 연결된 PDF'], ['필요한 페이지만 남기기', '페이지 추출', '선택 페이지가 들어간 PDF 한 파일'], ['순서가 잘못됨', '페이지 정리', '이동 결과를 반영한 새 PDF'], ['중복·빈 페이지가 있음', '페이지 정리', '불필요한 페이지를 삭제한 새 PDF'], ['이미지 순서가 틀림', '이미지→PDF 목록', '화면의 번호 순서대로 새 PDF']] } },
+      { title: '4. 페이지가 옆으로 눕거나 여백이 이상할 때', paragraphs: ['기존 PDF의 페이지 방향은 페이지 정리에서 90도씩 회전할 수 있습니다. 이미 90도 회전 정보가 있는 페이지에 다시 90도를 적용하면 180도가 되므로 눈으로 방향을 확인합니다. 이미지 원본이 누웠다면 PDF로 만들기 전에 이미지 편집기에서 바로잡을 수도 있습니다.', '이미지→PDF에서는 선택한 용지와 여백 안에 이미지 비율을 유지해 배치합니다. 원본과 용지 비율이 다르면 빈 여백이 생길 수 있습니다. 가로·세로를 강제로 늘려 문서를 찌그러뜨리기보다 A4 세로·가로와 여백 설정을 비교한 뒤 결과를 다시 엽니다.'] },
+      { title: '5. 글자·도장·서명이 흐리거나 잘렸을 때', paragraphs: ['작은 원본을 크게 확대해도 없어진 글자 정보는 복원되지 않습니다. 촬영본이라면 빛 반사, 흔들림, 자동 자르기와 원근 왜곡을 먼저 확인합니다. 이미지→PDF는 긴 변이 2,400px을 넘는 이미지를 축소하고 흰 배경의 JPEG 품질 0.92로 정규화하므로 작은 글자와 얇은 선을 결과에서 확대해 봐야 합니다.', 'PDF→PNG의 72·144·216 DPI는 선택 페이지를 이미지로 저장하는 출력 해상도입니다. 이 값을 높여도 흐린 원본 글자가 선명한 원문으로 복원되거나 OCR 텍스트가 생기지는 않습니다. 제출 목적이 PDF라면 PNG로 바꾸는 과정이 필요한지 먼저 확인합니다.'], bullets: ['결과 PDF를 100~200%로 확대해 가장 작은 글자를 읽습니다.', '문서 네 모서리, 페이지 번호, 도장과 서명이 잘리지 않았는지 확인합니다.', '흐린 촬영본은 보정·확대보다 다시 촬영하거나 스캔합니다.', 'OCR 검색 가능 문서를 요구하면 현재 도구가 OCR을 제공하지 않는다는 점을 확인합니다.'] },
+      { title: '6. 서명·양식·책갈피가 사라지거나 달라질 때', paragraphs: ['PDF 병합·추출·정리는 원본 페이지를 새 PDF로 복사하지만 전자서명, 대화형 양식, 책갈피, 첨부와 주석의 완전한 보존을 보장하지 않습니다. 디지털 서명은 문서 바이트가 바뀌면 유효성 판단이 달라질 수 있습니다.', '서명·양식이 중요한 파일은 작업 전 원본을 보관하고 결과를 별도 파일명으로 저장합니다. 제출 전에 서명 상태, 입력 필드, 책갈피와 첨부를 다시 확인합니다. QK Tool Hub는 암호학적 전자서명 생성·검증이나 PDF 양식 편집 도구로 제공되지 않습니다.'] },
+      { title: '7. 브라우저가 멈추거나 다운로드가 보이지 않을 때', paragraphs: ['큰 PDF의 파싱·미리보기·결과 생성은 브라우저 메모리를 사용합니다. 다른 무거운 탭을 닫고 브라우저를 최신 상태로 다시 실행한 뒤, 가능하면 필요한 페이지만 작은 작업으로 나눠 확인합니다. 작업 중 탭을 새로고침하면 선택한 파일과 진행 상태를 복구할 수 없습니다.', '다운로드 버튼을 눌렀는데 파일이 보이지 않으면 브라우저의 다운로드 목록과 저장 권한, 기기 저장 공간을 확인합니다. 공용 기기에서는 완료 후 다운로드 폴더를 정리합니다. 같은 원본에서 반복 실패하면 파일 크기·페이지 수·브라우저·오류 문구와 재현 단계를 기록해 문의합니다.'] },
+      { title: '제출 전에 다시 확인할 것', paragraphs: ['도구에서 PDF가 만들어졌다는 사실과 제출기관이 파일을 접수한다는 사실은 다릅니다. 제출 화면의 최신 조건을 마지막 기준으로 사용하고 최종 파일을 제출 화면 밖에서 한 번 더 엽니다.'], bullets: ['최종 파일 형식·크기·페이지 수가 제출 조건과 일치합니다.', '첫·마지막·경계 페이지와 서명·도장 페이지를 열었습니다.', '페이지 순서·방향·빈 페이지·글자 선명도를 확인했습니다.', '파일명에 금지 문자나 불필요한 개인정보가 없습니다.', '전자서명·양식·책갈피가 필요하면 결과에서 실제 상태를 확인했습니다.', '제출 완료 화면이나 접수번호를 확인했습니다.'] },
+    ],
+    relatedTools: [{ path: '/pdf-tools', label: '증상에 맞는 PDF 도구 선택' }, { path: '/pdf-merge', label: '여러 PDF 병합' }, { path: '/pdf-split', label: '필요한 페이지 추출' }, { path: '/pdf-organize', label: '페이지 순서·회전 수정' }, { path: '/image-to-pdf', label: '스캔 이미지를 PDF로 변환' }],
+    downloads: [{ href: '/guide-samples/pdf-submission-error-checklist.txt', label: 'PDF 제출 오류 진단표', detail: '실패 단계·파일 조건·페이지·가독성을 기록하는 UTF-8 텍스트 양식' }],
+  },
 ];
 
 export const guidePaths = [guideIndexPath, ...guides.map(guide => guide.path)];
 export function guideByPath(path: string) { return guides.find(guide => guide.path === path); }
 export const guideLinksForTool: Record<string, string[]> = {
-  '/image-to-pdf': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
-  '/pdf-tools': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/choose-pdf-tool', '/guides/pdf-browser-privacy'],
-  '/pdf-merge': ['/guides/online-document-submission-checklist', '/guides/pdf-merge-browser-test', '/guides/choose-pdf-tool'],
-  '/pdf-split': ['/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
-  '/pdf-organize': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
-  '/pdf-to-png': ['/guides/pdf-to-png-dpi-test', '/guides/pdf-browser-privacy'],
+  '/image-to-pdf': ['/guides/pdf-submission-error-troubleshooting', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
+  '/pdf-tools': ['/guides/pdf-submission-error-troubleshooting', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/choose-pdf-tool', '/guides/pdf-browser-privacy'],
+  '/pdf-merge': ['/guides/pdf-submission-error-troubleshooting', '/guides/online-document-submission-checklist', '/guides/pdf-merge-browser-test', '/guides/choose-pdf-tool'],
+  '/pdf-split': ['/guides/pdf-submission-error-troubleshooting', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
+  '/pdf-organize': ['/guides/pdf-submission-error-troubleshooting', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
+  '/pdf-to-png': ['/guides/pdf-submission-error-troubleshooting', '/guides/pdf-to-png-dpi-test', '/guides/pdf-browser-privacy'],
   '/pdf-converter': ['/guides/image-formats-to-pdf', '/guides/pdf-to-png-dpi-test'],
   '/word-counter': ['/guides/online-document-submission-checklist', '/guides/korean-text-byte-test'],
   '/unit-converter': ['/guides/mb-vs-mib-test'],
@@ -281,5 +303,5 @@ export const guideLinksForTool: Record<string, string[]> = {
 };
 export const guideIndexMeta = {
   title: '도구 활용 가이드와 직접 검증 기록',
-  description: '온라인 서류 제출과 스캔 PDF 제작처럼 여러 도구를 연결하는 실전 절차와 PDF·텍스트·단위·이미지·환율·시간·달력의 직접 검증 결과를 확인하세요.',
+  description: '온라인 서류 제출·스캔 PDF 제작·PDF 오류 해결처럼 여러 도구를 연결하는 실전 절차와 텍스트·단위·이미지·환율·시간·달력의 검증 결과를 확인하세요.',
 };

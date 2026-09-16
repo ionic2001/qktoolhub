@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/guides/pdf-submission-error-troubleshooting",
+      "destination": "/guides/pdf-submission-error-troubleshooting.html"
+    },
+    {
       "source": "/guides/scanned-documents-to-pdf-workflow",
       "destination": "/guides/scanned-documents-to-pdf-workflow.html"
     },
@@ -1124,6 +1128,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides/pdf-submission-error-troubleshooting.html",
+      "destination": "/guides/pdf-submission-error-troubleshooting",
+      "permanent": true
+    },
     {
       "source": "/guides/scanned-documents-to-pdf-workflow.html",
       "destination": "/guides/scanned-documents-to-pdf-workflow",
