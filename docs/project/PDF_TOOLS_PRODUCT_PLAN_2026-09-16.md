@@ -2,7 +2,7 @@
 
 작성일: 2026-09-16
 상태: 첫 출시·홈 정리·정책 안내까지 운영 배포 완료. 1~11절은 기획 당시의 목표와 출시 기준이고, 12~15절은 실제 구현 상태와 남은 작업을 기록한다.
-기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 운영 코드 `main` 커밋 `aebdcad`
+기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 코드 커밋 `9915d4f`(원격 반영 후 운영 기준)
 운영 사이트: https://www.qktoolhub.com/
 
 ## 1. 목표와 제품 경계
@@ -219,3 +219,15 @@
 운영 코드 `aebdcad`에서 TypeScript·Vite·정적 SEO 빌드, 90개 URL의 메타·canonical·hreflang·JSON-LD·링크·sitemap 검사, PDF 병합·추출·정리 검사와 테마 검사가 통과했다. GitHub `main` 반영 후 Vercel 성공 상태를 확인했고, 공개 홈 5개 언어와 소개·약관·방침 대표 언어 응답에서 새 문구·canonical·sitemap 90개를 확인했다. 전체 모바일·대형/암호/서명/양식 PDF 표본 검수와 Search Console의 실제 색인·유입 데이터 분석까지 완료했다고 기록하지 않는다.
 
 다음 결정은 (1) Search Console의 `/pdf-converter` 유입 의도에 따라 고유 페이지 유지 또는 언어 보존 리디렉션, (2) 모바일 성능과 실패 유형을 보고 입력 한도 조정, (3) 페이지별 개별 추출·ZIP, 드래그 정리, 워터마크·양식·OCR 등 후속 기능의 별도 검증 순서다. 운영에서 제공하지 않는 기능은 홈·메타·sitemap에 먼저 노출하지 않는다.
+
+## 16. Low value content 대응용 원본 가이드 1차 출시
+
+애드센스의 Low value content 사유에 대응하기 위해 Blogger를 분리하지 않고 QK Tool Hub 내부 `/guides`에 한국어 원본 콘텐츠를 추가했다. 첫 글 세 개는 일반적인 PDF 설명을 재작성한 글이 아니라 운영 코드·자동 검사·출력 표본에 근거한다.
+
+- `/guides/pdf-merge-browser-test`: 너비 500·510·520pt와 90도 회전 표본을 병합한 뒤 출력 파일을 다시 열어 페이지 순서·크기·회전을 검증한다.
+- `/guides/pdf-page-extraction-test`: 범위 입력의 허용·거부 사례, 역순 추출, 재배치·회전·빈 페이지 결과를 표로 공개한다.
+- `/guides/image-formats-to-pdf`: JPG·PNG·WebP가 흰 배경 JPEG 품질 0.92로 정규화되고 긴 변 2,400px로 축소되는 실제 구현을 설명한다.
+
+병합 입력·결과와 페이지 정리 결과 PDF 5개를 개인정보 없는 다운로드 표본으로 제공한다. 테스트 스크립트가 공개 표본을 다시 열어 글에 적힌 너비·회전값과 일치하는지 확인한다. 각 글에는 작성·검토 주체, 날짜, 검증 방법, 확인하지 않은 범위, 관련 도구 링크를 표시한다.
+
+가이드는 한국어만 준비했으므로 `?lang=` 번역 URL과 hreflang을 만들지 않는다. `/guides`는 CollectionPage, 상세 글은 Article과 3단계 BreadcrumbList를 사용한다. 기존 90개 다국어 URL에 한국어 가이드 4개를 더해 sitemap은 94개 canonical URL이 된다. 외국어 본문은 실제 현지화 검수 후 개별 URL로 추가한다.
