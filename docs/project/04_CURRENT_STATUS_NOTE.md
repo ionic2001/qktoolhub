@@ -3,7 +3,7 @@
 갱신일: 2026-09-16  
 저장소: https://github.com/ionic2001/qktoolhub  
 운영 사이트: https://www.qktoolhub.com/  
-현재 기능·SEO 코드 기준: 원격 `main` 최신 배포본
+현재 기능·SEO 코드 기준: `92643cd`
 
 ## 이번 변경
 
