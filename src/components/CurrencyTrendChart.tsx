@@ -11,7 +11,7 @@ interface CurrencyTrendChartProps {
 export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
   targetCurrency
 }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const currencyT = t.currency;
 
   const [timeframe, setTimeframe] = useState<'7D' | '1M' | '3M' | '1Y'>('1M');
@@ -128,6 +128,8 @@ export const CurrencyTrendChart: React.FC<CurrencyTrendChartProps> = ({
           <Clock size={18} style={{ animation: 'spin 1s linear infinite', marginRight: '0.5rem' }} />
           차트 데이터를 불러오는 중...
         </div>
+      ) : points.length === 0 ? (
+        <p role="status" style={{ minHeight: '120px', display: 'grid', placeItems: 'center', color: 'var(--text-secondary)' }}>{({ko:'실제 과거 환율 데이터를 불러오지 못했습니다.',en:'Historical exchange-rate data is currently unavailable.',ja:'実際の過去為替データを取得できませんでした。',zh:'目前无法获取实际历史汇率数据。',es:'Los datos históricos reales no están disponibles ahora.'} as Record<string,string>)[language]}</p>
       ) : (
         <div style={{ position: 'relative', width: '100%', overflowX: 'auto' }}>
           <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} style={{ width: '100%', height: 'auto', display: 'block' }}>

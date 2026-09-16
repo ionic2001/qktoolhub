@@ -1,6 +1,18 @@
 {
   "rewrites": [
     {
+      "source": "/guides/currency-cross-rate-test",
+      "destination": "/guides/currency-cross-rate-test.html"
+    },
+    {
+      "source": "/guides/world-clock-dst-test",
+      "destination": "/guides/world-clock-dst-test.html"
+    },
+    {
+      "source": "/guides/business-days-test",
+      "destination": "/guides/business-days-test.html"
+    },
+    {
       "source": "/guides/korean-text-byte-test",
       "destination": "/guides/korean-text-byte-test.html"
     },
@@ -1104,6 +1116,21 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides/business-days-test.html",
+      "destination": "/guides/business-days-test",
+      "permanent": true
+    },
+    {
+      "source": "/guides/world-clock-dst-test.html",
+      "destination": "/guides/world-clock-dst-test",
+      "permanent": true
+    },
+    {
+      "source": "/guides/currency-cross-rate-test.html",
+      "destination": "/guides/currency-cross-rate-test",
+      "permanent": true
+    },
     {
       "source": "/guides/image-resize-aspect-ratio-test.html",
       "destination": "/guides/image-resize-aspect-ratio-test",

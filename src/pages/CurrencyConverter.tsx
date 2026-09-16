@@ -48,6 +48,9 @@ export const CurrencyConverterPage: React.FC = () => {
   }, [baseCurrency]);
 
   const currencyT = t.currency;
+  const sourceNotice = ratesData.source === 'live'
+    ? ({ ko: `외부 환율 API 응답 · 갱신 ${ratesData.lastUpdated}`, en: `External exchange-rate API response · updated ${ratesData.lastUpdated}`, ja: `外部為替APIの応答 · 更新 ${ratesData.lastUpdated}`, zh: `外部汇率 API 响应 · 更新于 ${ratesData.lastUpdated}`, es: `Respuesta de la API externa de tipos de cambio · actualización ${ratesData.lastUpdated}` } as Record<string,string>)[language]
+    : ({ ko: '외부 환율을 불러오지 못해 고정 참고값을 표시합니다. 현재 거래 환율이 아닙니다.', en: 'Live rates are unavailable, so fixed reference values are shown. These are not current transaction rates.', ja: '最新レートを取得できないため固定の参考値を表示しています。現在の取引レートではありません。', zh: '无法获取最新汇率，当前显示固定参考值，并非实时交易汇率。', es: 'No se pudieron obtener tipos actuales; se muestran valores de referencia fijos, no tipos de transacción.' } as Record<string,string>)[language];
 
   const handleCurrencyInputChange = (code: string, newAmount: number) => {
     if (code !== baseCurrency) {
@@ -83,6 +86,8 @@ export const CurrencyConverterPage: React.FC = () => {
       </div>
 
       <ToolIntro badge={toolIntro[language].currencyBadge} title={toolIntro[language].currencyTitle} description={toolIntro[language].currencyDescription} />
+
+      <p role="status" className="glass-card" style={{ padding: '0.75rem 1rem', marginBottom: '1rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{sourceNotice}</p>
 
       {/* Top Banner Ad */}
       <AdSlot slotId="currency-top-banner" />

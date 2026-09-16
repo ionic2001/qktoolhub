@@ -35,6 +35,11 @@ export const cityZones = [
 export function duration(ms: number, fraction = false) { const n=Math.max(0,Math.floor(ms)); const h=Math.floor(n/3600000),m=Math.floor(n/60000)%60,s=Math.floor(n/1000)%60; return [h,m,s].map(v=>String(v).padStart(2,'0')).join(':')+(fraction?'.'+String(Math.floor(n%1000/10)).padStart(2,'0'):''); }
 export interface Alarm { id: string; name: string; time: string; zone: string; days: number[]; tone: string; enabled: boolean; next: number }
 export function localDay(at: number, zone: string) { return new Intl.DateTimeFormat('en-CA',{timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit'}).format(at); }
+export function zoneSnapshot(at: number, zone: string) {
+  if (!validZone(zone)) throw new Error('invalid zone');
+  const parts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23',timeZoneName:'shortOffset'}).formatToParts(at).map(p=>[p.type,p.value]));
+  return { date:`${parts.year}-${parts.month}-${parts.day}`, time:`${parts.hour}:${parts.minute}:${parts.second}`, offset:parts.timeZoneName };
+}
 export function nextAlarm(time: string, zone: string, days: number[], after: number, excludeDay?: string): number {
   const fmt=new Intl.DateTimeFormat('en-GB',{timeZone:zone,hour:'2-digit',minute:'2-digit',weekday:'short',hourCycle:'h23'});
   const weekdays=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];

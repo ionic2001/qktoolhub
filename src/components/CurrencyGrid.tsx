@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DEFAULT_CURRENCIES, ADDITIONAL_CURRENCIES, CurrencyInfo, RatesData } from '../utils/currencyRates';
+import { DEFAULT_CURRENCIES, ADDITIONAL_CURRENCIES, convertCurrencyAmount, CurrencyInfo, RatesData } from '../utils/currencyRates';
 import { useLanguage } from '../i18n/LanguageContext';
 import { CheckCircle, PlusCircle, X, Globe, Search, Pin, ChevronUp, ChevronDown, Zap } from 'lucide-react';
 
@@ -263,7 +263,7 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
           // Convert current rate for base currency
           const rate = rates[c.code] || 1;
-          const convertedVal = amount * rate;
+          const convertedVal = convertCurrencyAmount(amount, rate);
 
           const localizedName = currencyT?.currencyNames?.[c.code] || c.code;
           const isZeroDecimal = ['KRW', 'JPY', 'VND', 'IDR'].includes(c.code);

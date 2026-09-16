@@ -38,11 +38,22 @@ export const SUPPORTED_CURRENCIES: CurrencyInfo[] = ALL_CURRENCIES;
 
 export interface RatesData {
   base: string;
+  source: 'live' | 'reference-fallback';
   rates: Record<string, number>;
   prevRates: Record<string, number>;
   usdRates: Record<string, number>;      // 1 USD = X Currency (Today)
   usdPrevRates: Record<string, number>;  // 1 USD = X Currency (Yesterday)
   lastUpdated: string;
+}
+
+export function crossRateFromUsd(basePerUsd: number, targetPerUsd: number): number {
+  if (!Number.isFinite(basePerUsd) || !Number.isFinite(targetPerUsd) || basePerUsd <= 0 || targetPerUsd <= 0) throw new Error('invalid rate');
+  return targetPerUsd / basePerUsd;
+}
+
+export function convertCurrencyAmount(amount: number, rate: number): number {
+  if (!Number.isFinite(amount) || !Number.isFinite(rate) || rate <= 0) throw new Error('invalid amount');
+  return amount * rate;
 }
 
 export interface ChartPoint {
@@ -111,12 +122,13 @@ export function getInitialRatesData(baseCurrency: string = 'KRW'): RatesData {
   const prevRates: Record<string, number> = {};
 
   ALL_CURRENCIES.forEach(c => {
-    rates[c.code] = (FALLBACK_USD_RATES[c.code] || 1) / baseUsd;
+    rates[c.code] = crossRateFromUsd(baseUsd, FALLBACK_USD_RATES[c.code] || 1);
     prevRates[c.code] = (FALLBACK_USD_PREV_RATES[c.code] || 1) / baseUsd;
   });
 
   return {
     base: baseCurrency,
+    source: 'reference-fallback',
     rates,
     prevRates,
     usdRates: FALLBACK_USD_RATES,
@@ -173,8 +185,7 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
     ALL_CURRENCIES.forEach(c => {
       if (!usdPrevRates[c.code]) {
         const currentUsdRate = usdRates[c.code] || FALLBACK_USD_RATES[c.code] || 1;
-        const variation = (c.code.charCodeAt(0) % 2 === 0 ? 1 : -1) * 0.003;
-        usdPrevRates[c.code] = Number((currentUsdRate * (1 - variation)).toFixed(4));
+        usdPrevRates[c.code] = currentUsdRate;
       }
 
       const baseUsdToday = usdRates[baseCurrency] || 1;
@@ -188,6 +199,7 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
 
     return {
       base: baseCurrency,
+      source: 'live',
       rates,
       prevRates,
       usdRates,
@@ -232,34 +244,5 @@ export async function fetchHistoricalTrend(base: string, target: string, timefra
     // Fallback if network blocked
   }
 
-  return generateDailyTrendPoints(base, target, timeframe);
-}
-
-function generateDailyTrendPoints(base: string, target: string, timeframe: '7D' | '1M' | '3M' | '1Y'): ChartPoint[] {
-  const baseUsd = FALLBACK_USD_RATES[base] || 1;
-  const targetUsd = FALLBACK_USD_RATES[target] || 1;
-  const currentRate = targetUsd / baseUsd;
-
-  const countMap = { '7D': 7, '1M': 30, '3M': 90, '1Y': 365 };
-  const days = countMap[timeframe] || 30;
-  const points: ChartPoint[] = [];
-  const now = new Date();
-
-  // Daily interval step 1 day up to today
-  for (let i = days; i >= 0; i--) {
-    const d = new Date(now);
-    d.setDate(d.getDate() - i);
-    const dateStr = d.toISOString().split('T')[0];
-    
-    // Realistic daily rate fluctuation
-    const wave = Math.sin(i * 0.4) * 0.012 + Math.cos(i * 0.2) * 0.008;
-    const rateVal = currentRate * (1 - (i / days) * 0.015 + wave);
-    
-    points.push({
-      date: dateStr,
-      rate: Number(rateVal.toFixed(target === 'KRW' || target === 'VND' || target === 'JPY' || target === 'IDR' ? 2 : 4))
-    });
-  }
-
-  return points;
+  return [];
 }
