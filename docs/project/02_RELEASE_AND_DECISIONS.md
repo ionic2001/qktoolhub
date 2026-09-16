@@ -97,3 +97,5 @@ GitHub main 반영이 기존 Vercel 운영 배포를 유발한다. 앞으로 기
 - 2026-09-16 Search Console에서 `/pixel-art`는 이미 Google에 색인된 상태였고 HTTPS 및 Breadcrumbs 1개가 정상으로 표시됐다. 배포 후 실시간 URL 검사도 `URL is available to Google`과 `Page can be indexed`를 확인했으며, 재색인을 요청해 우선 크롤링 대기열 등록 완료 메시지를 확인했다. 사이트맵은 성공 상태이고 발견 URL 수는 `www` 105개·비-www 90개로 유지됐다.
 
 - 같은 날 `/currency-converter`도 Google 색인 완료, HTTPS 정상, Breadcrumbs 1개 유효 상태였다. 새 제목·지원 범위 설명 배포 후 실시간 검사에서 Google 접근과 색인 가능 상태를 확인하고 재색인을 요청해 우선 크롤링 대기열 등록을 완료했다.
+
+- 영어 `/word-counter?lang=en`은 sitemap에서 발견됐지만 `Discovered - currently not indexed` 상태로 아직 크롤링 기록이 없었다. 실시간 검사에서는 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인했으며, 우선 크롤링 대기열에 색인 요청을 등록했다. 기술적 차단이 아니라 크롤링 대기 상태이므로 반복 요청 없이 후속 상태를 확인한다.
