@@ -113,3 +113,5 @@ GitHub main 반영이 기존 Vercel 운영 배포를 유발한다. 앞으로 기
 - `/pdf-organize`는 sitemap과 `/guides/pdf-page-extraction-test` 내부 링크에서 발견됐지만 `Discovered - currently not indexed` 상태로 아직 크롤링 기록이 없었다. 실시간 검사에서 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인하고 우선 크롤링 대기열 등록을 완료했다.
 
 - `/pdf-to-png`은 sitemap에서 발견됐지만 `Discovered - currently not indexed` 상태로 아직 크롤링 기록이 없었고, Search Console의 참조 페이지 정보는 가져오지 못한 것으로 표시됐다. 실시간 검사에서는 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인했으므로 실제 접근 장애로 보지 않으며, 우선 크롤링 대기열 등록을 완료했다.
+
+- PDF 도구 허브 `/pdf-tools`는 `URL is unknown to Google`로 표시됐고 sitemap·참조 페이지도 아직 보고되지 않았다. 운영 sitemap 107개와 Search Console의 `www` 발견 105개 차이에서 처리되지 않은 URL일 수 있다. 실시간 검사에서는 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인했고 우선 크롤링 대기열 등록을 완료했다.
