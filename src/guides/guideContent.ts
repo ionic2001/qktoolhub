@@ -239,26 +239,47 @@ export const guides: Guide[] = [
     relatedTools: [{ path: '/word-counter', label: '1. 글자수·바이트 확인' }, { path: '/image-editor', label: '2. 사진 크기와 비율 조정' }, { path: '/image-to-pdf', label: '3. 스캔 이미지를 PDF로 변환' }, { path: '/pdf-merge', label: '4. PDF 파일 병합' }, { path: '/pdf-organize', label: '5. 페이지 순서·회전 점검' }],
     downloads: [{ href: '/guide-samples/online-document-submission-checklist.txt', label: '온라인 서류 제출 체크리스트', detail: '개인정보 없이 사용할 수 있는 UTF-8 텍스트 양식' }],
   },
+  {
+    path: '/guides/scanned-documents-to-pdf-workflow',
+    title: '스캔 문서를 제출용 PDF로 만드는 방법: 촬영부터 가독성 점검까지',
+    description: '종이 문서를 촬영·스캔한 뒤 기울기와 잘림을 확인하고, 여러 이미지를 순서대로 PDF로 묶어 제출 전 검수하는 과정을 안내합니다.',
+    category: '스캔 PDF 실전',
+    summary: '종이 문서를 PDF로 제출할 때는 파일 변환보다 원본 촬영 품질과 페이지 순서가 더 중요합니다. 빛 반사·그림자·기울기·가장자리 잘림을 먼저 확인하고, 이미지를 올바른 순서로 PDF로 만든 뒤 확대해서 작은 글자와 도장·서명이 읽히는지 검수해야 합니다.',
+    published: '2026-09-16', updated: '2026-09-16', readingTime: '약 9분',
+    method: '휴대전화로 촬영하거나 스캐너로 저장한 문서 이미지를 제출용 PDF 한 파일로 만드는 상황을 기준으로 작성했습니다. QK Tool Hub의 이미지 편집, 이미지→PDF, PDF 페이지 정리 기능과 실제 입력 한도를 대조하고, 변환 전·후에 사람이 확인해야 하는 항목을 분리했습니다. OCR 정확도나 법적 원본성을 보증하는 절차는 포함하지 않습니다.',
+    sections: [
+      { title: '1단계: 제출처가 요구하는 파일 조건부터 확인', paragraphs: ['먼저 제출 화면에서 PDF 허용 여부, 최대 파일 크기, 전체 페이지 수, 컬러·흑백 조건, 서명이나 도장의 원본성 요구를 확인합니다. “스캔본”이라는 말이 휴대전화 촬영본까지 허용하는지는 기관마다 다르므로 안내가 모호하면 담당 기관에 확인합니다.', 'QK Tool Hub는 이미지 여러 장을 PDF로 묶고 페이지를 정리할 수 있지만 OCR, 공인 전자서명, 진위 확인이나 문서 인증을 제공하지 않습니다. 원본대조필·전자서명·스캔 해상도처럼 법적 의미가 있는 조건은 도구 사용법보다 제출기관 규정이 우선합니다.'], table: { caption: '작업 전에 기록할 제출 조건', headers: ['항목', '확인 예시', '불명확할 때'], rows: [['파일 형식', 'PDF 한 파일', '이미지 파일도 허용하는지 확인'], ['파일 크기', '전체 10MB 이하', '개별 파일인지 전체 첨부인지 확인'], ['페이지', '누락 없이 6페이지', '빈 뒷면 포함 여부 확인'], ['색상', '컬러 또는 흑백', '도장·표시 색상이 필요한지 확인'], ['서명', '자필 서명 스캔본', '전자서명·원본 제출 여부 확인']] } },
+      { title: '2단계: 촬영과 스캔에서 글자를 먼저 살리기', paragraphs: ['문서를 평평한 곳에 놓고 카메라가 종이와 평행하도록 맞춥니다. 창문이나 조명이 문서에 반사되면 글자 일부가 하얗게 사라질 수 있으므로 화면을 확대해 반사 영역과 그림자를 확인합니다. 손가락, 책상 물건, 다른 사람의 문서가 프레임에 들어오지 않게 정리합니다.', '자동 문서 스캔 앱을 사용했다면 가장자리 인식이 도장, 서명, 표의 바깥 선을 잘라내지 않았는지 확인합니다. 작은 글자가 흐릿한 촬영본은 크기만 늘려도 원래 세부 정보가 복원되지 않습니다. 변환 전에 다시 촬영하는 편이 안전합니다.'], bullets: ['문서 네 모서리와 페이지 번호가 모두 보입니다.', '그림자·빛 반사·손가락이 글자나 도장을 가리지 않습니다.', '가장 작은 글자를 확대했을 때 획을 구분할 수 있습니다.', '색상이 의미 있는 표시라면 흑백 필터로 사라지지 않았습니다.', '주민번호 등 제출에 불필요한 정보의 처리 방법을 기관에 확인했습니다.'] },
+      { title: '3단계: 이미지의 방향·여백·크기 정리', paragraphs: ['이미지가 옆으로 누웠거나 불필요한 바닥이 넓게 찍혔다면 이미지 편집기에서 회전과 자르기를 먼저 적용합니다. 문서 가장자리를 너무 바짝 자르면 인쇄하거나 다른 PDF 뷰어로 열 때 내용이 잘린 것처럼 보일 수 있으므로 얇은 여백을 남깁니다.', '이미지 편집기의 크기 입력은 64~4,096px 범위입니다. 다만 이미지→PDF 단계에서는 긴 변이 2,400px을 넘는 입력을 비율에 맞춰 축소하므로, 4,096px로 키운다고 최종 PDF의 글자 정보가 더 선명해지지는 않습니다. 가로·세로 값을 강제로 바꿔 문서를 찌그러뜨리지 말고 비율 잠금을 유지합니다.'], table: { caption: '이미지 상태별 처리', headers: ['문제', '먼저 할 일', '최종 확인'], rows: [['옆으로 촬영됨', '90도 회전', '모든 페이지의 위쪽 방향 통일'], ['바닥이 많이 보임', '문서 주변 자르기', '도장·서명·모서리 보존'], ['원근 때문에 사다리꼴', '가능하면 평행하게 다시 촬영', '글자 줄과 표가 휘지 않음'], ['작은 원본이 흐림', '크기 확대 대신 다시 촬영', '가장 작은 글자의 획 구분'], ['컬러 표시가 중요함', '과도한 필터 피하기', '표시 색상과 대비 유지']] } },
+      { title: '4단계: 페이지를 빠짐없이 올바른 순서로 배치', paragraphs: ['이미지→PDF 도구는 JPG·PNG·WebP를 최대 20장까지 받고 화면에 표시된 순서대로 PDF 페이지를 만듭니다. 여러 번 나누어 이미지를 추가했다면 파일 이름순이라고 가정하지 말고, 각 미리보기 옆의 번호를 확인하고 위·아래 버튼으로 순서를 조정합니다.', '앞면과 뒷면, 별지, 서명 페이지가 섞인 문서는 종이에 1부터 번호를 적거나 촬영 직후 파일을 `001`, `002`처럼 정리하면 누락을 찾기 쉽습니다. 다만 최종 PDF 순서는 파일명이 아니라 도구 화면의 목록 순서이므로 생성 직전 1페이지부터 다시 확인합니다.'], bullets: ['예상 페이지 수와 화면의 이미지 수가 같습니다.', '표지·본문·별지·서명 페이지가 요구된 순서입니다.', '같은 페이지가 두 번 들어가거나 중간 페이지가 빠지지 않았습니다.', '한 장당 20MB, 전체 100MB, 최대 20장 한도 안에 있습니다.'] },
+      { title: '5단계: 용지·방향·여백을 정해 PDF 생성', paragraphs: ['일반적인 제출 문서라면 A4 세로를 먼저 비교하고, 가로로 작성된 표나 증명서는 가로 방향을 검토합니다. 이미지는 선택한 용지의 여백 안에 비율을 유지해 배치됩니다. 원본 비율과 용지 비율이 다르면 빈 여백이 생길 수 있으며, 이것은 문서를 찌그러뜨리는 것보다 안전한 결과입니다.', '현재 변환 과정은 이미지를 흰 배경의 JPEG 품질 0.92로 정규화합니다. 투명 PNG의 배경은 흰색이 되고 PNG·WebP의 원본 압축 특성이 그대로 보존되지는 않습니다. 작은 글자와 얇은 선이 많은 문서는 생성한 PDF를 확대해 재압축 영향을 확인합니다.'], table: { caption: '현재 이미지→PDF 처리 범위', headers: ['항목', '현재 동작', '검수 이유'], rows: [['입력', 'JPG·PNG·WebP, 최대 20장', '지원되지 않는 형식과 누락 확인'], ['큰 이미지', '긴 변 최대 2,400px로 축소', '작은 글자 선명도 확인'], ['투명 배경', '흰색 배경으로 변환', '도장·서명 주변 표시 확인'], ['내부 이미지', 'JPEG 품질 0.92', '선·글자의 번짐 확인'], ['페이지 배치', '비율 유지 후 용지 안에 맞춤', '여백과 방향 확인']] } },
+      { title: '6단계: 다운로드한 PDF를 새로 열어 검수', paragraphs: ['생성 화면의 미리보기만 보고 제출하지 말고 다운로드한 PDF를 새 탭이나 별도 PDF 뷰어로 엽니다. 전체 페이지 수를 확인한 뒤 첫 페이지, 마지막 페이지, 서명·도장 페이지와 가장 작은 글자가 있는 페이지를 100~200%로 확대합니다.', '검수할 때는 “보인다”보다 “내용을 오해 없이 읽을 수 있다”를 기준으로 합니다. 이름의 받침, 날짜의 숫자, 체크 표시, 도장 가장자리처럼 오류가 생기기 쉬운 곳을 확인합니다. 파일명에 주민번호나 불필요한 내부 메모가 들어가지 않았는지도 함께 봅니다.'] },
+      { title: '7단계: 순서·회전 오류는 PDF 페이지 정리로 수정', paragraphs: ['이미 PDF를 만든 뒤 한 페이지의 방향이나 순서가 틀렸다면 원본 이미지를 모두 다시 넣지 않고 PDF 페이지 정리에서 페이지를 이동하거나 90도 회전할 수 있습니다. 불필요한 페이지 삭제와 빈 페이지 추가도 가능하며 결과는 새 PDF로 저장됩니다.', '페이지 정리는 파일당 50MB·300페이지 범위이며 마지막 한 페이지까지 모두 삭제할 수는 없습니다. 전자서명·대화형 양식·책갈피가 있는 PDF는 페이지 작업 뒤 해당 구조가 유지된다고 보장하지 않으므로 원본을 보관하고 결과에서 직접 확인합니다.'] },
+      { title: '제출 직전 최종 점검과 한계', bullets: ['제출 화면의 최신 형식·용량·페이지 조건과 최종 PDF가 일치합니다.', '페이지 수, 순서, 방향, 여백과 빈 페이지를 확인했습니다.', '이름·날짜·번호·도장·서명의 작은 글자를 확대해 읽었습니다.', '파일명과 문서 가장자리에 불필요한 개인정보가 남지 않았습니다.', 'OCR 검색, 전자서명, 문서 진위 확인이 필요한 경우 별도 요구사항을 확인했습니다.', '원본 이미지와 제출 PDF를 구분해 보관하고 접수 결과를 확인했습니다.'], paragraphs: ['이 절차는 이미지 품질과 PDF 구성을 점검하는 일반 가이드입니다. 스캐너의 실제 DPI를 측정하거나 OCR 정확도, 법적 효력, 전자서명 유효성 또는 제출기관의 접수 성공을 보장하지 않습니다. 중요한 서류는 기관 안내와 담당자 확인을 우선합니다.'] },
+    ],
+    relatedTools: [{ path: '/image-editor', label: '1. 스캔 이미지 방향·여백 정리' }, { path: '/image-to-pdf', label: '2. 이미지를 PDF 한 파일로 만들기' }, { path: '/pdf-organize', label: '3. PDF 페이지 순서·회전 수정' }, { path: '/pdf-tools', label: '4. 다른 PDF 작업 선택하기' }],
+    downloads: [{ href: '/guide-samples/scanned-document-pdf-checklist.txt', label: '스캔 문서 PDF 품질 체크리스트', detail: '촬영·순서·가독성·제출 조건을 확인하는 UTF-8 텍스트 양식' }],
+  },
 ];
 
 export const guidePaths = [guideIndexPath, ...guides.map(guide => guide.path)];
 export function guideByPath(path: string) { return guides.find(guide => guide.path === path); }
 export const guideLinksForTool: Record<string, string[]> = {
-  '/image-to-pdf': ['/guides/online-document-submission-checklist', '/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
-  '/pdf-tools': ['/guides/online-document-submission-checklist', '/guides/choose-pdf-tool', '/guides/pdf-browser-privacy'],
+  '/image-to-pdf': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
+  '/pdf-tools': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/choose-pdf-tool', '/guides/pdf-browser-privacy'],
   '/pdf-merge': ['/guides/online-document-submission-checklist', '/guides/pdf-merge-browser-test', '/guides/choose-pdf-tool'],
   '/pdf-split': ['/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
-  '/pdf-organize': ['/guides/online-document-submission-checklist', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
+  '/pdf-organize': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
   '/pdf-to-png': ['/guides/pdf-to-png-dpi-test', '/guides/pdf-browser-privacy'],
   '/pdf-converter': ['/guides/image-formats-to-pdf', '/guides/pdf-to-png-dpi-test'],
   '/word-counter': ['/guides/online-document-submission-checklist', '/guides/korean-text-byte-test'],
   '/unit-converter': ['/guides/mb-vs-mib-test'],
-  '/image-editor': ['/guides/online-document-submission-checklist', '/guides/image-resize-aspect-ratio-test'],
+  '/image-editor': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-resize-aspect-ratio-test'],
   '/currency-converter': ['/guides/currency-cross-rate-test'],
   '/world-clock': ['/guides/world-clock-dst-test'],
   '/calendar': ['/guides/business-days-test'],
 };
 export const guideIndexMeta = {
   title: '도구 활용 가이드와 직접 검증 기록',
-  description: '온라인 서류 제출처럼 여러 도구를 연결하는 실전 절차와 PDF·텍스트·단위·이미지·환율·세계시간·달력의 직접 검증 결과를 확인하세요.',
+  description: '온라인 서류 제출과 스캔 PDF 제작처럼 여러 도구를 연결하는 실전 절차와 PDF·텍스트·단위·이미지·환율·시간·달력의 직접 검증 결과를 확인하세요.',
 };

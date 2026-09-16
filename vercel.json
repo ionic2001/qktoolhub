@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/guides/scanned-documents-to-pdf-workflow",
+      "destination": "/guides/scanned-documents-to-pdf-workflow.html"
+    },
+    {
       "source": "/guides/online-document-submission-checklist",
       "destination": "/guides/online-document-submission-checklist.html"
     },
@@ -1120,6 +1124,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides/scanned-documents-to-pdf-workflow.html",
+      "destination": "/guides/scanned-documents-to-pdf-workflow",
+      "permanent": true
+    },
     {
       "source": "/guides/online-document-submission-checklist.html",
       "destination": "/guides/online-document-submission-checklist",

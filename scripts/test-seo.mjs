@@ -93,4 +93,7 @@ for(const sample of ['pdf-merge-input-a.pdf','pdf-merge-input-b.pdf','pdf-merge-
 const submissionChecklist=fs.readFileSync('dist/guide-samples/online-document-submission-checklist.txt','utf8');
 assert.ok(submissionChecklist.length>300,'submission checklist has meaningful downloadable content');
 assert.ok(submissionChecklist.includes('온라인 서류 제출 전 7단계 체크리스트'),'submission checklist title');
+const scanChecklist=fs.readFileSync('dist/guide-samples/scanned-document-pdf-checklist.txt','utf8');
+assert.ok(scanChecklist.length>500,'scan document checklist has meaningful downloadable content');
+assert.ok(scanChecklist.includes('스캔 문서 제출용 PDF 품질 체크리스트'),'scan document checklist title');
 console.log(`PASS: ${pagePaths.length*languages.length+guidePaths.length} pages, metadata, canonicals, language alternates, schemas, crawlable links, sitemap, guide evidence, 404 config and share image.`);
