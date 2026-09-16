@@ -2,7 +2,7 @@
 
 작성일: 2026-09-16
 상태: 첫 출시·홈 정리·정책 안내까지 운영 배포 완료. 1~11절은 기획 당시의 목표와 출시 기준이고, 12~15절은 실제 구현 상태와 남은 작업을 기록한다.
-기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 코드 커밋 `9915d4f`(원격 반영 후 운영 기준)
+기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 코드 커밋 `e7b85ba`(원격 반영 후 운영 기준)
 운영 사이트: https://www.qktoolhub.com/
 
 ## 1. 목표와 제품 경계
@@ -231,3 +231,9 @@
 병합 입력·결과와 페이지 정리 결과 PDF 5개를 개인정보 없는 다운로드 표본으로 제공한다. 테스트 스크립트가 공개 표본을 다시 열어 글에 적힌 너비·회전값과 일치하는지 확인한다. 각 글에는 작성·검토 주체, 날짜, 검증 방법, 확인하지 않은 범위, 관련 도구 링크를 표시한다.
 
 가이드는 한국어만 준비했으므로 `?lang=` 번역 URL과 hreflang을 만들지 않는다. `/guides`는 CollectionPage, 상세 글은 Article과 3단계 BreadcrumbList를 사용한다. 기존 90개 다국어 URL에 한국어 가이드 4개를 더해 sitemap은 94개 canonical URL이 된다. 외국어 본문은 실제 현지화 검수 후 개별 URL로 추가한다.
+
+## 17. 원본 가이드 2차 확대와 도구 연결
+
+PDF 콘텐츠 묶음을 세 글 더 추가해 상세 가이드를 6개로 확대했다. `/guides/pdf-browser-privacy`는 브라우저 메모리의 파일 처리와 호스팅·분석·광고 통신을 구분하고 사용자가 Network 탭으로 확인하는 절차를 설명한다. `/guides/pdf-to-png-dpi-test`는 운영 렌더 계산을 공용 함수로 분리해 A4의 72·144·216 DPI 크기와 A3의 600만 픽셀 제한 결과를 자동 검사한다. `/guides/choose-pdf-tool`은 병합·추출·정리·PNG·이미지→PDF를 입력과 결과 파일 기준으로 비교한다.
+
+한국어 이미지→PDF, PDF 홈, 병합, 추출, 정리, PDF→PNG 및 기존 변환 페이지의 초기 HTML에서 관련 가이드로 직접 연결한다. SEO 검사에는 도구별 가이드 링크 존재 여부와 새 글의 고유 본문·Article schema·rewrite·sitemap을 포함한다. 다국어 90개 URL과 한국어 가이드 목록·상세 7개를 합쳐 sitemap은 97개 canonical URL이다.

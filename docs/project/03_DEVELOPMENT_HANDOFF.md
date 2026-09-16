@@ -2,8 +2,8 @@
 
 ## 현재 인수인계 (2026-09-16)
 
-- 코드 기준: 커밋 `9915d4f`(원격 반영 후 운영 기준); 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
-- 최근 완료: 이미지→PDF 및 PDF 전용 6개 경로, 홈·정책 안내에 이어 `/guides`와 한국어 PDF 원본 가이드 3개·검증 표본 5개를 추가했다. 18개 경로 × 5개 언어 90개와 한국어 가이드 4개로 총 94개 canonical URL이며 `/pdf-converter`는 유지한다.
+- 코드 기준: 커밋 `e7b85ba`(원격 반영 후 운영 기준); 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
+- 최근 완료: 이미지→PDF 및 PDF 전용 6개 경로, 홈·정책 안내에 이어 `/guides`와 한국어 PDF 원본 가이드 6개·검증 표본 5개를 추가했다. 다국어 90개와 한국어 가이드 목록·상세 7개로 총 97개 canonical URL이며 `/pdf-converter`는 유지한다.
 - 검증: 운영 코드 빌드, 90개 URL 정적 SEO, PDF 병합·추출·정리, 테마 검사 통과; Vercel 성공 및 공개 대표 페이지 확인. 전체 모바일·복잡한 PDF 표본·Search Console 계정 지표 검수는 미완료.
 - 다음 작업: 신규/기존 PDF URL의 Search Console 색인·검색 의도와 모바일 성능 확인. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
 - 사용자 확인 사항: sitemap 재제출 완료. 독립 스티커북: https://github.com/ionic2001/diorama-stickerbook.
