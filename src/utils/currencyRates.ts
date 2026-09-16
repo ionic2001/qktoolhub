@@ -3,34 +3,71 @@ export interface CurrencyInfo {
   nameKey: string;
   symbol: string;
   flag: string;
+  regions: string[];
+  aliases?: string[];
 }
 
+const currency = (code: string, symbol: string, flag: string, regions: string[], aliases: string[] = []): CurrencyInfo => ({
+  code,
+  nameKey: code.toLowerCase(),
+  symbol,
+  flag,
+  regions,
+  aliases,
+});
+
 export const DEFAULT_CURRENCIES: CurrencyInfo[] = [
-  { code: 'KRW', nameKey: 'krw', symbol: '₩', flag: '🇰🇷' },
-  { code: 'USD', nameKey: 'usd', symbol: '$', flag: '🇺🇸' },
-  { code: 'JPY', nameKey: 'jpy', symbol: '¥', flag: '🇯🇵' },
-  { code: 'EUR', nameKey: 'eur', symbol: '€', flag: '🇪🇺' },
-  { code: 'CNY', nameKey: 'cny', symbol: '¥', flag: '🇨🇳' },
-  { code: 'GBP', nameKey: 'gbp', symbol: '£', flag: '🇬🇧' },
-  { code: 'CAD', nameKey: 'cad', symbol: '$', flag: '🇨🇦' },
-  { code: 'AUD', nameKey: 'aud', symbol: '$', flag: '🇦🇺' },
-  { code: 'CHF', nameKey: 'chf', symbol: 'Fr', flag: '🇨🇭' },
-  { code: 'HKD', nameKey: 'hkd', symbol: '$', flag: '🇭🇰' },
-  { code: 'SGD', nameKey: 'sgd', symbol: '$', flag: '🇸🇬' },
-  { code: 'VND', nameKey: 'vnd', symbol: '₫', flag: '🇻🇳' },
+  currency('KRW', '₩', '🇰🇷', ['KR']),
+  currency('USD', '$', '🇺🇸', ['US', 'EC', 'SV', 'PA', 'TL'], ['america', '미국']),
+  currency('JPY', '¥', '🇯🇵', ['JP']),
+  currency('EUR', '€', '🇪🇺', ['AT', 'BE', 'CY', 'EE', 'FI', 'FR', 'DE', 'GR', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PT', 'SK', 'SI', 'ES']),
+  currency('CNY', '¥', '🇨🇳', ['CN']),
+  currency('GBP', '£', '🇬🇧', ['GB'], ['uk', 'britain', '영국']),
+  currency('CAD', '$', '🇨🇦', ['CA']),
+  currency('AUD', '$', '🇦🇺', ['AU']),
+  currency('CHF', 'Fr', '🇨🇭', ['CH', 'LI']),
+  currency('HKD', '$', '🇭🇰', ['HK']),
+  currency('SGD', '$', '🇸🇬', ['SG']),
+  currency('VND', '₫', '🇻🇳', ['VN']),
 ];
 
 export const ADDITIONAL_CURRENCIES: CurrencyInfo[] = [
-  { code: 'THB', nameKey: 'thb', symbol: '฿', flag: '🇹🇭' },
-  { code: 'TWD', nameKey: 'twd', symbol: 'NT$', flag: '🇹🇼' },
-  { code: 'PHP', nameKey: 'php', symbol: '₱', flag: '🇵🇭' },
-  { code: 'IDR', nameKey: 'idr', symbol: 'Rp', flag: '🇮🇩' },
-  { code: 'MYR', nameKey: 'myr', symbol: 'RM', flag: '🇲🇾' },
-  { code: 'INR', nameKey: 'inr', symbol: '₹', flag: '🇮🇳' },
-  { code: 'NZD', nameKey: 'nzd', symbol: '$', flag: '🇳🇿' },
-  { code: 'BRL', nameKey: 'brl', symbol: 'R$', flag: '🇧🇷' },
-  { code: 'MXN', nameKey: 'mxn', symbol: '$', flag: '🇲🇽' },
-  { code: 'TRY', nameKey: 'try', symbol: '₺', flag: '🇹🇷' },
+  currency('THB', '฿', '🇹🇭', ['TH']), currency('TWD', 'NT$', '🇹🇼', ['TW']),
+  currency('PHP', '₱', '🇵🇭', ['PH']), currency('IDR', 'Rp', '🇮🇩', ['ID']),
+  currency('MYR', 'RM', '🇲🇾', ['MY']), currency('INR', '₹', '🇮🇳', ['IN']),
+  currency('NZD', '$', '🇳🇿', ['NZ']), currency('BRL', 'R$', '🇧🇷', ['BR']),
+  currency('MXN', '$', '🇲🇽', ['MX']), currency('TRY', '₺', '🇹🇷', ['TR']),
+  currency('AED', 'د.إ', '🇦🇪', ['AE'], ['uae', 'dubai', '두바이']),
+  currency('SAR', '﷼', '🇸🇦', ['SA']), currency('QAR', '﷼', '🇶🇦', ['QA']),
+  currency('KWD', 'د.ك', '🇰🇼', ['KW']), currency('BHD', 'د.ب', '🇧🇭', ['BH']),
+  currency('OMR', '﷼', '🇴🇲', ['OM']), currency('JOD', 'د.ا', '🇯🇴', ['JO']),
+  currency('ILS', '₪', '🇮🇱', ['IL']), currency('ZAR', 'R', '🇿🇦', ['ZA']),
+  currency('EGP', 'E£', '🇪🇬', ['EG']), currency('MAD', 'DH', '🇲🇦', ['MA']),
+  currency('NGN', '₦', '🇳🇬', ['NG']), currency('KES', 'KSh', '🇰🇪', ['KE']),
+  currency('GHS', '₵', '🇬🇭', ['GH']), currency('TZS', 'TSh', '🇹🇿', ['TZ']),
+  currency('UGX', 'USh', '🇺🇬', ['UG']), currency('ETB', 'Br', '🇪🇹', ['ET']),
+  currency('XAF', 'FCFA', '🌍', ['CM', 'CF', 'TD', 'CG', 'GQ', 'GA']),
+  currency('XOF', 'CFA', '🌍', ['BJ', 'BF', 'CI', 'GW', 'ML', 'NE', 'SN', 'TG']),
+  currency('PLN', 'zł', '🇵🇱', ['PL']), currency('CZK', 'Kč', '🇨🇿', ['CZ']),
+  currency('HUF', 'Ft', '🇭🇺', ['HU']), currency('RON', 'lei', '🇷🇴', ['RO']),
+  currency('BGN', 'лв', '🇧🇬', ['BG']), currency('DKK', 'kr', '🇩🇰', ['DK']),
+  currency('NOK', 'kr', '🇳🇴', ['NO']), currency('SEK', 'kr', '🇸🇪', ['SE']),
+  currency('ISK', 'kr', '🇮🇸', ['IS']), currency('UAH', '₴', '🇺🇦', ['UA']),
+  currency('RUB', '₽', '🇷🇺', ['RU']), currency('GEL', '₾', '🇬🇪', ['GE']),
+  currency('KZT', '₸', '🇰🇿', ['KZ']), currency('UZS', 'soʻm', '🇺🇿', ['UZ']),
+  currency('PKR', '₨', '🇵🇰', ['PK']), currency('BDT', '৳', '🇧🇩', ['BD']),
+  currency('LKR', 'Rs', '🇱🇰', ['LK']), currency('NPR', '₨', '🇳🇵', ['NP']),
+  currency('MMK', 'K', '🇲🇲', ['MM']), currency('KHR', '៛', '🇰🇭', ['KH']),
+  currency('LAK', '₭', '🇱🇦', ['LA']), currency('MNT', '₮', '🇲🇳', ['MN']),
+  currency('BND', '$', '🇧🇳', ['BN']), currency('MOP', 'MOP$', '🇲🇴', ['MO']),
+  currency('FJD', '$', '🇫🇯', ['FJ']), currency('PGK', 'K', '🇵🇬', ['PG']),
+  currency('CLP', '$', '🇨🇱', ['CL']), currency('COP', '$', '🇨🇴', ['CO']),
+  currency('PEN', 'S/', '🇵🇪', ['PE']), currency('ARS', '$', '🇦🇷', ['AR']),
+  currency('UYU', '$U', '🇺🇾', ['UY']), currency('PYG', '₲', '🇵🇾', ['PY']),
+  currency('BOB', 'Bs', '🇧🇴', ['BO']), currency('CRC', '₡', '🇨🇷', ['CR']),
+  currency('DOP', 'RD$', '🇩🇴', ['DO']), currency('GTQ', 'Q', '🇬🇹', ['GT']),
+  currency('JMD', 'J$', '🇯🇲', ['JM']), currency('TTD', 'TT$', '🇹🇹', ['TT']),
+  currency('XCD', 'EC$', '🌎', ['AG', 'DM', 'GD', 'KN', 'LC', 'VC']),
 ];
 
 export const ALL_CURRENCIES: CurrencyInfo[] = [...DEFAULT_CURRENCIES, ...ADDITIONAL_CURRENCIES];
@@ -61,69 +98,48 @@ export interface ChartPoint {
   rate: number;
 }
 
-// Fallback rates baseline against 1 USD ($1.00)
+// Fixed reference snapshot against 1 USD from ExchangeRate-API (2026-09-16).
+// It keeps conversion usable during a network failure and is always labelled as non-current in the UI.
 const FALLBACK_USD_RATES: Record<string, number> = {
   USD: 1.0,
-  KRW: 1335.50,
-  JPY: 145.20,
-  EUR: 0.920,
-  CNY: 7.120,
-  GBP: 0.780,
-  CAD: 1.360,
-  AUD: 1.510,
-  CHF: 0.860,
-  HKD: 7.810,
-  SGD: 1.340,
-  VND: 24850.0,
-  THB: 35.20,
-  TWD: 31.80,
-  PHP: 56.40,
-  IDR: 15450.0,
-  MYR: 4.35,
-  INR: 83.50,
-  NZD: 1.64,
-  BRL: 5.52,
-  MXN: 19.80,
-  TRY: 34.10,
+  KRW: 1360.361778, JPY: 155.07604, EUR: 0.86671, CNY: 6.726834, GBP: 0.742032,
+  CAD: 1.391261, AUD: 1.403148, CHF: 0.818951, HKD: 7.844364, SGD: 1.272718,
+  VND: 25904.220782, THB: 33.294422, TWD: 31.840364, PHP: 62.869248,
+  IDR: 17688.127123, MYR: 4.084433, INR: 95.989284, NZD: 1.737448,
+  BRL: 5.150194, MXN: 17.157696, TRY: 48.664559,
+  AED: 3.6725, SAR: 3.75, QAR: 3.64, KWD: 0.308429, BHD: 0.376, OMR: 0.384497, JOD: 0.709,
+  ILS: 3.040812, ZAR: 16.265398, EGP: 52.063931, MAD: 9.479216, NGN: 1328.880494,
+  KES: 129.534579, GHS: 11.425464, TZS: 2642.490896, UGX: 3756.658244, ETB: 161.76509,
+  XAF: 568.530771, XOF: 568.530771, PLN: 3.763082, CZK: 21.059591, HUF: 317.094461,
+  RON: 4.559762, BGN: 1.695156, DKK: 6.478292, NOK: 9.347332, SEK: 9.778398,
+  ISK: 121.338646, UAH: 44.670612, RUB: 84.303527, GEL: 2.605177, KZT: 448.238074,
+  UZS: 11785.164806, PKR: 277.720685, BDT: 123.098065, LKR: 328.79355, NPR: 153.600816,
+  MMK: 2100.388846, KHR: 4039.725205, LAK: 22224.126312, MNT: 3593.59368, BND: 1.272801,
+  MOP: 8.080363, FJD: 2.204415, PGK: 4.458893, CLP: 957.185297, COP: 3103.999022,
+  PEN: 3.36514, ARS: 1506.6836, UYU: 40.18058, PYG: 5971.647193, BOB: 11.871528,
+  CRC: 449.04748, DOP: 58.904462, GTQ: 7.633803, JMD: 157.771689, TTD: 6.767294,
+  XCD: 2.7,
 };
 
-// Yesterday baseline against 1 USD ($1.00) for +/- day-over-day
+// A fallback snapshot cannot prove day-over-day movement, so it uses the same values for both days.
 const FALLBACK_USD_PREV_RATES: Record<string, number> = {
-  USD: 1.0,
-  KRW: 1330.20,
-  JPY: 146.10,
-  EUR: 0.918,
-  CNY: 7.100,
-  GBP: 0.776,
-  CAD: 1.365,
-  AUD: 1.505,
-  CHF: 0.862,
-  HKD: 7.805,
-  SGD: 1.342,
-  VND: 24800.0,
-  THB: 35.10,
-  TWD: 31.75,
-  PHP: 56.25,
-  IDR: 15400.0,
-  MYR: 4.33,
-  INR: 83.40,
-  NZD: 1.635,
-  BRL: 5.50,
-  MXN: 19.75,
-  TRY: 34.00,
+  ...FALLBACK_USD_RATES,
 };
 
 /**
  * Synchronous initial rates provider to guarantee immediate instant UI rendering (0ms delay)
  */
 export function getInitialRatesData(baseCurrency: string = 'KRW'): RatesData {
-  const baseUsd = FALLBACK_USD_RATES[baseCurrency] || 1;
+  const baseUsd = FALLBACK_USD_RATES[baseCurrency];
+  if (!Number.isFinite(baseUsd) || baseUsd <= 0) throw new Error(`Unsupported fallback currency: ${baseCurrency}`);
   const rates: Record<string, number> = {};
   const prevRates: Record<string, number> = {};
 
   ALL_CURRENCIES.forEach(c => {
-    rates[c.code] = crossRateFromUsd(baseUsd, FALLBACK_USD_RATES[c.code] || 1);
-    prevRates[c.code] = (FALLBACK_USD_PREV_RATES[c.code] || 1) / baseUsd;
+    const targetUsd = FALLBACK_USD_RATES[c.code];
+    if (!Number.isFinite(targetUsd) || targetUsd <= 0) return;
+    rates[c.code] = crossRateFromUsd(baseUsd, targetUsd);
+    prevRates[c.code] = (FALLBACK_USD_PREV_RATES[c.code] || targetUsd) / (FALLBACK_USD_PREV_RATES[baseCurrency] || baseUsd);
   });
 
   return {
@@ -154,8 +170,9 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
     const data = await res.json();
     const usdData = await usdRes.json();
 
-    const rates: Record<string, number> = data.rates || {};
-    const usdRates: Record<string, number> = usdData.rates || FALLBACK_USD_RATES;
+    if (data.result !== 'success' || usdData.result !== 'success' || !data.rates || !usdData.rates) throw new Error('Invalid API response');
+    const rates: Record<string, number> = data.rates;
+    const usdRates: Record<string, number> = usdData.rates;
     const lastUpdated = data.time_last_update_utc ? new Date(data.time_last_update_utc).toLocaleDateString() : new Date().toLocaleDateString();
 
     // Fetch yesterday's USD rates from Frankfurter for accurate day-over-day +/-
@@ -184,14 +201,16 @@ export async function fetchExchangeRates(baseCurrency: string = 'KRW'): Promise<
 
     ALL_CURRENCIES.forEach(c => {
       if (!usdPrevRates[c.code]) {
-        const currentUsdRate = usdRates[c.code] || FALLBACK_USD_RATES[c.code] || 1;
+        const currentUsdRate = usdRates[c.code] || FALLBACK_USD_RATES[c.code];
+        if (!currentUsdRate) return;
         usdPrevRates[c.code] = currentUsdRate;
       }
 
-      const baseUsdToday = usdRates[baseCurrency] || 1;
-      const baseUsdPrev = usdPrevRates[baseCurrency] || 1;
-      const targetUsdToday = usdRates[c.code] || 1;
-      const targetUsdPrev = usdPrevRates[c.code] || 1;
+      const baseUsdToday = usdRates[baseCurrency];
+      const baseUsdPrev = usdPrevRates[baseCurrency];
+      const targetUsdToday = usdRates[c.code];
+      const targetUsdPrev = usdPrevRates[c.code];
+      if (![baseUsdToday, baseUsdPrev, targetUsdToday, targetUsdPrev].every(value => Number.isFinite(value) && value > 0)) return;
 
       rates[c.code] = rates[c.code] || (targetUsdToday / baseUsdToday);
       prevRates[c.code] = targetUsdPrev / baseUsdPrev;

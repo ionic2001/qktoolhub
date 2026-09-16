@@ -12,6 +12,30 @@ interface CurrencyGridProps {
   onCurrencyInputChange: (code: string, newAmount: number) => void;
 }
 
+const normalizeSearch = (value: string) => value
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLocaleLowerCase()
+  .trim();
+
+function localizedCurrencyName(currency: CurrencyInfo, language: string, translatedName?: string): string {
+  if (translatedName) return translatedName;
+  try {
+    return new Intl.DisplayNames([language], { type: 'currency' }).of(currency.code) || currency.code;
+  } catch {
+    return currency.code;
+  }
+}
+
+function localizedRegionNames(currency: CurrencyInfo, language: string): string[] {
+  try {
+    const names = new Intl.DisplayNames([language], { type: 'region' });
+    return currency.regions.map((region) => names.of(region) || region);
+  } catch {
+    return currency.regions;
+  }
+}
+
 // Korean digit scale helper for human-readable reading (억, 만 원/엔/동)
 function formatCurrencyScale(val: number, code: string): string {
   if (isNaN(val) || val <= 0) return '';
@@ -85,18 +109,23 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
 
   // Available currencies to add from ADDITIONAL_CURRENCIES
   const availableToAdd = ADDITIONAL_CURRENCIES.filter(
-    (addC) => !activeCurrencies.some((curr) => curr.code === addC.code)
+    (addC) => !activeCurrencies.some((curr) => curr.code === addC.code) && Number.isFinite(rates[addC.code])
   );
 
   // Filtered available currencies based on search query
   const filteredAvailable = availableToAdd.filter((addC) => {
     if (!searchQuery.trim()) return true;
-    const query = searchQuery.toLowerCase().trim();
-    const codeMatch = addC.code.toLowerCase().includes(query);
-    const symbolMatch = addC.symbol.toLowerCase().includes(query);
-    const localizedName = (currencyT?.currencyNames?.[addC.code] || '').toLowerCase();
-    const nameMatch = localizedName.includes(query);
-    return codeMatch || symbolMatch || nameMatch;
+    const query = normalizeSearch(searchQuery);
+    const translatedName = currencyT?.currencyNames?.[addC.code];
+    const searchValues = [
+      addC.code,
+      addC.symbol,
+      localizedCurrencyName(addC, language, translatedName),
+      ...localizedRegionNames(addC, language),
+      ...addC.regions,
+      ...(addC.aliases || []),
+    ];
+    return searchValues.some((value) => normalizeSearch(value).includes(query));
   });
 
   const handleAddCurrency = (curr: CurrencyInfo) => {
@@ -262,11 +291,12 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
           const isCustomAdded = ADDITIONAL_CURRENCIES.some((ac) => ac.code === c.code);
 
           // Convert current rate for base currency
-          const rate = rates[c.code] || 1;
+          const rate = rates[c.code];
+          if (!Number.isFinite(rate) || rate <= 0) return null;
           const convertedVal = convertCurrencyAmount(amount, rate);
 
-          const localizedName = currencyT?.currencyNames?.[c.code] || c.code;
-          const isZeroDecimal = ['KRW', 'JPY', 'VND', 'IDR'].includes(c.code);
+          const localizedName = localizedCurrencyName(c, language, currencyT?.currencyNames?.[c.code]);
+          const isZeroDecimal = ['KRW', 'JPY', 'VND', 'IDR', 'CLP', 'PYG', 'UGX', 'KHR', 'LAK'].includes(c.code);
           const decimals = isZeroDecimal ? 0 : 2;
 
           // Smooth Controlled Input Value (Preserves decimal dots like 10. or .5)
@@ -623,7 +653,11 @@ export const CurrencyGrid: React.FC<CurrencyGridProps> = ({
                             {addC.code} <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>({addC.symbol})</span>
                           </div>
                           <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                            {currencyT?.currencyNames?.[addC.code] || addC.code}
+                            {localizedCurrencyName(addC, language, currencyT?.currencyNames?.[addC.code])}
+                          </div>
+                          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '0.1rem' }}>
+                            {localizedRegionNames(addC, language).slice(0, 3).join(' · ')}
+                            {addC.regions.length > 3 ? ` +${addC.regions.length - 3}` : ''}
                           </div>
                         </div>
                       </div>

@@ -4,7 +4,7 @@
     "wordDescription": "텍스트를 입력하면 글자수·단어수·바이트를 바로 확인할 수 있습니다. 플랫폼별 글자 제한과 키워드 빈도도 함께 살펴보세요.",
     "wordBadge": "텍스트 도구",
     "currencyTitle": "환율 계산기 · 달러·엔화·유로·원화 환산",
-    "currencyDescription": "USD·JPY·EUR·CNY 등 22개 통화를 원화 또는 선택 통화 기준으로 동시에 환산하세요. 외부 API 응답과 고정 참고값 상태를 구분해 표시합니다.",
+    "currencyDescription": "USD·JPY·EUR·CNY·AED 등 80개 통화를 원화 또는 선택 통화 기준으로 환산하고 국가명으로 검색하세요. 외부 API 응답과 고정 참고값 상태를 구분해 표시합니다.",
     "currencyBadge": "금융 도구"
   },
   "en": {
@@ -12,7 +12,7 @@
     "wordDescription": "Count Korean or mixed Korean-English text by characters, space-separated words, UTF-8 bytes and the EUC-KR estimate. Results update as you type.",
     "wordBadge": "Text tools",
     "currencyTitle": "Currency converter",
-    "currencyDescription": "Compare major currencies using the latest available exchange rates. Change the amount and base currency to calculate multiple conversions at once.",
+    "currencyDescription": "Search by country and compare 80 currencies using the latest available daily rates. Change the amount and base currency to calculate multiple conversions at once.",
     "currencyBadge": "Finance tools"
   },
   "ja": {
@@ -20,7 +20,7 @@
     "wordDescription": "入力しながら文字数・単語数・バイト数を確認できます。サービスごとの文字数制限やキーワードの頻度もまとめてチェック。",
     "wordBadge": "テキストツール",
     "currencyTitle": "為替レート計算機",
-    "currencyDescription": "取得可能な最新の為替レートで主要通貨を比較できます。金額と基準通貨を変更すると、複数の通貨へまとめて換算します。",
+    "currencyDescription": "国名で検索し、取得可能な最新の日次レートで80通貨を比較できます。金額と基準通貨を変更すると、複数の通貨へまとめて換算します。",
     "currencyBadge": "金融ツール"
   },
   "zh": {
@@ -28,7 +28,7 @@
     "wordDescription": "输入文字即可查看字符数、单词数和字节数，同时检查各平台字数限制与关键词频率。",
     "wordBadge": "文本工具",
     "currencyTitle": "汇率换算器",
-    "currencyDescription": "使用最新可用汇率比较主要货币。调整金额和基准货币，即可同时换算多种货币。",
+    "currencyDescription": "可按国家搜索，并使用最新可用的每日汇率比较80种货币。调整金额和基准货币即可同时换算。",
     "currencyBadge": "金融工具"
   },
   "es": {
@@ -36,7 +36,7 @@
     "wordDescription": "Cuenta caracteres, palabras y bytes mientras escribes. Consulta los límites de cada plataforma y la frecuencia de palabras clave.",
     "wordBadge": "Herramientas de texto",
     "currencyTitle": "Conversor de divisas",
-    "currencyDescription": "Compara monedas con los últimos tipos de cambio disponibles. Cambia el importe y la moneda base para calcular varias conversiones a la vez.",
+    "currencyDescription": "Busca por país y compara 80 divisas con los últimos tipos diarios disponibles. Cambia el importe y la moneda base para calcular varias conversiones a la vez.",
     "currencyBadge": "Herramientas financieras"
   }
 }

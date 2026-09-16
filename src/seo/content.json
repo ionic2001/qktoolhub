@@ -36,7 +36,7 @@
       ],
       [
         "지원 통화와 큰 금액 환산",
-        "현재 KRW·USD·JPY·EUR·CNY를 포함한 22개 통화를 지원합니다. 금액을 직접 입력하고 기준 통화를 바꾸면 같은 시점의 제공 환율로 다른 통화를 함께 비교할 수 있습니다. 큰 금액도 계산할 수 있지만 반올림된 표시값과 실제 송금·현찰 금액은 다를 수 있습니다."
+        "현재 KRW·USD·JPY·EUR·CNY·AED를 포함한 80개 통화를 지원하며 국가명과 통화 코드로 검색할 수 있습니다. 금액을 직접 입력하고 기준 통화를 바꾸면 같은 시점의 제공 환율로 다른 통화를 함께 비교할 수 있습니다. 큰 금액도 계산할 수 있지만 반올림된 표시값과 실제 송금·현찰 금액은 다를 수 있습니다."
       ],
       [
         "짐바브웨 달러 등 미지원 통화",
@@ -111,6 +111,10 @@
       [
         "Check the rate date",
         "Check the provider date and data status. Example rates may appear when network requests fail. Verify rates with your financial institution before a transaction."
+      ],
+      [
+        "80 supported currencies and country search",
+        "The converter supports 80 currencies including KRW, USD, JPY, EUR, CNY and AED. Search by localized country name, currency name or ISO code; shared currencies such as EUR and the CFA francs are linked to their participating countries."
       ]
     ],
     "pixel": [
@@ -177,6 +181,10 @@
       [
         "更新日の確認",
         "提供日とデータ状態を確認してください。通信に失敗するとサンプルレートが表示される場合があります。取引前に金融機関のレートを確認してください。"
+      ],
+      [
+        "80通貨と国名検索",
+        "KRW・USD・JPY・EUR・CNY・AEDを含む80通貨に対応しています。各言語の国名、通貨名、ISOコードで検索でき、ユーロやCFAフランなど複数国で使われる通貨も参加国から探せます。"
       ]
     ],
     "pixel": [
@@ -243,6 +251,10 @@
       [
         "确认更新日期",
         "请检查数据日期与状态。网络请求失败时可能显示示例汇率，交易前请核对金融机构报价。"
+      ],
+      [
+        "支持80种货币与国家搜索",
+        "支持包括KRW、USD、JPY、EUR、CNY和AED在内的80种货币。可按本地化国家名称、货币名称或ISO代码搜索；欧元、非洲法郎等多国共用货币也可通过相关国家找到。"
       ]
     ],
     "pixel": [
@@ -309,6 +321,10 @@
       [
         "Comprueba la fecha",
         "Consulta la fecha del proveedor y el estado de los datos. Si falla la conexión pueden mostrarse tipos de ejemplo. Verifica el tipo con tu entidad antes de operar."
+      ],
+      [
+        "80 divisas y búsqueda por país",
+        "El conversor admite 80 divisas, incluidas KRW, USD, JPY, EUR, CNY y AED. Puedes buscar por país localizado, nombre de moneda o código ISO; las monedas compartidas, como el euro y los francos CFA, están asociadas a sus países participantes."
       ]
     ],
     "pixel": [

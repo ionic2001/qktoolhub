@@ -64,8 +64,18 @@ assert.ok(englishWord.includes('Korean Word, Character &amp; Byte Counter'),'Eng
 assert.ok(englishWord.includes('A Korean syllable normally uses 3 bytes in UTF-8'),'English initial HTML explains Korean byte counting');
 const koreanCurrency=fs.readFileSync('dist/currency-converter/ko.html','utf8');
 assert.ok(koreanCurrency.includes('환율 계산기 · 달러·엔화·유로·원화 환산 | QK Tool Hub'),'Korean currency title names major conversion intents');
-assert.ok(koreanCurrency.includes('현재 KRW·USD·JPY·EUR·CNY를 포함한 22개 통화를 지원합니다.'),'Korean currency initial HTML states supported scope');
+assert.ok(koreanCurrency.includes('현재 KRW·USD·JPY·EUR·CNY·AED를 포함한 80개 통화를 지원하며 국가명과 통화 코드로 검색할 수 있습니다.'),'Korean currency initial HTML states supported scope');
 assert.ok(koreanCurrency.includes('짐바브웨 달러 ZWL과 과거 발행 지폐는 현재 지원 목록에 없습니다.'),'Korean currency initial HTML does not fabricate unsupported Zimbabwe rates');
+const currencyScopeCopy={
+ en:'The converter supports 80 currencies including KRW, USD, JPY, EUR, CNY and AED.',
+ ja:'KRW・USD・JPY・EUR・CNY・AEDを含む80通貨に対応しています。',
+ zh:'支持包括KRW、USD、JPY、EUR、CNY和AED在内的80种货币。',
+ es:'El conversor admite 80 divisas, incluidas KRW, USD, JPY, EUR, CNY y AED.',
+};
+for(const [lang,copy] of Object.entries(currencyScopeCopy)) {
+ const html=fs.readFileSync(`dist/currency-converter/${lang}.html`,'utf8');
+ assert.ok(html.includes(copy),`${lang} currency initial HTML states 80-currency scope`);
+}
 const koreanPixel=fs.readFileSync('dist/pixel-art/ko.html','utf8');
 assert.ok(koreanPixel.includes('이미지 도트 변환 · 사진 픽셀아트 만들기 | QK Tool Hub'),'Korean pixel-art title matches observed image-dot intent');
 assert.ok(koreanPixel.includes('픽셀 크기를 2~64px로 조절하세요.'),'Korean pixel-art initial HTML states pixel-size controls');

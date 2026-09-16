@@ -4,7 +4,7 @@ import { loadSource } from './load-source.mjs';
 const { calculateTextStats } = loadSource('src/utils/counter.ts');
 const { convert } = loadSource('src/features/units/model.ts');
 const { resizeImageDimensions } = loadSource('src/utils/imageEditor.ts');
-const { crossRateFromUsd, convertCurrencyAmount, fetchHistoricalTrend, getInitialRatesData } = loadSource('src/utils/currencyRates.ts');
+const { ALL_CURRENCIES, crossRateFromUsd, convertCurrencyAmount, fetchHistoricalTrend, getInitialRatesData } = loadSource('src/utils/currencyRates.ts');
 const { zoneSnapshot } = loadSource('src/utils/worldTime.ts');
 const { calculateBusinessDays } = loadSource('src/data/holidays.ts');
 
@@ -27,6 +27,13 @@ assert.deepEqual(resizeImageDimensions(1200, 800, 'width', 600, false), { width:
 assert.equal(convertCurrencyAmount(100, crossRateFromUsd(1, 1350)), 135000);
 assert.ok(Math.abs(convertCurrencyAmount(100000, crossRateFromUsd(1350, 1)) - 74.07407407407408) < 1e-10);
 assert.equal(getInitialRatesData('KRW').source, 'reference-fallback');
+assert.equal(ALL_CURRENCIES.length, 80);
+assert.equal(new Set(ALL_CURRENCIES.map(currency => currency.code)).size, 80);
+for (const base of ['KRW', 'USD', 'AED', 'ZAR', 'PLN', 'XOF']) {
+  const fallback = getInitialRatesData(base);
+  assert.equal(Object.keys(fallback.rates).length, 80, `${base} fallback covers every listed currency`);
+  assert.ok(Object.values(fallback.rates).every(rate => Number.isFinite(rate) && rate > 0), `${base} fallback rates are valid`);
+}
 const savedFetch = globalThis.fetch;
 globalThis.fetch = async () => { throw new Error('offline'); };
 assert.deepEqual(await fetchHistoricalTrend('USD', 'KRW', '7D'), []);

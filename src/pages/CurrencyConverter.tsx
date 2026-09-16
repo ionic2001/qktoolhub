@@ -87,7 +87,12 @@ export const CurrencyConverterPage: React.FC = () => {
 
       <ToolIntro badge={toolIntro[language].currencyBadge} title={toolIntro[language].currencyTitle} description={toolIntro[language].currencyDescription} />
 
-      <p role="status" className="glass-card" style={{ padding: '0.75rem 1rem', marginBottom: '1rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{sourceNotice}</p>
+      <p role="status" className="glass-card" style={{ padding: '0.75rem 1rem', marginBottom: '1rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+        {sourceNotice}{' · '}
+        <a href="https://www.exchangerate-api.com" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-color)' }}>
+          Rates by Exchange Rate API
+        </a>
+      </p>
 
       {/* Top Banner Ad */}
       <AdSlot slotId="currency-top-banner" />
