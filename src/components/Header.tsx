@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Language } from '../i18n/translations';
 import { Moon, Sun, FileText } from 'lucide-react';
+import { guidePaths } from '../guides/guideContent';
 
 export const Header: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
   const { pathname } = useLocation();
   const [isDark, setIsDark] = useState<boolean>(() => document.documentElement.getAttribute('data-theme') === 'dark');
+  const isGuide = guidePaths.includes(pathname);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
@@ -31,7 +33,7 @@ export const Header: React.FC = () => {
       </a>
 
       <div className="controls-group">
-        <div className="lang-select-wrapper">
+        {!isGuide && <div className="lang-select-wrapper">
           <select
             className="lang-select"
             value={language}
@@ -44,7 +46,7 @@ export const Header: React.FC = () => {
             <option value="zh">🇨🇳 中文</option>
             <option value="es">🇪🇸 Español</option>
           </select>
-        </div>
+        </div>}
 
         <button
           className="theme-toggle"

@@ -12,12 +12,14 @@ import { aboutText } from '../i18n/aboutText';
 import { pixelTranslations } from '../i18n/pixelTranslations';
 import { copy } from '../features/units/text';
 import content from './content.json';
+import { guideByPath, guideIndexMeta, guideIndexPath, guidePaths } from '../guides/guideContent';
 
 export const origin = 'https://www.qktoolhub.com';
 export const languages: Language[] = ['ko', 'en', 'ja', 'zh', 'es'];
 export const toolPaths = ['/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', ...pdfPaths, '/world-clock', '/calendar', '/image-editor', '/unit-converter'];
 export const pagePaths = ['/', ...toolPaths, '/about', '/terms', '/privacy'];
-export const localUrl = (path: string, lang: Language) => path + (lang === 'ko' ? '' : `?lang=${lang}`);
+export const allPagePaths = [...pagePaths, ...guidePaths];
+export const localUrl = (path: string, lang: Language) => guidePaths.includes(path) ? path : path + (lang === 'ko' ? '' : `?lang=${lang}`);
 export const canonicalUrl = (path: string, lang: Language) => origin + localUrl(path, lang);
 export const languageFromSearch = (search: string): Language => {
   const lang = new URLSearchParams(search).get('lang') as Language;
@@ -26,6 +28,9 @@ export const languageFromSearch = (search: string): Language => {
 export function pageMeta(path: string, lang: Language) {
   const c = content[lang], intro = toolIntro[lang];
   let name = c.homeTitle, description = c.homeDescription, title = name;
+  if (path === guideIndexPath) return { name: guideIndexMeta.title, title: `${guideIndexMeta.title} | QK Tool Hub`, description: guideIndexMeta.description, url: origin + path };
+  const guide = guideByPath(path);
+  if (guide) return { name: guide.title, title: `${guide.title} | QK Tool Hub`, description: guide.description, url: origin + path };
   switch (path) {
     case '/word-counter': name = intro.wordTitle; title = c.wordTitle; description = intro.wordDescription; break;
     case '/currency-converter': name = c.currencyTitle; title = name; description = intro.currencyDescription; break;
@@ -43,6 +48,16 @@ export function pageMeta(path: string, lang: Language) {
 }
 export function pageSchema(path: string, lang: Language) {
   const meta = pageMeta(path, lang), home = canonicalUrl('/', lang);
+  const guide = guideByPath(path);
+  if (path === guideIndexPath) return { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', '@id': meta.url + '#page', url: meta.url, name: meta.name, description: meta.description, inLanguage: 'ko', isPartOf: { '@id': origin + '/#website' } },
+    { '@type': 'BreadcrumbList', '@id': meta.url + '#breadcrumb', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'QK Tool Hub', item: origin + '/' }, { '@type': 'ListItem', position: 2, name: '활용 가이드', item: meta.url }] },
+  ] };
+  if (guide) return { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', '@id': meta.url + '#article', headline: guide.title, description: guide.description, datePublished: guide.published, dateModified: guide.updated, inLanguage: 'ko', mainEntityOfPage: { '@id': meta.url + '#page' }, author: { '@type': 'Organization', name: 'QK Tool Hub 운영팀', url: origin + '/about' }, publisher: { '@type': 'Organization', name: 'QK Tool Hub', url: origin + '/' } },
+    { '@type': 'WebPage', '@id': meta.url + '#page', url: meta.url, name: meta.name, description: meta.description, inLanguage: 'ko', isPartOf: { '@id': origin + '/#website' } },
+    { '@type': 'BreadcrumbList', '@id': meta.url + '#breadcrumb', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'QK Tool Hub', item: origin + '/' }, { '@type': 'ListItem', position: 2, name: '활용 가이드', item: origin + guideIndexPath }, { '@type': 'ListItem', position: 3, name: guide.title, item: meta.url }] },
+  ] };
   const graph: Record<string, unknown>[] = [];
   if (path === '/') graph.push({ '@type': 'WebSite', '@id': origin + '/#website', url: origin + '/', name: 'QK Tool Hub', alternateName: 'QKToolHub', inLanguage: languages, description: meta.description });
   graph.push({ '@type': 'WebPage', '@id': meta.url + '#page', url: meta.url, name: meta.name, description: meta.description, inLanguage: lang, isPartOf: { '@id': origin + '/#website' } });

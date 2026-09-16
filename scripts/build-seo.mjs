@@ -11,6 +11,8 @@ const { worldGuide } = loadSource('src/i18n/worldGuide.ts');
 const { calendarGuide } = loadSource('src/i18n/calendarGuide.ts');
 const { legalText } = loadSource('src/i18n/legalText.ts');
 const { aboutText } = loadSource('src/i18n/aboutText.ts');
+const { guidePaths } = loadSource('src/guides/guideContent.ts');
+const { GuideContent } = loadSource('src/guides/GuideRenderer.tsx');
 const { translations } = loadSource('src/i18n/translations.ts');
 const escape = s => String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const base = fs.readFileSync('dist/index.html','utf8');
@@ -29,11 +31,22 @@ for (const path of pagePaths) for (const lang of languages) {
   if(path==='/currency-converter') {const c=translations[lang].currency;guide=`<section><h2>${escape(c.faqTitle)}</h2>${[[c.faq1Q,c.faq1A],[c.faq2Q,c.faq2A],[c.faq3Q,c.faq3A]].map(([q,a])=>`<details><summary>${escape(q)}</summary><p>${escape(a)}</p></details>`).join('')}</section>`;}
   if(path==='/terms'||path==='/privacy') {const doc=legal[path.slice(1)];guide=`<p>${escape(doc.effectiveDate)}</p>`+doc.sections.map(s=>`<section><h2>${escape(s.title)}</h2>${s.content.map(p=>`<p>${escape(p)}</p>`).join('')}</section>`).join('')+`<p>${escape(legal.footer.contactIntro)} <a href="mailto:${escape(doc.contactEmail)}">${escape(doc.contactEmail)}</a></p>`;}
   if(path==='/about') {const a=aboutText[lang];guide=a.sections.map(s=>`<section><h2>${escape(s.title)}</h2>${s.content.map(p=>`<p>${escape(p)}</p>`).join('')}</section>`).join('')+`<section id="contact"><h2>${escape(a.contactTitle)}</h2><p>${escape(a.contactBody)}</p><a href="mailto:contact@qktoolhub.com">${escape(a.contactAction)}</a></section>`;}
-  const body=`<div id="root"><main class="app-container seo-static"><nav aria-label="Breadcrumb"><a href="${localUrl('/',lang)}">QK Tool Hub</a>${path==='/'?'':`<span aria-current="page"> / ${escape(meta.name)}</span>`}</nav><h1>${escape(meta.name)}</h1><p>${escape(meta.description)}</p>${guide}${renderToStaticMarkup(React.createElement(SeoSections,{path,language:lang}))}<footer class="app-footer"><a href="${localUrl('/about',lang)}">${escape(legal.footer.aboutLink)}</a> · <a href="${localUrl('/about',lang)}#contact">${escape(legal.footer.contactLabel)}</a> · <a href="${localUrl('/terms',lang)}">${escape(legal.footer.termsLink)}</a> · <a href="${localUrl('/privacy',lang)}">${escape(legal.footer.privacyLink)}</a></footer></main></div>`;
+  const guideLabel={ko:'활용 가이드',en:'Guides (Korean)',ja:'活用ガイド（韓国語）',zh:'使用指南（韩语）',es:'Guías (coreano)'}[lang];
+  const body=`<div id="root"><main class="app-container seo-static"><nav aria-label="Breadcrumb"><a href="${localUrl('/',lang)}">QK Tool Hub</a>${path==='/'?'':`<span aria-current="page"> / ${escape(meta.name)}</span>`}</nav><h1>${escape(meta.name)}</h1><p>${escape(meta.description)}</p>${guide}${renderToStaticMarkup(React.createElement(SeoSections,{path,language:lang}))}<footer class="app-footer"><a href="/guides">${escape(guideLabel)}</a> · <a href="${localUrl('/about',lang)}">${escape(legal.footer.aboutLink)}</a> · <a href="${localUrl('/about',lang)}#contact">${escape(legal.footer.contactLabel)}</a> · <a href="${localUrl('/terms',lang)}">${escape(legal.footer.termsLink)}</a> · <a href="${localUrl('/privacy',lang)}">${escape(legal.footer.privacyLink)}</a></footer></main></div>`;
   const html=head.replace(/<html lang="[^"]*"/,`<html lang="${lang}"`)+`<title>${escape(meta.title)}</title>`+Object.entries(tags).map(([name,value])=>`<meta name="${name}" content="${escape(value)}">`).join('\n')+Object.entries(og).map(([name,value])=>`<meta property="${name}" content="${escape(value)}">`).join('\n')+`<link rel="canonical" href="${escape(meta.url)}">${alternate}<script id="page-schema" type="application/ld+json">${JSON.stringify(pageSchema(path,lang)).replaceAll('<','\\u003c')}</script></head><body>${body}</body></html>`;
   const dir=`dist/${path==='/'?'home':path.slice(1)}`;fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(`${dir}/${lang}.html`,html);
 
   entries.push(`  <url><loc>${escape(meta.url)}</loc>${languages.map(l=>`<xhtml:link rel="alternate" hreflang="${l}" href="${escape(canonicalUrl(path,l))}"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${escape(canonicalUrl(path,'ko'))}"/></url>`);
+}
+for (const path of guidePaths) {
+  const meta=pageMeta(path,'ko'), legal=legalText.ko;
+  const tags={title:meta.title,description:meta.description,robots:'index, follow, max-image-preview:large','twitter:card':'summary_large_image','twitter:title':meta.title,'twitter:description':meta.description,'twitter:url':meta.url,'twitter:image':origin+'/og-image.png','twitter:image:alt':'QK Tool Hub'};
+  const og={'og:type':path==='/guides'?'website':'article','og:site_name':'QK Tool Hub','og:title':meta.title,'og:description':meta.description,'og:url':meta.url,'og:image':origin+'/og-image.png','og:image:width':'1200','og:image:height':'630','og:image:alt':'QK Tool Hub','og:locale':'ko_KR'};
+  const body=`<div id="root"><div class="app-container guide-page">${renderToStaticMarkup(React.createElement(GuideContent,{path}))}<footer class="app-footer"><a href="/guides">활용 가이드</a> · <a href="/about">${escape(legal.footer.aboutLink)}</a> · <a href="/about#contact">${escape(legal.footer.contactLabel)}</a> · <a href="/terms">${escape(legal.footer.termsLink)}</a> · <a href="/privacy">${escape(legal.footer.privacyLink)}</a></footer></div></div>`;
+  const html=head.replace(/<html lang="[^"]*"/,`<html lang="ko"`)+`<title>${escape(meta.title)}</title>`+Object.entries(tags).map(([name,value])=>`<meta name="${name}" content="${escape(value)}">`).join('\n')+Object.entries(og).map(([name,value])=>`<meta property="${name}" content="${escape(value)}">`).join('\n')+`<link rel="canonical" href="${escape(meta.url)}"><script id="page-schema" type="application/ld+json">${JSON.stringify(pageSchema(path,'ko')).replaceAll('<','\\u003c')}</script></head><body>${body}</body></html>`;
+  const file=path==='/guides'?'dist/guides.html':`dist${path}.html`;
+  fs.mkdirSync(file.slice(0,file.lastIndexOf('/')),{recursive:true});fs.writeFileSync(file,html);
+  entries.push(`  <url><loc>${escape(meta.url)}</loc></url>`);
 }
 // Omit lastmod until per-page content dates can be supplied reliably.
 fs.writeFileSync('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries.join('\n')}\n</urlset>\n`);

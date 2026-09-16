@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { PDFDocument, degrees } from 'pdf-lib';
 import { loadSource } from './load-source.mjs';
 const { readPdf, parsePageSelection, mergePdfs, splitPdf, organizePdf } = loadSource('src/utils/pdfOperations.ts');
@@ -26,4 +27,10 @@ assert.deepEqual(organized.getPages().map(page => page.getWidth()), [510, 500, 5
 assert.deepEqual(organized.getPages().map(page => page.getRotation().angle), [90, 180, 0]);
 await assert.rejects(() => mergePdfs([first]));
 await assert.rejects(() => organizePdf(first, []));
-console.log('PASS: PDF merge, split, page range validation, reorder, rotation and blank-page output.');
+const guideMerged = await PDFDocument.load(fs.readFileSync('public/guide-samples/pdf-merge-result.pdf'));
+assert.deepEqual(guideMerged.getPages().map(page => page.getWidth()), [500, 510, 520]);
+assert.equal(guideMerged.getPage(0).getRotation().angle, 90);
+const guideOrganized = await PDFDocument.load(fs.readFileSync('public/guide-samples/pdf-page-organized.pdf'));
+assert.deepEqual(guideOrganized.getPages().map(page => page.getWidth()), [510, 500, 595.28]);
+assert.deepEqual(guideOrganized.getPages().map(page => page.getRotation().angle), [90, 180, 0]);
+console.log('PASS: PDF merge, split, page range validation, reorder, rotation, blank-page output and downloadable guide samples.');

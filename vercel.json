@@ -1,6 +1,22 @@
 {
   "rewrites": [
     {
+      "source": "/guides",
+      "destination": "/guides.html"
+    },
+    {
+      "source": "/guides/pdf-merge-browser-test",
+      "destination": "/guides/pdf-merge-browser-test.html"
+    },
+    {
+      "source": "/guides/pdf-page-extraction-test",
+      "destination": "/guides/pdf-page-extraction-test.html"
+    },
+    {
+      "source": "/guides/image-formats-to-pdf",
+      "destination": "/guides/image-formats-to-pdf.html"
+    },
+    {
       "source": "/unit-converter",
       "has": [
         {
@@ -533,27 +549,57 @@
     },
     {
       "source": "/about",
-      "has": [{ "type": "query", "key": "lang", "value": "ko" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ko"
+        }
+      ],
       "destination": "/about/ko.html"
     },
     {
       "source": "/about",
-      "has": [{ "type": "query", "key": "lang", "value": "en" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
       "destination": "/about/en.html"
     },
     {
       "source": "/about",
-      "has": [{ "type": "query", "key": "lang", "value": "ja" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ja"
+        }
+      ],
       "destination": "/about/ja.html"
     },
     {
       "source": "/about",
-      "has": [{ "type": "query", "key": "lang", "value": "zh" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "zh"
+        }
+      ],
       "destination": "/about/zh.html"
     },
     {
       "source": "/about",
-      "has": [{ "type": "query", "key": "lang", "value": "es" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "es"
+        }
+      ],
       "destination": "/about/es.html"
     },
     {
@@ -1034,6 +1080,26 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides.html",
+      "destination": "/guides",
+      "permanent": true
+    },
+    {
+      "source": "/guides/pdf-merge-browser-test.html",
+      "destination": "/guides/pdf-merge-browser-test",
+      "permanent": true
+    },
+    {
+      "source": "/guides/pdf-page-extraction-test.html",
+      "destination": "/guides/pdf-page-extraction-test",
+      "permanent": true
+    },
+    {
+      "source": "/guides/image-formats-to-pdf.html",
+      "destination": "/guides/image-formats-to-pdf",
+      "permanent": true
+    },
     {
       "source": "/home/ko.html",
       "destination": "/",

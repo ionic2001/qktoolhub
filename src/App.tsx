@@ -20,6 +20,7 @@ const WorldClockPage = lazy(() => import('./pages/WorldClock'));
 const CalendarPage = lazy(() => import('./pages/CalendarPage'));
 const LegalPage = lazy(() => import('./pages/LegalPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
+const GuidesPage = lazy(() => import('./pages/GuidesPage'));
 export const App: React.FC = () => {
   return (
     <ErrorBoundary>
@@ -34,6 +35,7 @@ export const App: React.FC = () => {
             <Route path="/terms" element={<Suspense fallback={<RouteFallback />}><LegalPage type="terms" /></Suspense>} />
             <Route path="/privacy" element={<Suspense fallback={<RouteFallback />}><LegalPage type="privacy" /></Suspense>} />
             <Route path="/about" element={<Suspense fallback={<RouteFallback />}><AboutPage /></Suspense>} />
+            <Route path="/guides/*" element={<Suspense fallback={<RouteFallback />}><GuidesPage /></Suspense>} />
             <Route path="/unit-converter" element={<Suspense fallback={<RouteFallback />}><UnitConverter /></Suspense>} />
             <Route path="/image-editor" element={<Suspense fallback={<RouteFallback />}><ImageEditor /></Suspense>} />
             <Route path="/world-clock" element={<Suspense fallback={<RouteFallback />}><WorldClockPage /></Suspense>} />

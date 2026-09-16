@@ -1,4 +1,5 @@
-const routes = ['/unit-converter', '/', '/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', '/world-clock', '/calendar', '/image-editor', '/about', '/terms', '/privacy'];
+import { guidePaths } from '../guides/guideContent';
+const routes = ['/unit-converter', '/', '/word-counter', '/currency-converter', '/pixel-art', '/pdf-converter', '/image-to-pdf', '/pdf-tools', '/pdf-merge', '/pdf-split', '/pdf-organize', '/pdf-to-png', '/world-clock', '/calendar', '/image-editor', '/about', '/terms', '/privacy', ...guidePaths];
 export function analyticsAllowed(host: string, path: string) {
   return ['qktoolhub.com', 'www.qktoolhub.com'].includes(host) && routes.includes(path);
 }
