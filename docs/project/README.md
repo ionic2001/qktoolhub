@@ -8,6 +8,7 @@
 2. [PDF_TOOLS_PRODUCT_PLAN_2026-09-16.md](PDF_TOOLS_PRODUCT_PLAN_2026-09-16.md) — PDF 전용 기능의 원 기획, 실제 출시 범위, 홈·정책 변경과 후속 결정.
 3. [02_RELEASE_AND_DECISIONS.md](02_RELEASE_AND_DECISIONS.md) — 역사적 배포 이력과 2026-09-16 결정·검증 범위.
 4. [03_DEVELOPMENT_HANDOFF.md](03_DEVELOPMENT_HANDOFF.md) — 두 컴퓨터의 작업 기준, 현재 인수인계와 주요 코드 위치.
+5. [04_CURRENT_STATUS_NOTE.md](04_CURRENT_STATUS_NOTE.md) — 최신 변경, Search Console 색인 상태, 다음 확인 시점을 한눈에 보는 작업 노트.
 
 이 문서 묶음은 `ionic2001/qktoolhub`의 `docs/project`에서 공동 관리한다. PDF 도구 6개와 한국어 원본 가이드 16개가 출시 범위이며, 기존 `/pdf-converter`는 별도 URL로 유지한다. 다국어 90개와 가이드 목록·상세 17개를 합쳐 sitemap은 107개 URL이다. 디오라마 스티커북은 독립 저장소 `ionic2001/diorama-stickerbook`에서 관리한다. Search Console 계정의 장기 색인·유입 수치와 전체 모바일·복잡한 PDF 검수는 아직 완료됐다고 기록하지 않는다.
 
