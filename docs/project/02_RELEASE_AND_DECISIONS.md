@@ -95,3 +95,5 @@ GitHub main 반영이 기존 Vercel 운영 배포를 유발한다. 앞으로 기
 - `이미지 도트 변환`은 1회 노출·0클릭이었다. 코드 `c6fd8db`는 `/pixel-art`의 한국어 제목·H1·설명을 해당 의도에 맞추고 JPG·PNG·WebP, 2~64px, 색상 팔레트, 컬러·흑백, 최대 20MB·4천만 픽셀, 1,600px 축소와 PNG 저장을 명시한다. 디더링과 손으로 그린 스프라이트 생성은 실제 기능이 아니므로 지원 범위에서 제외했다.
 
 - 2026-09-16 Search Console에서 `/pixel-art`는 이미 Google에 색인된 상태였고 HTTPS 및 Breadcrumbs 1개가 정상으로 표시됐다. 배포 후 실시간 URL 검사도 `URL is available to Google`과 `Page can be indexed`를 확인했으며, 재색인을 요청해 우선 크롤링 대기열 등록 완료 메시지를 확인했다. 사이트맵은 성공 상태이고 발견 URL 수는 `www` 105개·비-www 90개로 유지됐다.
+
+- 같은 날 `/currency-converter`도 Google 색인 완료, HTTPS 정상, Breadcrumbs 1개 유효 상태였다. 새 제목·지원 범위 설명 배포 후 실시간 검사에서 Google 접근과 색인 가능 상태를 확인하고 재색인을 요청해 우선 크롤링 대기열 등록을 완료했다.
