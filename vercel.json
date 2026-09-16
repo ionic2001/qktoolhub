@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/guides/online-document-submission-checklist",
+      "destination": "/guides/online-document-submission-checklist.html"
+    },
+    {
       "source": "/guides/currency-cross-rate-test",
       "destination": "/guides/currency-cross-rate-test.html"
     },
@@ -1116,6 +1120,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides/online-document-submission-checklist.html",
+      "destination": "/guides/online-document-submission-checklist",
+      "permanent": true
+    },
     {
       "source": "/guides/business-days-test.html",
       "destination": "/guides/business-days-test",

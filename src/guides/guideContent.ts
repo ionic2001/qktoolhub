@@ -218,26 +218,47 @@ export const guides: Guide[] = [
     ],
     relatedTools: [{ path: '/calendar', label: '달력에서 영업일 계산하기' }],
   },
+  {
+    path: '/guides/online-document-submission-checklist',
+    title: '온라인 서류 제출 전 7단계 점검: 글자수·사진·PDF 한 번에 준비하기',
+    description: '자기소개서 글자수 확인부터 사진 크기 조정, 이미지 PDF 변환, 병합·페이지 정리와 최종 개인정보 점검까지 실제 도구 순서로 안내합니다.',
+    category: '서류 제출 실전',
+    summary: '온라인 지원서나 행정 서류를 준비할 때는 문장만 완성한다고 끝나지 않습니다. 글자수·바이트 기준, 사진 픽셀과 비율, 허용 파일 형식, PDF 페이지 순서와 최종 개인정보를 함께 확인해야 합니다. 이 가이드는 QK Tool Hub의 다섯 도구를 한 작업 흐름으로 연결합니다.',
+    published: '2026-09-16', updated: '2026-09-16', readingTime: '약 10분',
+    method: '가상의 제출 조건을 공백 포함 1,000자, 사진 JPG 600×800px, 최종 PDF 한 파일로 정했습니다. 운영 도구의 실제 글자수·이미지 비율·이미지→PDF·병합·페이지 정리 동작과 한도를 대조해 단계별 확인표를 만들었습니다. 특정 기관의 규정을 대신하지 않으므로 실제 제출 화면의 조건을 먼저 기록하도록 구성했습니다.',
+    sections: [
+      { title: '1단계: 제출 조건을 한 줄씩 옮겨 적기', paragraphs: ['작업을 시작하기 전에 제출 화면에서 글자수 기준, 사진 크기, 허용 확장자, 파일당 용량, PDF 페이지 수와 파일명을 따로 적습니다. “1,000자”가 공백 포함인지, “2MB”가 사진 한 장인지 전체 첨부인지처럼 모호한 표현은 제출기관 안내에서 다시 확인합니다.', '이 단계가 없으면 사진과 PDF를 모두 만든 뒤 크기나 형식이 맞지 않아 다시 작업하게 됩니다. 아래 표처럼 요구사항과 확인 방법을 나란히 두면 어떤 도구를 먼저 써야 하는지 정할 수 있습니다.'], table: { caption: '가상 제출 조건과 확인 도구', headers: ['요구사항', '예시 조건', '확인 방법', '사용 도구'], rows: [['자기소개서', '공백 포함 1,000자', '공백 포함·제외와 바이트를 함께 기록', '글자수 세기'], ['증명사진', 'JPG 600×800px·2MB 이하', '비율·출력 크기·형식 확인', '이미지 편집'], ['스캔 첨부', 'JPG·PNG 여러 장', '순서와 회전 확인 후 PDF 생성', '이미지→PDF'], ['기존 문서', 'PDF 2개를 하나로 제출', '파일 순서와 전체 페이지 수 확인', 'PDF 병합'], ['최종 파일', 'PDF 한 개', '불필요한 페이지·방향·개인정보 확인', 'PDF 페이지 정리']] } },
+      { title: '2단계: 자기소개서의 글자수와 바이트 확인', paragraphs: ['글자수 세기 화면에 최종 문장을 붙여 넣고 공백 포함, 공백 제외, UTF-8 바이트를 함께 확인합니다. 현재 도구의 글자수는 JavaScript UTF-16 코드 단위를 사용하므로 이모지는 화면상 한 글자와 다른 수로 계산될 수 있습니다. EUC-KR은 ASCII 1바이트, 비ASCII 코드 단위 2바이트의 추정값입니다.', '지원서 편집기 자체가 숫자를 표시한다면 그 값을 마지막 기준으로 사용합니다. QK Tool Hub의 수치는 초안 길이를 조정하고 인코딩 차이를 미리 발견하는 용도입니다. 맞춤법, 문항 적합성이나 내용의 사실 여부를 평가하지는 않습니다.'], bullets: ['최종 제출 문항의 안내가 공백 포함인지 제외인지 확인합니다.', '줄바꿈과 이모지가 들어갔다면 제출 화면에 붙여 넣어 다시 비교합니다.', '개인정보가 포함된 문장은 공용 기기의 임시 저장과 클립보드도 확인합니다.'] },
+      { title: '3단계: 사진을 요구 픽셀과 비율로 만들기', paragraphs: ['가상 조건 600×800px은 3:4 비율입니다. 원본이 1200×800px인 3:2 사진이라면 너비와 높이만 강제로 바꾸면 얼굴이 눌려 보입니다. 이미지 편집기에서 목표 캔버스를 600×800으로 설정한 뒤 사진의 비율을 유지하고 `채우기`로 잘리는 영역을 이동하거나 `맞춤`으로 남는 여백을 확인합니다.', 'PNG는 투명 배경을 유지할 수 있지만 제출 조건이 JPG라면 JPG로 저장해야 합니다. JPG의 투명 영역에는 선택한 배경색이 적용됩니다. 작은 원본을 크게 늘려도 세부 정보가 복원되지는 않으므로 가능하면 충분한 해상도의 원본을 사용합니다.'], table: { caption: '사진 처리 선택표', headers: ['상황', '권장 조작', '확인할 결과'], rows: [['원본과 목표 비율이 같음', '비율 잠금 후 축소', '가로·세로 픽셀'], ['원본이 목표보다 가로로 넓음', '목표 캔버스에서 채우기·위치 이동', '얼굴·문서 가장자리 잘림'], ['여백을 남겨도 됨', '맞춤 사용', '배경색과 여백 크기'], ['투명 배경이 필요함', 'PNG 저장', '제출처가 PNG를 허용하는지'], ['JPG 제출', '배경색 지정 후 JPG 저장', '투명 영역과 압축 화질']] } },
+      { title: '4단계: 스캔 이미지를 PDF로 변환하기', paragraphs: ['이미지→PDF 도구는 JPG·PNG·WebP를 최대 20장까지 받아 선택 순서대로 한 PDF를 만듭니다. 장당 최대 20MB, 전체 100MB이며 긴 변이 2,400px을 넘는 이미지는 축소합니다. 내부에서는 흰 배경의 JPEG 품질 0.92로 정규화하므로 투명 PNG의 배경과 무손실 특성은 그대로 유지되지 않습니다.', '신분증이나 증명서처럼 작은 글자가 있는 이미지는 PDF를 내려받은 뒤 100% 이상으로 확대해 글자 번짐과 잘림을 확인합니다. 이미지 파일 이름만 보고 순서를 판단하지 말고 미리보기와 결과 PDF의 첫·마지막 페이지를 직접 확인합니다.'] },
+      { title: '5단계: 기존 PDF와 합치고 필요한 페이지만 남기기', paragraphs: ['여러 PDF 전체를 이어 붙일 때는 PDF 병합을 사용합니다. 한 PDF에서 일부 페이지만 새 PDF 한 개로 만들 때는 페이지 추출, 페이지 순서·회전·삭제를 바꿀 때는 페이지 정리를 사용합니다. 현재 페이지 추출은 페이지마다 개별 파일이나 ZIP을 만드는 기능이 아닙니다.', '병합은 최대 10파일, 파일당 50MB, 전체 100MB, 결과 300페이지 범위입니다. 서명·양식·책갈피가 있는 문서는 새 PDF에서 그 구조가 유지된다고 보장하지 않으므로 원본을 보관하고 제출용 결과를 다시 엽니다.'], table: { caption: 'PDF 작업 선택', headers: ['해야 할 일', '도구', '결과'], rows: [['여러 PDF 전체 연결', 'PDF 병합', '전체 페이지가 들어간 PDF 한 개'], ['필요한 페이지만 선택', '페이지 추출', '선택 페이지가 들어간 PDF 한 개'], ['순서 변경·회전·삭제', '페이지 정리', '변경된 PDF 한 개'], ['한 페이지만 이미지로 제출', 'PDF→PNG', '선택 페이지 PNG 한 개']] } },
+      { title: '6단계: 최종 파일을 제출 화면 밖에서 검수하기', paragraphs: ['제출 버튼을 누르기 전에 다운로드한 최종 파일을 새 탭이나 별도 PDF 뷰어로 엽니다. 파일 이름, 용량, 전체 페이지 수, 첫 페이지와 마지막 페이지, 사진 방향, 글자 선명도와 빈 페이지를 확인합니다.', 'QK Tool Hub의 파일 작업은 브라우저에서 처리되지만 이미 내려받은 결과는 자동으로 삭제되지 않습니다. 공용 기기에서는 다운로드 폴더와 최근 파일 목록을 확인하고, 문의할 때 원본 문서를 보내지 않아도 재현 단계와 오류 문구로 설명할 수 있습니다.'] },
+      { title: '7단계: 제출 직전 체크리스트', bullets: ['제출기관의 최신 요구사항을 다시 열어 조건이 바뀌지 않았는지 확인했습니다.', '자기소개서를 실제 입력 칸에 붙여 넣고 그 화면의 글자수를 확인했습니다.', '사진의 가로·세로 픽셀, 비율, 확장자와 파일 크기를 확인했습니다.', 'PDF 파일명에 불필요한 주민번호·생년월일·내부 메모가 없는지 확인했습니다.', 'PDF의 페이지 수·순서·회전·빈 페이지와 글자 선명도를 확인했습니다.', '전자서명·양식이 필요한 문서는 결과에서 실제로 작동하는지 확인했습니다.', '원본과 최종 제출본을 구분해 보관하고 제출 완료 화면이나 접수번호를 확인했습니다.'] },
+      { title: '이 가이드가 대신할 수 없는 판단', paragraphs: ['기관마다 글자수, 파일 형식, 사진 규격, PDF 보안과 서명 요구가 다릅니다. 이 가이드의 1,000자·600×800px 조건은 작업 순서를 설명하기 위한 예시이며 실제 지원서나 행정기관 규정을 의미하지 않습니다.', '법적 효력이 있는 전자서명, 암호화 PDF, OCR, 원문 텍스트 수정과 파일 압축은 현재 제공하지 않습니다. 중요한 제출은 기관 안내와 담당자 확인을 우선합니다.'] },
+    ],
+    relatedTools: [{ path: '/word-counter', label: '1. 글자수·바이트 확인' }, { path: '/image-editor', label: '2. 사진 크기와 비율 조정' }, { path: '/image-to-pdf', label: '3. 스캔 이미지를 PDF로 변환' }, { path: '/pdf-merge', label: '4. PDF 파일 병합' }, { path: '/pdf-organize', label: '5. 페이지 순서·회전 점검' }],
+    downloads: [{ href: '/guide-samples/online-document-submission-checklist.txt', label: '온라인 서류 제출 체크리스트', detail: '개인정보 없이 사용할 수 있는 UTF-8 텍스트 양식' }],
+  },
 ];
 
 export const guidePaths = [guideIndexPath, ...guides.map(guide => guide.path)];
 export function guideByPath(path: string) { return guides.find(guide => guide.path === path); }
 export const guideLinksForTool: Record<string, string[]> = {
-  '/image-to-pdf': ['/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
-  '/pdf-tools': ['/guides/choose-pdf-tool', '/guides/pdf-browser-privacy'],
-  '/pdf-merge': ['/guides/pdf-merge-browser-test', '/guides/choose-pdf-tool'],
+  '/image-to-pdf': ['/guides/online-document-submission-checklist', '/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
+  '/pdf-tools': ['/guides/online-document-submission-checklist', '/guides/choose-pdf-tool', '/guides/pdf-browser-privacy'],
+  '/pdf-merge': ['/guides/online-document-submission-checklist', '/guides/pdf-merge-browser-test', '/guides/choose-pdf-tool'],
   '/pdf-split': ['/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
-  '/pdf-organize': ['/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
+  '/pdf-organize': ['/guides/online-document-submission-checklist', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
   '/pdf-to-png': ['/guides/pdf-to-png-dpi-test', '/guides/pdf-browser-privacy'],
   '/pdf-converter': ['/guides/image-formats-to-pdf', '/guides/pdf-to-png-dpi-test'],
-  '/word-counter': ['/guides/korean-text-byte-test'],
+  '/word-counter': ['/guides/online-document-submission-checklist', '/guides/korean-text-byte-test'],
   '/unit-converter': ['/guides/mb-vs-mib-test'],
-  '/image-editor': ['/guides/image-resize-aspect-ratio-test'],
+  '/image-editor': ['/guides/online-document-submission-checklist', '/guides/image-resize-aspect-ratio-test'],
   '/currency-converter': ['/guides/currency-cross-rate-test'],
   '/world-clock': ['/guides/world-clock-dst-test'],
   '/calendar': ['/guides/business-days-test'],
 };
 export const guideIndexMeta = {
   title: '도구 활용 가이드와 직접 검증 기록',
-  description: 'QK Tool Hub 도구의 실제 처리 방식과 PDF·텍스트·단위·이미지·환율·세계시간·달력 계산 결과를 직접 시험한 기록으로 확인하세요.',
+  description: '온라인 서류 제출처럼 여러 도구를 연결하는 실전 절차와 PDF·텍스트·단위·이미지·환율·세계시간·달력의 직접 검증 결과를 확인하세요.',
 };

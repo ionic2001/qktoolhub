@@ -90,4 +90,7 @@ for(const [toolPath,linkedGuides] of Object.entries(guideLinksForTool)) {
  for(const guidePath of linkedGuides) assert.ok(html.includes(`href="${guidePath}"`),`${toolPath} links ${guidePath}`);
 }
 for(const sample of ['pdf-merge-input-a.pdf','pdf-merge-input-b.pdf','pdf-merge-result.pdf','pdf-page-source.pdf','pdf-page-organized.pdf']) assert.ok(fs.statSync(`dist/guide-samples/${sample}`).size>500,`${sample} downloadable sample`);
+const submissionChecklist=fs.readFileSync('dist/guide-samples/online-document-submission-checklist.txt','utf8');
+assert.ok(submissionChecklist.length>300,'submission checklist has meaningful downloadable content');
+assert.ok(submissionChecklist.includes('온라인 서류 제출 전 7단계 체크리스트'),'submission checklist title');
 console.log(`PASS: ${pagePaths.length*languages.length+guidePaths.length} pages, metadata, canonicals, language alternates, schemas, crawlable links, sitemap, guide evidence, 404 config and share image.`);
