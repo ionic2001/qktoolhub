@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/guides/jpg-images-to-one-pdf",
+      "destination": "/guides/jpg-images-to-one-pdf.html"
+    },
+    {
       "source": "/guides/pdf-submission-error-troubleshooting",
       "destination": "/guides/pdf-submission-error-troubleshooting.html"
     },
@@ -1128,6 +1132,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides/jpg-images-to-one-pdf.html",
+      "destination": "/guides/jpg-images-to-one-pdf",
+      "permanent": true
+    },
     {
       "source": "/guides/pdf-submission-error-troubleshooting.html",
       "destination": "/guides/pdf-submission-error-troubleshooting",

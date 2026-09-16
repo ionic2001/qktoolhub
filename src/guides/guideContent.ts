@@ -282,26 +282,47 @@ export const guides: Guide[] = [
     relatedTools: [{ path: '/pdf-tools', label: '증상에 맞는 PDF 도구 선택' }, { path: '/pdf-merge', label: '여러 PDF 병합' }, { path: '/pdf-split', label: '필요한 페이지 추출' }, { path: '/pdf-organize', label: '페이지 순서·회전 수정' }, { path: '/image-to-pdf', label: '스캔 이미지를 PDF로 변환' }],
     downloads: [{ href: '/guide-samples/pdf-submission-error-checklist.txt', label: 'PDF 제출 오류 진단표', detail: '실패 단계·파일 조건·페이지·가독성을 기록하는 UTF-8 텍스트 양식' }],
   },
+  {
+    path: '/guides/jpg-images-to-one-pdf',
+    title: 'JPG 사진 여러 장을 PDF 한 파일로 만드는 방법',
+    description: 'JPG·JPEG 사진 여러 장의 순서를 정하고 A4·방향·여백을 선택해 PDF 한 파일로 저장한 뒤 페이지와 화질을 확인하는 방법입니다.',
+    category: 'JPG PDF 변환 실전',
+    summary: '휴대전화 사진이나 스캔 JPG 여러 장을 한 PDF로 만들 때는 파일을 올리는 것보다 페이지 순서, 용지 방향, 여백과 결과 화질을 확인하는 과정이 중요합니다. 이미지 파일을 PDF 페이지로 만드는 작업과 이미 존재하는 PDF 파일을 합치는 작업도 구분해야 합니다.',
+    published: '2026-09-16', updated: '2026-09-16', readingTime: '약 8분',
+    method: 'JPG 사진 6장을 제출 순서대로 PDF 한 파일에 넣는 상황을 기준으로 QK Tool Hub의 실제 이미지 입력 검증, 목록 순서 변경, 용지·방향·여백 설정과 PDF 생성 경로를 확인했습니다. 파일 수·용량·픽셀 축소·JPEG 정규화 한도는 운영 코드와 대조했습니다.',
+    sections: [
+      { title: '이미지→PDF와 PDF 병합 중 무엇을 써야 하나', paragraphs: ['입력이 JPG·JPEG·PNG·WebP 사진이면 이미지→PDF를 사용합니다. 사진 한 장이 PDF 한 페이지가 되며 화면 목록의 순서대로 PDF 한 파일이 만들어집니다. 이미 PDF인 파일 두 개 이상을 이어 붙이는 경우에는 PDF 병합을 사용합니다.', '사진의 확장자만 `.pdf`로 바꾸면 PDF가 되지 않습니다. 반대로 이미 PDF인 문서를 다시 이미지로 바꿔 이미지→PDF에 넣으면 검색 가능한 글자나 벡터 선이 이미지로 변할 수 있으므로 필요한 작업을 먼저 구분합니다.'], table: { caption: '입력 파일에 따른 도구 선택', headers: ['가지고 있는 파일', '하려는 작업', '사용할 도구', '결과'], rows: [['JPG·JPEG 사진 여러 장', '사진마다 한 페이지 생성', '이미지→PDF', '사진 순서의 PDF 한 파일'], ['PNG·WebP 이미지', '이미지를 PDF 페이지로 배치', '이미지→PDF', '이미지 순서의 PDF 한 파일'], ['PDF 파일 여러 개', '기존 페이지를 이어 붙임', 'PDF 병합', '모든 페이지가 연결된 PDF'], ['PDF 한 파일', '일부 페이지만 남김', '페이지 추출', '선택 페이지의 PDF 한 파일']] } },
+      { title: '1단계: JPG 사진 6장을 먼저 점검', paragraphs: ['예시에서는 표지 1장, 본문 4장, 서명 페이지 1장으로 총 6장을 준비합니다. 각 사진을 열어 방향과 잘림을 확인하고, 파일 이름을 `01-cover`, `02-page`처럼 정리하면 누락을 찾기 쉽습니다. 다만 최종 PDF의 순서는 파일명이 아니라 도구 화면의 목록 순서로 결정됩니다.', 'JPG와 JPEG는 같은 계열의 형식이며 둘 다 입력할 수 있습니다. HEIC·GIF·SVG는 현재 지원하지 않으므로 확장자만 바꾸지 말고 이미지 편집기나 원본 앱에서 JPG·PNG·WebP로 실제 변환해야 합니다.'], bullets: ['여섯 사진 모두 정상적으로 열립니다.', '문서 방향과 가장자리가 맞습니다.', '같은 사진이 중복되지 않았습니다.', '빛 반사·손가락·불필요한 개인정보가 보이지 않습니다.', '장당 20MB와 전체 100MB 한도 안에 있습니다.'] },
+      { title: '2단계: 사진을 추가하고 화면 번호로 순서 정하기', paragraphs: ['이미지→PDF 화면에서 여러 사진을 한 번에 선택하거나 나누어 추가할 수 있습니다. 선택한 사진은 목록에 번호와 미리보기, 픽셀 크기로 표시됩니다. 위·아래 버튼으로 표지부터 서명 페이지까지 순서를 맞춥니다.', '최대 20장까지 선택할 수 있으므로 21장 이상이면 제출 조건에 따라 문서를 나누거나 다른 제작 방법을 검토합니다. 목록에서 사진을 삭제하면 해당 사진은 결과 PDF에 들어가지 않습니다. PDF 만들기 전 예상 페이지 수 6과 화면의 이미지 수 6이 같은지 확인합니다.'] },
+      { title: '3단계: A4·원본 크기, 세로·가로와 여백 선택', paragraphs: ['일반적인 서류 제출이라면 A4 세로부터 비교합니다. 가로 표나 영수증 사진처럼 폭이 넓으면 가로 방향이 더 읽기 쉬울 수 있습니다. 이미지 비율은 유지되므로 원본과 용지 비율이 다르면 빈 여백이 생길 수 있습니다.', '`원본 크기`는 이미지 픽셀을 96ppi 기준으로 PDF 포인트에 환산하고 선택한 여백을 더합니다. 사진마다 크기가 다르면 PDF 페이지 크기도 달라질 수 있으므로 동일한 문서 형태가 필요하면 A4를 사용합니다.'], table: { caption: '페이지 설정 선택 기준', headers: ['설정', '적합한 상황', '확인할 점'], rows: [['A4 세로', '일반 문서·지원 서류', '위아래 방향과 글자 크기'], ['A4 가로', '가로 표·넓은 영수증', '빈 여백과 회전 방향'], ['원본 크기', '이미지 비율과 크기를 페이지에 반영', '페이지마다 크기가 달라질 수 있음'], ['여백 작게', '페이지를 크게 사용', '문서 가장자리 잘림 인상'], ['여백 크게', '인쇄·제본 여유 필요', '본문이 너무 작아지지 않는지']] } },
+      { title: '4단계: 실제 변환 과정에서 달라지는 부분', paragraphs: ['브라우저가 JPG·PNG·WebP를 읽은 뒤 긴 변이 2,400px을 넘으면 비율을 유지하며 축소합니다. 이어서 흰색 캔버스에 이미지를 그리고 JPEG 품질 0.92로 정규화해 PDF 페이지에 배치합니다.', '이미 JPG인 원본도 이 과정에서 다시 JPEG로 생성되므로 파일 크기와 미세한 화질이 달라질 수 있습니다. 투명 PNG는 흰색 배경이 됩니다. 작은 글자, 도장과 얇은 선이 중요하면 생성된 PDF를 100~200%로 확대해 확인합니다.'], table: { caption: '현재 변환 한도와 결과', headers: ['항목', '현재 기준', '사용자가 확인할 것'], rows: [['지원 입력', 'JPG·JPEG·PNG·WebP', '확장자가 아닌 실제 파일 형식'], ['사진 수', '최대 20장', '예상 페이지 수와 목록 수'], ['파일 크기', '장당 20MB·전체 100MB', '추가 단계에서 오류 여부'], ['큰 이미지', '긴 변 2,400px로 축소', '작은 글자 선명도'], ['내부 이미지', '흰 배경 JPEG 품질 0.92', '투명 영역·도장·가는 선']] } },
+      { title: '5단계: PDF를 만들고 다운로드 결과 확인', paragraphs: ['PDF 만들기를 누르면 브라우저에서 결과 파일을 생성합니다. 미리보기 링크이나 다운로드한 파일을 열어 전체 페이지 수, 첫 페이지, 마지막 페이지와 사진 사이의 경계를 확인합니다. 화면 목록이 6장이었다면 결과도 6페이지여야 합니다.', '파일명은 기본적으로 `qktoolhub-images.pdf`입니다. 제출처의 파일명 규칙이 있다면 다운로드 후 바꾸되 확장자 `.pdf`는 유지합니다. 결과 파일은 자동으로 서버에 저장되는 것이 아니므로 페이지를 닫기 전에 다운로드해야 합니다.'] },
+      { title: '자주 생기는 문제', table: { caption: 'JPG PDF 변환 문제 해결', headers: ['증상', '가능한 원인', '해결 순서'], rows: [['사진 순서가 다름', '선택 순서와 파일명 순서를 혼동', '화면 번호를 보고 위·아래 버튼으로 재배치'], ['사진이 옆으로 누움', '원본 방향이 잘못됨', '이미지 편집기에서 회전 후 다시 추가'], ['글자가 흐림', '원본 촬영 품질·2,400px 축소·재인코딩', '원본 확인 후 필요하면 다시 촬영'], ['PNG 배경이 흰색', 'JPEG 정규화 과정', '투명 배경 유지가 필요하면 현재 도구 범위 재검토'], ['파일이 추가되지 않음', '지원 형식·20MB·전체 100MB 초과', '형식과 크기를 확인'], ['제출처가 용량을 거부', '제출 한도가 더 작음', '현재 도구는 기존 PDF 압축을 제공하지 않으므로 별도 절차 검토']] } },
+      { title: '최종 체크리스트', bullets: ['입력 파일이 실제 JPG·JPEG·PNG·WebP 형식입니다.', '화면의 사진 수와 예상 PDF 페이지 수가 같습니다.', '표지·본문·별지·서명 페이지 순서를 번호로 확인했습니다.', 'A4 또는 원본 크기, 세로·가로 방향과 여백을 비교했습니다.', '다운로드한 PDF에서 첫·마지막 페이지와 작은 글자를 확인했습니다.', '제출처의 파일 크기·페이지·파일명 조건과 결과가 일치합니다.'] },
+    ],
+    relatedTools: [{ path: '/image-to-pdf', label: 'JPG 사진을 PDF 한 파일로 변환' }, { path: '/image-editor', label: '사진 방향·크기 먼저 편집' }, { path: '/pdf-merge', label: '이미 PDF인 파일끼리 병합' }],
+    downloads: [{ href: '/guide-samples/jpg-to-pdf-planning-checklist.txt', label: 'JPG→PDF 순서·설정 체크리스트', detail: '사진 번호·용지·방향·여백·결과 검수를 기록하는 UTF-8 양식' }],
+  },
 ];
 
 export const guidePaths = [guideIndexPath, ...guides.map(guide => guide.path)];
 export function guideByPath(path: string) { return guides.find(guide => guide.path === path); }
 export const guideLinksForTool: Record<string, string[]> = {
-  '/image-to-pdf': ['/guides/pdf-submission-error-troubleshooting', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
+  '/image-to-pdf': ['/guides/jpg-images-to-one-pdf', '/guides/pdf-submission-error-troubleshooting', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-formats-to-pdf', '/guides/pdf-browser-privacy'],
   '/pdf-tools': ['/guides/pdf-submission-error-troubleshooting', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/choose-pdf-tool', '/guides/pdf-browser-privacy'],
   '/pdf-merge': ['/guides/pdf-submission-error-troubleshooting', '/guides/online-document-submission-checklist', '/guides/pdf-merge-browser-test', '/guides/choose-pdf-tool'],
   '/pdf-split': ['/guides/pdf-submission-error-troubleshooting', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
   '/pdf-organize': ['/guides/pdf-submission-error-troubleshooting', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/pdf-page-extraction-test', '/guides/choose-pdf-tool'],
   '/pdf-to-png': ['/guides/pdf-submission-error-troubleshooting', '/guides/pdf-to-png-dpi-test', '/guides/pdf-browser-privacy'],
-  '/pdf-converter': ['/guides/image-formats-to-pdf', '/guides/pdf-to-png-dpi-test'],
+  '/pdf-converter': ['/guides/jpg-images-to-one-pdf', '/guides/image-formats-to-pdf', '/guides/pdf-to-png-dpi-test'],
   '/word-counter': ['/guides/online-document-submission-checklist', '/guides/korean-text-byte-test'],
   '/unit-converter': ['/guides/mb-vs-mib-test'],
-  '/image-editor': ['/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-resize-aspect-ratio-test'],
+  '/image-editor': ['/guides/jpg-images-to-one-pdf', '/guides/scanned-documents-to-pdf-workflow', '/guides/online-document-submission-checklist', '/guides/image-resize-aspect-ratio-test'],
   '/currency-converter': ['/guides/currency-cross-rate-test'],
   '/world-clock': ['/guides/world-clock-dst-test'],
   '/calendar': ['/guides/business-days-test'],
 };
 export const guideIndexMeta = {
   title: '도구 활용 가이드와 직접 검증 기록',
-  description: '온라인 서류 제출·스캔 PDF 제작·PDF 오류 해결처럼 여러 도구를 연결하는 실전 절차와 텍스트·단위·이미지·환율·시간·달력의 검증 결과를 확인하세요.',
+  description: 'JPG PDF 변환, 온라인 서류 제출, 스캔 PDF 제작과 오류 해결처럼 여러 도구를 연결하는 실전 절차와 계산 검증 결과를 확인하세요.',
 };

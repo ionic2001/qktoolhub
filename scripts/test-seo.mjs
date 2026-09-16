@@ -99,4 +99,7 @@ assert.ok(scanChecklist.includes('스캔 문서 제출용 PDF 품질 체크리�
 const errorChecklist=fs.readFileSync('dist/guide-samples/pdf-submission-error-checklist.txt','utf8');
 assert.ok(errorChecklist.length>500,'PDF submission error checklist has meaningful downloadable content');
 assert.ok(errorChecklist.includes('PDF 제출 오류 진단표'),'PDF submission error checklist title');
+const jpgChecklist=fs.readFileSync('dist/guide-samples/jpg-to-pdf-planning-checklist.txt','utf8');
+assert.ok(jpgChecklist.length>400,'JPG to PDF checklist has meaningful downloadable content');
+assert.ok(jpgChecklist.includes('JPG→PDF 순서·설정 체크리스트'),'JPG to PDF checklist title');
 console.log(`PASS: ${pagePaths.length*languages.length+guidePaths.length} pages, metadata, canonicals, language alternates, schemas, crawlable links, sitemap, guide evidence, 404 config and share image.`);

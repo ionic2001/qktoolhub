@@ -5,7 +5,7 @@ export type PdfPath = typeof pdfPaths[number];
 type Copy = { name: string; description: string; how: string; note: string };
 export const pdfWork: Record<Language, Record<PdfPath, Copy>> = {
   ko: {
-    '/image-to-pdf': { name: '이미지 PDF 변환기 · JPG·PNG를 PDF로', description: 'JPG·PNG·WebP 이미지를 원하는 순서로 배치하고 용지 크기와 여백을 설정해 하나의 PDF로 저장하세요. 파일은 브라우저에서 처리됩니다.', how: '이미지를 추가하고 순서·용지·여백을 설정한 뒤 PDF를 생성해 다운로드하세요.', note: '파일당 20MB, 최대 20장·총 100MB입니다. 큰 이미지는 긴 변 2,400px로 축소됩니다.' },
+    '/image-to-pdf': { name: 'JPG PDF 변환 · 사진 여러 장을 PDF 한 파일로', description: 'JPG·JPEG·PNG·WebP 사진 여러 장을 원하는 순서로 배치하고 용지 크기와 여백을 설정해 PDF 한 파일로 저장하세요. 파일은 브라우저에서 처리됩니다.', how: 'JPG·PNG·WebP 이미지를 추가하고 화면의 번호대로 순서·용지·방향·여백을 확인한 뒤 PDF 한 파일을 생성해 다운로드하세요.', note: '파일당 20MB, 최대 20장·총 100MB입니다. 큰 이미지는 긴 변 2,400px로 축소됩니다.' },
     '/pdf-tools': { name: '무료 PDF 도구 · 병합·분리·페이지 정리', description: 'PDF 병합, 페이지 분리·추출, 순서 변경·회전·삭제, PDF 페이지 PNG 저장 도구를 선택하세요. 파일은 브라우저에서 처리됩니다.', how: '필요한 작업을 선택하고 PDF 파일을 추가한 뒤 결과를 다운로드하세요.', note: '암호화된 PDF와 서명·양식·책갈피 보존은 지원하지 않습니다.' },
     '/pdf-merge': { name: 'PDF 병합 · 여러 파일을 하나로', description: '여러 PDF를 원하는 파일 순서로 합쳐 하나의 PDF로 저장하세요. 페이지 수를 확인하고 브라우저에서 처리한 결과를 다운로드할 수 있습니다.', how: 'PDF 파일 2개 이상을 추가하고 파일 순서를 조정한 뒤 병합하세요.', note: '최대 10파일, 파일당 50MB·총 100MB, 결과 300페이지입니다. 서명·양식·책갈피 보존은 보장되지 않습니다.' },
     '/pdf-split': { name: 'PDF 분리·페이지 추출', description: 'PDF에서 1-3,5 같은 페이지 범위를 선택해 필요한 페이지만 새 PDF로 저장하세요. 선택한 페이지의 원본 품질을 유지합니다.', how: 'PDF 한 개를 선택하고 1-3,5처럼 페이지를 입력한 뒤 선택한 페이지를 저장하세요.', note: '파일당 50MB·300페이지입니다. 중복·범위 밖 페이지는 입력할 수 없습니다.' },
@@ -13,7 +13,7 @@ export const pdfWork: Record<Language, Record<PdfPath, Copy>> = {
     '/pdf-to-png': { name: 'PDF PNG 변환 · 페이지별 이미지 저장', description: 'PDF 파일에서 원하는 페이지를 선택하고 72·144·216 DPI로 렌더링해 PNG 이미지를 저장하세요. 브라우저에서 처리됩니다.', how: 'PDF를 선택하고 페이지·출력 해상도를 정한 뒤 미리보기와 PNG를 다운로드하세요.', note: '최대 50MB·300페이지, PNG 출력은 600만 픽셀 이내입니다. 암호화 PDF는 지원하지 않습니다.' },
   },
   en: {
-    '/image-to-pdf': { name: 'Images to PDF Converter · JPG & PNG to PDF', description: 'Arrange JPG, PNG or WebP images, choose page size and margins, then download one PDF. Files are processed in your browser.', how: 'Add images, set their order and page settings, then create and download a PDF.', note: 'Up to 20 images, 20MB each and 100MB total. Large images are resized to 2,400px.' },
+    '/image-to-pdf': { name: 'JPG to PDF · Combine Multiple Images into One PDF', description: 'Arrange multiple JPG, JPEG, PNG or WebP images, choose page size and margins, then download one PDF. Files are processed in your browser.', how: 'Add images, check their numbered order, paper orientation and margins, then create and download one PDF.', note: 'Up to 20 images, 20MB each and 100MB total. Large images are resized to 2,400px.' },
     '/pdf-tools': { name: 'Free PDF Tools · Merge, Split & Organize PDFs', description: 'Choose a tool to merge PDFs, extract pages, reorder or rotate pages, or export a PDF page as PNG. Processing stays in your browser.', how: 'Choose a PDF task, add your file and download the result.', note: 'Encrypted PDFs are unsupported. Signatures, forms and bookmarks may not survive page operations.' },
     '/pdf-merge': { name: 'Merge PDF Files Online', description: 'Merge multiple PDFs in the file order you choose. Check page counts and download one combined file, processed in your browser.', how: 'Add at least two PDFs, arrange their file order and merge them.', note: 'Up to 10 files, 50MB each, 100MB total and 300 output pages. Signatures, forms and bookmarks are not guaranteed.' },
     '/pdf-split': { name: 'Split PDF & Extract Pages', description: 'Select pages with ranges such as 1-3,5 and save them as a new PDF without converting the original pages to images.', how: 'Choose one PDF, enter pages such as 1-3,5, then download the selected pages.', note: 'Up to 50MB and 300 pages. Duplicate and out-of-range pages are rejected.' },
@@ -21,7 +21,7 @@ export const pdfWork: Record<Language, Record<PdfPath, Copy>> = {
     '/pdf-to-png': { name: 'PDF to PNG · Export Individual Pages', description: 'Choose a PDF page and render it at 72, 144 or 216 DPI. Preview and download the page as PNG in your browser.', how: 'Choose a PDF, page and resolution, then preview and download its PNG.', note: 'Up to 50MB and 300 pages; output is capped at 6 megapixels. Encrypted PDFs are unsupported.' },
   },
   ja: {
-    '/image-to-pdf': { name: '画像をPDFに変換 · JPG・PNG対応', description: 'JPG・PNG・WebP画像の順序、用紙サイズ、余白を設定してPDFに保存。ファイルはブラウザー内で処理します。', how: '画像を追加して順序と用紙を設定し、PDFを作成して保存します。', note: '1枚20MB、最大20枚・合計100MB。大きい画像は長辺2,400pxに縮小します。' },
+    '/image-to-pdf': { name: 'JPGをPDFに変換 · 複数画像を一つのPDFへ', description: '複数のJPG・JPEG・PNG・WebP画像を並べ、用紙サイズと余白を設定して一つのPDFに保存。ファイルはブラウザー内で処理します。', how: '画像を追加し、画面の番号順・用紙の向き・余白を確認して一つのPDFを作成します。', note: '1枚20MB、最大20枚・合計100MB。大きい画像は長辺2,400pxに縮小します。' },
     '/pdf-tools': { name: '無料PDFツール · 結合・分割・ページ整理', description: 'PDFの結合、ページの分割・抽出、並べ替え・回転・削除、PNG保存を選べます。ファイルはブラウザー内で処理します。', how: '必要な作業を選んでPDFを追加し、結果を保存します。', note: '暗号化PDFは非対応。署名・フォーム・しおりの保持は保証されません。' },
     '/pdf-merge': { name: 'PDFを結合 · 複数ファイルを一つに', description: '複数のPDFを指定したファイル順に結合し、一つのPDFとして保存。ページ数を確認してブラウザー内で処理します。', how: 'PDFを2件以上追加し、ファイル順を変えて結合します。', note: '最大10件、各50MB・合計100MB、出力300ページ。署名・フォーム・しおりは保証されません。' },
     '/pdf-split': { name: 'PDFを分割・ページを抽出', description: '1-3,5のように範囲を指定して必要なページを新しいPDFに保存します。元ページは画像に変換しません。', how: 'PDFを選び、1-3,5のようにページを入力して保存します。', note: '最大50MB・300ページ。重複や範囲外の指定はできません。' },
@@ -29,7 +29,7 @@ export const pdfWork: Record<Language, Record<PdfPath, Copy>> = {
     '/pdf-to-png': { name: 'PDFをPNGに変換 · ページ別保存', description: 'PDFのページを選び72・144・216 DPIでPNGに変換。プレビューしてブラウザーから保存します。', how: 'PDF・ページ・解像度を選び、PNGを表示して保存します。', note: '最大50MB・300ページ、出力600万画素まで。暗号化PDFは非対応です。' },
   },
   zh: {
-    '/image-to-pdf': { name: '图片转PDF · JPG和PNG转换', description: '排列JPG、PNG或WebP图片，设置纸张和边距后下载PDF。文件仅在浏览器中处理。', how: '添加图片，设置顺序和纸张，然后创建并下载PDF。', note: '单张20MB，最多20张、总计100MB。大图缩至长边2,400像素。' },
+    '/image-to-pdf': { name: 'JPG转PDF · 多张图片合成一个PDF', description: '排列多张JPG、JPEG、PNG或WebP图片，设置纸张和边距后下载一个PDF。文件仅在浏览器中处理。', how: '添加图片，核对页面编号、纸张方向和边距，然后创建并下载一个PDF。', note: '单张20MB，最多20张、总计100MB。大图缩至长边2,400像素。' },
     '/pdf-tools': { name: '免费PDF工具 · 合并、拆分和整理', description: '选择合并PDF、提取页面、调整顺序或旋转页面，也可将PDF页面保存为PNG。文件在浏览器中处理。', how: '选择需要的PDF工具，添加文件并下载结果。', note: '不支持加密PDF。不保证保留签名、表单和书签。' },
     '/pdf-merge': { name: '合并PDF · 多个文件合为一个', description: '按选定文件顺序合并多个PDF，检查页数后在浏览器中下载合并文件。', how: '添加至少两个PDF，调整文件顺序后合并。', note: '最多10个文件，单个50MB、总计100MB，结果300页。不保证保留签名和表单。' },
     '/pdf-split': { name: '拆分PDF·提取页面', description: '输入1-3,5等页码范围，将选定页面保存为新PDF，无需把原页面转成图片。', how: '选择一个PDF，输入1-3,5等页码并下载。', note: '最多50MB、300页。不可选择重复或超出范围的页面。' },
@@ -37,7 +37,7 @@ export const pdfWork: Record<Language, Record<PdfPath, Copy>> = {
     '/pdf-to-png': { name: 'PDF转PNG · 逐页保存图片', description: '选择PDF页面，以72、144或216 DPI生成PNG，预览并在浏览器中下载。', how: '选择PDF、页面和分辨率，预览并下载PNG。', note: '最多50MB、300页，输出限制为600万像素。不支持加密PDF。' },
   },
   es: {
-    '/image-to-pdf': { name: 'Imágenes a PDF · Convierte JPG y PNG', description: 'Ordena imágenes JPG, PNG o WebP, ajusta papel y márgenes y descarga un PDF. Los archivos se procesan en tu navegador.', how: 'Añade imágenes, ajusta su orden y el papel, crea y descarga el PDF.', note: 'Hasta 20 imágenes, 20MB cada una y 100MB en total. Las grandes se reducen a 2.400px.' },
+    '/image-to-pdf': { name: 'JPG a PDF · Combina varias imágenes en un PDF', description: 'Ordena varias imágenes JPG, JPEG, PNG o WebP, ajusta papel y márgenes y descarga un solo PDF. Los archivos se procesan en tu navegador.', how: 'Añade imágenes, revisa el orden numerado, la orientación y los márgenes, y crea un solo PDF.', note: 'Hasta 20 imágenes, 20MB cada una y 100MB en total. Las grandes se reducen a 2.400px.' },
     '/pdf-tools': { name: 'Herramientas PDF gratis · Unir, dividir y organizar', description: 'Elige entre unir PDF, extraer páginas, ordenarlas, girarlas o exportar una página como PNG. Todo se procesa en tu navegador.', how: 'Elige una tarea PDF, añade el archivo y descarga el resultado.', note: 'No admite PDF cifrados. No se garantiza conservar firmas, formularios o marcadores.' },
     '/pdf-merge': { name: 'Unir archivos PDF en línea', description: 'Une varios PDF en el orden elegido. Revisa las páginas y descarga un solo archivo procesado en tu navegador.', how: 'Añade al menos dos PDF, cambia el orden de archivos y únelos.', note: 'Hasta 10 archivos, 50MB cada uno, 100MB en total y 300 páginas. No se garantizan firmas o formularios.' },
     '/pdf-split': { name: 'Dividir PDF y extraer páginas', description: 'Selecciona páginas con rangos como 1-3,5 y guárdalas en un PDF nuevo sin convertir las páginas originales en imágenes.', how: 'Elige un PDF, escribe páginas como 1-3,5 y descárgalas.', note: 'Hasta 50MB y 300 páginas. No admite páginas duplicadas o fuera de rango.' },
