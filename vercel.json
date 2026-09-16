@@ -1,6 +1,18 @@
 {
   "rewrites": [
     {
+      "source": "/guides/pdf-browser-privacy",
+      "destination": "/guides/pdf-browser-privacy.html"
+    },
+    {
+      "source": "/guides/pdf-to-png-dpi-test",
+      "destination": "/guides/pdf-to-png-dpi-test.html"
+    },
+    {
+      "source": "/guides/choose-pdf-tool",
+      "destination": "/guides/choose-pdf-tool.html"
+    },
+    {
       "source": "/guides",
       "destination": "/guides.html"
     },
@@ -1080,6 +1092,21 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides/pdf-browser-privacy.html",
+      "destination": "/guides/pdf-browser-privacy",
+      "permanent": true
+    },
+    {
+      "source": "/guides/pdf-to-png-dpi-test.html",
+      "destination": "/guides/pdf-to-png-dpi-test",
+      "permanent": true
+    },
+    {
+      "source": "/guides/choose-pdf-tool.html",
+      "destination": "/guides/choose-pdf-tool",
+      "permanent": true
+    },
     {
       "source": "/guides.html",
       "destination": "/guides",

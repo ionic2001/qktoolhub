@@ -10,7 +10,7 @@ import { Header } from '../components/Header';
 import { useLanguage } from '../i18n/LanguageContext';
 import { pdfText } from '../i18n/pdfTranslations';
 import { pdfWork, pdfPaths } from '../i18n/pdfWork';
-import { createImagePdf, prepareImage, saveBlob, type PdfImage } from '../utils/pdfTools';
+import { createImagePdf, pdfRenderScale, prepareImage, saveBlob, type PdfImage } from '../utils/pdfTools';
 import type { PDFDocumentProxy, RenderTask } from 'pdfjs-dist';
 import './PdfConverter.css';
 
@@ -81,7 +81,7 @@ export default function PdfConverterPage({ forcedMode }: { forcedMode?: 'images'
       try {
         const pdfPage = await pdf.getPage(page); if (cancelled) return;
         const base = pdfPage.getViewport({ scale: 1 });
-        const scale = Math.min(dpi / 72, Math.sqrt(6000000 / (base.width * base.height)), 8192 / Math.max(base.width, base.height));
+        const scale = pdfRenderScale(base.width, base.height, dpi);
         const viewport = pdfPage.getViewport({ scale }); const canvas = document.createElement('canvas');
         canvas.width = Math.max(1, Math.floor(viewport.width)); canvas.height = Math.max(1, Math.floor(viewport.height));
         render = pdfPage.render({ canvas, viewport, background: '#ffffff' }); await render.promise;

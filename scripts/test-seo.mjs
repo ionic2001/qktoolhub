@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { loadSource } from './load-source.mjs';
 const {pagePaths,allPagePaths,languages,canonicalUrl,pageMeta}=loadSource('src/seo/catalog.ts');
 const {pdfHomeMenu}=loadSource('src/i18n/pdfHomeMenu.ts');
-const {guidePaths,guides}=loadSource('src/guides/guideContent.ts');
+const {guidePaths,guides,guideLinksForTool}=loadSource('src/guides/guideContent.ts');
 const {aboutText}=loadSource('src/i18n/aboutText.ts');
 const {legalText}=loadSource('src/i18n/legalText.ts');
 for(const path of pagePaths) for(const lang of languages){
@@ -84,6 +84,10 @@ for(const guide of guides) {
  const html=fs.readFileSync(`dist${guide.path}.html`,'utf8');
  assert.ok(html.includes(guide.method),`${guide.path} original method`);
  for(const tool of guide.relatedTools) assert.ok(html.includes(`href="${tool.path}"`),`${guide.path} related tool`);
+}
+for(const [toolPath,linkedGuides] of Object.entries(guideLinksForTool)) {
+ const html=fs.readFileSync(`dist/${toolPath.slice(1)}/ko.html`,'utf8');
+ for(const guidePath of linkedGuides) assert.ok(html.includes(`href="${guidePath}"`),`${toolPath} links ${guidePath}`);
 }
 for(const sample of ['pdf-merge-input-a.pdf','pdf-merge-input-b.pdf','pdf-merge-result.pdf','pdf-page-source.pdf','pdf-page-organized.pdf']) assert.ok(fs.statSync(`dist/guide-samples/${sample}`).size>500,`${sample} downloadable sample`);
 console.log(`PASS: ${pagePaths.length*languages.length+guidePaths.length} pages, metadata, canonicals, language alternates, schemas, crawlable links, sitemap, guide evidence, 404 config and share image.`);

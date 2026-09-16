@@ -1,6 +1,16 @@
 import { PDFDocument } from 'pdf-lib';
 
 export interface PdfImage { id: string; name: string; url: string; bytes: Uint8Array; width: number; height: number; size: number }
+export const MAX_PNG_PIXELS = 6_000_000;
+export const MAX_PNG_EDGE = 8192;
+export function pdfRenderScale(width: number, height: number, dpi: number) {
+  if (width <= 0 || height <= 0 || dpi <= 0) throw new Error('renderSize');
+  return Math.min(dpi / 72, Math.sqrt(MAX_PNG_PIXELS / (width * height)), MAX_PNG_EDGE / Math.max(width, height));
+}
+export function pdfRenderSize(width: number, height: number, dpi: number) {
+  const scale = pdfRenderScale(width, height, dpi);
+  return { width: Math.max(1, Math.floor(width * scale)), height: Math.max(1, Math.floor(height * scale)), scale };
+}
 export function pageLayout(width: number, height: number, paper: string, landscape: boolean, marginMm: number) {
   const margin = marginMm * 72 / 25.4;
   const pageWidth = paper === 'original' ? width * 72 / 96 + margin * 2 : landscape ? 841.89 : 595.28;

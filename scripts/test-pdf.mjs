@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import { PDFDocument, degrees } from 'pdf-lib';
 import { loadSource } from './load-source.mjs';
 const { readPdf, parsePageSelection, mergePdfs, splitPdf, organizePdf } = loadSource('src/utils/pdfOperations.ts');
+const { pdfRenderSize } = loadSource('src/utils/pdfTools.ts');
 
 async function sample(name, widths, rotate = false) {
   const doc = await PDFDocument.create();
@@ -33,4 +34,10 @@ assert.equal(guideMerged.getPage(0).getRotation().angle, 90);
 const guideOrganized = await PDFDocument.load(fs.readFileSync('public/guide-samples/pdf-page-organized.pdf'));
 assert.deepEqual(guideOrganized.getPages().map(page => page.getWidth()), [510, 500, 595.28]);
 assert.deepEqual(guideOrganized.getPages().map(page => page.getRotation().angle), [90, 180, 0]);
+assert.deepEqual(pdfRenderSize(595.28, 841.89, 72), { width: 595, height: 841, scale: 1 });
+assert.deepEqual(pdfRenderSize(595.28, 841.89, 144), { width: 1190, height: 1683, scale: 2 });
+assert.deepEqual(pdfRenderSize(595.28, 841.89, 216), { width: 1785, height: 2525, scale: 3 });
+const a3 = pdfRenderSize(841.89, 1190.55, 216);
+assert.deepEqual({ width: a3.width, height: a3.height }, { width: 2059, height: 2912 });
+assert.ok(a3.width * a3.height <= 6_000_000);
 console.log('PASS: PDF merge, split, page range validation, reorder, rotation, blank-page output and downloadable guide samples.');
