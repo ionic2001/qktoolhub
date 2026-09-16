@@ -60,8 +60,6 @@ assert.ok(!sitemap.includes('lang=ko')); assert.ok(!sitemap.includes('https://qk
 assert.ok(fs.readFileSync('dist/404.html','utf8').includes('noindex'));
 const config=JSON.parse(fs.readFileSync('vercel.json'));
 assert.ok(!config.rewrites.some(r=>r.source==='/(.*)'));
-const koreanDefaultRedirect=config.redirects.find(r=>r.source==='/:path*'&&r.destination==='/:path*'&&r.has?.some(h=>h.type==='query'&&h.key==='lang'&&h.value==='ko'));
-assert.ok(koreanDefaultRedirect?.permanent&&koreanDefaultRedirect.preserveQueryParams===false,'lang=ko permanently redirects to the query-free Korean URL');
 const png=fs.readFileSync('dist/og-image.png'); assert.equal(png.readUInt32BE(16),1200);assert.equal(png.readUInt32BE(20),630);
 for(const path of pagePaths) for(const lang of languages) {
  const dest=`${path==='/'?'/home':path}/${lang}.html`;

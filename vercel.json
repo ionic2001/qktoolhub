@@ -1133,19 +1133,6 @@
   ],
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "query",
-          "key": "lang",
-          "value": "ko"
-        }
-      ],
-      "destination": "/:path*",
-      "permanent": true,
-      "preserveQueryParams": false
-    },
-    {
       "source": "/guides/jpg-images-to-one-pdf.html",
       "destination": "/guides/jpg-images-to-one-pdf",
       "permanent": true
