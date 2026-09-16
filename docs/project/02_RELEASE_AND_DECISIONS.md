@@ -103,3 +103,5 @@ GitHub main 반영이 기존 Vercel 운영 배포를 유발한다. 앞으로 기
 - 한국어 기본 `/word-counter`도 sitemap에서 발견됐으나 `Discovered - currently not indexed`로 아직 크롤링되지 않았다. 실시간 검사에서 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인하고 우선 크롤링 대기열 등록을 완료했다. 영어·한국어 URL 모두 기술적 차단보다 크롤링 대기 문제로 판단하며, 반복 요청 대신 상태 변화를 관찰한다.
 
 - `/image-to-pdf`는 sitemap과 `/guides/image-formats-to-pdf` 내부 링크를 통해 발견됐지만 `Discovered - currently not indexed` 상태로 아직 크롤링 기록이 없었다. 실시간 검사에서 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인하고 우선 크롤링 대기열에 등록했다. `jpg pdf 변환` 검색 의도와 직접 연결되는 핵심 도구이므로 이후 색인 여부를 우선 확인한다.
+
+- `/pdf-converter`는 Google 색인 완료 상태이며 사용자 선언 canonical과 Google 선택 canonical이 모두 자기 URL로 일치했다. 2026-09-10 모바일 Googlebot이 홈 내부 링크를 통해 정상 수집했고 크롤링·페이지 가져오기·색인이 모두 허용됐다. 2026-09-16 실시간 검사도 접근·색인 가능과 Breadcrumbs 유효 상태를 확인했다. 반면 `/image-to-pdf`는 아직 발견 후 크롤링 대기 상태이므로 기존 URL의 검색 신호를 보존하기 위해 리디렉션하지 않고 유지한다.

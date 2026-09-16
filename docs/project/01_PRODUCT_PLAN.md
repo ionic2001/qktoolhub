@@ -64,7 +64,7 @@ QK Tool Hub는 설치·회원가입 없이 브라우저에서 텍스트, 이미�
 
 각 공개 URL의 첫 HTTP HTML에는 고유 title·description, H1 한 개, 읽을 수 있는 본문, 자기참조 www canonical, OG/Twitter 메타, 실제 `<a href>` 내부 링크 및 JSON-LD를 제공한다. 다국어 90개 URL에는 `hreflang` 5개와 `x-default`를 제공하고, 한국어만 있는 가이드는 존재하지 않는 번역 hreflang을 만들지 않는다. JSON-LD는 WebSite·WebPage·WebApplication·Article·CollectionPage와 BreadcrumbList 중 실제 페이지 유형에 맞춘다. robots.txt는 공개 경로를 허용하며 sitemap은 107개 index 가능한 URL을 담는다. 근거 없는 빌드 일자를 `lastmod`로 사용하지 않는다. 없는 경로는 404와 noindex로 응답한다. 빌드 뒤 root `index.html` 제거와 Vercel 언어별 재작성은 외국어 홈의 초기 HTML을 위해 유지한다.
 
-`/pdf-converter`는 색인된 기존 URL로 유지한다. 리디렉션·sitemap 제거 여부는 Search Console의 실제 검색 의도와 유입을 확인한 뒤 결정한다. 홈과 정책 페이지의 메타 설명은 현재 PDF 도구·브라우저 처리 내용을 반영하지만 존재하지 않는 PDF 편집 기능을 넣지 않는다.
+`/pdf-converter`는 색인된 기존 URL로 유지한다. 2026-09-16 Search Console에서 Google 선택 canonical이 이 URL 자체이고 9월 10일 모바일 Googlebot의 정상 수집, 홈 내부 링크, 허용된 크롤링·색인을 확인했다. 새 `/image-to-pdf`는 아직 발견 후 크롤링 대기 상태이므로 현재는 리디렉션하거나 sitemap에서 제거하지 않는다. 두 URL의 색인과 실제 검색 의도가 분리되는지 확인한 뒤 이전 여부를 결정한다. 홈과 정책 페이지의 메타 설명은 현재 PDF 도구·브라우저 처리 내용을 반영하지만 존재하지 않는 PDF 편집 기능을 넣지 않는다.
 
 ## 5. 파일 처리와 데이터 안내
 

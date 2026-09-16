@@ -288,3 +288,5 @@ Search Console의 선택된 3개월 보고서에서 `jpg pdf 변환` 검색어�
 Search Console의 선택된 3개월 페이지 보고서에는 비-www, HTTP, `?lang=ko` 주소가 www·HTTPS의 쿼리 없는 한국어 주소와 별도 행으로 남아 있었다. 운영 응답을 직접 확인해 `http://qktoolhub.com`, `https://qktoolhub.com`, `http://www.qktoolhub.com`이 모두 `https://www.qktoolhub.com`으로 308 이동하는 것을 확인했다.
 
 `?lang=ko`는 200 응답과 쿼리 없는 한국어 canonical을 제공한다. URL 신호를 더 분명히 합치기 위한 정적 308 규칙을 검토했으나 Vercel의 일반 `vercel.json` 리디렉션은 원본 쿼리를 목적지에 전달하고, 쿼리 제거 옵션을 넣은 배포는 설정 검증에서 거절됐다. 거절된 배포는 운영에 반영되지 않았으며 해당 규칙은 즉시 제거했다. 현재는 기존 canonical 방식과 sitemap의 쿼리 없는 URL만 유지한다. 영어·일본어·간체 중국어·스페인어의 `?lang=en|ja|zh|es`는 각 언어의 canonical URL이므로 유지한다. 별도 Edge 처리 계층을 도입할 만큼 중복 영향이 커지는지는 이후 Search Console 데이터로 판단한다.
+
+2026-09-16 Search Console 확인에서 기존 `/pdf-converter`는 Google 색인 완료 상태이며 사용자 선언 canonical과 Google 선택 canonical이 모두 자기 URL이었다. 9월 10일 모바일 Googlebot 수집과 홈 내부 링크 발견, 성공한 페이지 가져오기 및 허용된 색인을 확인했고 실시간 검사도 통과했다. 새 `/image-to-pdf`는 sitemap과 가이드 링크에서 발견됐지만 아직 크롤링 대기 상태이므로, 기존 URL은 현재 리디렉션하지 않고 고유 페이지·canonical·sitemap URL을 유지한다.
