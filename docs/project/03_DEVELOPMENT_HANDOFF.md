@@ -2,10 +2,10 @@
 
 ## 현재 인수인계 (2026-09-16)
 
-- 코드 기준: 커밋 `adfe1f6`(원격 반영 후 운영 기준); 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
-- 최근 완료: PDF 원본 가이드 6개에 글자수·MB와 MiB·이미지 비율·환율·서머타임·영업일 계산 가이드 6개를 더했다. 다국어 90개와 한국어 가이드 목록·상세 13개로 총 103개 canonical URL이며 `/pdf-converter`는 유지한다.
-- 검증: 운영 코드 빌드, 103개 URL 정적 SEO, 가이드 계산 근거, PDF 병합·추출·정리, 단위, 테마 검사 통과. 환율 API 실패 시 모의 추세를 만들지 않고 참고값 상태를 표시한다. 전체 모바일·복잡한 PDF 표본·Search Console 계정 지표 검수는 미완료.
-- 다음 작업: Search Console 우선 크롤링을 요청한 신규 3개와 뒤이어 배포할 신규 3개의 색인·검색 의도·도구 이동을 확인한다. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
+- 코드 기준: 커밋 `48cb3d3`(원격 반영 후 운영 기준); 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
+- 최근 완료: PDF 원본 가이드 6개, 도구 계산 검증 가이드 6개와 온라인 서류 제출 실전 가이드 1개를 제공한다. 다국어 90개와 한국어 가이드 목록·상세 14개로 총 104개 canonical URL이며 `/pdf-converter`는 유지한다.
+- 검증: 운영 코드 빌드, 104개 URL 정적 SEO, 가이드 계산 근거, PDF 병합·추출·정리, 단위, 테마 검사 통과. 환율 API 실패 시 모의 추세를 만들지 않고 참고값 상태를 표시한다. 전체 모바일·복잡한 PDF 표본·Search Console 계정 지표 검수는 미완료.
+- 다음 작업: Search Console 우선 크롤링을 요청한 기존 우선 크롤링 요청 3개와 새 서류 제출 가이드의 색인·검색 의도·관련 도구 이동을 확인한다. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
 - 사용자 확인 사항: sitemap 재제출 완료. 독립 스티커북: https://github.com/ionic2001/diorama-stickerbook.
 - 배포 작업은 사용자 지시와 현재 작업의 권한 범위를 따른다. 작업별 브랜치에서 변경·검증을 기록하고 원격 `main` 반영을 두 컴퓨터의 공유 기준으로 삼는다.
 
@@ -61,7 +61,7 @@ QK Tool Hub의 코드와 이미지 편집기 내부 스티커는 이 저장소�
 | PDF 페이지 작업 | src/utils/pdfOperations.ts |
 | 소개·약관·방침 | src/i18n/aboutText.ts, src/i18n/legalText.ts |
 | 가이드 콘텐츠·화면 | src/guides/guideContent.ts, src/guides/GuideRenderer.tsx, src/pages/GuidesPage.tsx |
-| 가이드 PDF 표본 | scripts/build-guide-samples.mjs, public/guide-samples/ |
+| 가이드 표본·체크리스트 | scripts/build-guide-samples.mjs, public/guide-samples/ |
 | 개별 번역 | src/i18n/ 및 src/features/units/text.ts |
 | 정적 SEO 생성 | scripts/build-seo.mjs |
 | 배포 라우팅 | vercel.json |

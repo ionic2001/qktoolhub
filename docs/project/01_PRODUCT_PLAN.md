@@ -2,7 +2,7 @@
 
 문서 갱신일: 2026-09-16
 상태: 운영 배포본 기준. 완료한 기능과 후속 제안을 구분한다.
-운영 코드 기준: 커밋 `adfe1f6` (원격 반영 후 운영 기준)
+운영 코드 기준: 커밋 `48cb3d3` (원격 반영 후 운영 기준)
 운영 사이트: https://www.qktoolhub.com/
 
 ## 1. 제품 목적과 기준
@@ -45,8 +45,9 @@ QK Tool Hub는 설치·회원가입 없이 브라우저에서 텍스트, 이미�
 | `/guides/currency-cross-rate-test` | 기준통화·교차환율 계산 검증 | 고정 표본과 실제 API·참고값 상태를 구분 |
 | `/guides/world-clock-dst-test` | 뉴욕 서머타임 경계 검증 | IANA 시간대로 01:59:59→03:00:00 전환 확인 |
 | `/guides/business-days-test` | 한국 영업일 포함 기준 검증 | 주말·평일 공휴일·역방향 입력 결과 공개 |
+| `/guides/online-document-submission-checklist` | 온라인 서류 제출 7단계 실전 절차 | 글자수·사진·이미지→PDF·병합·페이지 정리·최종 검수를 한 흐름으로 연결 |
 
-다국어 공통 경로는 홈을 포함해 18개이며 5개 언어로 **90개 canonical URL**을 제공한다. 한국어 전용 가이드 목록과 상세 글 12개를 더해 sitemap의 전체 canonical URL은 **103개**다. `/pdf-edit`나 별도 스티커북 경로는 현재 없다. PDF의 OCR, 원문 직접 수정, 암호 PDF 입력, 페이지별 개별 추출·ZIP은 제공하지 않는다. 병합·페이지 작업 결과에서 디지털 서명·양식·책갈피 보존은 보장하지 않는다.
+다국어 공통 경로는 홈을 포함해 18개이며 5개 언어로 **90개 canonical URL**을 제공한다. 한국어 전용 가이드 목록과 상세 글 13개를 더해 sitemap의 전체 canonical URL은 **104개**다. `/pdf-edit`나 별도 스티커북 경로는 현재 없다. PDF의 OCR, 원문 직접 수정, 암호 PDF 입력, 페이지별 개별 추출·ZIP은 제공하지 않는다. 병합·페이지 작업 결과에서 디지털 서명·양식·책갈피 보존은 보장하지 않는다.
 
 ## 3. 홈과 사용자 안내
 
@@ -58,7 +59,7 @@ QK Tool Hub는 설치·회원가입 없이 브라우저에서 텍스트, 이미�
 
 기본 한국어 URL은 쿼리 없이 사용한다. 영어·일본어·간체 중국어·스페인어는 `?lang=en|ja|zh|es`를 사용하고 `?lang=ko`는 한국어 기본 URL을 canonical로 삼는다. URL이 표시 언어를 결정한다. 새 기능이나 정책 문구는 5개 언어의 UI·메타·초기 HTML·관련 링크에서 같이 갱신한다. 중국어의 현재 범위는 간체이며 번체는 별도 제안이다.
 
-각 공개 URL의 첫 HTTP HTML에는 고유 title·description, H1 한 개, 읽을 수 있는 본문, 자기참조 www canonical, OG/Twitter 메타, 실제 `<a href>` 내부 링크 및 JSON-LD를 제공한다. 다국어 90개 URL에는 `hreflang` 5개와 `x-default`를 제공하고, 한국어만 있는 가이드는 존재하지 않는 번역 hreflang을 만들지 않는다. JSON-LD는 WebSite·WebPage·WebApplication·Article·CollectionPage와 BreadcrumbList 중 실제 페이지 유형에 맞춘다. robots.txt는 공개 경로를 허용하며 sitemap은 103개 index 가능한 URL을 담는다. 근거 없는 빌드 일자를 `lastmod`로 사용하지 않는다. 없는 경로는 404와 noindex로 응답한다. 빌드 뒤 root `index.html` 제거와 Vercel 언어별 재작성은 외국어 홈의 초기 HTML을 위해 유지한다.
+각 공개 URL의 첫 HTTP HTML에는 고유 title·description, H1 한 개, 읽을 수 있는 본문, 자기참조 www canonical, OG/Twitter 메타, 실제 `<a href>` 내부 링크 및 JSON-LD를 제공한다. 다국어 90개 URL에는 `hreflang` 5개와 `x-default`를 제공하고, 한국어만 있는 가이드는 존재하지 않는 번역 hreflang을 만들지 않는다. JSON-LD는 WebSite·WebPage·WebApplication·Article·CollectionPage와 BreadcrumbList 중 실제 페이지 유형에 맞춘다. robots.txt는 공개 경로를 허용하며 sitemap은 104개 index 가능한 URL을 담는다. 근거 없는 빌드 일자를 `lastmod`로 사용하지 않는다. 없는 경로는 404와 noindex로 응답한다. 빌드 뒤 root `index.html` 제거와 Vercel 언어별 재작성은 외국어 홈의 초기 HTML을 위해 유지한다.
 
 `/pdf-converter`는 색인된 기존 URL로 유지한다. 리디렉션·sitemap 제거 여부는 Search Console의 실제 검색 의도와 유입을 확인한 뒤 결정한다. 홈과 정책 페이지의 메타 설명은 현재 PDF 도구·브라우저 처리 내용을 반영하지만 존재하지 않는 PDF 편집 기능을 넣지 않는다.
 
@@ -68,11 +69,11 @@ QK Tool Hub는 설치·회원가입 없이 브라우저에서 텍스트, 이미�
 
 ## 6. 검증 현황과 다음 작업
 
-코드 `adfe1f6`의 빌드·정적 SEO·가이드 근거·PDF 기능·단위·테마 검사가 통과했다. 정적 SEO 검사는 103개 URL의 메타·canonical·언어 연결·JSON-LD·링크·sitemap을 확인했고, 한국어 가이드는 Article/CollectionPage 구조화 데이터와 번역 없는 URL의 hreflang 미생성을 별도로 검사하며 PDF·글자수·단위 변환·이미지 편집·환율·세계시간·달력 도구의 관련 가이드 링크도 확인한다. PDF 검사는 가이드에서 공개한 다운로드 표본의 페이지 크기·회전값도 다시 연 뒤 확인한다. 이 검사는 전체 모바일 기기, 복잡한 PDF의 서명·양식·주석 보존, 모든 도구의 전 기능 회귀나 Search Console 색인 완료를 뜻하지 않는다.
+코드 `48cb3d3`의 빌드·정적 SEO·가이드 근거·PDF 기능·단위·테마 검사가 통과했다. 정적 SEO 검사는 104개 URL의 메타·canonical·언어 연결·JSON-LD·링크·sitemap을 확인했고, 한국어 가이드는 Article/CollectionPage 구조화 데이터와 번역 없는 URL의 hreflang 미생성을 별도로 검사하며 PDF·글자수·단위 변환·이미지 편집·환율·세계시간·달력 도구의 관련 가이드 링크도 확인한다. PDF 검사는 가이드에서 공개한 다운로드 표본의 페이지 크기·회전값도 다시 연 뒤 확인한다. 이 검사는 전체 모바일 기기, 복잡한 PDF의 서명·양식·주석 보존, 모든 도구의 전 기능 회귀나 Search Console 색인 완료를 뜻하지 않는다.
 
 1. Search Console에서 `/pdf-converter`와 신규 PDF URL의 색인·검색어·유입을 확인하고 기존 URL 이전 여부를 결정한다.
 2. 모바일·저사양 기기에서 PDF 작업 시간·메모리·다운로드와 대형·손상·암호·서명·양식 샘플을 검수해 한도와 안내를 조정한다.
-3. 현재 12개 가이드의 색인·사용 반응과 도구 이동을 확인한다. 2026-09-16에 신규 글자수·단위·이미지 가이드 3개는 Search Console 우선 크롤링 대기열에 등록했다. 단순 요약이나 자동 대량 번역은 만들지 않는다.
+3. 현재 13개 가이드의 색인·사용 반응과 도구 이동을 확인한다. 서류 제출 가이드는 글자수·이미지·PDF 도구 사이 이동과 체크리스트 다운로드를 함께 확인한다. 2026-09-16에 신규 글자수·단위·이미지 가이드 3개는 Search Console 우선 크롤링 대기열에 등록했다. 단순 요약이나 자동 대량 번역은 만들지 않는다.
 4. 개별 페이지 파일·ZIP, 드래그 정리, 내용 추가·워터마크·양식·OCR는 기능·개인정보·번역·SEO 검증 후 각각 출시한다.
 5. 두 컴퓨터는 원격 `main`을 기준으로 작업별 브랜치를 사용하고 완료한 변경과 검증을 인수인계 문서에 남긴다. 디오라마 스티커북은 [독립 저장소](https://github.com/ionic2001/diorama-stickerbook)에서 관리한다.
 
