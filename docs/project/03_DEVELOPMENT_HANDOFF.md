@@ -2,10 +2,10 @@
 
 ## 현재 인수인계 (2026-09-16)
 
-- 코드 기준: 커밋 `e7b85ba`(원격 반영 후 운영 기준); 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
-- 최근 완료: 이미지→PDF 및 PDF 전용 6개 경로, 홈·정책 안내에 이어 `/guides`와 한국어 PDF 원본 가이드 6개·검증 표본 5개를 추가했다. 다국어 90개와 한국어 가이드 목록·상세 7개로 총 97개 canonical URL이며 `/pdf-converter`는 유지한다.
-- 검증: 운영 코드 빌드, 90개 URL 정적 SEO, PDF 병합·추출·정리, 테마 검사 통과; Vercel 성공 및 공개 대표 페이지 확인. 전체 모바일·복잡한 PDF 표본·Search Console 계정 지표 검수는 미완료.
-- 다음 작업: 신규/기존 PDF URL의 Search Console 색인·검색 의도와 모바일 성능 확인. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
+- 코드 기준: 커밋 `f27c0bd`(원격 반영 후 운영 기준); 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
+- 최근 완료: PDF 원본 가이드 6개에 글자수·MB와 MiB·이미지 비율 계산 가이드 3개를 더했다. 다국어 90개와 한국어 가이드 목록·상세 10개로 총 100개 canonical URL이며 `/pdf-converter`는 유지한다.
+- 검증: 운영 코드 빌드, 100개 URL 정적 SEO, 가이드 계산 근거, PDF 병합·추출·정리, 테마 검사 통과. 전체 모바일·복잡한 PDF 표본·Search Console 계정 지표 검수는 미완료.
+- 다음 작업: 신규 가이드의 Search Console 색인·검색 의도와 도구 이동을 확인하고 환율·세계시간·달력의 원본 가이드 후보를 검증한다. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
 - 사용자 확인 사항: sitemap 재제출 완료. 독립 스티커북: https://github.com/ionic2001/diorama-stickerbook.
 - 배포 작업은 사용자 지시와 현재 작업의 권한 범위를 따른다. 작업별 브랜치에서 변경·검증을 기록하고 원격 `main` 반영을 두 컴퓨터의 공유 기준으로 삼는다.
 
@@ -55,6 +55,7 @@ QK Tool Hub의 코드와 이미지 편집기 내부 스티커는 이 저장소�
 | 설명·관련 도구·언어 링크 | src/seo/SeoSections.tsx |
 | 언어와 URL | src/i18n/LanguageContext.tsx |
 | 이미지 편집기 | src/pages/ImageEditor.tsx |
+| 이미지 크기 계산 | src/utils/imageEditor.ts |
 | 기존 스티커 자료 | src/pages/stickerLibrary.ts |
 | PDF 기능·문구 | src/pages/PdfWorkPage.tsx, src/pages/PdfConverter.tsx, src/i18n/pdfWork.ts, src/i18n/pdfHomeMenu.ts |
 | PDF 페이지 작업 | src/utils/pdfOperations.ts |
@@ -73,6 +74,7 @@ npm run dev
 npm run build
 npm run test:seo
 npm run test:pdf
+npm run test:guides
 npm run test:theme
 ```
 

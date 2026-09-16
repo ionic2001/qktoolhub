@@ -2,7 +2,7 @@
 
 작성일: 2026-09-16
 상태: 첫 출시·홈 정리·정책 안내까지 운영 배포 완료. 1~11절은 기획 당시의 목표와 출시 기준이고, 12~15절은 실제 구현 상태와 남은 작업을 기록한다.
-기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 코드 커밋 `e7b85ba`(원격 반영 후 운영 기준)
+기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 코드 커밋 `f27c0bd`(원격 반영 후 운영 기준)
 운영 사이트: https://www.qktoolhub.com/
 
 ## 1. 목표와 제품 경계
@@ -237,3 +237,9 @@
 PDF 콘텐츠 묶음을 세 글 더 추가해 상세 가이드를 6개로 확대했다. `/guides/pdf-browser-privacy`는 브라우저 메모리의 파일 처리와 호스팅·분석·광고 통신을 구분하고 사용자가 Network 탭으로 확인하는 절차를 설명한다. `/guides/pdf-to-png-dpi-test`는 운영 렌더 계산을 공용 함수로 분리해 A4의 72·144·216 DPI 크기와 A3의 600만 픽셀 제한 결과를 자동 검사한다. `/guides/choose-pdf-tool`은 병합·추출·정리·PNG·이미지→PDF를 입력과 결과 파일 기준으로 비교한다.
 
 한국어 이미지→PDF, PDF 홈, 병합, 추출, 정리, PDF→PNG 및 기존 변환 페이지의 초기 HTML에서 관련 가이드로 직접 연결한다. SEO 검사에는 도구별 가이드 링크 존재 여부와 새 글의 고유 본문·Article schema·rewrite·sitemap을 포함한다. 다국어 90개 URL과 한국어 가이드 목록·상세 7개를 합쳐 sitemap은 97개 canonical URL이다.
+
+## 18. PDF 밖의 원본 콘텐츠 확대
+
+Low value content 대응이 PDF 한 주제에만 머물지 않도록 글자수·단위 변환·이미지 편집의 실제 계산을 검증한 한국어 가이드 세 개를 추가했다. 한글·영문·이모지는 운영 글자수 함수로 글자수와 UTF-8 바이트를 비교하며 EUC-KR이 실제 인코딩이 아닌 추정치임을 명시한다. MB와 MiB는 운영 단위 계수로 1,000,000바이트와 1,048,576바이트 차이를 검사한다. 이미지 크기는 비율 잠금과 64~4096px 제한·반올림을 화면과 공용으로 쓰는 함수로 분리해 자동 검사한다.
+
+각 도구의 한국어 초기 HTML에서 해당 가이드로 연결하고 상세 글에는 Article schema, canonical, 검증 방법과 관련 도구 링크를 제공한다. 준비되지 않은 외국어 번역 URL이나 hreflang은 만들지 않는다. 다국어 90개 URL과 한국어 가이드 목록·상세 10개를 합쳐 sitemap은 100개 canonical URL이다.
