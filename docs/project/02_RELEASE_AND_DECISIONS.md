@@ -117,3 +117,5 @@ GitHub main 반영이 기존 Vercel 운영 배포를 유발한다. 앞으로 기
 - PDF 도구 허브 `/pdf-tools`는 `URL is unknown to Google`로 표시됐고 sitemap·참조 페이지도 아직 보고되지 않았다. 운영 sitemap 107개와 Search Console의 `www` 발견 105개 차이에서 처리되지 않은 URL일 수 있다. 실시간 검사에서는 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인했고 우선 크롤링 대기열 등록을 완료했다.
 
 - 콘텐츠 허브 `/guides`는 sitemap에서 발견됐지만 `Discovered - currently not indexed` 상태로 아직 크롤링 기록이 없고 참조 페이지도 보고되지 않았다. 실시간 검사에서는 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 확인해 우선 크롤링 대기열에 등록했다. Low value content 재검토 전에 허브와 핵심 가이드의 실제 색인을 우선 추적한다.
+
+- 이전에 색인을 요청한 `/guides/jpg-images-to-one-pdf`를 다시 확인했으나 여전히 `URL is unknown to Google`이고 sitemap·참조 페이지도 보고되지 않았다. 2026-09-16 후속 실시간 검사에서는 Google 접근·색인 가능과 Breadcrumbs 1개 유효 상태를 재확인했다. 동일 URL을 반복 제출해도 우선순위가 바뀌지 않으므로 추가 요청은 하지 않고 발견·크롤링 상태 변화를 기다린다.
