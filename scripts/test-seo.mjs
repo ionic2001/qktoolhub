@@ -57,6 +57,10 @@ for(const lang of languages) {
 }
 assert.ok(sitemap.includes('<loc>https://www.qktoolhub.com/pdf-converter</loc>'),'Indexed legacy URL retained in sitemap');
 assert.ok(!sitemap.includes('lang=ko')); assert.ok(!sitemap.includes('https://qktoolhub.com'));
+const englishWord=fs.readFileSync('dist/word-counter/en.html','utf8');
+assert.ok(englishWord.includes('Korean word and character counter | QK Tool Hub'),'English word counter title matches observed search intent');
+assert.ok(englishWord.includes('Korean Word, Character &amp; Byte Counter'),'English word counter H1 names its Korean counting scope');
+assert.ok(englishWord.includes('A Korean syllable normally uses 3 bytes in UTF-8'),'English initial HTML explains Korean byte counting');
 assert.ok(fs.readFileSync('dist/404.html','utf8').includes('noindex'));
 const config=JSON.parse(fs.readFileSync('vercel.json'));
 assert.ok(!config.rewrites.some(r=>r.source==='/(.*)'));

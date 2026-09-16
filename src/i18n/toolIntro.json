@@ -8,8 +8,8 @@
     "currencyBadge": "금융 도구"
   },
   "en": {
-    "wordTitle": "Real-time Word & Character Counter",
-    "wordDescription": "Count characters, words and bytes as you type. Check platform limits and keyword frequency in one place.",
+    "wordTitle": "Korean Word, Character & Byte Counter",
+    "wordDescription": "Count Korean or mixed Korean-English text by characters, space-separated words, UTF-8 bytes and the EUC-KR estimate. Results update as you type.",
     "wordBadge": "Text tools",
     "currencyTitle": "Currency converter",
     "currencyDescription": "Compare major currencies using the latest available exchange rates. Change the amount and base currency to calculate multiple conversions at once.",

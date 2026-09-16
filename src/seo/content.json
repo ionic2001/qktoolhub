@@ -68,7 +68,7 @@
   "en": {
     "homeTitle": "Free online tools",
     "homeDescription": "Count words and bytes, convert currencies and units, edit images, create PDFs from images, merge or extract PDF pages, and use world clocks and calendars.",
-    "wordTitle": "Word and character counter",
+    "wordTitle": "Korean word and character counter",
     "currencyTitle": "Currency converter",
     "groups": [
       "Text tools",
@@ -83,12 +83,12 @@
     "seoNote": "The 50-character title and 150-character description markers are guides, not fixed Google limits. Search display varies by device and query.",
     "word": [
       [
-        "How to count text",
-        "Type or paste text to see characters with and without spaces, words and byte counts. Compare the results with your final submission form because counting rules can differ."
+        "Count Korean and English text",
+        "Type or paste Korean, English or mixed text to see characters with and without spaces, space-separated words and byte counts. Korean words are counted from whitespace boundaries, so compare the result with your final submission form when its rules differ."
       ],
       [
-        "Emoji and encoding",
-        "Character counts use JavaScript string length, so one emoji can occupy multiple units. UTF-8 bytes and the EUC-KR estimate differ. The EUC-KR value is not a validation of actual encoding; check the destination form."
+        "Korean bytes, emoji and encoding",
+        "A Korean syllable normally uses 3 bytes in UTF-8, while this tool's EUC-KR estimate uses 2. Character counts use JavaScript string length, so one emoji can occupy multiple units. The EUC-KR value is an estimate rather than validation of an encoded file; check the destination form."
       ]
     ],
     "currency": [
