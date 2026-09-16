@@ -2,7 +2,7 @@
 
 작성일: 2026-09-16
 상태: 첫 출시·홈 정리·정책 안내까지 운영 배포 완료. 1~11절은 기획 당시의 목표와 출시 기준이고, 12~24절은 실제 구현 상태와 남은 작업을 기록한다.
-기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 코드 커밋 `b6a2b01`(원격 반영 후 운영 기준)
+기준 저장소: [ionic2001/qktoolhub](https://github.com/ionic2001/qktoolhub), 코드 커밋 `a882301`(원격 반영 후 운영 기준)
 운영 사이트: https://www.qktoolhub.com/
 
 ## 1. 목표와 제품 경계
@@ -40,7 +40,7 @@
 
 **기존 `/pdf-converter` 이전:** 첫 출시에서는 기존 URL과 도구를 유지하면서 새 페이지로 연결하고, 고유한 이전 안내를 제공한다. 이 단계에서 새 6개 경로를 더하면 12개 기존 경로 → 18개, 5개 언어 기준 60개 → 90개 canonical URL이 된다. 기존 페이지와 새 페이지에 똑같은 본문·도구를 중복 배치하지 않는다. 이후 Search Console의 `/pdf-converter` 실제 검색어·유입 비중을 보고 이동 결정을 내린다: 이미지→PDF 유입이 주라면 `/image-to-pdf`로, PDF 이미지 유입이 주라면 `/pdf-to-png`로, 두 의도가 모두 뚜렷하면 고유 안내 페이지로 유지한다. 영구 이전 시 언어 쿼리와 사용자의 링크를 보존하고 기존 URL을 308/301로 새 URL에 연결한다. 리디렉션 후에는 기존 URL을 sitemap·hreflang·canonical 집합에서 제거한다. URL 이전은 리디렉션과 canonical을 일치시키는 것이 핵심이다. [Google의 canonical 및 리디렉션 안내](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls).
 
-한국어는 쿼리 없는 URL, 영어·일본어·간체 중국어·스페인어는 기존의 `?lang=en|ja|zh|es` 방식을 유지한다. `?lang=ko`는 같은 경로의 쿼리 없는 한국어 URL로 308 이동한다. 새로운 URL 패턴을 병행 도입하지 않는다.
+한국어는 쿼리 없는 URL, 영어·일본어·간체 중국어·스페인어는 기존의 `?lang=en|ja|zh|es` 방식을 유지한다. `?lang=ko`는 쿼리 없는 한국어 URL을 canonical로 지정하는 별칭이다. 새로운 URL 패턴을 병행 도입하지 않는다.
 
 ## 4. 첫 출시 기능 명세
 
@@ -283,8 +283,8 @@ Search Console의 선택된 3개월 보고서에서 `jpg pdf 변환` 검색어�
 2026-09-16 Search Console URL 검사에서는 새 가이드가 아직 알려지지 않은 주소로 표시됐다. 색인 요청을 제출해 우선 크롤링 대기열 등록 완료 메시지를 확인했다. 사이트맵은 성공 상태이며 발견 URL 수는 `www` 105개·비-www 90개로, 운영 sitemap의 107개 전체가 아직 보고되지는 않았다.
 
 
-## 24. 한국어 기본 URL 신호 통합
+## 24. 한국어 기본 URL 신호 점검
 
 Search Console의 선택된 3개월 페이지 보고서에는 비-www, HTTP, `?lang=ko` 주소가 www·HTTPS의 쿼리 없는 한국어 주소와 별도 행으로 남아 있었다. 운영 응답을 직접 확인해 `http://qktoolhub.com`, `https://qktoolhub.com`, `http://www.qktoolhub.com`이 모두 `https://www.qktoolhub.com`으로 308 이동하는 것을 확인했다.
 
-남은 `?lang=ko`는 200 응답과 한국어 canonical을 제공하고 있었으나, URL 신호를 더 분명히 합치기 위해 모든 경로에서 같은 경로의 쿼리 없는 주소로 308 이동하도록 변경했다. 이 규칙은 이후 추가되는 페이지에도 적용되며 쿼리 문자열을 목적지에 보존하지 않는다. SEO 회귀검사는 조건부 영구 이동과 쿼리 제거 설정을 확인한다. 영어·일본어·간체 중국어·스페인어의 `?lang=en|ja|zh|es`는 각 언어의 canonical URL이므로 유지한다.
+`?lang=ko`는 200 응답과 쿼리 없는 한국어 canonical을 제공한다. URL 신호를 더 분명히 합치기 위한 정적 308 규칙을 검토했으나 Vercel의 일반 `vercel.json` 리디렉션은 원본 쿼리를 목적지에 전달하고, 쿼리 제거 옵션을 넣은 배포는 설정 검증에서 거절됐다. 거절된 배포는 운영에 반영되지 않았으며 해당 규칙은 즉시 제거했다. 현재는 기존 canonical 방식과 sitemap의 쿼리 없는 URL만 유지한다. 영어·일본어·간체 중국어·스페인어의 `?lang=en|ja|zh|es`는 각 언어의 canonical URL이므로 유지한다. 별도 Edge 처리 계층을 도입할 만큼 중복 영향이 커지는지는 이후 Search Console 데이터로 판단한다.
