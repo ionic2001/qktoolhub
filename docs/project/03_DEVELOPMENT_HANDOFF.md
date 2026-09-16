@@ -5,8 +5,8 @@
 - 코드 기준: 커밋 `bd01288`(원격 반영 후 운영 기준); 저장소: https://github.com/ionic2001/qktoolhub; 공개 사이트: https://www.qktoolhub.com/.
 - 최근 완료: PDF 원본 가이드 6개, 도구 계산 검증 가이드 6개와 서류 제출·스캔·오류 해결·JPG PDF 변환 실전 가이드 4개를 제공한다. 다국어 90개와 한국어 가이드 목록·상세 17개로 총 107개 canonical URL이며 `/pdf-converter`는 유지한다.
 - 검증: 운영 코드 빌드, 107개 URL 정적 SEO, 가이드 계산 근거, PDF 병합·추출·정리, 단위, 테마 검사 통과. 서류 제출·스캔 PDF 가이드는 운영 사이트 390px에서 본문·다운로드·관련 링크와 표 내부 스크롤을 확인했다. 환율 API 실패 시 모의 추세를 만들지 않고 참고값 상태를 표시한다. 전체 도구의 모바일·복잡한 PDF 표본·Search Console 장기 지표 검수는 미완료.
-- 다음 작업: Search Console 우선 크롤링을 요청한 기존 검증 가이드 3개와 서류 제출·스캔 PDF·PDF 오류 해결 가이드 3개의 색인·검색 의도·관련 도구 이동을 확인한다. 새 JPG PDF 가이드의 색인을 요청하고, 재제출 뒤 현재 107개로 확장된 sitemap의 발견 URL 수가 이전 60·90에서 갱신되는지도 확인한다. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
-- 사용자 확인 사항: 2026-09-16 서류 제출·스캔 PDF·PDF 오류 해결 가이드의 색인 요청 완료, `www` sitemap 재제출 성공. Search Console Insights 최근 28일 표본은 2클릭·29노출이며 `jpg pdf 변환`과 `/pdf-converter`에서 각각 1클릭을 확인했다. 새 가이드 색인 요청은 아직 제출하지 않았다. 독립 스티커북: https://github.com/ionic2001/diorama-stickerbook.
+- 다음 작업: Search Console 우선 크롤링을 요청한 기존 검증 가이드 3개와 서류 제출·스캔 PDF·PDF 오류 해결·JPG PDF 변환 가이드 4개의 실제 색인·검색 의도·관련 도구 이동을 확인한다. 현재 107개 sitemap의 발견 URL 수가 `www` 105개에서 추가로 갱신되는지도 확인한다. 페이지별 개별 추출·ZIP, 드래그 정리, 내용 추가·양식·OCR는 후속 기능이다.
+- 사용자 확인 사항: 2026-09-16 서류 제출·스캔 PDF·PDF 오류 해결·JPG PDF 변환 가이드의 색인 요청 완료, `www` sitemap 재제출 성공. Search Console Insights 최근 28일 표본은 2클릭·29노출이며 `jpg pdf 변환`과 `/pdf-converter`에서 각각 1클릭을 확인했다. 사이트맵 상태는 성공이며 발견 URL 수는 `www` 105개·비-www 90개다. 독립 스티커북: https://github.com/ionic2001/diorama-stickerbook.
 - 배포 작업은 사용자 지시와 현재 작업의 권한 범위를 따른다. 작업별 브랜치에서 변경·검증을 기록하고 원격 `main` 반영을 두 컴퓨터의 공유 기준으로 삼는다.
 
 ## 권장 공유 구조

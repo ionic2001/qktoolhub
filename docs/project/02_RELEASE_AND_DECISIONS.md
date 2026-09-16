@@ -77,3 +77,5 @@ GitHub main 반영이 기존 Vercel 운영 배포를 유발한다. 앞으로 기
 - 2026-09-16 Search Console에서 PDF 제출 오류 해결 가이드는 `URL is unknown to Google`로 표시됐다. 색인 요청을 제출하고 `Indexing requested` 및 우선 크롤링 대기열 등록 메시지를 확인했다.
 
 - 코드 `bd01288`은 Search Console Insights에서 확인된 `jpg pdf 변환` 의도를 실제 `/image-to-pdf` 기능과 연결했다. 사진 순서, A4·원본 크기, 방향·여백, 2,400px 축소와 JPEG 정규화, 결과 페이지·가독성 검수를 다루는 한국어 원본 가이드와 체크리스트를 추가했다. 이미지→PDF의 5개 언어 이름·설명도 여러 JPG를 PDF 한 파일로 만드는 기능이 분명하도록 수정했으며, 총 107개 URL의 SEO·가이드·PDF·단위·테마 검사를 통과했다. 최근 28일 표본은 2클릭·29노출 규모이므로 장기 검색 성과로 해석하지 않는다.
+
+- 2026-09-16 Search Console에서 새 JPG PDF 변환 가이드는 `URL is unknown to Google`로 표시됐다. 색인 요청 뒤 `Indexing requested`와 우선 크롤링 대기열 등록 메시지를 확인했다. 같은 시점에 제출된 사이트맵은 모두 성공 상태였고 발견 URL 수는 `www` 105개·비-www 90개였다. 운영 sitemap의 107개와 차이가 있으므로 Google의 후속 처리를 계속 확인한다.
