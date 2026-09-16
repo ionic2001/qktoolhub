@@ -10,6 +10,7 @@ import './ImageEditor.css';
 import { AdSlot } from '../components/AdSlot';
 import { ArrowLeft } from 'lucide-react';
 import { stickerCategories, stickerLibrary, Sticker } from './stickerLibrary';
+import { resizeImageDimensions } from '../utils/imageEditor';
 
 type Layer = { id: string; kind: 'text' | 'sticker'; text: string; x: number; y: number; size: number; rotation: number; opacity: number; color: string; bold: boolean; outline: boolean };
 type PhotoSlot = { image: HTMLImageElement | null; zoom: number; x: number; y: number };
@@ -64,7 +65,7 @@ export default function ImageEditor() {
  function edit(patch: Partial<Layer>) { change({ layers: model.layers.map(l => l.id === selected ? { ...l, ...patch } : l) }); }
  function undo() { if (!past.length) return; setFuture(f => [model, ...f]); setModel(past[past.length - 1]); setPast(p => p.slice(0, -1)); }
  function redo() { if (!future.length) return; setPast(p => [...p, model]); setModel(future[0]); setFuture(f => f.slice(1)); }
- function resize(axis: 'width' | 'height', raw: number) { const value = Math.max(64, Math.min(4096, Math.round(raw || 64))); const other = axis === 'width' ? 'height' : 'width'; change({ [axis]: value, ...(lockedRatio ? { [other]: Math.max(64, Math.min(4096, Math.round(value * model[other] / model[axis]))) } : {}) }); }
+ function resize(axis: 'width' | 'height', raw: number) { change(resizeImageDimensions(model.width, model.height, axis, raw, lockedRatio)); }
  function add(kind: Layer['kind'], text: string) { const layer: Layer = { id: crypto.randomUUID(), kind, text, x: model.width / 2, y: model.height / 2, size: Math.min(model.width, model.height) * (kind === 'text' ? .07 : .22), rotation: 0, opacity: 100, color: kind === 'sticker' ? stickerColor : '#f97373', bold: true, outline: false }; change({ layers: [...model.layers, layer] }); select(layer.id); }
  function chooseLayout(layout:string) { change({layout,slots:Array.from({length:4},(_,i)=>model.slots?.[i] || {image:i===0?source:null,zoom:100,x:0,y:0})});setActiveSlot(0); }
  function updateSlot(patch:Partial<PhotoSlot>) { change({slots:model.slots.map((slot,i)=>i===activeSlot?{...slot,...patch}:slot)}); }

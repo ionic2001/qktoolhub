@@ -11,6 +11,7 @@
     "push": "cmd /c sync.bat",
     "test:seo": "node scripts/test-seo.mjs",
     "test:pdf": "node scripts/test-pdf.mjs",
+    "test:guides": "node scripts/test-guides.mjs",
     "test:theme": "node scripts/test-theme.cjs"
   },
   "dependencies": {

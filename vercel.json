@@ -1,6 +1,18 @@
 {
   "rewrites": [
     {
+      "source": "/guides/korean-text-byte-test",
+      "destination": "/guides/korean-text-byte-test.html"
+    },
+    {
+      "source": "/guides/mb-vs-mib-test",
+      "destination": "/guides/mb-vs-mib-test.html"
+    },
+    {
+      "source": "/guides/image-resize-aspect-ratio-test",
+      "destination": "/guides/image-resize-aspect-ratio-test.html"
+    },
+    {
       "source": "/guides/pdf-browser-privacy",
       "destination": "/guides/pdf-browser-privacy.html"
     },
@@ -1092,6 +1104,21 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/guides/image-resize-aspect-ratio-test.html",
+      "destination": "/guides/image-resize-aspect-ratio-test",
+      "permanent": true
+    },
+    {
+      "source": "/guides/mb-vs-mib-test.html",
+      "destination": "/guides/mb-vs-mib-test",
+      "permanent": true
+    },
+    {
+      "source": "/guides/korean-text-byte-test.html",
+      "destination": "/guides/korean-text-byte-test",
+      "permanent": true
+    },
     {
       "source": "/guides/pdf-browser-privacy.html",
       "destination": "/guides/pdf-browser-privacy",
