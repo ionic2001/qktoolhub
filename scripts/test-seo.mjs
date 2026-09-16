@@ -26,6 +26,7 @@ assert.equal((sitemap.match(/<loc>/g)||[]).length,pagePaths.length*languages.len
 for(const lang of languages) {
  const html=fs.readFileSync(`dist/home/${lang}.html`,'utf8');
  const menu=pdfHomeMenu[lang];
+ assert.ok(html.includes('href="/guides"'),`${lang} homepage links the guide hub`);
  assert.ok(html.includes(menu.guideTitle),`${lang} PDF homepage guide title`);
  for(const paragraph of menu.guide) assert.ok(html.includes(paragraph),`${lang} PDF homepage guide paragraph`);
  const links=[...html.matchAll(/<a[^>]*href="(\/[^"#]*)"/g)].map(match=>new URL(match[1],'https://www.qktoolhub.com').pathname);
@@ -98,6 +99,8 @@ for(const guide of guides) {
  assert.ok(html.includes(guide.method),`${guide.path} original method`);
  for(const tool of guide.relatedTools) assert.ok(html.includes(`href="${tool.path}"`),`${guide.path} related tool`);
 }
+const guideHub=fs.readFileSync('dist/guides.html','utf8');
+for(const guide of guides) assert.ok(guideHub.includes(`href="${guide.path}"`),`guide hub links ${guide.path}`);
 for(const [toolPath,linkedGuides] of Object.entries(guideLinksForTool)) {
  const html=fs.readFileSync(`dist/${toolPath.slice(1)}/ko.html`,'utf8');
  for(const guidePath of linkedGuides) assert.ok(html.includes(`href="${guidePath}"`),`${toolPath} links ${guidePath}`);
